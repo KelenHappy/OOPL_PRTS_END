@@ -43,7 +43,13 @@
 https://map.ark-nights.com/map/main_01-07  
 https://map.ark-nights.com/map/ro2_e_5_3  
 https://map.ark-nights.com/map/rune_07-01_cc5  
-   ```sh
-   cmake -DCMAKE_BUILD_TYPE=Debug -B build # -G Ninja
-   ```
-   better read [PTSD README](https://github.com/ntut-open-source-club/practical-tools-for-simple-design)
+# 編譯
+```sh
+cmake -DCMAKE_BUILD_TYPE=Debug -B build # -G Ninja
+ ```
+better read [PTSD README](https://github.com/ntut-open-source-club/practical-tools-for-simple-design)  
+# 轉換png
+``` sh
+ffmpeg -i test.webm -vf "colorkey=0xFFFFFF:0.3:0.1" -pix_fmt rgba %d.png
+```
+
