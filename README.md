@@ -2,7 +2,7 @@
 ## 先鋒 (Vanguard)
    - [ ] 伊内丝 (Ines) - https://prts.wiki/w/%E4%BC%8A%E5%86%85%E4%B8%9D
    - [ ] 桃金娘 (Myrtle) - https://prts.wiki/w/%E6%A1%83%E9%87%91%E5%A8%98
-   - [ ] 德克萨斯 (Texas) - https://prts.wiki/w/%E5%BE%B7%E5%85%8B%E8%90%A8%E6%96%AF
+   - [x] 德克萨斯 (Texas) - https://prts.wiki/w/%E5%BE%B7%E5%85%8B%E8%90%A8%E6%96%AF
 
 ## 近衛 (Guard)
    - [ ] 玛恩纳 (Młynar) - https://prts.wiki/w/%E7%8E%9B%E6%81%A9%E7%BA%B3
@@ -11,7 +11,7 @@
    - [ ] 拉普兰德 (Lappland) - https://prts.wiki/w/%E6%8B%89%E6%99%AE%E5%85%B0%E5%BE%B7
 
 ## 狙擊 (Sniper)
-   - [ ] 能天使 (Exusiai) - https://prts.wiki/w/%E8%83%BD%E5%A4%A9%E4%BD%BF
+   - [x] 能天使 (Exusiai) - https://prts.wiki/w/%E8%83%BD%E5%A4%A9%E4%BD%BF
    - [ ] 克洛丝 (Kroos) - https://prts.wiki/w/%E5%85%8B%E6%B4%9B%E4%B8%9D
    - [ ] 维什戴尔 (W) - https://prts.wiki/w/%E7%BB%B4%E4%BB%80%E6%88%B4%E5%B0%94
 
