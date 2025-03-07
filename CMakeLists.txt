@@ -36,6 +36,8 @@ add_executable(${PROJECT_NAME}
     ${SRC_FILES}
     ${HEADER_FILES}
         include/Maps.h
+        include/PhaseResourceManger.h
+        src/PhaseResourceManger.cpp
 )
 
 if(MSVC)
