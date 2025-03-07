@@ -21,7 +21,7 @@
    - [ ] 号角 (Horn) - https://prts.wiki/w/%E5%8F%B2%E5%B0%94%E7%89%B9%E5%B0%94
 
 ## 醫療 (Medic)
-   - [ ] 苏苏洛 (Sussurro) - https://prts.wiki/w/%E8%8B%8F%E8%8B%8F%E6%B4%9B
+   - [x] 苏苏洛 (Sussurro) - https://prts.wiki/w/%E8%8B%8F%E8%8B%8F%E6%B4%9B
    - [ ] 华法琳 (Warfarin) - https://prts.wiki/w/%E5%8D%8E%E6%B3%95%E7%90%B3
    - [ ] 白面鸮 (Ptilopsis) - https://prts.wiki/w/%E7%99%BD%E9%9D%A2%E9%B8%AE
 
