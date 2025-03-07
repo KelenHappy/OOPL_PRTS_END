@@ -1,6 +1,6 @@
 # 角色  
 ## 先鋒 (Vanguard)
-   - 伊内丝 (Ines) - https://prts.wiki/w/%E4%BC%8A%E5%86%85%E4%B8%9D
+   - [] 伊内丝 (Ines) - https://prts.wiki/w/%E4%BC%8A%E5%86%85%E4%B8%9D
    - 桃金娘 (Myrtle) - https://prts.wiki/w/%E6%A1%83%E9%87%91%E5%A8%98
    - 德克萨斯 (Texas) - https://prts.wiki/w/%E5%BE%B7%E5%85%8B%E8%90%A8%E6%96%AF
 
