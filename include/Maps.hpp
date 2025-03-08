@@ -7,7 +7,7 @@ class MAPS : public Util::GameObject {
 
 public:
     BackgroundImage() : GameObject(
-         7/   std::make_unique<Util::Image>(GA_RESOURCE_DIR"/Maps/main_01-0_01-07.png"), -10) {
+         //   std::make_unique<Util::Image>(GA_RESOURCE_DIR"/Maps/main_01-0_01-07.png"), -10) {
     }
 
     void NextPhase(const int phase) {
