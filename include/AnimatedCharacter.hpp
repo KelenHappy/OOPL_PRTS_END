@@ -60,7 +60,33 @@ public:
         return m_CurrentState;
     }
 	[[nodiscard]] void SetState(CharacterState temp) {
+		StopCurrentAnimation();
 		m_CurrentState = temp;
+		Update();
+	}
+	void StopCurrentAnimation() {
+		switch (m_CurrentState) {
+			case CharacterState::Idle:
+				m_IdleAnimation->SetCooldown(50);
+				m_IdleAnimation->Pause(); 
+				break;
+			case CharacterState::Attack:
+				m_AttackAnimation->SetCooldown(50);
+				m_AttackAnimation->Pause(); 
+				break;
+			case CharacterState::Die:
+				m_DieAnimation->SetCooldown(50);
+				m_DieAnimation->Pause(); 
+				break;
+			case CharacterState::Start: 
+				m_StartAnimation->SetCooldown(50);
+				m_StartAnimation->Pause(); 
+				break;
+			case CharacterState::Default: 
+				m_Default->SetCooldown(50);
+				m_Default->Pause(); 
+				break;
+		}
 	}
     [[nodiscard]] const glm::vec2& GetPosition() { return m_Transform.translation; }
     [[nodiscard]] bool GetVisibility(){ return m_Visible; }
