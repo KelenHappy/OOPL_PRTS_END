@@ -10,19 +10,20 @@
 
 class AnimatedCharacter : public Util::GameObject {
 public:
-    AnimatedCharacter(const std::string& AnimationPaths)
+	// IdleEnd, AttackEnd, DieEnd, StartEnd, Default
+    AnimatedCharacter(const std::vector<std::string>& IdleEnd, const std::vector<std::string>& AttackEnd, const std::vector<std::string>& DieEnd, const std::vector<std::string>& StartEnd, const std::vector<std::string>& Default)
         : m_CurrentState(CharacterState::Default) {
         // 初始化動畫
         m_IdleAnimation = std::make_shared<Util::Animation>(
-            std::vector<std::string>{AnimationPaths + "/Idle"}, true, 100, true);
+            IdleEnd, true, 100, true);
         m_AttackAnimation = std::make_shared<Util::Animation>(
-            std::vector<std::string>{AnimationPaths + "/Attack"}, true, 50, false);
+            AttackEnd, true, 50, false);
         m_DieAnimation = std::make_shared<Util::Animation>(
-            std::vector<std::string>{AnimationPaths + "/Die"}, true, 100, false);
+            DieEnd, true, 100, false);
         m_StartAnimation = std::make_shared<Util::Animation>(
-            std::vector<std::string>{AnimationPaths + "/Start"}, true, 100, false);
+            StartEnd, true, 100, false);
         m_Default = std::make_shared<Util::Animation>(
-            std::vector<std::string>{AnimationPaths + "/Default"}, true, 100, false);
+            Default, true, 100, false);
     }
 
     void Update() {
@@ -58,18 +59,18 @@ public:
     [[nodiscard]] CharacterState GetState() {
         return m_CurrentState;
     }
-	[[nodiscard]] void SetState(CharacterState temp) const {
+	[[nodiscard]] void SetState(CharacterState temp) {
 		m_CurrentState = temp;
 	}
-    [[nodiscard]] const glm::vec2& GetPosition() const { return m_Transform.translation; }
-    [[nodiscard]] bool GetVisibility() const { return m_Visible; }
-    void SetPosition(const glm::vec2& Position) { m_Transform.translation = Position; }
+    [[nodiscard]] const glm::vec2& GetPosition() { return m_Transform.translation; }
+    [[nodiscard]] bool GetVisibility(){ return m_Visible; }
+    void SetPosition(glm::vec2& Position) { m_Transform.translation = Position; }
 
     int GetFrames() {
         return std::dynamic_pointer_cast<Util::Animation>(m_Drawable)->GetCurrentFrameIndex();
     }
 
-    bool IfCollides(const std::shared_ptr<AnimatedCharacter>& other) const {
+    bool IfCollides( std::shared_ptr<AnimatedCharacter>& other) const {
         if (!other->GetVisibility()) {
             return true;
         }
