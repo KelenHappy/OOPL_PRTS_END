@@ -11,8 +11,14 @@
 class AnimatedCharacter : public Util::GameObject {
 public:
 	// IdleEnd, AttackEnd, DieEnd, StartEnd, Default
-    AnimatedCharacter(const std::vector<std::string>& IdleEnd, const std::vector<std::string>& AttackEnd, const std::vector<std::string>& DieEnd, const std::vector<std::string>& StartEnd, const std::vector<std::string>& Default)
+    AnimatedCharacter(const std::vector<std::string>& AnimationPaths,
+                      const std::vector<std::string>& IdleEnd = {},
+                      const std::vector<std::string>& AttackEnd = {},
+                      const std::vector<std::string>& DieEnd = {},
+                      const std::vector<std::string>& StartEnd = {},
+                      const std::vector<std::string>& Default= {})
         : m_CurrentState(CharacterState::Default) {
+        m_Drawable = m_Default;
         // 初始化動畫
         m_IdleAnimation = std::make_shared<Util::Animation>(
             IdleEnd, true, 100, true);
@@ -30,27 +36,27 @@ public:
         switch (m_CurrentState) {
             case CharacterState::Idle:
                 if (m_IdleAnimation->GetState() != Util::Animation::State::PLAY) {
-                    m_IdleAnimation->Play();
+                    m_Drawable = m_IdleAnimation;
                 }
                 break;
             case CharacterState::Attack:
                 if (m_AttackAnimation->GetState() != Util::Animation::State::PLAY) {
-                    m_AttackAnimation->Play();
+                    m_Drawable = m_AttackAnimation;
                 }
                 break;
             case CharacterState::Die:
                 if (m_DieAnimation->GetState() != Util::Animation::State::PLAY) {
-                    m_DieAnimation->Play();
+                    m_Drawable= m_DieAnimation;
                 }
                 break;
             case CharacterState::Default:
                 if (m_Default->GetState() != Util::Animation::State::PLAY) {
-                    m_Default->Play();
+                    m_Drawable = m_Default;
                 }
                 break;
             case CharacterState::Start:
                 if (m_StartAnimation->GetState() != Util::Animation::State::PLAY) {
-                    m_StartAnimation->Play();
+                    m_Drawable= m_StartAnimation;
                 }
                 break;
         }
@@ -60,34 +66,16 @@ public:
         return m_CurrentState;
     }
 	[[nodiscard]] void SetState(CharacterState temp) {
-		StopCurrentAnimation();
+		//StopCurrentAnimation();
 		m_CurrentState = temp;
 		Update();
 	}
-	void StopCurrentAnimation() {
-		switch (m_CurrentState) {
-			case CharacterState::Idle:
-				m_IdleAnimation->SetCooldown(50);
-				m_IdleAnimation->Pause(); 
-				break;
-			case CharacterState::Attack:
-				m_AttackAnimation->SetCooldown(50);
-				m_AttackAnimation->Pause(); 
-				break;
-			case CharacterState::Die:
-				m_DieAnimation->SetCooldown(50);
-				m_DieAnimation->Pause(); 
-				break;
-			case CharacterState::Start: 
-				m_StartAnimation->SetCooldown(50);
-				m_StartAnimation->Pause(); 
-				break;
-			case CharacterState::Default: 
-				m_Default->SetCooldown(50);
-				m_Default->Pause(); 
-				break;
-		}
-	}
+
+	bool IfAnimationEnds() {
+        auto animation = std::dynamic_pointer_cast<Util::Animation>(m_Drawable);
+        //std::cout << animation->GetFrameCount() << std::endl;
+        return animation->GetCurrentFrameIndex() == animation->GetFrameCount() - 1;
+    }
     [[nodiscard]] const glm::vec2& GetPosition() { return m_Transform.translation; }
     [[nodiscard]] bool GetVisibility(){ return m_Visible; }
     void SetPosition(glm::vec2& Position) { m_Transform.translation = Position; }
@@ -120,6 +108,14 @@ public:
         bool yContact = (thisBottom > otherTop && thisTop < otherBottom);
 
         return xContact && yContact; // 只有 X 和 Y 軸都重疊才判定為碰撞
+    }
+    void SetLooping(bool looping) {
+        auto temp = std::dynamic_pointer_cast<Util::Animation>(m_Drawable);
+        temp->SetLooping(looping);
+        if(looping)temp->Play();
+        else{
+            temp->Pause();
+        }
     }
 
 private:
