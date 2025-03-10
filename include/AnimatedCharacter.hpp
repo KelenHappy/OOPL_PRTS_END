@@ -31,7 +31,7 @@ public:
         m_Default = std::make_shared<Util::Animation>(
             Default, true, 100, false);
     }
-
+    // 更換Animation
     void Update() {
         switch (m_CurrentState) {
             case CharacterState::Idle:
@@ -65,6 +65,7 @@ public:
     [[nodiscard]] CharacterState GetState() {
         return m_CurrentState;
     }
+
 	[[nodiscard]] void SetState(CharacterState temp) {
 		//StopCurrentAnimation();
 		m_CurrentState = temp;
@@ -76,8 +77,11 @@ public:
         //std::cout << animation->GetFrameCount() << std::endl;
         return animation->GetCurrentFrameIndex() == animation->GetFrameCount() - 1;
     }
+
     [[nodiscard]] const glm::vec2& GetPosition() { return m_Transform.translation; }
+
     [[nodiscard]] bool GetVisibility(){ return m_Visible; }
+
     void SetPosition(glm::vec2& Position) { m_Transform.translation = Position; }
 
     int GetFrames() {
@@ -109,6 +113,7 @@ public:
 
         return xContact && yContact; // 只有 X 和 Y 軸都重疊才判定為碰撞
     }
+
     void SetLooping(bool looping) {
         auto temp = std::dynamic_pointer_cast<Util::Animation>(m_Drawable);
         temp->SetLooping(looping);
@@ -120,11 +125,11 @@ public:
 
 private:
     CharacterState m_CurrentState;
-    std::shared_ptr<Util::Animation> m_IdleAnimation;
-    std::shared_ptr<Util::Animation> m_AttackAnimation;
-    std::shared_ptr<Util::Animation> m_DieAnimation;
-    std::shared_ptr<Util::Animation> m_StartAnimation;
-    std::shared_ptr<Util::Animation> m_Default;
+    std::shared_ptr<Util::Animation> m_IdleAnimation = nullptr;
+    std::shared_ptr<Util::Animation> m_AttackAnimation = nullptr;
+    std::shared_ptr<Util::Animation> m_DieAnimation = nullptr;
+    std::shared_ptr<Util::Animation> m_StartAnimation = nullptr;
+    std::shared_ptr<Util::Animation> m_Default = nullptr;
 
     float m_Width = 15.0f;  // 角色寬度
     float m_Height = 15.0f; // 角色高度
