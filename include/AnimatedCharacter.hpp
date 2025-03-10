@@ -11,6 +11,7 @@
 class AnimatedCharacter : public Util::GameObject {
 public:
 	// IdleEnd, AttackEnd, DieEnd, StartEnd, Default
+    // AnitmationPaths 使用 default path
     AnimatedCharacter(const std::vector<std::string>& AnimationPaths,
                       const std::vector<std::string>& IdleEnd = {},
                       const std::vector<std::string>& AttackEnd = {},
@@ -18,18 +19,20 @@ public:
                       const std::vector<std::string>& StartEnd = {},
                       const std::vector<std::string>& Default= {})
         : m_CurrentState(CharacterState::Default) {
-        m_Drawable = m_Default;
         // 初始化動畫
-        m_IdleAnimation = std::make_shared<Util::Animation>(
-            IdleEnd, true, 100, true);
-        m_AttackAnimation = std::make_shared<Util::Animation>(
-            AttackEnd, true, 50, false);
-        m_DieAnimation = std::make_shared<Util::Animation>(
-            DieEnd, true, 100, false);
-        m_StartAnimation = std::make_shared<Util::Animation>(
-            StartEnd, true, 100, false);
-        m_Default = std::make_shared<Util::Animation>(
-            Default, true, 100, false);
+        this->m_Drawable = std::make_shared<Util::Animation>
+        (AnimationPaths, false, 50, false, 0);
+        this->m_IdleAnimation = std::make_shared<Util::Animation>
+        (IdleEnd, true, 100, true);
+        this->m_AttackAnimation = std::make_shared<Util::Animation>
+        (AttackEnd, true, 50, false);
+        this->m_DieAnimation = std::make_shared<Util::Animation>
+        (DieEnd, true, 100, false);
+        this->m_StartAnimation = std::make_shared<Util::Animation>
+        (StartEnd, true, 100, false);
+        this->m_Default = std::make_shared<Util::Animation>
+        (Default, true, 100, false);
+        this->m_Drawable = m_Default;
     }
     // 更換Animation
     void Update() {
