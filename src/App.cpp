@@ -4,7 +4,7 @@
 #include "Util/Input.hpp"
 #include "Util/Keycode.hpp"
 #include "Util/Logger.hpp"
-#include"Util/Logger.hpp"
+#include <vector>
 void App::Start() {
     LOG_TRACE("Start");
     m_CurrentState = State::UPDATE;
@@ -16,15 +16,17 @@ void App::Start() {
 }
 
 void App::Update() {
+    auto mouse=Util::Input::GetCursorPosition();
+    if(Util::Input::IsKeyDown(Util::Keycode::MOUSE_LB)) {
+        LOG_DEBUG(std::to_string(mouse.x)+" "+std::to_string(mouse.y));
+        // LOG_DEBUG(std::to_string(m_MainScream->GetScaledSize().x)+" "+std::to_string(m_MainScream->GetScaledSize().y));
+    }
     if(m_level==level::lobby){
     if (Util::Input::IsKeyUp(Util::Keycode::ESCAPE) ||
         Util::Input::IfExit()) {
         m_CurrentState = State::END;
     }
     if(Util::Input::IsKeyDown(Util::Keycode::Q)) {
-        LOG_DEBUG(std::to_string(Util::Input::GetCursorPosition().x)+" "+std::to_string(Util::Input::GetCursorPosition().y));
-    }
-    if(Util::Input::IsKeyDown(Util::Keycode::K)) {
         m_level=level::main17;
     }
     m_Root.Update();

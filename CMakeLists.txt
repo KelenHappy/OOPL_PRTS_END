@@ -36,6 +36,10 @@ add_executable(${PROJECT_NAME}
     ${SRC_FILES}
         src/App.cpp
         src/main.cpp
+		src/Map.cpp
+		src/Block.cpp
+		
+		
     ${HEADER_FILES}
         include/MainScream.hpp
         include/App.hpp
@@ -44,9 +48,14 @@ add_executable(${PROJECT_NAME}
         include/CreateIMG.hpp
         include/AnimatedCharacter.hpp
         include/AnimatedEnemy.hpp
+		
         include/Medic.hpp
         include/Enemy.hpp
         include/BugA.hpp
+        include/block.h
+        
+        include/BlockState.hpp
+        
 )
 
 if(MSVC)
