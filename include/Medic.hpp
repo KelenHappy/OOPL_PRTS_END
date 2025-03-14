@@ -3,8 +3,7 @@
 #include "AnimatedCharacter.hpp"
 class Medic : public AnimatedCharacter{
 public:
-    Medic(std::string CharacterName, int IdleCont, int AttackCont,int DieCont, int StartCont) :
-          AnimatedCharacter(){
+    Medic(std::string CharacterName, int IdleCont, int AttackCont,int DieCont, int StartCont) : AnimatedCharacter(){
             DefaultImage.reserve(1);
             DefaultImage.emplace_back(RESOURCE_DIR"/Character/Medic/"+CharacterName+"/Default/1.png");
             IdleImage.reserve(IdleCont);
