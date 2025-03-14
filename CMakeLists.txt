@@ -42,7 +42,8 @@ add_executable(${PROJECT_NAME}
         include/TextBox.hpp
         include/Map.hpp
         include/CreateIMG.hpp
-
+        include/AnimatedCharacter.hpp
+        include/AnimatedEnemy.hpp
 
 )
 
