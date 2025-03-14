@@ -44,7 +44,7 @@ add_executable(${PROJECT_NAME}
         include/CreateIMG.hpp
         include/AnimatedCharacter.hpp
         include/AnimatedEnemy.hpp
-
+        include/Medic.hpp
 )
 
 if(MSVC)
