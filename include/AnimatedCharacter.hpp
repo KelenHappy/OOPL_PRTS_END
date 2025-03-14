@@ -95,6 +95,9 @@ public:
     }
 
     [[nodiscard]] bool IfCollides( std::shared_ptr<AnimatedCharacter>& other) {
+        /*
+         * std::shared_ptr<Util::Amimation> temp = std::dynamic_pointer_cast<Util::Animation>(m_Drawable);
+         */
         if (!other->GetVisibility()) {
             return true;
         }
