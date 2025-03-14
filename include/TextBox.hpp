@@ -4,8 +4,8 @@
 #include "Util/GameObject.hpp"
 #include "Util/Text.hpp"
 #include "Util/Color.hpp"
-#ifndef TEXTBOX_H
-#define TEXTBOX_H
+#ifndef TEXTBOX_HPP
+#define TEXTBOX_HPP
 class TextBox:public Util::GameObject{
 public:
     TextBox() : GameObject(
@@ -24,4 +24,4 @@ public:
 
 };
 
-#endif //TEXTBOX_H
+#endif //TEXTBOX_HPP

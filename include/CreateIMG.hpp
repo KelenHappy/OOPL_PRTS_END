@@ -2,8 +2,8 @@
 // Created by AaronChiu on 2025/3/14.
 //
 
-#ifndef CREATEIMG_H
-#define CREATEIMG_H
+#ifndef CREATEIMG_HPP
+#define CREATEIMG_HPP
 #include "Util/GameObject.hpp"
 #include "Util/Image.hpp"
 
@@ -18,4 +18,4 @@ private:
     }
 };
 
-#endif //CREATEIMG_H
+#endif //CREATEIMG_HPP

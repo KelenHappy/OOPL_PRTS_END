@@ -2,9 +2,9 @@
 // Created by AaronChiu on 2025/3/14.
 //
 
-#ifndef MAP_H
-#define MAP_H
-#include "CreateIMG.h"
+#ifndef MAP_HPP
+#define MAP_HPP
+#include "CreateIMG.hpp"
 #include "Util/GameObject.hpp"
 class Map :public Util::GameObject{
     public:
@@ -19,4 +19,4 @@ class Map :public Util::GameObject{
     std::vector<std::shared_ptr<Util::GameObject>> m_block;
     std::shared_ptr<CreateIMG> m_map;
 };
-#endif //MAP_H
+#endif //MAP_HPP

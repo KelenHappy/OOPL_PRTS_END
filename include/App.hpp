@@ -2,8 +2,8 @@
 #define APP_HPP
 
 #include "pch.hpp" // IWYU pragma: export
-#include "MainScream.h"
-#include "Map.h"
+#include "MainScream.hpp"
+#include "Map.hpp"
 #include "Util/Renderer.hpp"
 class App {
 public:

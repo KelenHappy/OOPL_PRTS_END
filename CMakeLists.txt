@@ -37,11 +37,11 @@ add_executable(${PROJECT_NAME}
         src/App.cpp
         src/main.cpp
     ${HEADER_FILES}
-        include/MainScream.h
+        include/MainScream.hpp
         include/App.hpp
-        include/TextBox.h
-        include/Map.h
-        include/CreateIMG.h
+        include/TextBox.hpp
+        include/Map.hpp
+        include/CreateIMG.hpp
 
 
 )

@@ -1,9 +1,9 @@
 
 
-#ifndef MAINSCREAM_H
-#define MAINSCREAM_H
-#include "CreateIMG.h"
-#include "TextBox.h"
+#ifndef MAINSCREAM_HPP
+#define MAINSCREAM_HPP
+#include "CreateIMG.hpp"
+#include "TextBox.hpp"
 #include "Util/GameObject.hpp"
 #include "Util/Image.hpp"
 #include "Util/Text.hpp"
@@ -31,4 +31,4 @@ class MainScream:public Util::GameObject {
 
 
 };
-#endif //MAINSCREAM_H
+#endif //MAINSCREAM_HPP
