@@ -5,6 +5,8 @@
 #include "MainScream.hpp"
 #include "Map.hpp"
 #include "Util/Renderer.hpp"
+#include "AnimatedCharacter.hpp"
+#include "AnimatedEnemy.hpp"
 class App {
 public:
     enum class State {

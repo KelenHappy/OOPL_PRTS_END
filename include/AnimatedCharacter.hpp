@@ -6,7 +6,7 @@
 #include "Util/Animation.hpp"
 #include "Util/GameObject.hpp"
 #include "CharacterState.hpp"
-#include "AnimationEnemy.hpp"
+#include "AnimatedEnemy.hpp"
 
 class AnimatedCharacter : public Util::GameObject {
 public:
@@ -69,13 +69,13 @@ public:
         return m_CurrentState;
     }
 
-	[[nodiscard]] void SetState(CharacterState temp) {
+    void SetState(CharacterState temp) {
 		//StopCurrentAnimation();
 		m_CurrentState = temp;
 		Update();
 	}
 
-	bool IfAnimationEnds() {
+	[[nodiscard]] bool IfAnimationEnds() {
         auto animation = std::dynamic_pointer_cast<Util::Animation>(m_Drawable);
         //std::cout << animation->GetFrameCount() << std::endl;
         return animation->GetCurrentFrameIndex() == animation->GetFrameCount() - 1;
@@ -87,11 +87,11 @@ public:
 
     void SetPosition(glm::vec2& Position) { m_Transform.translation = Position; }
 
-    int GetFrames() {
+    [[nodiscard]] int GetFrames() {
         return std::dynamic_pointer_cast<Util::Animation>(m_Drawable)->GetCurrentFrameIndex();
     }
 
-    bool IfCollides( std::shared_ptr<AnimatedCharacter>& other) const {
+    [[nodiscard]] bool IfCollides( std::shared_ptr<AnimatedCharacter>& other) {
         if (!other->GetVisibility()) {
             return true;
         }

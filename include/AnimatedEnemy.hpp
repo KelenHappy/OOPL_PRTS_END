@@ -9,17 +9,17 @@
 #include "EnemyState.hpp"
 
 
-class EnemyCharacter : public Util::GameObject {
+class AnimatedEnemy : public Util::GameObject {
 public:
 	// IdleEnd, AttackEnd, DieEnd, MoveEnd, Default
     // AnitmationPaths 使用 default path
-    AnimatedCharacter(const std::vector<std::string>& AnimationPaths,
+    AnimatedEnemy(const std::vector<std::string>& AnimationPaths,
                       const std::vector<std::string>& IdleEnd = {},
                       const std::vector<std::string>& AttackEnd = {},
                       const std::vector<std::string>& DieEnd = {},
                       const std::vector<std::string>& MoveEnd = {},
                       const std::vector<std::string>& Default= {})
-        : m_CurrentState(CharacterState::Default) {
+        : m_CurrentState(EnemyState::Default) {
         // 初始化動畫
         this->m_Drawable = std::make_shared<Util::Animation>
         (AnimationPaths, false, 50, false, 0);
@@ -30,7 +30,7 @@ public:
         this->m_DieAnimation = std::make_shared<Util::Animation>
         (DieEnd, true, 100, false);
         this->m_MoveAnimation = std::make_shared<Util::Animation>
-        (StartEnd, true, 100, false);
+        (MoveEnd, true, 100, false);
         this->m_Default = std::make_shared<Util::Animation>
         (Default, true, 100, false);
         this->m_Drawable = m_Default;
@@ -70,13 +70,13 @@ public:
         return m_CurrentState;
     }
 
-	[[nodiscard]] void SetState(EnemyState temp) {
+	void SetState(EnemyState temp) {
 		//StopCurrentAnimation();
 		m_CurrentState = temp;
 		Update();
 	}
 
-	bool IfAnimationEnds() {
+    [[nodiscard]] bool IfAnimationEnds() {
         auto animation = std::dynamic_pointer_cast<Util::Animation>(m_Drawable);
         //std::cout << animation->GetFrameCount() << std::endl;
         return animation->GetCurrentFrameIndex() == animation->GetFrameCount() - 1;
@@ -88,11 +88,11 @@ public:
 
     void SetPosition(glm::vec2& Position) { m_Transform.translation = Position; }
 
-    int GetFrames() {
+    [[nodiscard]] int GetFrames() {
         return std::dynamic_pointer_cast<Util::Animation>(m_Drawable)->GetCurrentFrameIndex();
     }
 
-    bool IfCollides( std::shared_ptr<AnimatedCharacter>& other) const {
+    [[nodiscard]] bool IfCollides( std::shared_ptr<AnimatedEnemy>& other){
         if (!other->GetVisibility()) {
             return true;
         }
@@ -128,7 +128,7 @@ public:
     }
 
 private:
-    CharacterState m_CurrentState;
+    EnemyState m_CurrentState;
     std::shared_ptr<Util::Animation> m_IdleAnimation = nullptr;
     std::shared_ptr<Util::Animation> m_AttackAnimation = nullptr;
     std::shared_ptr<Util::Animation> m_DieAnimation = nullptr;
@@ -139,4 +139,4 @@ private:
     float m_Height = 15.0f; // 角色高度
 };
 
-#endif // ANIMATED_CHARACTER_HPP
+#endif // ANIMATED_ENEMY_HPP
