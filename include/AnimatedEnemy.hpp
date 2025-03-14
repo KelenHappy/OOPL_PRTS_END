@@ -1,22 +1,23 @@
-#ifndef ANIMATED_CHARACTER_HPP
-#define ANIMATED_CHARACTER_HPP
+#ifndef ANIMATED_ENEMY_HPP
+#define ANIMATED_ENEMY_HPP
 
 #include <vector>
 #include <string>
+#include "AnimatedCharacter.hpp"
 #include "Util/Animation.hpp"
 #include "Util/GameObject.hpp"
-#include "CharacterState.hpp"
-#include "AnimationEnemy.hpp"
+#include "EnemyState.hpp"
 
-class AnimatedCharacter : public Util::GameObject {
+
+class EnemyCharacter : public Util::GameObject {
 public:
-	// IdleEnd, AttackEnd, DieEnd, StartEnd, Default
+	// IdleEnd, AttackEnd, DieEnd, MoveEnd, Default
     // AnitmationPaths 使用 default path
     AnimatedCharacter(const std::vector<std::string>& AnimationPaths,
                       const std::vector<std::string>& IdleEnd = {},
                       const std::vector<std::string>& AttackEnd = {},
                       const std::vector<std::string>& DieEnd = {},
-                      const std::vector<std::string>& StartEnd = {},
+                      const std::vector<std::string>& MoveEnd = {},
                       const std::vector<std::string>& Default= {})
         : m_CurrentState(CharacterState::Default) {
         // 初始化動畫
@@ -28,7 +29,7 @@ public:
         (AttackEnd, true, 50, false);
         this->m_DieAnimation = std::make_shared<Util::Animation>
         (DieEnd, true, 100, false);
-        this->m_StartAnimation = std::make_shared<Util::Animation>
+        this->m_MoveAnimation = std::make_shared<Util::Animation>
         (StartEnd, true, 100, false);
         this->m_Default = std::make_shared<Util::Animation>
         (Default, true, 100, false);
@@ -37,39 +38,39 @@ public:
     // 更換Animation
     void Update() {
         switch (m_CurrentState) {
-            case CharacterState::Idle:
+            case EnemyState::Idle:
                 if (m_IdleAnimation->GetState() != Util::Animation::State::PLAY) {
                     m_Drawable = m_IdleAnimation;
                 }
                 break;
-            case CharacterState::Attack:
+            case EnemyState::Attack:
                 if (m_AttackAnimation->GetState() != Util::Animation::State::PLAY) {
                     m_Drawable = m_AttackAnimation;
                 }
                 break;
-            case CharacterState::Die:
+            case EnemyState::Die:
                 if (m_DieAnimation->GetState() != Util::Animation::State::PLAY) {
                     m_Drawable= m_DieAnimation;
                 }
                 break;
-            case CharacterState::Default:
+            case EnemyState::Default:
                 if (m_Default->GetState() != Util::Animation::State::PLAY) {
                     m_Drawable = m_Default;
                 }
                 break;
-            case CharacterState::Start:
-                if (m_StartAnimation->GetState() != Util::Animation::State::PLAY) {
-                    m_Drawable= m_StartAnimation;
+            case EnemyState::Move:
+                if (m_MoveAnimation->GetState() != Util::Animation::State::PLAY) {
+                    m_Drawable= m_MoveAnimation;
                 }
                 break;
         }
     }
-	
-    [[nodiscard]] CharacterState GetState() {
+
+    [[nodiscard]] EnemyState GetState() {
         return m_CurrentState;
     }
 
-	[[nodiscard]] void SetState(CharacterState temp) {
+	[[nodiscard]] void SetState(EnemyState temp) {
 		//StopCurrentAnimation();
 		m_CurrentState = temp;
 		Update();
@@ -131,7 +132,7 @@ private:
     std::shared_ptr<Util::Animation> m_IdleAnimation = nullptr;
     std::shared_ptr<Util::Animation> m_AttackAnimation = nullptr;
     std::shared_ptr<Util::Animation> m_DieAnimation = nullptr;
-    std::shared_ptr<Util::Animation> m_StartAnimation = nullptr;
+    std::shared_ptr<Util::Animation> m_MoveAnimation = nullptr;
     std::shared_ptr<Util::Animation> m_Default = nullptr;
 
     float m_Width = 15.0f;  // 角色寬度
