@@ -32,6 +32,13 @@ std::vector<std::string> IdleImage;
 std::vector<std::string> MoveImage;
 std::vector<std::string> AttackImage;
 std::vector<std::string> DieImage;
+// 角色數值
+int HealthNum = 0;
+int AttackNum = 0;
+int DefendNum = 0;
+int MagicDefendNum = 0;
+int AttackSpeed = 0;
+
 };
 
 #endif

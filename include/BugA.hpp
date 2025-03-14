@@ -1,6 +1,7 @@
 #ifndef BUGA_HPP
 #define BUGA_HPP
 #include "Enemy.hpp"
+#include "AnimatedCharacter.hpp"
 class BugA : public Enemy{
 public:
     //              EnemyName, int IdleCont, int AttackCont,int DieCont, int MoveCont
