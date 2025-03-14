@@ -10,6 +10,7 @@
 #include "Medic.hpp"
 #include "Enemy.hpp"
 #include "BugA.hpp"
+
 class App {
 public:
     enum class State {
