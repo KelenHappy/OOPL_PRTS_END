@@ -25,8 +25,11 @@ public:
             SetPath(IdleImage, AttackImage, DieImage, StartImage, DefaultImage);
 
     }
-
+	void SetInfo(){
+		
+	}
 protected:
+	
 	std::vector<std::string> DefaultImage;
 	std::vector<std::string> IdleImage;
 	std::vector<std::string> StartImage;

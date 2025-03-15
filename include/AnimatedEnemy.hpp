@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <string>
+#include <ostream>
 #include "AnimatedCharacter.hpp"
 #include "Util/Animation.hpp"
 #include "Util/GameObject.hpp"
@@ -42,30 +43,23 @@ public:
     void Update() {
         switch (m_CurrentState) {
             case EnemyState::Idle:
-                if (m_IdleAnimation->GetState() != Util::Animation::State::PLAY) {
-                    m_Drawable = m_IdleAnimation;
-                }
+                m_Drawable = m_IdleAnimation;
                 break;
             case EnemyState::Attack:
-                if (m_AttackAnimation->GetState() != Util::Animation::State::PLAY) {
-                    m_Drawable = m_AttackAnimation;
-                }
+                m_Drawable = m_AttackAnimation;
                 break;
             case EnemyState::Die:
-                if (m_DieAnimation->GetState() != Util::Animation::State::PLAY) {
-                    m_Drawable= m_DieAnimation;
-                }
+                m_Drawable= m_DieAnimation;
                 break;
             case EnemyState::Default:
-                if (m_Default->GetState() != Util::Animation::State::PLAY) {
-                    m_Drawable = m_Default;
-                }
+                m_Drawable = m_Default;
                 break;
             case EnemyState::Move:
-                if (m_MoveAnimation->GetState() != Util::Animation::State::PLAY) {
-                    m_Drawable= m_MoveAnimation;
-                }
+                m_Drawable= m_MoveAnimation;         
                 break;
+			default:
+				std::cout << "Error input Current EnemyState" << std::endl;
+				break;
         }
     }
 
