@@ -132,14 +132,14 @@ public:
         }
     }
 
-private:
+protected:
     CharacterState m_CurrentState;
     std::shared_ptr<Util::Animation> m_IdleAnimation = nullptr;
     std::shared_ptr<Util::Animation> m_AttackAnimation = nullptr;
     std::shared_ptr<Util::Animation> m_DieAnimation = nullptr;
     std::shared_ptr<Util::Animation> m_StartAnimation = nullptr;
     std::shared_ptr<Util::Animation> m_Default = nullptr;
-
+private:
     float m_Width = 15.0f;  // 角色寬度
     float m_Height = 15.0f; // 角色高度
 };

@@ -26,7 +26,7 @@ public:
 
     }
 
-private:
+protected:
 	std::vector<std::string> DefaultImage;
 	std::vector<std::string> IdleImage;
 	std::vector<std::string> StartImage;

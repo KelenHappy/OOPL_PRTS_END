@@ -28,8 +28,8 @@ public:
 	
 	void SetInfo(int Health, int Attack, int Defend, int MagicDefend, int AttackSpeed
 	, int AttackDistance, int AttackCastle, int MoveSpeed, int HeavyLevel, int HealthRecover
-	, bool Dizzy, bool Sleep, bool Frozen,
-	AttackType attack_t){
+	, bool Dizzy, bool Sleep, bool Frozen
+	, AttackType attack_t){
 		HealthNum = Health;
 		AttackNum = Attack;
 		DefendNum = Defend;
@@ -46,7 +46,7 @@ public:
 		attack_type = attack_t;
 	}
 	
-private:
+protected:
 	std::vector<std::string> DefaultImage;
 	std::vector<std::string> IdleImage;
 	std::vector<std::string> MoveImage;
