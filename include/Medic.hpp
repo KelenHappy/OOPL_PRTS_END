@@ -27,11 +27,11 @@ public:
     }
 
 private:
-std::vector<std::string> DefaultImage;
-std::vector<std::string> IdleImage;
-std::vector<std::string> StartImage;
-std::vector<std::string> AttackImage;
-std::vector<std::string> DieImage;
+	std::vector<std::string> DefaultImage;
+	std::vector<std::string> IdleImage;
+	std::vector<std::string> StartImage;
+	std::vector<std::string> AttackImage;
+	std::vector<std::string> DieImage;
 };
 
 #endif
