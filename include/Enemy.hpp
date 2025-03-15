@@ -25,19 +25,50 @@ public:
             SetPath(IdleImage, AttackImage, DieImage, MoveImage, DefaultImage);
 
     }
-
+	
+	void SetInfo(int Health, int Attack, int Defend, int MagicDefend, int AttackSpeed
+	, int AttackDistance, int AttackCastle, int MoveSpeed, int HeavyLevel, int HealthRecover
+	, bool Dizzy, bool Sleep, bool Frozen,
+	AttackType attack_t){
+		HealthNum = Health;
+		AttackNum = Attack;
+		DefendNum = Defend;
+		MagicDefendNum = MagicDefend;
+		AttackSpeedNum = AttackSpeed;
+		AttackDistanceNum = AttackDistance;
+		AttackCastleNum = AttackCastle;
+		MoveSpeedNum = MoveSpeed;
+		HeavyLevelNum = HeavyLevel;
+		HealthRecoverNum = HealthRecover;
+		DizzyDefend = Dizzy;
+		SleepDefend = Sleep;
+		FrozenDefend = Frozen;
+		attack_type = attack_t;
+	}
+	
 private:
-std::vector<std::string> DefaultImage;
-std::vector<std::string> IdleImage;
-std::vector<std::string> MoveImage;
-std::vector<std::string> AttackImage;
-std::vector<std::string> DieImage;
-// 角色數值
-int HealthNum = 0;
-int AttackNum = 0;
-int DefendNum = 0;
-int MagicDefendNum = 0;
-int AttackSpeed = 0;
+	std::vector<std::string> DefaultImage;
+	std::vector<std::string> IdleImage;
+	std::vector<std::string> MoveImage;
+	std::vector<std::string> AttackImage;
+	std::vector<std::string> DieImage;
+	// 角色數值
+	int HealthNum = 0;
+	int AttackNum = 0;
+	int DefendNum = 0;
+	int MagicDefendNum = 0;
+	int AttackSpeedNum = 0;
+	int AttackDistanceNum = 0;
+	int AttackCastleNum = 0;
+	int MoveSpeedNum = 0;
+	int HeavyLevelNum = 0;
+	int HealthRecoverNum = 0;
+
+	bool DizzyDefend = false;
+	bool SleepDefend = false;
+	bool FrozenDefend = false;
+
+	AttackType attack_type = AttackType::Physics;
 
 };
 
