@@ -61,7 +61,7 @@ public:
 				break;
         }
     }
-	
+
     [[nodiscard]] CharacterState GetState() {
         return m_CurrentState;
     }
