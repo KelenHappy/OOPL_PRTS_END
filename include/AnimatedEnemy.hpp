@@ -135,6 +135,7 @@ protected:
 private:
     float m_Width = 15.0f;  // 角色寬度
     float m_Height = 15.0f; // 角色高度
+	
 };
 
 #endif // ANIMATED_ENEMY_HPP
