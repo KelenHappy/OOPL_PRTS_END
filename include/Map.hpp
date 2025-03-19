@@ -12,13 +12,13 @@ class Map :public Util::GameObject{
     Map() ;
     [[nodiscard]] std::vector<std::shared_ptr<Util::GameObject>> GetChildren() const {
         std::vector<std::shared_ptr<Util::GameObject>> result;
-        std::transform(m_block.begin(), m_block.end(), std::back_inserter(result),
-            [](const std::shared_ptr<Block>& block) {
-                return std::static_pointer_cast<Util::GameObject>(block);
-            });
+        for(int i=0;i<m_block.size();i++) {
+            result.push_back(m_block[i]);
+        }
         result.push_back(m_map);
         return result;
     }
+    [[nodiscard]] std::vector<std::shared_ptr<Block>> Getblock() {return m_block;}
 
     private:
     std::vector<std::shared_ptr<Block>>m_block;
