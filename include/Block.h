@@ -18,6 +18,7 @@ class Block:public Util::GameObject {
 
 
     private:
+    bool HaveCharacter;
     int x;
     int y;
     BlockState blockState=BlockState::NONE;

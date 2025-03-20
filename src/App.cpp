@@ -39,35 +39,7 @@ void App::Update() {
         Util::Input::IfExit()) {
             m_CurrentState = State::END;
         }
-        if(Util::Input::IsKeyDown(Util::Keycode::KP_ENTER)) {
-            for(int i=0;i<m_map0107->Getblock().size();i++) {
-               LOG_DEBUG( m_map0107->Getblock()[i]->m_Transform.translation);
-            }
-        }
-        if(Util::Input::IsKeyDown(Util::Keycode::MOUSE_LB)) {
-            auto mouse=Util::Input::GetCursorPosition();
-            Util::Transform mouseT;
-            mouseT.translation=mouse;
-            if(carry==false) {
-                carry=false;
-                for(int i=0;i<m_map0107->Getblock().size();i++) {
-                    if(checkCollisionNearMouse( mouseT,m_map0107->Getblock()[i]->m_Transform, 30)) {
-                        m_Carry=i;
-                        carry=true;
-                        LOG_DEBUG("carry ");
-                    }
-                }
-                if(carry==false) {
-                    m_Carry=-1;
-                }
-            }
-            else {carry=false;}
-
-        }
-        if(carry) {
-            m_map0107->Getblock()[m_Carry]->m_Transform.translation=mouse;
-        }
-
+        Debug();
         m_0107.Update();
     }
 }
@@ -85,25 +57,35 @@ bool App::checkCollisionNearMouse(Util::Transform Mouse, Util::Transform Item, i
     double distance = calculateDistance(Mouse, Item);
     return distance <= range;
 }
-/*void App::Debug() {
+void App::Debug() {
     auto mouse=Util::Input::GetCursorPosition();
     Util::Transform mouseT;
     mouseT.translation=mouse;
-    if(carry) {
-        carry=false;
-        for(int i=0;i<45;i++) {
-            if(checkCollisionNearMouse( mouseT,m_map0107->Getblock()[i]->m_Transform, 10)) {
-                m_Carry=i;
-                carry=true;
-            }
-        }
-        if(carry==false) {
-            m_Carry=-1;
-        }
-        else {
-            carry=false;
-
+    if(Util::Input::IsKeyDown(Util::Keycode::KP_ENTER)) {
+        for(int i=0;i<m_map0107->Getblock().size();i++) {
+            LOG_DEBUG( m_map0107->Getblock()[i]->m_Transform.translation);
         }
     }
-}*/
+    if(Util::Input::IsKeyDown(Util::Keycode::MOUSE_LB)) {
+        if(carry==false) {
+            carry=false;
+            for(int i=0;i<m_map0107->Getblock().size();i++) {
+                if(checkCollisionNearMouse( mouseT,m_map0107->Getblock()[i]->m_Transform, 30)) {
+                    m_Carry=i;
+                    carry=true;
+                    LOG_DEBUG("carry ");
+                }
+            }
+            if(carry==false) {
+                m_Carry=-1;
+            }
+        }
+        else {carry=false;}
+    }
+    if(carry) {
+        m_map0107->Getblock()[m_Carry]->m_Transform.translation=mouse;
+    }
+
+
+}
 

@@ -32,11 +32,11 @@ public:
     void Update();
 
     void End(); // NOLINT(readability-convert-member-functions-to-static)
-    //void Debug();
 
 private:
     void ValidTask();
     bool checkCollisionNearMouse(Util::Transform Mouse, Util::Transform Item, int range);
+    void Debug();
     double calculateDistance(Util::Transform a, Util::Transform b);
 
 private:
