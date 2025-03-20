@@ -35,24 +35,31 @@ add_executable(${PROJECT_NAME}
     ${SRC_DIR}/main.cpp
     ${SRC_FILES}
         src/App.cpp
+		src/Block.cpp
         src/main.cpp
-        src/Block.cpp
         src/Map.cpp
     ${HEADER_FILES}
-        include/MainScream.hpp
         include/App.hpp
-        include/TextBox.hpp
-        include/Map.hpp
-        include/CreateIMG.hpp
+		include/Attack.hpp
         include/AnimatedCharacter.hpp
         include/AnimatedEnemy.hpp
 		
-        include/Medic.hpp
-        include/Enemy.hpp
-        include/BugA.hpp
-        include/block.h
-        
+		include/Block.hpp
         include/BlockState.hpp
+		include/BugA.hpp
+		
+		include/CreateIMG.hpp
+		include/CharacterState.hpp
+		
+		include/Enemy.hpp
+		include/EnemyState.hpp
+		
+		include/Map.hpp
+		include/MainScream.hpp
+        include/Medic.hpp
+		
+		include/TextBox.hpp
+		
         
 )
 

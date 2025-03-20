@@ -4,7 +4,7 @@
 
 #ifndef MAP_HPP
 #define MAP_HPP
-#include "block.h"
+#include "Block.hpp"
 #include "CreateIMG.hpp"
 #include "Util/GameObject.hpp"
 class Map :public Util::GameObject{
