@@ -35,6 +35,9 @@ public:
 
 private:
     void ValidTask();
+    bool checkCollisionNearMouse(Util::Transform Mouse, Util::Transform Item, int range);
+    void Debug();
+    double calculateDistance(Util::Transform a, Util::Transform b);
 
 private:
     level m_level=level::lobby;
@@ -44,6 +47,8 @@ private:
     std::shared_ptr<Map> m_map0107;
     Util::Renderer m_Root;
     Util::Renderer m_0107;
+    bool carry=false;
+    int m_Carry=-1;
 };
 
 #endif
