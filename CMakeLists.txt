@@ -36,10 +36,6 @@ add_executable(${PROJECT_NAME}
     ${SRC_FILES}
         src/App.cpp
         src/main.cpp
-
-		src/Map.cpp
-		src/Block.cpp
-
         src/Block.cpp
         src/Map.cpp
     ${HEADER_FILES}
