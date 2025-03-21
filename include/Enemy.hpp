@@ -45,7 +45,7 @@ public:
 		FrozenDefend = Frozen;
 		attack_type = attack_t;
 	}
-	
+	~Enemy(){}
 protected:
 	std::vector<std::string> DefaultImage;
 	std::vector<std::string> IdleImage;

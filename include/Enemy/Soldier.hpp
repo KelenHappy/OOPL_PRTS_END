@@ -15,7 +15,7 @@ public:
 		false, false, false,
 		AttackType::Physics);
     }
-
+~Soldier(){}
 
 
 private:

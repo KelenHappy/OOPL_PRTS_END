@@ -35,7 +35,7 @@ public:
     void Update();
 
     void End(); // NOLINT(readability-convert-member-functions-to-static)
-
+	~App(){}
 private:
     void ValidTask();
     bool checkCollisionNearMouse(Util::Transform Mouse, Util::Transform Item, int range);

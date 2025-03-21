@@ -15,6 +15,7 @@ public:
 		false, false, false, 
 		AttackType::Physics);
     }
+	~BugA(){}
 
 
 

@@ -25,19 +25,18 @@ public:
                  std::vector<std::string>& DefaultEnd){
         // 初始化動畫
         this->m_Drawable = std::make_shared<Util::Animation>
-        (DefaultEnd, false, 200, false, 0);
+        (DefaultEnd, false, 50, false, 0);
         this->m_Default = std::make_shared<Util::Animation>
-        (DefaultEnd, false, 200, false, 0);
-        this->m_Drawable = m_Default;
-
+        (DefaultEnd, false, 50, false, 0);
         this->m_IdleAnimation = std::make_shared<Util::Animation>
-        (IdleEnd, false, 200, false, 0);
+        (IdleEnd, false, 50, false, 0);
         this->m_AttackAnimation = std::make_shared<Util::Animation>
-        (AttackEnd, false, 200, false, 0);
+        (AttackEnd, false, 50, false, 0);
         this->m_DieAnimation = std::make_shared<Util::Animation>
-        (DieEnd, false, 200, false, 0);
+        (DieEnd, false, 50, false, 0);
         this->m_MoveAnimation = std::make_shared<Util::Animation>
-        (MoveEnd, false, 200, false, 0);
+        (MoveEnd, false, 50, false, 0);
+		this->m_Drawable = m_Default;
     }
     // 更換Animation
     void Update() {
@@ -76,8 +75,9 @@ public:
     [[nodiscard]] bool IfAnimationEnds() {
         auto animation = std::dynamic_pointer_cast<Util::Animation>(m_Drawable);
         //std::cout << animation->GetFrameCount() << std::endl;
-        return animation->GetCurrentFrameIndex() == animation->GetFrameCount() - 1;
-    }
+        if(animation) return animation->GetCurrentFrameIndex() == animation->GetFrameCount() - 1;
+		return false;
+	}
 
     [[nodiscard]] const glm::vec2& GetPosition() { return m_Transform.translation; }
 
@@ -117,13 +117,17 @@ public:
 
     void SetLooping(bool looping) {
         auto temp = std::dynamic_pointer_cast<Util::Animation>(m_Drawable);
-        temp->SetLooping(looping);
-        if(looping)temp->Play();
-        else{
-            temp->Pause();
-        }
+        if (temp) {
+			temp->SetLooping(looping);
+			if (looping) {
+				temp->Play();
+			} 
+			else {
+				temp->Pause();
+			}
+		}
     }
-
+	~AnimatedEnemy(){}
 protected:
     EnemyState m_CurrentState;
     std::shared_ptr<Util::Animation> m_IdleAnimation = nullptr;
