@@ -66,8 +66,13 @@ add_executable(${PROJECT_NAME}
 		include/Character/Vanguard.hpp
 		
 		include/TextBox.hpp
-		
-        
+		include/Card.hpp
+		include/Imgitem.hpp
+		include/ClassState.hpp
+		src/Card.cpp
+		include/CharacterType.hpp
+
+
 )
 
 if(MSVC)
