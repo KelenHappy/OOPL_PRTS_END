@@ -25,19 +25,19 @@ public:
                  std::vector<std::string>& DefaultEnd){
         // 初始化動畫
         this->m_Drawable = std::make_shared<Util::Animation>
-        (DefaultEnd, false, 50, false, 0);
+        (DefaultEnd, false, 200, false, 0);
         this->m_Default = std::make_shared<Util::Animation>
-        (DefaultEnd, true, 100, false, 0);
+        (DefaultEnd, false, 200, false, 0);
         this->m_Drawable = m_Default;
 
         this->m_IdleAnimation = std::make_shared<Util::Animation>
-        (IdleEnd, true, 100, true, 0);
+        (IdleEnd, false, 200, false, 0);
         this->m_AttackAnimation = std::make_shared<Util::Animation>
-        (AttackEnd, true, 50, false, 0);
+        (AttackEnd, false, 200, false, 0);
         this->m_DieAnimation = std::make_shared<Util::Animation>
-        (DieEnd, true, 100, false, 0);
+        (DieEnd, false, 200, false, 0);
         this->m_MoveAnimation = std::make_shared<Util::Animation>
-        (MoveEnd, true, 100, false, 0);
+        (MoveEnd, false, 200, false, 0);
     }
     // 更換Animation
     void Update() {

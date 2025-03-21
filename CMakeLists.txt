@@ -46,8 +46,12 @@ add_executable(${PROJECT_NAME}
 		
 		include/Block.hpp
         include/BlockState.hpp
-		include/BugA.hpp
-		
+
+		include/Enemy/BugA.hpp
+		include/Enemy/Soldier.hpp
+		include/Enemy/Thrower.hpp
+		include/Enemy/Varlorant.hpp
+
 		include/CreateIMG.hpp
 		include/CharacterState.hpp
 		
@@ -56,7 +60,8 @@ add_executable(${PROJECT_NAME}
 		
 		include/Map.hpp
 		include/MainScream.hpp
-        include/Medic.hpp
+
+        include/Character/Medic.hpp
 		
 		include/TextBox.hpp
 		

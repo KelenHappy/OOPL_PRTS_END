@@ -27,7 +27,7 @@ public:
     }
 	
 	void SetInfo(int Health, int Attack, int Defend, int MagicDefend, int AttackSpeed
-	, int AttackDistance, int AttackCastle, int MoveSpeed, int HeavyLevel, int HealthRecover
+	, float AttackDistance, int AttackCastle, float MoveSpeed, int HeavyLevel, int HealthRecover
 	, bool Dizzy, bool Sleep, bool Frozen
 	, AttackType attack_t){
 		HealthNum = Health;
@@ -58,9 +58,9 @@ protected:
 	int DefendNum = 0;
 	int MagicDefendNum = 0;
 	int AttackSpeedNum = 0;
-	int AttackDistanceNum = 0;
+	float AttackDistanceNum = 0;
 	int AttackCastleNum = 0;
-	int MoveSpeedNum = 0;
+	float MoveSpeedNum = 0.0;
 	int HeavyLevelNum = 0;
 	int HealthRecoverNum = 0;
 

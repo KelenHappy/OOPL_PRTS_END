@@ -5,19 +5,42 @@
 #include "Util/Keycode.hpp"
 #include "Util/Logger.hpp"
 #include <vector>
-
+#include "EnemyState.hpp"
+#include "CharacterState.hpp"
 
 void App::Start() {
     LOG_TRACE("Start");
     m_CurrentState = State::UPDATE;
-    m_MainScream= std::make_shared<MainScream>();
+    // 場景
+    m_MainScream = std::make_shared<MainScream>();
     m_TT = std::make_shared<TextBox>();
     m_Root.AddChildren(m_MainScream->GetChildren());
     m_map0107=std::make_shared<Map>();
     m_0107.AddChildren(m_map0107->GetChildren());
+    // Character
+
+    //Enemy
+    m_BugA = std::make_shared<BugA>();
+    m_BugA->SetZIndex(10);
+    m_BugA->SetVisible(true);
+    m_BugA->SetLooping(true);
+    m_BugA->SetState(EnemyState::Idle);
+    m_Soldier = std::make_shared<Soldier>();
+    m_Soldier->SetZIndex(10);
+    m_Soldier->SetVisible(true);
+    m_Soldier->SetLooping(true);
+    m_Soldier->SetState(EnemyState::Idle);
+    //m_Thrower = std::make_shared<Thrower>();
+    //m_Varlorant = std::make_shared<Varlorant> ();
+
+    m_0107.AddChild(m_BugA);
+    //m_0107.AddChild(m_Thrower);
+    m_0107.AddChild(m_Soldier);
+    //m_0107.AddChild(m_Varlorant);
 }
 
 void App::Update() {
+
     auto mouse=Util::Input::GetCursorPosition();
     /*if(Util::Input::IsKeyDown(Util::Keycode::MOUSE_LB)) {
         //LOG_DEBUG(std::to_string(mouse.x)+" "+std::to_string(mouse.y));
@@ -39,7 +62,12 @@ void App::Update() {
         Util::Input::IfExit()) {
             m_CurrentState = State::END;
         }
-        Debug();
+        //Debug();
+        // test
+        m_Soldier->SetLooping(true);
+        m_Soldier->SetState(EnemyState::Idle);
+        m_BugA->SetLooping(true);
+        m_BugA->SetState(EnemyState::Idle);
         m_0107.Update();
     }
 }

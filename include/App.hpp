@@ -7,10 +7,13 @@
 #include "Util/Renderer.hpp"
 #include "AnimatedCharacter.hpp"
 #include "AnimatedEnemy.hpp"
-#include "Medic.hpp"
-#include "Enemy.hpp"
-#include "BugA.hpp"
 
+#include "Character/Medic.hpp"
+
+#include "Enemy/BugA.hpp"
+#include "Enemy/Soldier.hpp"
+#include "Enemy/Thrower.hpp"
+#include "Enemy/Varlorant.hpp"
 class App {
 public:
     enum class State {
@@ -40,11 +43,22 @@ private:
     double calculateDistance(Util::Transform a, Util::Transform b);
     level m_level=level::lobby;
     State m_CurrentState = State::START;
+    // 場景
     std::shared_ptr<MainScream> m_MainScream;
     std::shared_ptr<TextBox> m_TT;
     std::shared_ptr<Map> m_map0107;
     Util::Renderer m_Root;
     Util::Renderer m_0107;
+    // AnimatedCharacter
+
+    // Enemy
+    // idle attack die move
+    std::shared_ptr <BugA> m_BugA;
+    std::shared_ptr <Soldier> m_Soldier;
+    //std::shared_ptr <Thrower> m_Thrower;
+    //std::shared_ptr <Varlorant> m_Varlorant;
+    // 大便
+
     bool carry=false;
     int m_Carry=-1;
 };
