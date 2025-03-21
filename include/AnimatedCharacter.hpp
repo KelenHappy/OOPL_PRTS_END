@@ -1,6 +1,7 @@
 #ifndef ANIMATED_CHARACTER_HPP
 #define ANIMATED_CHARACTER_HPP
 
+#include "Block.hpp"
 #include <vector>
 #include <string>
 #include <iostream>
@@ -125,6 +126,25 @@ public:
             temp->Pause();
         }
     }
+    void SetInfo(int SetTime, int SetCost, int AttackTime, int Health, int Attack, int Defend, int DefendMagic,
+    std::shared_ptr<std::vector<Block>> Range,
+    int SkillDefault, int SkillCost, int SkillTime, std::string skillinfo
+    ){
+        SetTimeNum = SetTime;
+        SetCostNum = SetCost;
+        AttackTimeNum = AttackTime;
+        HealthNum = Health;
+        AttackNum = Attack;
+        DefendNum = Defend;
+        MagicDefendNum = DefendMagic;
+        if (Range) {  // 避免空指针
+            AttackRange = std::make_shared<std::vector<Block>>(*Range); // 复制 vector 数据
+        }
+        SkillDefaultNum = SkillDefault;
+        SkillCostNum = SkillCost;
+        SkillTimeNum = SkillTime;
+        SkillInfo = skillinfo;
+    }
 
 protected:
     CharacterState m_CurrentState;
@@ -133,7 +153,21 @@ protected:
     std::shared_ptr<Util::Animation> m_DieAnimation = nullptr;
     std::shared_ptr<Util::Animation> m_StartAnimation = nullptr;
     std::shared_ptr<Util::Animation> m_Default = nullptr;
-	
+
+    // 角色info
+    int SetTimeNum = 0;
+    int SetCostNum = 0;
+    int AttackTimeNum = 0;
+    int HealthNum = 0;
+    int AttackNum = 0;
+    int DefendNum = 0;
+    int MagicDefendNum = 0;
+    std::shared_ptr<std::vector <Block> >AttackRange = nullptr;
+	int SkillDefaultNum = 0;
+    int SkillCostNum = 0;
+    int SkillTimeNum = 0;
+    std::string SkillInfo = "";
+
 private:
     float m_Width = 15.0f;  // 角色寬度
     float m_Height = 15.0f; // 角色高度

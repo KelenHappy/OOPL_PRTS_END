@@ -38,8 +38,6 @@ private:
     bool checkCollisionNearMouse(Util::Transform Mouse, Util::Transform Item, int range);
     void Debug();
     double calculateDistance(Util::Transform a, Util::Transform b);
-
-private:
     level m_level=level::lobby;
     State m_CurrentState = State::START;
     std::shared_ptr<MainScream> m_MainScream;
