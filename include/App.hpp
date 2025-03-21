@@ -53,8 +53,8 @@ private:
 
     // Enemy
     // idle attack die move
-    std::shared_ptr <BugA> m_BugA;
-    std::shared_ptr <Soldier> m_Soldier;
+    std::vector<std::shared_ptr<BugA>> m_BugAs;
+    //std::shared_ptr <Soldier> m_Soldier;
     //std::shared_ptr <Thrower> m_Thrower;
     //std::shared_ptr <Varlorant> m_Varlorant;
     // 大便

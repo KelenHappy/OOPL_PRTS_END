@@ -83,7 +83,7 @@ public:
 
     [[nodiscard]] bool GetVisibility(){ return m_Visible; }
 
-    void SetPosition(glm::vec2& Position) { m_Transform.translation = Position; }
+    void SetPosition(const glm::vec2& Position) { m_Transform.translation = Position; }
 
     [[nodiscard]] int GetFrames() {
         return std::dynamic_pointer_cast<Util::Animation>(m_Drawable)->GetCurrentFrameIndex();

@@ -20,22 +20,26 @@ void App::Start() {
     // Character
 
     //Enemy
-    m_BugA = std::make_shared<BugA>();
-    m_BugA->SetZIndex(10);
-    m_BugA->SetVisible(true);
-    m_BugA->SetLooping(true);
-    m_BugA->SetState(EnemyState::Idle);
-    m_Soldier = std::make_shared<Soldier>();
-    m_Soldier->SetZIndex(10);
-    m_Soldier->SetVisible(true);
-    m_Soldier->SetLooping(true);
-    m_Soldier->SetState(EnemyState::Idle);
+	m_BugAs.reserve(50);
+	m_BugAs.resize(50); 
+    for (int i = 0; i < 1; ++i) {
+		m_BugAs[i] = std::make_shared<BugA>();
+		m_BugAs[i]->SetPosition({m_BugAs[i]->GetPosition().x, m_BugAs[i]->GetPosition().y + i*30.0f});
+		m_BugAs[i]->SetZIndex(10);     
+		m_0107.AddChild(m_BugAs[i]);
+	}
+    
+    //m_Soldier = std::make_shared<Soldier>();
+    //m_Soldier->SetZIndex(10);
+    //m_Soldier->SetVisible(true);
+    //m_Soldier->SetLooping(true);
+    //m_Soldier->SetState(EnemyState::Idle);
     //m_Thrower = std::make_shared<Thrower>();
     //m_Varlorant = std::make_shared<Varlorant> ();
 
-    m_0107.AddChild(m_BugA);
+    
     //m_0107.AddChild(m_Thrower);
-    m_0107.AddChild(m_Soldier);
+    //m_0107.AddChild(m_Soldier);
     //m_0107.AddChild(m_Varlorant);
 }
 
@@ -64,10 +68,15 @@ void App::Update() {
         }
         //Debug();
         // test
-        m_Soldier->SetLooping(true);
-        m_Soldier->SetState(EnemyState::Idle);
-        m_BugA->SetLooping(true);
-        m_BugA->SetState(EnemyState::Idle);
+        //m_Soldier->SetLooping(true);
+        //m_Soldier->SetState(EnemyState::Idle);
+		for (int i = 0; i < 1; ++i) {
+			m_BugAs[i]->SetVisible(true);     
+			m_BugAs[i]->SetLooping(true);     
+			m_BugAs[i]->SetState(EnemyState::Idle);
+		}
+        //m_BugA->SetLooping(true);
+        //m_BugA->SetState(EnemyState::Idle);
         m_0107.Update();
     }
 }
