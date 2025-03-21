@@ -4,22 +4,43 @@
 class Medic : public AnimatedCharacter{
 public:
     Medic(std::string CharacterName, int IdleCont, int AttackCont,int DieCont, int StartCont) : AnimatedCharacter(){
+			int defaultNum = 24; 
             DefaultImage.reserve(1);
             DefaultImage.emplace_back(RESOURCE_DIR"/Character/Medic/"+CharacterName+"/Default/1.png");
-            IdleImage.reserve(IdleCont);
-            StartImage.reserve(StartCont);
-            DieImage.reserve(DieCont);
-            AttackImage.reserve(AttackCont);
-            for(int i = 0; i < IdleCont; ++i){
+            IdleImage.reserve(defaultNum + 6);
+            StartImage.reserve(defaultNum + 6);
+            DieImage.reserve(defaultNum + 6);
+            AttackImage.reserve(defaultNum + 6);
+            for(float i = 0; i < IdleCont; i += (float)IdleCont / defaultNum){
+				std::set<int> seen;
+				int int_i = static_cast<int>(i);  // 強制轉為 int
+				if (seen.find(int_i) != seen.end()) {
+					continue;  // 如果已經出現過該值，跳過這次循環
+				}
                 IdleImage.emplace_back(RESOURCE_DIR"/Character/Medic/"+CharacterName+"/Idle/"+std::to_string(i+1)+".png");
             }
-            for(int i = 0; i < StartCont; ++i){
+            for(float i = 0; i < StartCont; i += (float)StartCont / defaultNum){
+				std::set<int> seen;
+				int int_i = static_cast<int>(i);  // 強制轉為 int
+				if (seen.find(int_i) != seen.end()) {
+					continue;  // 如果已經出現過該值，跳過這次循環
+				}
                 StartImage.emplace_back(RESOURCE_DIR"/Character/Medic/"+CharacterName+"/Start/"+std::to_string(i+1)+".png");
             }
-            for(int i = 0; i < DieCont; ++i){
+            for(float i = 0; i < DieCont; i += (float)DieCont / defaultNum){
+				std::set<int> seen;
+				int int_i = static_cast<int>(i);  // 強制轉為 int
+				if (seen.find(int_i) != seen.end()) {
+					continue;  // 如果已經出現過該值，跳過這次循環
+				}
                 DieImage.emplace_back(RESOURCE_DIR"/Character/Medic/"+CharacterName+"/Die/"+std::to_string(i+1)+".png");
             }
-            for(int i = 0; i < AttackCont; ++i){
+            for(float i = 0; i < AttackCont; i += (float)AttackCont / defaultNum){
+				std::set<int> seen;
+				int int_i = static_cast<int>(i);  // 強制轉為 int
+				if (seen.find(int_i) != seen.end()) {
+					continue;  // 如果已經出現過該值，跳過這次循環
+				}
                 AttackImage.emplace_back(RESOURCE_DIR"/Character/Medic/"+CharacterName+"/Attack/"+std::to_string(i+1)+".png");
             }
             SetPath(IdleImage, AttackImage, DieImage, StartImage, DefaultImage);
