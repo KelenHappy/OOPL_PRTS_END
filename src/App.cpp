@@ -22,7 +22,7 @@ void App::Start() {
     //Enemy
 	m_BugAs.reserve(50);
 	m_BugAs.resize(50); 
-    for (int i = 0; i < 1; ++i) {
+	for (int i = 0; i < 7; ++i) {
 		m_BugAs[i] = std::make_shared<BugA>();
 		m_BugAs[i]->SetPosition({m_BugAs[i]->GetPosition().x, m_BugAs[i]->GetPosition().y + i*30.0f});
 		m_BugAs[i]->SetZIndex(10);     
