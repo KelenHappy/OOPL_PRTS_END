@@ -73,7 +73,7 @@ void App::Update() {
 		for (int i = 0; i < 1; ++i) {
 			m_BugAs[i]->SetVisible(true);     
 			m_BugAs[i]->SetLooping(true);     
-			m_BugAs[i]->SetState(EnemyState::Idle);
+			m_BugAs[i]->SetState(EnemyState::Move);
 		}
         //m_BugA->SetLooping(true);
         //m_BugA->SetState(EnemyState::Idle);

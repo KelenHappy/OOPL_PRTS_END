@@ -62,6 +62,8 @@ add_executable(${PROJECT_NAME}
 		include/MainScream.hpp
 
         include/Character/Medic.hpp
+		include/Character/Sniper.hpp
+		include/Character/Vanguard.hpp
 		
 		include/TextBox.hpp
 		

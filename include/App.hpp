@@ -9,6 +9,8 @@
 #include "AnimatedEnemy.hpp"
 
 #include "Character/Medic.hpp"
+#include "Character/Sniper.hpp"
+#include "Character/Vanguard.hpp"
 
 #include "Enemy/BugA.hpp"
 #include "Enemy/Soldier.hpp"
