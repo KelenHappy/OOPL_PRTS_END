@@ -51,8 +51,16 @@ private:
     std::shared_ptr<Map> m_map0107;
     Util::Renderer m_Root;
     Util::Renderer m_0107;
-    // AnimatedCharacter
-
+    // Character
+	std::shared_ptr<Medic> m_Sussurro;
+	
+	
+	std::shared_ptr<Sniper> m_Exudiai;
+	
+	
+	std::shared_ptr<Vanguard> m_Texas;
+	
+	
     // Enemy
     // idle attack die move
     std::vector<std::shared_ptr<BugA>> m_BugAs;

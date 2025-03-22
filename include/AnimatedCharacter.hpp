@@ -126,9 +126,8 @@ public:
             temp->Pause();
         }
     }
-    void SetInfo(int SetTime, int SetCost, int AttackTime, int Health, int Attack, int Defend, int DefendMagic,
-    std::shared_ptr<std::vector<Block>> Range,
-    int SkillDefault, int SkillCost, int SkillTime, std::string skillinfo
+    void SetInfo(float SetTime, int SetCost, float AttackTime, int Health, int Attack, int Defend, int DefendMagic,
+    int SkillDefault, int SkillCost, float SkillTime, std::string skillinfo
     ){
         SetTimeNum = SetTime;
         SetCostNum = SetCost;
@@ -137,14 +136,17 @@ public:
         AttackNum = Attack;
         DefendNum = Defend;
         MagicDefendNum = DefendMagic;
-        if (Range) {  // 避免空指针
-            AttackRange = std::make_shared<std::vector<Block>>(*Range); // 复制 vector 数据
-        }
         SkillDefaultNum = SkillDefault;
         SkillCostNum = SkillCost;
         SkillTimeNum = SkillTime;
         SkillInfo = skillinfo;
     }
+	
+	void SetRange(std::shared_ptr<std::vector<Block>> Range){
+		if (Range) {  // 避免空指针
+            AttackRange = std::make_shared<std::vector<Block>>(*Range); // 	複製vector 數據
+        }		
+	}
 	~AnimatedCharacter(){}
 protected:
     CharacterState m_CurrentState;
@@ -155,9 +157,9 @@ protected:
     std::shared_ptr<Util::Animation> m_Default = nullptr;
 
     // 角色info
-    int SetTimeNum = 0;
+    float SetTimeNum = 0;
     int SetCostNum = 0;
-    int AttackTimeNum = 0;
+    float AttackTimeNum = 0;
     int HealthNum = 0;
     int AttackNum = 0;
     int DefendNum = 0;
@@ -165,7 +167,7 @@ protected:
     std::shared_ptr<std::vector <Block> >AttackRange = nullptr;
 	int SkillDefaultNum = 0;
     int SkillCostNum = 0;
-    int SkillTimeNum = 0;
+    float SkillTimeNum = 0;
     std::string SkillInfo = "";
 
 private:

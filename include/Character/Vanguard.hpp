@@ -17,7 +17,7 @@ public:
 				if (seen.find(int_i) != seen.end()) {
 					continue;  // 如果已經出現過該值，跳過這次循環
 				}
-                IdleImage.emplace_back(RESOURCE_DIR"/Character/Vanguard/"+CharacterName+"/Idle/"+std::to_string(i+1)+".png");
+                IdleImage.emplace_back(RESOURCE_DIR"/Character/Vanguard/"+CharacterName+"/Idle/"+std::to_string(int_i+1)+".png");
             }
             for(float i = 0; i < StartCont; i += (float)StartCont / defaultNum){
 				std::set<int> seen;
@@ -25,7 +25,7 @@ public:
 				if (seen.find(int_i) != seen.end()) {
 					continue;  // 如果已經出現過該值，跳過這次循環
 				}
-                StartImage.emplace_back(RESOURCE_DIR"/Character/Vanguard/"+CharacterName+"/Start/"+std::to_string(i+1)+".png");
+                StartImage.emplace_back(RESOURCE_DIR"/Character/Vanguard/"+CharacterName+"/Start/"+std::to_string(int_i+1)+".png");
             }
             for(float i = 0; i < DieCont; i += (float)DieCont / defaultNum){
 				std::set<int> seen;
@@ -33,7 +33,7 @@ public:
 				if (seen.find(int_i) != seen.end()) {
 					continue;  // 如果已經出現過該值，跳過這次循環
 				}
-                DieImage.emplace_back(RESOURCE_DIR"/Character/Vanguard/"+CharacterName+"/Die/"+std::to_string(i+1)+".png");
+                DieImage.emplace_back(RESOURCE_DIR"/Character/Vanguard/"+CharacterName+"/Die/"+std::to_string(int_i+1)+".png");
             }
             for(float i = 0; i < AttackCont; i += (float)AttackCont / defaultNum){
 				std::set<int> seen;
@@ -41,7 +41,7 @@ public:
 				if (seen.find(int_i) != seen.end()) {
 					continue;  // 如果已經出現過該值，跳過這次循環
 				}
-                AttackImage.emplace_back(RESOURCE_DIR"/Character/Vanguard/"+CharacterName+"/Attack/"+std::to_string(i+1)+".png");
+                AttackImage.emplace_back(RESOURCE_DIR"/Character/Vanguard/"+CharacterName+"/Attack/"+std::to_string(int_i+1)+".png");
             }
             SetPath(IdleImage, AttackImage, DieImage, StartImage, DefaultImage);
 
