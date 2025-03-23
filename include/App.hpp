@@ -8,6 +8,11 @@
 #include "AnimatedCharacter.hpp"
 #include "AnimatedEnemy.hpp"
 
+#include "Medic.hpp"
+#include "Enemy.hpp"
+#include "BugA.hpp"
+#include "UseTime.hpp"
+
 #include "Character/Medic.hpp"
 #include "Character/Sniper.hpp"
 #include "Character/Vanguard.hpp"
@@ -42,13 +47,19 @@ private:
     void ValidTask();
     bool checkCollisionNearMouse(Util::Transform Mouse, Util::Transform Item, int range);
     void Debug();
+    void LevelMain17();
     double calculateDistance(Util::Transform a, Util::Transform b);
+
+
+private:
+
     level m_level=level::lobby;
     State m_CurrentState = State::START;
     // 場景
     std::shared_ptr<MainScream> m_MainScream;
     std::shared_ptr<TextBox> m_TT;
     std::shared_ptr<Map> m_map0107;
+    std::shared_ptr<UseTime> m_UT;
     Util::Renderer m_Root;
     Util::Renderer m_0107;
     // Character

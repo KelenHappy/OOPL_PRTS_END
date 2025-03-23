@@ -19,8 +19,19 @@ class Map :public Util::GameObject{
         return result;
     }
     [[nodiscard]] std::vector<std::shared_ptr<Block>> Getblock() {return m_block;}
+    [[nodiscard]] int GetTowerHP(){return TowerHP;}
+    [[nodiscard]] void SetTowerHP(int hp) {TowerHP = hp;}
+    [[nodiscard]] void EmenyEnterTower() {TowerHP--;}
+    [[nodiscard]] int GetEnemytotal(){return EnemyTotal;}
+    [[nodiscard]] int GetEnemytotalMax(){return EnemyTotalMax;}
+    [[nodiscard]] void SetEnemyTotalMax(int n){EnemyTotalMax=n;}
+    [[nodiscard]] void SetEnemyTotal(int n){EnemyTotal=n;}
+    [[nodiscard]] void EnemyDied(){EnemyTotal++;}
 
     private:
+    int TowerHP;
+    int EnemyTotalMax;
+    int EnemyTotal;
     std::vector<std::shared_ptr<Block>>m_block;
     std::shared_ptr<CreateIMG> m_map;
 };

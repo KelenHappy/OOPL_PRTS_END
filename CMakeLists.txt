@@ -71,6 +71,11 @@ add_executable(${PROJECT_NAME}
 		include/ClassState.hpp
 		src/Card.cpp
 		include/CharacterType.hpp
+		src/AppUpdate.cpp
+		src/Appstart.cpp
+		src/AppEnd.cpp
+		src/AppMap1017.cpp
+		include/UseTime.hpp
 
 
 )

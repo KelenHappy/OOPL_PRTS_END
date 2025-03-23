@@ -63,10 +63,14 @@ void App::Update() {
 
     auto mouse=Util::Input::GetCursorPosition();
     /*if(Util::Input::IsKeyDown(Util::Keycode::MOUSE_LB)) {
+
+void App::Update() {
+   /* auto mouse=Util::Input::GetCursorPosition();
+    if(Util::Input::IsKeyDown(Util::Keycode::MOUSE_LB)) {
         //LOG_DEBUG(std::to_string(mouse.x)+" "+std::to_string(mouse.y));
 
-
     }*/
+    m_UT->Update();
     if(m_level==level::lobby){
     if (Util::Input::IsKeyUp(Util::Keycode::ESCAPE) ||
         Util::Input::IfExit()) {
@@ -86,20 +90,20 @@ void App::Update() {
         // test
         //m_Soldier->SetLooping(true);
         //m_Soldier->SetState(EnemyState::Idle);
+        /*
 		for (int i = 0; i < 1; ++i) {
 			m_BugAs[i]->SetVisible(true);     
 			m_BugAs[i]->SetLooping(true);     
 			m_BugAs[i]->SetState(EnemyState::Move);
-		}
+		}*/
         //m_BugA->SetLooping(true);
         //m_BugA->SetState(EnemyState::Idle);
         m_0107.Update();
+        LevelMain17();
     }
 }
 
-void App::End() { // NOLINT(this method will mutate members in the future)
-    LOG_TRACE("End");
-}
+
 // 計算兩個座標之間的距離
 double App::calculateDistance(Util::Transform a, Util::Transform b) {
     return sqrt((a.translation.x - b.translation.x) * (a.translation.x - b.translation.x) + (a.translation.y - b.translation.y) * (a.translation.y - b.translation.y));

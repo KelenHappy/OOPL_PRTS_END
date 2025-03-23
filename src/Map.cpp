@@ -5,6 +5,7 @@ struct vec2 {
     vec2(float _x, float _y) : x(_x), y(_y) {}
 };
 Map::Map() {
+    TowerHP=3;
     m_map = std::make_shared<CreateIMG>("/Maps/main_0107/main_0107.png", -10);
     std::vector<vec2> positions = {
         vec2(-502.000000, -155.000000), vec2(-374.000000, -162.000000), vec2(-251.000000, -159.000000),
