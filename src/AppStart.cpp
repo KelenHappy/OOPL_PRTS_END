@@ -14,6 +14,7 @@ void App::Start() {
     m_map0107=std::make_shared<Map>();
     m_0107.AddChildren(m_map0107->GetChildren());
     m_UT=std::make_shared<UseTime>();
+
     // Character
 	//std::string CharacterName, int IdleCont, int AttackCont,int DieCont, int StartCont
 	/*
@@ -29,4 +30,5 @@ void App::Start() {
 
 
 	m_Texas = std::make_shared<Vanguard>("Texas", 120, 60, 60, 61);
+
 }

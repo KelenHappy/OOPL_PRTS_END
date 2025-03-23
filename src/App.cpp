@@ -5,6 +5,7 @@
 #include "Util/Keycode.hpp"
 #include "Util/Logger.hpp"
 #include <vector>
+
 #include "EnemyState.hpp"
 #include "CharacterState.hpp"
 /*
@@ -51,6 +52,15 @@ void App::Update() {
     if(Util::Input::IsKeyDown(Util::Keycode::MOUSE_LB)) {
         LOG_DEBUG(std::to_string(mouse.x)+" "+std::to_string(mouse.y));
     }
+
+
+
+void App::Update() {
+   /* auto mouse=Util::Input::GetCursorPosition();
+    if(Util::Input::IsKeyDown(Util::Keycode::MOUSE_LB)) {
+        //LOG_DEBUG(std::to_string(mouse.x)+" "+std::to_string(mouse.y));
+
+    }*/
     m_UT->Update();
     if(m_level==level::lobby){
         if (Util::Input::IsKeyUp(Util::Keycode::ESCAPE) ||
@@ -81,6 +91,7 @@ void App::Update() {
         //m_BugA->SetState(EnemyState::Idle);
         */
         App::LevelMain17();
+        LevelMain17();
     }
 }
 

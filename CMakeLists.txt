@@ -77,7 +77,6 @@ add_executable(${PROJECT_NAME}
 		include/Character/Vanguard.hpp
 		
 		include/TextBox.hpp
-
 		include/ImgItem.hpp
 
 		include/UseTime.hpp

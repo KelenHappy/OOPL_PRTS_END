@@ -8,6 +8,9 @@
 #include "AnimatedCharacter.hpp"
 #include "AnimatedEnemy.hpp"
 
+#include "UseTime.hpp"
+
+
 #include "Enemy.hpp"
 #include "UseTime.hpp"
 
