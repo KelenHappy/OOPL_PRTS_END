@@ -35,9 +35,17 @@ add_executable(${PROJECT_NAME}
     ${SRC_DIR}/main.cpp
     ${SRC_FILES}
         src/App.cpp
+		src/AppUpdate.cpp
+		src/AppStart.cpp
+		src/AppEnd.cpp
+		src/AppMap1017.cpp
+
 		src/Block.cpp
-        src/main.cpp
+
+		src/Card.cpp
         src/Map.cpp
+
+
     ${HEADER_FILES}
         include/App.hpp
 		include/Attack.hpp
@@ -54,6 +62,9 @@ add_executable(${PROJECT_NAME}
 
 		include/CreateIMG.hpp
 		include/CharacterState.hpp
+		include/Card.hpp
+		include/ClassState.hpp
+		include/CharacterType.hpp
 		
 		include/Enemy.hpp
 		include/EnemyState.hpp
@@ -66,15 +77,10 @@ add_executable(${PROJECT_NAME}
 		include/Character/Vanguard.hpp
 		
 		include/TextBox.hpp
-		include/Card.hpp
-		include/Imgitem.hpp
-		include/ClassState.hpp
-		src/Card.cpp
-		include/CharacterType.hpp
-		src/AppUpdate.cpp
-		src/Appstart.cpp
-		src/AppEnd.cpp
-		src/AppMap1017.cpp
+
+		include/ImgItem.hpp
+
+
 		include/UseTime.hpp
 
 
