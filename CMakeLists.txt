@@ -80,6 +80,7 @@ add_executable(${PROJECT_NAME}
 		include/ImgItem.hpp
 
 		include/UseTime.hpp
+		src/AppMap0107Start.cpp
 )
 
 if(MSVC)

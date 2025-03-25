@@ -50,6 +50,7 @@ private:
     void Debug();
     void LevelMain17();
     double calculateDistance(Util::Transform a, Util::Transform b);
+	void Map0107Loading();
 
 
 private:

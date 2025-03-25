@@ -60,6 +60,7 @@ void App::Update() {
         }
         if(Util::Input::IsKeyDown(Util::Keycode::Q)) {
             m_level=level::main17;
+            Map0107Loading();
         }
         m_Root.Update();
     }
