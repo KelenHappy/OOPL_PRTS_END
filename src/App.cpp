@@ -7,7 +7,7 @@
 #include <vector>
 #include "EnemyState.hpp"
 #include "CharacterState.hpp"
-
+/*
 void App::Start() {
     LOG_TRACE("Start");
     m_CurrentState = State::UPDATE;
@@ -44,7 +44,7 @@ void App::Start() {
     //m_0107.AddChild(m_Soldier);
     //m_0107.AddChild(m_Varlorant);
 }
-
+*/
 void App::Update() {
 
     auto mouse=Util::Input::GetCursorPosition();
