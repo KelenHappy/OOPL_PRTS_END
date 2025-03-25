@@ -17,6 +17,7 @@ void App::Map0107Loading() {
 		m_BugAs[i]->SetLooping(false);
 		m_0107.AddChild(m_BugAs[i]);
 	}
+	m_0107.AddChild(m_Sussurro);
 	m_Sussurro->SetState(CharacterState::Default);
 	m_Sussurro->SetLooping(true);
 	

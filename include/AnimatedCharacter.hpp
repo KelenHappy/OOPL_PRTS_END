@@ -147,6 +147,10 @@ public:
             AttackRange = std::make_shared<std::vector<Block>>(*Range); // 	複製vector 數據
         }		
 	}
+	
+	int GetHP(){
+		return HealthNum;
+	}
 	~AnimatedCharacter(){}
 protected:
     CharacterState m_CurrentState;

@@ -10,6 +10,9 @@ void App::LevelMain17() {
         Util::Input::IfExit()) {
 			m_CurrentState = State::END;
         }
+	if (m_Sussurro->GetHP() > 0){
+		m_Sussurro->SetVisible(true);
+	}
     //Debug();
 	/*
 	for (int i = 0; i < 1; ++i) {
