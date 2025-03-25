@@ -17,34 +17,20 @@ void App::Start() {
     m_Root.AddChildren(m_MainScream->GetChildren());
     m_map0107=std::make_shared<Map>();
     m_0107.AddChildren(m_map0107->GetChildren());
-    // Character
-	//std::string CharacterName, int IdleCont, int AttackCont,int DieCont, int StartCont
-	/*
-	void SetInfo(int SetTime, int SetCost, float AttackTime, int Health, int Attack, int Defend, int DefendMagic,
-    int SkillDefault, int SkillCost, float SkillTime, std::string skillinfo
-	*/
-	m_Sussurro = std::make_shared<Medic>("Sussurro", 119, 61, 60, 61);
-	m_Sussurro->SetInfo(70, 18, 2.85, 1345, 488, 122, 0, 
-	10, 30, 25, "攻擊力+100%，攻擊速度+100同一次作戰中最多使用2次"
-	);
-	
-	m_Exudiai = std::make_shared<Sniper>("Exusiai", 240, 61, 60, 60);
-	
-	
-	m_Texas = std::make_shared<Vanguard>("Texas", 120, 60, 60, 61);
-	
-	
-	
+
+
+
+
     //Enemy
 	m_BugAs.reserve(50);
-	m_BugAs.resize(50); 
+	m_BugAs.resize(50);
 	for (int i = 0; i < 1; ++i) {
 		m_BugAs[i] = std::make_shared<BugA>();
 		m_BugAs[i]->SetPosition({m_BugAs[i]->GetPosition().x, m_BugAs[i]->GetPosition().y + i*30.0f});
-		m_BugAs[i]->SetZIndex(10);     
+		m_BugAs[i]->SetZIndex(10);
 		m_0107.AddChild(m_BugAs[i]);
 	}
-    
+
     //m_Soldier = std::make_shared<Soldier>();
     //m_Soldier->SetZIndex(10);
     //m_Soldier->SetVisible(true);
@@ -53,7 +39,7 @@ void App::Start() {
     //m_Thrower = std::make_shared<Thrower>();
     //m_Varlorant = std::make_shared<Varlorant> ();
 
-    
+
     //m_0107.AddChild(m_Thrower);
     //m_0107.AddChild(m_Soldier);
     //m_0107.AddChild(m_Varlorant);
@@ -62,26 +48,22 @@ void App::Start() {
 void App::Update() {
 
     auto mouse=Util::Input::GetCursorPosition();
-    /*if(Util::Input::IsKeyDown(Util::Keycode::MOUSE_LB)) {
-
-void App::Update() {
-   /* auto mouse=Util::Input::GetCursorPosition();
     if(Util::Input::IsKeyDown(Util::Keycode::MOUSE_LB)) {
-        //LOG_DEBUG(std::to_string(mouse.x)+" "+std::to_string(mouse.y));
-
-    }*/
+        LOG_DEBUG(std::to_string(mouse.x)+" "+std::to_string(mouse.y));
+    }
     m_UT->Update();
     if(m_level==level::lobby){
-    if (Util::Input::IsKeyUp(Util::Keycode::ESCAPE) ||
-        Util::Input::IfExit()) {
-        m_CurrentState = State::END;
-    }
-    if(Util::Input::IsKeyDown(Util::Keycode::Q)) {
-        m_level=level::main17;
-    }
-    m_Root.Update();
+        if (Util::Input::IsKeyUp(Util::Keycode::ESCAPE) ||
+            Util::Input::IfExit()) {
+            m_CurrentState = State::END;
+        }
+        if(Util::Input::IsKeyDown(Util::Keycode::Q)) {
+            m_level=level::main17;
+        }
+        m_Root.Update();
     }
     else if(m_level==level::main17) {
+        /*
         if (Util::Input::IsKeyUp(Util::Keycode::ESCAPE) ||
         Util::Input::IfExit()) {
             m_CurrentState = State::END;
@@ -90,16 +72,15 @@ void App::Update() {
         // test
         //m_Soldier->SetLooping(true);
         //m_Soldier->SetState(EnemyState::Idle);
-        /*
 		for (int i = 0; i < 1; ++i) {
 			m_BugAs[i]->SetVisible(true);     
 			m_BugAs[i]->SetLooping(true);     
 			m_BugAs[i]->SetState(EnemyState::Move);
-		}*/
+		}
         //m_BugA->SetLooping(true);
         //m_BugA->SetState(EnemyState::Idle);
-        m_0107.Update();
-        LevelMain17();
+        */
+        App::LevelMain17();
     }
 }
 

@@ -8,7 +8,7 @@
 #include "AnimatedCharacter.hpp"
 #include "AnimatedEnemy.hpp"
 
-#include <Enemy.hpp>
+#include "Enemy.hpp"
 #include "UseTime.hpp"
 
 #include "Character/Medic.hpp"
