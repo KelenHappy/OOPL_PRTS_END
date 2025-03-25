@@ -44,7 +44,7 @@ void App::Update() {
     if(Util::Input::IsKeyDown(Util::Keycode::MOUSE_LB)) {
         LOG_DEBUG(std::to_string(mouse.x)+" "+std::to_string(mouse.y));
     }
-    m_UT->Update();
+    //m_UT->Update();
     if(m_level==level::lobby){
         if (Util::Input::IsKeyUp(Util::Keycode::ESCAPE) ||
             Util::Input::IfExit()) {
@@ -69,10 +69,7 @@ void App::Update() {
 			m_BugAs[i]->SetLooping(true);     
 			m_BugAs[i]->SetState(EnemyState::Move);
 		}
-        //m_BugA->SetLooping(true);
-        //m_BugA->SetState(EnemyState::Idle);
         */
-        App::LevelMain17();
         LevelMain17();
     }
 }

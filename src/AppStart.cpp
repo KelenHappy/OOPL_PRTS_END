@@ -28,8 +28,7 @@ void App::Start() {
 	m_Sussurro->SetZIndex(15);
 	m_Sussurro->SetState(CharacterState::Default);
 	m_Sussurro->SetVisible(false);     
-	m_Sussurro->SetLooping(false);
-	m_Root.AddChild(m_Sussurro);
+	m_Sussurro->SetLooping(true);
 	
 	m_Exudiai = std::make_shared<Sniper>("Exusiai", 240, 61, 60, 60);
 
