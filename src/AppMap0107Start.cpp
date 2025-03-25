@@ -7,4 +7,17 @@
 #include <vector>
 void App::Map0107Loading() {
     //加載敵人
+	m_BugAs.reserve(20);
+	m_BugAs.resize(20);
+	for (int i = 0; i < 10; ++i) {
+		m_BugAs[i] = std::make_shared<BugA>();
+		//m_BugAs[i]->SetPosition({m_BugAs[i]->GetPosition().x, m_BugAs[i]->GetPosition().y + i*30.0f});
+		m_BugAs[i]->SetZIndex(10);
+		m_BugAs[i]->SetVisible(false);     
+		m_BugAs[i]->SetLooping(false);
+		m_0107.AddChild(m_BugAs[i]);
+	}
+	m_Sussurro->SetState(CharacterState::Default);
+	m_Sussurro->SetLooping(true);
+	
 }

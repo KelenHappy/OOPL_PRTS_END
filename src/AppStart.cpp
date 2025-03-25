@@ -25,6 +25,10 @@ void App::Start() {
 	m_Sussurro->SetInfo(70, 18, 2.85, 1345, 488, 122, 0,
 	10, 30, 25, "攻擊力+100%，攻擊速度+100同一次作戰中最多使用2次"
 	);
+	m_Sussurro->SetZIndex(15);
+	m_Sussurro->SetState(CharacterState::Default);
+	m_Sussurro->SetVisible(false);     
+	m_Sussurro->SetLooping(false);
 
 	m_Exudiai = std::make_shared<Sniper>("Exusiai", 240, 61, 60, 60);
 
