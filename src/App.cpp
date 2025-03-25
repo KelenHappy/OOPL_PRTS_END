@@ -52,15 +52,6 @@ void App::Update() {
     if(Util::Input::IsKeyDown(Util::Keycode::MOUSE_LB)) {
         LOG_DEBUG(std::to_string(mouse.x)+" "+std::to_string(mouse.y));
     }
-
-
-
-void App::Update() {
-   /* auto mouse=Util::Input::GetCursorPosition();
-    if(Util::Input::IsKeyDown(Util::Keycode::MOUSE_LB)) {
-        //LOG_DEBUG(std::to_string(mouse.x)+" "+std::to_string(mouse.y));
-
-    }*/
     m_UT->Update();
     if(m_level==level::lobby){
         if (Util::Input::IsKeyUp(Util::Keycode::ESCAPE) ||
