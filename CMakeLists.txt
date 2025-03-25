@@ -39,7 +39,8 @@ add_executable(${PROJECT_NAME}
 		src/AppStart.cpp
 		src/AppEnd.cpp
 		src/AppMap1017.cpp
-
+		src/AppMap0107Start.cpp
+		
 		src/Block.cpp
 
 		src/Card.cpp
@@ -80,7 +81,7 @@ add_executable(${PROJECT_NAME}
 		include/ImgItem.hpp
 
 		include/UseTime.hpp
-		src/AppMap0107Start.cpp
+		
 )
 
 if(MSVC)
