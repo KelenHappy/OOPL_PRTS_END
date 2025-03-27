@@ -7,10 +7,10 @@ public:
 			int defaultNum = 20; 
             DefaultImage.reserve(1);
             DefaultImage.emplace_back(RESOURCE_DIR"/Character/Sniper/"+CharacterName+"/Default/1.png");
-            IdleImage.reserve(defaultNum + 6);
-            StartImage.reserve(defaultNum + 6);
-            DieImage.reserve(defaultNum + 6);
-            AttackImage.reserve(defaultNum + 6);
+            IdleImage.reserve(defaultNum + 2);
+            StartImage.reserve(defaultNum + 2);
+            DieImage.reserve(defaultNum + 2);
+            AttackImage.reserve(defaultNum + 2);
             for(float i = 0; i < IdleCont; i += (float)IdleCont / defaultNum){
 				std::set<int> seen;
 				int int_i = static_cast<int>(i);  // 強制轉為 int
