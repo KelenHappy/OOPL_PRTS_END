@@ -67,6 +67,4 @@ void App::Start() {
 	m_StartCharacter.push_back(m_Texas);
 	m_Texas = std::make_shared<Vanguard>("Texas", 120, 60, 60, 61);
 
-
-
 }

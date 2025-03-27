@@ -52,5 +52,4 @@ Map::Map() {
         this->m_block.push_back(bk);
     }
 
-
 }

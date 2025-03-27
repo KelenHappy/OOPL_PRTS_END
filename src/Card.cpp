@@ -77,9 +77,25 @@ void Card::SetCardSize(float size) {
 
 }
 void Card::createinfo() {
-    m_cost= std::make_shared<TextBox>();
+    m_cost->SetText(std::to_string(cost));
 }
+void Card::SetTranform(float x, float y) {
+    m_Transform.translation.x = x;
+    m_Transform.translation.y = y;
+    m_Cardback->m_Transform.translation.x = x;
+    m_Cardback->m_Transform.translation.y = y;
+    m_cost->m_Transform.translation.x = x+30*cardsize;
+    m_cost->m_Transform.translation.y = y+67*cardsize;
+    m_class->m_Transform.translation.x = x;
+    m_class->m_Transform.translation.y = y+71*cardsize;
 
+}
+void Card::SetCardSize(float size) {
+    m_class->setsize(static_cast<float>(0.15*size),static_cast<float>(0.15 * size));
+    m_Cardback->setsize(static_cast<float>(0.7*size),static_cast<float>(0.7 * size));
+    m_Transform.scale={size,size };
+
+}
 
 
 
