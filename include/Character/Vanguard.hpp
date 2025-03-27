@@ -4,13 +4,13 @@
 class Vanguard : public AnimatedCharacter{
 public:
     Vanguard(std::string CharacterName, int IdleCont, int AttackCont,int DieCont, int StartCont) : AnimatedCharacter(){
-			int defaultNum = 24; 
+			int defaultNum = 20; 
             DefaultImage.reserve(1);
             DefaultImage.emplace_back(RESOURCE_DIR"/Character/Vanguard/"+CharacterName+"/Default/1.png");
-            IdleImage.reserve(defaultNum + 6);
-            StartImage.reserve(defaultNum + 6);
-            DieImage.reserve(defaultNum + 6);
-            AttackImage.reserve(defaultNum + 6);
+            IdleImage.reserve(defaultNum + 2);
+            StartImage.reserve(defaultNum + 2);
+            DieImage.reserve(defaultNum + 2);
+            AttackImage.reserve(defaultNum + 2);
             for(float i = 0; i < IdleCont; i += (float)IdleCont / defaultNum){
 				std::set<int> seen;
 				int int_i = static_cast<int>(i);  // 強制轉為 int
