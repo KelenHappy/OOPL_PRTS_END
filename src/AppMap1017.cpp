@@ -18,9 +18,9 @@ void App::LevelMain17() {
     //Debug();
 
 	for (int i = 0; i < 10; ++i) {
-			m_BugAs[i]->SetVisible(true);     
-			m_BugAs[i]->SetLooping(true);     
-			m_BugAs[i]->SetState(EnemyState::Move);
+		m_BugAs[i]->SetVisible(true);     
+		m_BugAs[i]->SetLooping(true);     
+		m_BugAs[i]->SetState(EnemyState::Move);
 	}
     m_0107.Update();
 }

@@ -7,8 +7,8 @@
 #include <vector>
 void App::Map0107Loading() {
     //加載敵人
-	m_BugAs.reserve(50);
-	m_BugAs.resize(50);
+	m_BugAs.reserve(15);
+	m_BugAs.resize(15);
 	for (int i = 0; i < 10; ++i) {
 		m_BugAs[i] = std::make_shared<BugA>();
 		m_BugAs[i]->SetPosition({m_BugAs[i]->GetPosition().x, m_BugAs[i]->GetPosition().y + i*30.0f});
