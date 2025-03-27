@@ -5,8 +5,9 @@
 #include "MainScream.hpp"
 #include "Map.hpp"
 #include "Util/Renderer.hpp"
-#include "UseTime.hpp"
-
+#include "AnimatedCharacter.hpp"
+#include "AnimatedEnemy.hpp"
+#include "Enemy.hpp"
 #include "Character/AnimatedCharacter.hpp"
 #include "Character/CharacterState.hpp"
 #include "Character/Medic.hpp"

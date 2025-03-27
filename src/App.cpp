@@ -88,7 +88,7 @@ void App::Debug() {
     Util::Transform mouseT;
     mouseT.translation=mouse;
     if(Util::Input::IsKeyDown(Util::Keycode::KP_ENTER)) {
-        for(int i=0;i<m_map0107->Getblock().size();i++) {
+        for(size_t i=0;i<m_map0107->Getblock().size();i++) {
             LOG_DEBUG( m_map0107->Getblock()[i]->m_Transform.translation);
         }
     }

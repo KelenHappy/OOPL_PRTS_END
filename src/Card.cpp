@@ -6,6 +6,7 @@
 Card::Card(ClassState classState) {
     this->m_classState = classState;
 }
+
 void Card::createclass(ClassState cs) {
     switch (cs) {
         case ClassState::Vanguard:
@@ -37,4 +38,8 @@ void Card::createclass(ClassState cs) {
         break;
     }
 }
+void Card::createinfo() {
+    m_cost= std::make_shared<TextBox>();
+}
+
 

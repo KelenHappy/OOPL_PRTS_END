@@ -14,6 +14,7 @@ class Card:Util::GameObject {
     public:
     Card(ClassState classState);
     private:
+    void createinfo();
     void createclass(ClassState cs);
     std::shared_ptr<ImgItem>m_class;
     std::shared_ptr<TextBox> m_cost;
