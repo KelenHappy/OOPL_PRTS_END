@@ -16,6 +16,12 @@ class Map :public Util::GameObject{
         for(size_t i=0;i<m_block.size();i++) {
             result.push_back(m_block[i]);
         }
+        for(size_t i=0;i<m_Card.size();i++) {
+            result.push_back(m_Card[i]);
+            result.push_back(m_Card[i]->GetCardback());
+            result.push_back(m_Card[i]->GetCosttext());
+            result.push_back(m_Card[i]->Getclass());
+        }
         result.push_back(m_map);
         return result;
     }

@@ -13,7 +13,7 @@ class MainScream:public Util::GameObject {
     public:
     MainScream() {
         this->m_background=std::make_shared<CreateIMG>("/MainScream/R.jpg",-10);
-        this->m_start=std::make_shared<TextBox>();
+        this->m_start=std::make_shared<TextBox>(40);
         this->m_start->SetText("開始遊戲");
         this->m_start->SetPosition({415, 100});
 

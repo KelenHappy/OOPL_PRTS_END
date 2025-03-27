@@ -6,7 +6,7 @@
 #define IMGITEM_HPP
 #include "Util/GameObject.hpp"
 #include "Util/Image.hpp"
-class ImgItem:Util::GameObject{
+class ImgItem:public Util::GameObject{
     public:
     ImgItem(std::string Sw) {
         m_Drawable = std::make_shared<Util::Image>(RESOURCE_DIR+Sw);

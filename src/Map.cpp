@@ -51,4 +51,8 @@ Map::Map() {
         bk->m_Transform.translation.y = positions[i].y;
         this->m_block.push_back(bk);
     }
+    std::shared_ptr<Card> cd=std::make_shared<Card>(ClassState::Vanguard,20);
+    cd->SetTranform(515,-280);
+    this->m_Card.push_back(cd);
+
 }

@@ -10,15 +10,22 @@
 #include "TextBox.hpp"
 #include "Util/GameObject.hpp"
 
-class Card:Util::GameObject {
+class Card:public Util::GameObject {
     public:
-    Card(ClassState classState);
+    Card(ClassState classState,int cost);
+    std::shared_ptr<ImgItem> Getclass(){return m_class;}
+    std::shared_ptr<TextBox> GetCosttext(){return m_cost;}
+    std::shared_ptr<ImgItem> GetCardback(){return m_Cardback;}
+    void SetCardSize(float size);
+    void SetTranform(float x, float y);
     private:
     void createinfo();
     void createclass(ClassState cs);
     std::shared_ptr<ImgItem>m_class;
+    std::shared_ptr<ImgItem>m_Cardback;
     std::shared_ptr<TextBox> m_cost;
     int cost;
+    float cardsize;
     //std::shared_ptr<AnimatedCharacter> m_Character;
     ClassState m_classState;
 

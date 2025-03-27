@@ -8,9 +8,9 @@
 #define TEXTBOX_HPP
 class TextBox:public Util::GameObject{
 public:
-    TextBox() : GameObject(
+    TextBox(int size) : GameObject(
             std::make_unique<Util::Text>(RESOURCE_DIR"/Font/SWM.ttf",
-                40,
+                size,
                 "              ",
                 Util::Color::FromName(Util::Colors::WHITE)),
             100) {
@@ -18,10 +18,6 @@ public:
     }
     void SetPosition(const glm::vec2& Position) { m_Transform.translation = Position; }
     void SetText(const std::string& Phase) {
-        auto temp = std::dynamic_pointer_cast<Util::Text>(m_Drawable);
-        temp->SetText(Phase);
-    }
-    void SetSize(const std::string& Phase) {
         auto temp = std::dynamic_pointer_cast<Util::Text>(m_Drawable);
         temp->SetText(Phase);
     }
