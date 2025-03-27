@@ -21,6 +21,10 @@ public:
         auto temp = std::dynamic_pointer_cast<Util::Text>(m_Drawable);
         temp->SetText(Phase);
     }
+    void SetSize(const std::string& Phase) {
+        auto temp = std::dynamic_pointer_cast<Util::Text>(m_Drawable);
+        temp->SetText(Phase);
+    }
 
 };
 

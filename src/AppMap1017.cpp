@@ -23,6 +23,11 @@ void App::LevelMain17() {
 			}
 		}
         }
+	/*if (m_Sussurro->GetHP() > 0){
+		m_Sussurro->SetVisible(true);
+		m_Sussurro->SetLooping(true);
+		m_Sussurro->SetState(CharacterState::Idle);
+	}
     //Debug();
 	//敵人重生
 	m_BugAs[0]->SetVisible(true);     
@@ -45,5 +50,6 @@ void App::LevelMain17() {
 	}
 	
 	
+	}*/
     m_0107.Update();
 }

@@ -76,6 +76,10 @@ void Card::SetCardSize(float size) {
     m_Transform.scale={size,size };
 
 }
+void Card::createinfo() {
+    m_cost= std::make_shared<TextBox>();
+}
+
 
 
 
