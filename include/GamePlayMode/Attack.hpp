@@ -1,9 +1,9 @@
 #include "CharacterAttackImpact.hpp"
 #include <iostream>
 template <typename T1, typename T2>
-void attack(T1 &this, T2 &that){
-    float damage = this.GetAttack();
-    switch(this.GetAttackType()){
+void attack(T1 &thisC, T2 &that){
+    float damage = thisC.GetAttack();
+    switch(thisC.GetAttackType()){
         case CharacterAttackType::Physics:
             damage -= that.GetDefend();
             break;
@@ -15,6 +15,7 @@ void attack(T1 &this, T2 &that){
             break;
     }
     that.takeDamage(
-        this.GetAttackImpact(),
+        thisC.GetAttackImpact(),
         damage);
 }
+

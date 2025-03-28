@@ -10,8 +10,9 @@
 #include "CharacterState.hpp"
 #include "AnimatedEnemy.hpp"
 #include "GamePlayMode/CharacterAttackImpact.hpp"
+#include "GamePlayMode/CharacterSkill.hpp"
 
-class AnimatedCharacter : public Util::GameObject {
+class AnimatedCharacter : public Util::GameObject, public CharacterSkill {
 public:
 	// IdleEnd, AttackEnd, DieEnd, StartEnd, Default
     // AnitmationPaths 使用 default path
@@ -147,7 +148,7 @@ public:
 
 	void SetRange(std::shared_ptr<std::vector<Block>> Range){
 		if (Range) {  // 避免空指针
-            AttackRange = std::make_shared<std::vector<Block>>(*Range); // 	複製vector 數據
+            AttackRangeNow = std::make_shared<std::vector<Block>>(*Range); // 	複製vector 數據
         }		
 	}
 	
@@ -200,7 +201,47 @@ public:
     void SetAttackType(CharacterAttackType tt){
         AttackType = tt;
     }
+	
+	void ApplySkillEffects() {
+        if (SetTimeBuff < 0) SetTimeNum *= SetTimeBuff;
+		if (SetCostBuff > 0) SetCostNum -= SetCostBuff;
+		if (AttackTimeBuff < 0) AttackTimeNum *= AttackTimeBuff;
+		if (HealthBuff > 0)	HealthNum *= HealthBuff;
+		if (AttackBuff > 0) AttackNum *= AttackBuff;
+		if (DefendBuff > 0) DefendNum *= DefendBuff;
+		if (MagicDefendBuff > 0) MagicDefendNum *= MagicDefendBuff;
+		if (AttackRangeBuff != nullptr) AttackRangeNow = AttackRangeBuff;
+		if (SkillDefaultBuff > 0) SkillDefaultNum -= SkillDefaultBuff;
+		if (SkillCostBuff > 0) SkillCostNum -= SkillCostBuff;
+		if (SkillTimeBuff < 0) SkillTimeNum *= SkillTimeBuff;
 
+		if (HeavyLevelBuff > 0) HeavyLevelNum += HeavyLevelBuff;
+		if (HealthRecoverBuff > 0) HealthRecoverNum += HealthRecoverBuff;
+
+		if (ImpactBuff != CharacterAttackImpact::Null) AttackImpact = ImpactBuff;
+		if (TypeBuff != AttackType) AttackType = TypeBuff;
+    }
+	
+	void CloseSkill(){
+		if (SetTimeBuff < 0) SetTimeNum /= SetTimeBuff;
+		if (SetCostBuff > 0) SetCostNum += SetCostBuff;
+		if (AttackTimeBuff < 0) AttackTimeNum /= AttackTimeBuff;
+		if (HealthBuff > 0)	HealthNum /= HealthBuff;
+		if (AttackBuff > 0) AttackNum /= AttackBuff;
+		if (DefendBuff > 0) DefendNum /= DefendBuff;
+		if (MagicDefendBuff > 0) MagicDefendNum /= MagicDefendBuff;
+		if (AttackRangeBuff != nullptr) AttackRangeNow = AttackRangeDefault;
+		if (SkillDefaultBuff > 0) SkillDefaultNum += SkillDefaultBuff;
+		if (SkillCostBuff > 0) SkillCostNum += SkillCostBuff;
+		if (SkillTimeBuff < 0) SkillTimeNum /= SkillTimeBuff;
+
+		if (HeavyLevelBuff > 0) HeavyLevelNum -= HeavyLevelBuff;
+		if (HealthRecoverBuff > 0) HealthRecoverNum -= HealthRecoverBuff;
+
+		if (ImpactBuff != CharacterAttackImpact::Null) AttackImpact = CharacterAttackImpact::Null;
+		if (TypeBuff != AttackType) AttackType = CharacterAttackType::Physics;
+	}
+	
 	~AnimatedCharacter(){}
 protected:
     CharacterState m_CurrentState;
@@ -218,7 +259,9 @@ protected:
     float AttackNum = 0;
     float DefendNum = 0;
     int MagicDefendNum = 0;
-    std::shared_ptr<std::vector <Block> >AttackRange = nullptr;
+	
+	std::shared_ptr<std::vector <Block>> AttackRangeNow = nullptr;
+    std::shared_ptr<std::vector <Block> >AttackRangeDefault = nullptr;
 	int SkillDefaultNum = 0;
     int SkillCostNum = 0;
     float SkillTimeNum = 0;

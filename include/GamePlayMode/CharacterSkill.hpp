@@ -1,18 +1,83 @@
 #ifndef CHARACTER_SKILL_HPP
 #define CHARACTER_SKILL_HPP
 #include "AnimatedCharacter.hpp"
-class CharacterSkill(){
+#include "GamePlayMode/CharacterAttackImpact.hpp"
+#include "Block.hpp"
+class CharacterSkill{
 public:
-    CharacterSkill(std::string name, std::nameInfo) : SkillName(name), SkillInfo(nameInfo){
+    CharacterSkill(){
 
     }
-    void SetSkill(){
-
+        void SetSetTimeBuff(float timeBuff) {
+        SetTimeBuff = timeBuff;
     }
+
+    void SetSetCostBuff(int costBuff) {
+        SetCostBuff = costBuff;
+    }
+
+    void SetAttackTimeBuff(float attackTimeBuff) {
+        AttackTimeBuff = attackTimeBuff;
+    }
+
+    void SetHealthBuff(float healthBuff) {
+        HealthBuff = healthBuff;
+    }
+
+    void SetAttackBuff(float attackBuff) {
+        AttackBuff = attackBuff;
+    }
+
+    void SetDefendBuff(float defendBuff) {
+        DefendBuff = defendBuff;
+    }
+
+    void SetMagicDefendBuff(int magicDefendBuff) {
+        MagicDefendBuff = magicDefendBuff;
+    }
+
+    void SetAttackRangeBuff(std::shared_ptr<std::vector<Block>> rangeBuff) {
+        AttackRangeBuff = rangeBuff;
+    }
+
+    void SetSkillDefaultBuff(int defaultBuff) {
+        SkillDefaultBuff = defaultBuff;
+    }
+
+    void SetSkillCostBuff(int costBuff) {
+        SkillCostBuff = costBuff;
+    }
+
+    void SetSkillTimeBuff(float skillTimeBuff) {
+        SkillTimeBuff = skillTimeBuff;
+    }
+
+    void SetHeavyLevelBuff(int heavyLevelBuff) {
+        HeavyLevelBuff = heavyLevelBuff;
+    }
+
+    void SetHealthRecoverBuff(int healthRecoverBuff) {
+        HealthRecoverBuff = healthRecoverBuff;
+    }
+
+    void SetImpact(CharacterAttackImpact temp) {
+        ImpactBuff = temp;
+    }
+	
+	void SetType(CharacterAttackType temp){
+		TypeBuff = temp;
+	}
+	
+	bool GetSkillOpen(){
+		return SkillOpen;
+	}
+	
+	void SetSkillOpen(bool t){
+		SkillOpen = t;
+	}
     ~CharacterSkill(){}
 protected:
-    std::string SkillName;
-    std::string SkillInfo;
+	bool SkillOpen = false;
     float SetTimeBuff = 0;
     int SetCostBuff = 0;
     float AttackTimeBuff = 0;
@@ -27,10 +92,9 @@ protected:
 
     int HeavyLevelBuff = 0;
 	int HealthRecoverBuff = 0;
-
-	bool DizzyAttackBuff = false;
-	bool SleepAttackBuff = false;
-	bool FrozenAttackBuff = false;
+	
+	CharacterAttackType TypeBuff = CharacterAttackType::Physics;
+	CharacterAttackImpact ImpactBuff = CharacterAttackImpact::Null;
 
 };
 

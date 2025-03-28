@@ -46,6 +46,9 @@ public:
             SetPath(IdleImage, AttackImage, DieImage, StartImage, DefaultImage);
 
     }
+	std::string GetJob(){
+		return "Sniper";
+	}
 protected:
 	
 	std::vector<std::string> DefaultImage;
