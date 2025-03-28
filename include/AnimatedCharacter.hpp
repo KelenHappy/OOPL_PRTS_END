@@ -159,9 +159,31 @@ public:
 	float GetDefend() { return DefendNum;}
 	float GetMagicDefend() { return MagicDefendNum;}
 
-	void takeDamage(){
+	void takeDamage(CharacterAttackImpact impact, float damage){
+		switch(impact){
+			case CharacterAttackImpact::Null:
+				break;
+			case CharacterAttackImpact::Dizzy:
+				ImpactDizzy();
+				break;
+			case CharacterAttackImpact::Sleep:
+				ImpactSleep();
+				break;
+			case CharacterAttackImpact::Frozen:
+				ImpactFrozen();
+				break;
+			default:
+				std::cout << "Take DamageError." << std::endl;
+				break;
+		}
+		HealthNum -= damage;
+	}
 
-    }
+	void ImpactDizzy(){}
+
+	void ImpactSleep(){}
+
+	void ImpactFrozen(){}
 
 	CharacterAttackImpact GetAttackImpact(){
         return AttackImpact;

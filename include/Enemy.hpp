@@ -119,7 +119,7 @@ protected:
 	float AttackSpeedNum = 0;
 	float AttackDistanceNum = 0;
 	int AttackCastleNum = 0;
-	float MoveSpeedNum = 0.0;
+	float MoveSpeedNum = 0;
 	int HeavyLevelNum = 0;
 	int HealthRecoverNum = 0;
 
@@ -128,6 +128,7 @@ protected:
 	bool FrozenDefend = false;
 
 	CharacterAttackType attack_type = CharacterAttackType::Physics;
+	CharacterAttackImpact attackImpact = CharacterAttackImpact::Null;
 
 };
 
