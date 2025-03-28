@@ -9,5 +9,4 @@ enum class CharacterState {
     Start,    // 角色開始動畫
     Default   // 預設狀態
 };
-
 #endif // CHARACTER_STATE_HPP

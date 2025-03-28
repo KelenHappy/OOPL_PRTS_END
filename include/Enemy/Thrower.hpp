@@ -13,7 +13,7 @@ public:
 		SetInfo(1550, 180, 50, 0, 2.7,
 		1.75, 1, 1.0, 0, 0,
 		false, false, false,
-		AttackType::Physics);
+		CharacterAttackType::Physics);
     }
 
 

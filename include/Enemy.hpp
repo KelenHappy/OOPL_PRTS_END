@@ -1,6 +1,7 @@
 #ifndef ENEMY_HPP
 #define ENEMY_HPP
 #include "AnimatedEnemy.hpp"
+#include "GamePlayMode/CharacterAttackImpact.hpp"
 #include <set>
 class Enemy : public AnimatedEnemy{
 public:
@@ -51,7 +52,7 @@ public:
 	void SetInfo(int Health, int Attack, int Defend, int MagicDefend, int AttackSpeed
 	, float AttackDistance, int AttackCastle, float MoveSpeed, int HeavyLevel, int HealthRecover
 	, bool Dizzy, bool Sleep, bool Frozen
-	, AttackType attack_t){
+	, CharacterAttackType attack_t){
 		HealthNum = Health;
 		AttackNum = Attack;
 		DefendNum = Defend;
@@ -66,6 +67,42 @@ public:
 		SleepDefend = Sleep;
 		FrozenDefend = Frozen;
 		attack_type = attack_t;
+	}
+
+    float GetAttack() { return AttackNum;}
+	float GetDefend() { return DefendNum;}
+	float GetMagicDefend() { return MagicDefendNum;}
+
+	void takeDamage(CharacterAttackImpact impact, float damage){
+		switch(impact){
+			case CharacterAttackImpact::Null:
+				break;
+			case CharacterAttackImpact::Dizzy:
+				ImpactDizzy();
+				break;
+			case CharacterAttackImpact::Sleep:
+				ImpactSleep();
+				break;
+			case CharacterAttackImpact::Frozen:
+				ImpactFrozen();
+				break;
+			default:
+				std::cout << "Take DamageError." << std::endl;
+				break;
+		}
+		HealthNum -= damage;
+	}
+
+	void ImpactDizzy(){
+
+	}
+
+	void ImpactSleep(){
+
+	}
+
+	void ImpactFrozen(){
+
 	}
 	~Enemy(){}
 protected:
@@ -90,7 +127,7 @@ protected:
 	bool SleepDefend = false;
 	bool FrozenDefend = false;
 
-	AttackType attack_type = AttackType::Physics;
+	CharacterAttackType attack_type = CharacterAttackType::Physics;
 
 };
 

@@ -10,9 +10,4 @@ enum class EnemyState {
     Default   // 預設狀態
 };
 
-enum class AttackType {
-	Magic,
-	Physics
-};
-
 #endif // ENEMY_STATE_HPP

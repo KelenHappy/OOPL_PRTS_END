@@ -69,6 +69,10 @@ add_executable(${PROJECT_NAME}
 		
 		include/Enemy.hpp
 		include/EnemyState.hpp
+
+		include/GamePlayMode/Attack.hpp
+		include/GamePlayMode/CharacterAttackImpact.hpp
+		include/GamePlayMode/CharacterSkill.hpp
 		
 		include/Map.hpp
 		include/MainScream.hpp

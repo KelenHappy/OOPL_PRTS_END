@@ -9,6 +9,7 @@
 #include "Util/GameObject.hpp"
 #include "CharacterState.hpp"
 #include "AnimatedEnemy.hpp"
+#include "GamePlayMode/CharacterAttackImpact.hpp"
 
 class AnimatedCharacter : public Util::GameObject {
 public:
@@ -143,7 +144,7 @@ public:
         SkillName = skillname;
         HeavyLevelNum = DefendCout;
     }
-	
+
 	void SetRange(std::shared_ptr<std::vector<Block>> Range){
 		if (Range) {  // 避免空指针
             AttackRange = std::make_shared<std::vector<Block>>(*Range); // 	複製vector 數據
@@ -153,6 +154,30 @@ public:
 	int GetHP(){
 		return HealthNum;
 	}
+
+    float GetAttack() { return AttackNum;}
+	float GetDefend() { return DefendNum;}
+	float GetMagicDefend() { return MagicDefendNum;}
+
+	void takeDamage(){
+
+    }
+
+	CharacterAttackImpact GetAttackImpact(){
+        return AttackImpact;
+    }
+
+    void SetAttackImpact(CharacterAttackImpact tt){
+        AttackImpact = tt;
+    }
+
+    CharacterAttackType GetAttackType(){
+        return AttackType;
+    }
+
+    void SetAttackType(CharacterAttackType tt){
+        AttackType = tt;
+    }
 
 	~AnimatedCharacter(){}
 protected:
@@ -180,10 +205,8 @@ protected:
 
     int HeavyLevelNum = 0;
 	int HealthRecoverNum = 0;
-
-	bool DizzyAttack = false;
-	bool SleepAttack = false;
-	bool FrozenAttack = false;
+    CharacterAttackType AttackType = CharacterAttackType::Physics;
+	CharacterAttackImpact AttackImpact = CharacterAttackImpact::Null;
 
 private:
     float m_Width = 15.0f;  // 角色寬度

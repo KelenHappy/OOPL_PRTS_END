@@ -13,7 +13,7 @@ public:
 		SetInfo(2850, 400, 0, 0, 1.7, 
 		0, 1, 1.0, 0, 0,
 		false, false, false, 
-		AttackType::Physics);
+		CharacterAttackType::Physics);
     }
 	~BugA(){}
 
