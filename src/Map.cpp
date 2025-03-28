@@ -52,7 +52,7 @@ Map::Map() {
         this->m_block.push_back(bk);
     }
     std::shared_ptr<Card> cd=std::make_shared<Card>(ClassState::Vanguard,20);
-    cd->SetTranform(515,-280);
+    cd->SetTranform(570,-300);
     this->m_Card.push_back(cd);
 
 }
