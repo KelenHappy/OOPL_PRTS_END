@@ -11,7 +11,7 @@ public:
     TextBox(int size) : GameObject(
             std::make_unique<Util::Text>(RESOURCE_DIR"/Font/SWM.ttf",
                 size,
-                "              ",
+                "                               ",
                 Util::Color::FromName(Util::Colors::WHITE)),
             100) {
         m_Transform.translation = {50.0F, 50.0F};

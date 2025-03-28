@@ -6,6 +6,7 @@ struct vec2 {
 };
 Map::Map() {
     TowerHP=3;
+    PutLimit=5;
     m_map = std::make_shared<CreateIMG>("/Maps/main_0107/main_0107.png", -10);
     std::vector<vec2> positions = {
         vec2(-502.000000, -155.000000), vec2(-374.000000, -162.000000), vec2(-251.000000, -159.000000),
@@ -51,5 +52,23 @@ Map::Map() {
         bk->m_Transform.translation.y = positions[i].y;
         this->m_block.push_back(bk);
     }
+    std::shared_ptr<Card> cd=std::make_shared<Card>(ClassState::Vanguard,20);
+    cd->SetTranform(570,-300);
+    this->m_Card.push_back(cd);
+}
+void Map::Update() {
 
 }
+void Map::CreatotherItem() {
+    m_Cost=std::make_shared<TextBox>(20);
+    m_Cost->SetText(std::to_string(cost));
+    m_CostBar=std::make_shared<ImgItem>("/Maps/CostBar.png");
+    m_EmemyandHp=std::make_shared<ImgItem>("/Maps/EnemyandHp.png");
+    m_PutLimit=std::make_shared<TextBox>(20);
+    m_PutLimit->SetText("剩餘可放置角色:"+std::to_string(PutLimit));
+    m_PutlimitBar=std::make_shared<ImgItem>("/Maps/CardBack.png");
+
+
+}
+
+

@@ -22,6 +22,10 @@ class Map :public Util::GameObject{
             result.push_back(m_Card[i]->GetCosttext());
             result.push_back(m_Card[i]->Getclass());
         }
+        result.push_back(m_Cost);
+        result.push_back(m_PutLimit);
+        result.push_back(m_PutlimitBar);
+        //result.push_back(m_PutLimit);
         result.push_back(m_map);
         return result;
     }
@@ -49,15 +53,25 @@ class Map :public Util::GameObject{
     void AddCard(std::shared_ptr<Card> card) {
         m_Card.push_back(card);
     };
+    void Update();
+    void CreatotherItem();
 
     private:
     int TowerHP;
     int EnemyTotalMax;
     int EnemyTotal;
     int cost;
+    int PutLimit;
     std::vector<std::shared_ptr<Block>>m_block;
     std::shared_ptr<CreateIMG> m_map;
     std::vector<std::shared_ptr<Card>>m_Card;
+    std::shared_ptr<ImgItem> m_EmemyandHp;
+    std::shared_ptr<ImgItem> m_CostBar;
+    std::shared_ptr<ImgItem> m_PutlimitBar;
+    std::shared_ptr<TextBox> m_PutLimit;
+    std::shared_ptr<TextBox> m_Cost;
+
+
 
 };
 #endif //MAP_HPP
