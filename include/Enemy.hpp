@@ -75,11 +75,11 @@ protected:
 	std::vector<std::string> AttackImage;
 	std::vector<std::string> DieImage;
 	// 角色數值
-	int HealthNum = 0;
-	int AttackNum = 0;
-	int DefendNum = 0;
-	int MagicDefendNum = 0;
-	int AttackSpeedNum = 0;
+	float HealthNum = 0;
+	float AttackNum = 0;
+	float DefendNum = 0;
+	float MagicDefendNum = 0;
+	float AttackSpeedNum = 0;
 	float AttackDistanceNum = 0;
 	int AttackCastleNum = 0;
 	float MoveSpeedNum = 0.0;

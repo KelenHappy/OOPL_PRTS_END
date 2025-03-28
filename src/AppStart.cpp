@@ -23,7 +23,8 @@ void App::Start() {
 	*/
 	m_Sussurro = std::make_shared<Medic>("Sussurro", 119, 61, 60, 61);
 	m_Sussurro->SetInfo(70, 18, 2.85, 1345, 488, 122, 0,
-	10, 30, 25, "攻擊力+100%，攻擊速度+100同一次作戰中最多使用2次"
+	10, 30, 25, "攻擊力+100%，攻擊速度+100同一次作戰中最多使用2次", "深度治療"
+	, 1
 	);
 	m_Sussurro->SetZIndex(15);
 	m_Sussurro->SetState(CharacterState::Default);

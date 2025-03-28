@@ -127,7 +127,7 @@ public:
         }
     }
     void SetInfo(float SetTime, int SetCost, float AttackTime, int Health, int Attack, int Defend, int DefendMagic,
-    int SkillDefault, int SkillCost, float SkillTime, std::string skillinfo
+    int SkillDefault, int SkillCost, float SkillTime, std::string skillinfo, std::string skillname, int DefendCout
     ){
         SetTimeNum = SetTime;
         SetCostNum = SetCost;
@@ -140,6 +140,8 @@ public:
         SkillCostNum = SkillCost;
         SkillTimeNum = SkillTime;
         SkillInfo = skillinfo;
+        SkillName = skillname;
+        HeavyLevelNum = DefendCout;
     }
 	
 	void SetRange(std::shared_ptr<std::vector<Block>> Range){
@@ -151,6 +153,7 @@ public:
 	int GetHP(){
 		return HealthNum;
 	}
+
 	~AnimatedCharacter(){}
 protected:
     CharacterState m_CurrentState;
@@ -164,15 +167,23 @@ protected:
     float SetTimeNum = 0;
     int SetCostNum = 0;
     float AttackTimeNum = 0;
-    int HealthNum = 0;
-    int AttackNum = 0;
-    int DefendNum = 0;
+    float HealthNum = 0;
+    float AttackNum = 0;
+    float DefendNum = 0;
     int MagicDefendNum = 0;
     std::shared_ptr<std::vector <Block> >AttackRange = nullptr;
 	int SkillDefaultNum = 0;
     int SkillCostNum = 0;
     float SkillTimeNum = 0;
     std::string SkillInfo = "";
+    std::string SkillName = "";
+
+    int HeavyLevelNum = 0;
+	int HealthRecoverNum = 0;
+
+	bool DizzyAttack = false;
+	bool SleepAttack = false;
+	bool FrozenAttack = false;
 
 private:
     float m_Width = 15.0f;  // 角色寬度
