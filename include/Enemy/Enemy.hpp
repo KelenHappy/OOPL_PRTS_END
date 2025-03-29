@@ -126,7 +126,9 @@ public:
 		return AttackType;
 	}
 	
-
+	std::string GetJob(){
+		return "Enemy";
+	}
 	
 	~Enemy(){}
 protected:
