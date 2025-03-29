@@ -15,7 +15,7 @@ public:
 		false, false, false,
 		CharacterAttackType::Physics);
     }
-
+	~Thrower(){}
 
 
 private:

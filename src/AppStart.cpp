@@ -52,4 +52,9 @@ void App::Start() {
 	m_Texas->SetState(CharacterState::Default);
 	m_Texas->SetVisible(false);
 	m_Texas->SetLooping(false);
+	
+	// 角色擁有
+	m_StartCharacter.push_back(m_Sussurro);
+	m_StartCharacter.push_back(m_Exudiai);
+	m_StartCharacter.push_back(m_Texas);
 }

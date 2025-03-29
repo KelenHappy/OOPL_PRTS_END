@@ -15,7 +15,7 @@ public:
 		false, false, false,
 		CharacterAttackType::Physics);
     }
-
+	~Varlorant(){}
 
 
 private:

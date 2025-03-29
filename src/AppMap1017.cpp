@@ -9,18 +9,36 @@ void App::LevelMain17() {
     if (Util::Input::IsKeyUp(Util::Keycode::ESCAPE) ||
         Util::Input::IfExit()) {
 			m_CurrentState = State::END;
-        }
-	if (m_Sussurro->GetHP() > 0){
-		m_Sussurro->SetVisible(true);
-		m_Sussurro->SetLooping(true);
-		m_Sussurro->SetState(CharacterState::Idle);
+    }
+	// 設定角色出現與否	
+	for (const auto& character : m_StartCharacter) {
+		if(character->GetHP() > 0){
+			character->SetLooping(true);
+			character->SetVisible(true);
+		}
+		else{
+			character->SetState(CharacterState::Die);
+			if(character->IfAnimationEnds()){
+				character->SetLooping(false);
+				character->SetVisible(false);
+			}
+		}
 	}
     //Debug();
 
-	for (int i = 0; i < 10; ++i) {
-		m_BugAs[i]->SetVisible(true);     
-		m_BugAs[i]->SetLooping(true);     
-		m_BugAs[i]->SetState(EnemyState::Move);
+	for (size_t i = 0; i < 10; ++i) {
+		if(m_BugAs[i]->GetHP() > 0){
+			m_BugAs[i]->SetVisible(true);     
+			m_BugAs[i]->SetLooping(true);     
+			m_BugAs[i]->SetState(EnemyState::Move);
+		}
+		else{
+			m_BugAs[i]->SetState(EnemyState::Die);
+			if(m_BugAs[i]->IfAnimationEnds()){
+				m_BugAs[i]->SetVisible(false);     
+				m_BugAs[i]->SetLooping(false);	
+			}
+		}
 	}
     m_0107.Update();
 }

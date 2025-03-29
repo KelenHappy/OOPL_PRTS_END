@@ -48,7 +48,9 @@ public:
             SetPath(IdleImage, AttackImage, DieImage, MoveImage, DefaultImage);
 
     }
-	
+	void SetImageSize(float x, float y){
+		m_Transform.scale={x, y}; 
+	}
 	void SetInfo(int Health, int Attack, int Defend, int MagicDefend, int AttackSpeed
 	, float AttackDistance, int AttackCastle, float MoveSpeed, int HeavyLevel, int HealthRecover
 	, bool Dizzy, bool Sleep, bool Frozen
