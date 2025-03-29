@@ -15,6 +15,9 @@ public:
 		false, false, false,
 		CharacterAttackType::Physics);
     }
+	std::string GetName(){
+		return "Thrower";
+	}
 	~Thrower(){}
 
 
