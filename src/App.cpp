@@ -6,8 +6,6 @@
 #include "Util/Logger.hpp"
 #include <vector>
 
-#include "EnemyState.hpp"
-#include "CharacterState.hpp"
 /*
 void App::Start() {
     LOG_TRACE("Start");

@@ -1,4 +1,4 @@
-#include "AnimatedCharacter.hpp"
+#include "Character/AnimatedCharacter.hpp"
 
 
 // 更換Animation

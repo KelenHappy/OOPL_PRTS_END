@@ -8,7 +8,7 @@
 #include "Util/Animation.hpp"
 #include "Util/GameObject.hpp"
 #include "CharacterState.hpp"
-#include "AnimatedEnemy.hpp"
+
 #include "GamePlayMode/CharacterAttackImpact.hpp"
 #include "GamePlayMode/CharacterSkill.hpp"
 

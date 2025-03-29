@@ -1,7 +1,7 @@
 #ifndef THROWER_HPP
 #define THROWER_HPP
 #include "Enemy.hpp"
-#include "AnimatedCharacter.hpp"
+#include "GamePlayMode/CharacterAttackImpact.hpp"
 class Thrower : public Enemy{
 public:
     //              EnemyName, int IdleCont, int AttackCont,int DieCont, int MoveCont

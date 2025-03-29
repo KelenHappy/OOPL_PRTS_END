@@ -50,26 +50,22 @@ add_executable(${PROJECT_NAME}
 
 
     ${HEADER_FILES}
-        include/App.hpp
-        include/AnimatedCharacter.hpp
-        include/AnimatedEnemy.hpp
-		
+        include/App.hpp	
 		include/Block.hpp
         include/BlockState.hpp
-
+		
+		include/Enemy/AnimatedEnemy.hpp
+		include/Enemy/Enemy.hpp
+		include/Enemy/EnemyState.hpp
 		include/Enemy/BugA.hpp
 		include/Enemy/Soldier.hpp
 		include/Enemy/Thrower.hpp
 		include/Enemy/Varlorant.hpp
 
 		include/CreateIMG.hpp
-		include/CharacterState.hpp
 		include/Card.hpp
 		include/ClassState.hpp
 		include/CharacterType.hpp
-		
-		include/Enemy.hpp
-		include/EnemyState.hpp
 
 		include/GamePlayMode/Attack.hpp
 		include/GamePlayMode/CharacterAttackImpact.hpp
@@ -77,7 +73,9 @@ add_executable(${PROJECT_NAME}
 		
 		include/Map.hpp
 		include/MainScream.hpp
-
+		
+		include/Character/AnimatedCharacter.hpp
+		include/Character/CharacterState.hpp
         include/Character/Medic.hpp
 		include/Character/Sniper.hpp
 		include/Character/Vanguard.hpp

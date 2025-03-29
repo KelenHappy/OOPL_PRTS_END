@@ -4,7 +4,7 @@
 #include <vector>
 #include <string>
 #include <ostream>
-#include "AnimatedCharacter.hpp"
+
 #include "Util/Animation.hpp"
 #include "Util/GameObject.hpp"
 #include "EnemyState.hpp"

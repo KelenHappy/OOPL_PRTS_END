@@ -4,7 +4,7 @@
 
 #ifndef CARD_HPP
 #define CARD_HPP
-#include "AnimatedCharacter.hpp"
+#include "Character/AnimatedCharacter.hpp"
 #include "ClassState.hpp"
 #include "ImgItem.hpp"
 #include "TextBox.hpp"

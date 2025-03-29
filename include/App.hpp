@@ -5,19 +5,16 @@
 #include "MainScream.hpp"
 #include "Map.hpp"
 #include "Util/Renderer.hpp"
-#include "AnimatedCharacter.hpp"
-#include "AnimatedEnemy.hpp"
-
 #include "UseTime.hpp"
 
-
-#include "Enemy.hpp"
-#include "UseTime.hpp"
-
+#include "Character/AnimatedCharacter.hpp"
+#include "Character/CharacterState.hpp"
 #include "Character/Medic.hpp"
 #include "Character/Sniper.hpp"
 #include "Character/Vanguard.hpp"
 
+#include "Enemy/Enemy.hpp"
+#include "Enemy/EnemyState.hpp"
 #include "Enemy/BugA.hpp"
 #include "Enemy/Soldier.hpp"
 #include "Enemy/Thrower.hpp"

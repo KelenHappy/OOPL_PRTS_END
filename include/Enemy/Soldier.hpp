@@ -1,7 +1,7 @@
 #ifndef SOLDIER_HPP
 #define SOLDIER_HPP
 #include "Enemy.hpp"
-#include "AnimatedCharacter.hpp"
+#include "GamePlayMode/CharacterAttackImpact.hpp"
 class Soldier : public Enemy{
 public:
     //              EnemyName, int IdleCont, int AttackCont,int DieCont, int MoveCont
