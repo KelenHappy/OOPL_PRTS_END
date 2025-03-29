@@ -6,43 +6,19 @@
 #include "Util/Logger.hpp"
 #include <vector>
 
-/*
-void App::Start() {
-    LOG_TRACE("Start");
-    m_CurrentState = State::UPDATE;
-    // 場景
-    m_MainScream = std::make_shared<MainScream>();
-    m_TT = std::make_shared<TextBox>();
-    m_Root.AddChildren(m_MainScream->GetChildren());
-    m_map0107=std::make_shared<Map>();
-    m_0107.AddChildren(m_map0107->GetChildren());
+#include "EnemyState.hpp"
+#include "CharacterState.hpp"
 
-
-
-
-    //Enemy
-	
-    //m_Soldier = std::make_shared<Soldier>();
-    //m_Soldier->SetZIndex(10);
-    //m_Soldier->SetVisible(true);
-    //m_Soldier->SetLooping(true);
-    //m_Soldier->SetState(EnemyState::Idle);
-    //m_Thrower = std::make_shared<Thrower>();
-    //m_Varlorant = std::make_shared<Varlorant> ();
-
-
-    //
-    //m_0107.AddChild(m_Soldier);
-    //m_0107.AddChild(m_Varlorant);
-}
-*/
 void App::Update() {
 
     auto mouse=Util::Input::GetCursorPosition();
     if(Util::Input::IsKeyDown(Util::Keycode::MOUSE_LB)) {
         LOG_DEBUG(std::to_string(mouse.x)+" "+std::to_string(mouse.y));
     }
-    //m_UT->Update();
+    if (gametimer->HasElapsed(50)) { // 每 50 毫秒執行一次
+        GameTick();
+        gametimer->Reset();
+    }
     if(m_level==level::lobby){
         if (Util::Input::IsKeyUp(Util::Keycode::ESCAPE) ||
             Util::Input::IfExit()) {
@@ -111,7 +87,11 @@ void App::Debug() {
     if(carry) {
         m_map0107->Getblock()[m_Carry]->m_Transform.translation=mouse;
     }
-
+}
+void App::GameTick() {
+    std::cout << m_Carry << std::endl;
+    m_Carry++;
 
 }
+
 

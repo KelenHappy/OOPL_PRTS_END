@@ -85,8 +85,7 @@ add_executable(${PROJECT_NAME}
 		
 		include/TextBox.hpp
 		include/ImgItem.hpp
-
-		include/UseTime.hpp
+		include/GameTimer.hpp
 		include/move.hpp
 
 )

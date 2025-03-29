@@ -13,7 +13,8 @@ void App::Start() {
     m_Root.AddChildren(m_MainScream->GetChildren());
 	m_map0107=std::make_shared<Map>();
 	m_0107.AddChildren(m_map0107->GetChildren());
-    m_UT=std::make_shared<UseTime>();
+    gametimer=std::make_shared<GameTimer>();
+
 
     // Character
 	//std::string CharacterName, int IdleCont, int AttackCont,int DieCont, int StartCont
@@ -23,7 +24,8 @@ void App::Start() {
 	defendlevel
 	*/
 	//角色建立
-	/*
+	
+
 	m_Sussurro = std::make_shared<Medic>("Sussurro", 119, 61, 60, 61);
 	m_Sussurro->SetInfo(70, 18, 2.85, 1345, -488, 122, 0,
 	10, 30, 25, "攻擊力+100%，攻擊速度+100同一次作戰中", "深度治療"
@@ -63,6 +65,8 @@ void App::Start() {
 	m_StartCharacter.push_back(m_Sussurro);
 	m_StartCharacter.push_back(m_Exudiai);
 	m_StartCharacter.push_back(m_Texas);
-	m_Texas = std::make_shared<Vanguard>("Texas", 120, 60, 60, 61);*/
+	m_Texas = std::make_shared<Vanguard>("Texas", 120, 60, 60, 61);
+
+
 
 }

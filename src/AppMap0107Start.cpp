@@ -7,10 +7,6 @@
 #include <vector>
 void App::Map0107Loading() {
     //加載敵人
-	m_BugAs = std::vector<std::shared_ptr<BugA>>();
-	m_BugAs.resize(7);
-	for (size_t i = 0; i < 7; ++i) {
-    
 	m_BugAs.reserve(50);
 	m_BugAs.resize(50);
 	for (int i = 0; i < 10; ++i) {
@@ -65,4 +61,5 @@ void App::Map0107Loading() {
 		m_StartCharacter[i]->SetPosition({575 - i*150, -289});
 		m_0107.AddChild(m_StartCharacter[i]);
 	}
+	gametimer->Start();
 }

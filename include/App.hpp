@@ -10,6 +10,7 @@
 #include "Enemy.hpp"
 #include "Character/AnimatedCharacter.hpp"
 #include "Character/CharacterState.hpp"
+#include "GameTimer.hpp"
 #include "Character/Medic.hpp"
 #include "Character/Sniper.hpp"
 #include "Character/Vanguard.hpp"
@@ -49,6 +50,7 @@ private:
     void LevelMain17();
     double calculateDistance(Util::Transform a, Util::Transform b);
 	void Map0107Loading();
+    void GameTick();
 
 
 private:
@@ -59,7 +61,7 @@ private:
     std::shared_ptr<MainScream> m_MainScream;
     std::shared_ptr<TextBox> m_TT;
     std::shared_ptr<Map> m_map0107;
-    std::shared_ptr<UseTime> m_UT;
+    std::shared_ptr<GameTimer> gametimer;
     Util::Renderer m_Root;
     Util::Renderer m_0107;
     // Character
