@@ -41,6 +41,10 @@ public:
         this->m_StartAnimation = std::make_shared<Util::Animation>
         (StartEnd, false, 50, false, 0);
     }
+	//SetImageSize
+	void SetImageSize(float x, float y){
+		m_Transform.scale={x, y}; 
+	}
     // 更換Animation
     void Update() {
         switch (m_CurrentState) {

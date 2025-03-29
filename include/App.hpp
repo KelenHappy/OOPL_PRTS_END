@@ -74,7 +74,10 @@ private:
 	std::shared_ptr<Vanguard> m_Texas;
 	
 	
-    // Enemy
+    //Charcter Choosen
+	std::vector<std::shared_ptr<AnimatedCharacter>> m_StartCharacter;
+	std::vector<std::shared_ptr<AnimatedCharacter>> m_LevelCharacter;
+	// Enemy
     // idle attack die move
     std::vector<std::shared_ptr<BugA>> m_BugAs;
     //std::shared_ptr <Soldier> m_Soldier;

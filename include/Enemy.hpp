@@ -92,6 +92,10 @@ public:
 		}
 		HealthNum -= damage;
 	}
+	
+	int GetHP(){
+		return HealthNum;
+	}
 
 	void ImpactDizzy(){
 
