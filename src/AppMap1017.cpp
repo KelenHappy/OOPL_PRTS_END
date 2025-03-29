@@ -25,8 +25,12 @@ void App::LevelMain17() {
 		}
 	}
     //Debug();
-
-	for (size_t i = 0; i < 10; ++i) {
+	//敵人重生
+	m_BugAs[0]->SetVisible(true);     
+	m_BugAs[0]->SetLooping(true);     
+	m_BugAs[0]->SetState(EnemyState::Move);
+	/*
+	for (size_t i = 0; i < m_BugAs.size(); ++i) {
 		if(m_BugAs[i]->GetHP() > 0){
 			m_BugAs[i]->SetVisible(true);     
 			m_BugAs[i]->SetLooping(true);     
@@ -40,5 +44,6 @@ void App::LevelMain17() {
 			}
 		}
 	}
+	*/
     m_0107.Update();
 }

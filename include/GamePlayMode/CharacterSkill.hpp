@@ -8,7 +8,7 @@ public:
     CharacterSkill(){
 
     }
-        void SetSetTimeBuff(float timeBuff) {
+    void SetSetTimeBuff(float timeBuff) {
         SetTimeBuff = timeBuff;
     }
 

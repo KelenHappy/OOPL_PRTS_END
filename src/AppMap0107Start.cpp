@@ -8,18 +8,49 @@
 void App::Map0107Loading() {
     //加載敵人
 	m_BugAs = std::vector<std::shared_ptr<BugA>>();
-	m_BugAs.resize(12);
-	for (size_t i = 0; i < 10; ++i) {
+	m_BugAs.resize(7);
+	for (size_t i = 0; i < 7; ++i) {
 		m_BugAs[i] = std::make_shared<BugA>();
-		m_BugAs[i]->SetPosition({m_BugAs[i]->GetPosition().x, m_BugAs[i]->GetPosition().y + i*30.0f});
 		m_BugAs[i]->SetZIndex(10);
-		m_BugAs[i]->SetImageSize(0.8f,0.8f);
+		m_BugAs[i]->SetImageSize(0.5f,0.5f);
 		m_BugAs[i]->SetVisible(false);     
 		m_BugAs[i]->SetLooping(false);
 		m_0107.AddChild(m_BugAs[i]);
 	}
+
+	m_Soldiers = std::vector<std::shared_ptr<Soldier>>();
+	m_Soldiers.resize(5);
+	for (size_t i = 0; i < 5; ++i) {
+		m_Soldiers[i] = std::make_shared<Soldier>();
+		m_Soldiers[i]->SetZIndex(10);
+		m_Soldiers[i]->SetImageSize(0.5f,0.5f);
+		m_Soldiers[i]->SetVisible(false);     
+		m_Soldiers[i]->SetLooping(false);
+		m_0107.AddChild(m_Soldiers[i]);
+	}
+	
+	m_Throwers = std::vector<std::shared_ptr<Thrower>>();
+	m_Throwers.resize(2);
+	for (size_t i = 0; i < 2; ++i) {
+		m_Throwers[i] = std::make_shared<Thrower>();
+		m_Throwers[i]->SetZIndex(10);
+		m_Throwers[i]->SetImageSize(0.5f,0.5f);
+		m_Throwers[i]->SetVisible(false);     
+		m_Throwers[i]->SetLooping(false);
+		m_0107.AddChild(m_Throwers[i]);
+	}
+	
+	m_Varlorants = std::vector<std::shared_ptr<Varlorant>>();
+	m_Varlorants.resize(1);
+	for(size_t i = 0;i < 1; ++i){
+		m_Varlorants[i] = std::make_shared<Varlorant>();
+		m_Varlorants[i]->SetZIndex(10);
+		m_Varlorants[i]->SetImageSize(0.5f,0.5f);
+		m_Varlorants[i]->SetVisible(false);     
+		m_Varlorants[i]->SetLooping(false);
+		m_0107.AddChild(m_Varlorants[i]);
+	}
 	//角色選則
-	/*
 	for (size_t i = 0; i < m_StartCharacter.size(); ++i) {
 		m_StartCharacter[i]->SetState(CharacterState::Default);
 		m_StartCharacter[i]->SetLooping(true);
@@ -27,5 +58,4 @@ void App::Map0107Loading() {
 		m_StartCharacter[i]->SetPosition({575 - i*150, -289});
 		m_0107.AddChild(m_StartCharacter[i]);
 	}
-	*/
 }

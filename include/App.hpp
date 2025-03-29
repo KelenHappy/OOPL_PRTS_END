@@ -77,9 +77,9 @@ private:
 	// Enemy
     // idle attack die move
     std::vector<std::shared_ptr<BugA>> m_BugAs;
-    //std::shared_ptr <Soldier> m_Soldier;
-    //std::shared_ptr <Thrower> m_Thrower;
-    //std::shared_ptr <Varlorant> m_Varlorant;
+    std::vector<std::shared_ptr <Soldier>> m_Soldiers;
+    std::vector<std::shared_ptr <Thrower>> m_Throwers;
+    std::vector<std::shared_ptr <Varlorant>> m_Varlorants;
     // 大便
 
     bool carry=false;
