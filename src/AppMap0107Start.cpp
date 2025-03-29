@@ -19,6 +19,7 @@ void App::Map0107Loading() {
 		m_0107.AddChild(m_BugAs[i]);
 	}
 	//角色選則
+	/*
 	for (size_t i = 0; i < m_StartCharacter.size(); ++i) {
 		m_StartCharacter[i]->SetState(CharacterState::Default);
 		m_StartCharacter[i]->SetLooping(true);
@@ -26,5 +27,5 @@ void App::Map0107Loading() {
 		m_StartCharacter[i]->SetPosition({575 - i*150, -289});
 		m_0107.AddChild(m_StartCharacter[i]);
 	}
-	
+	*/
 }

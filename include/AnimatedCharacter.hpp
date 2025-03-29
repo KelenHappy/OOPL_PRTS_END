@@ -156,9 +156,7 @@ public:
         }		
 	}
 	
-	int GetHP(){
-		return HealthNum;
-	}
+	int GetHP(){return HealthNum;}
 
     float GetAttack() { return AttackNum;}
 	float GetDefend() { return DefendNum;}
