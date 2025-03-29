@@ -7,9 +7,8 @@
 #include <vector>
 void App::Map0107Loading() {
     //加載敵人
-	m_BugAs.reserve(50);
-	m_BugAs.resize(50);
-	for (int i = 0; i < 10; ++i) {
+	m_BugAs.resize(7);
+	for (int i = 0; i < 7; ++i) {
 		m_BugAs[i] = std::make_shared<BugA>();
 		m_BugAs[i]->SetZIndex(10);
 		m_BugAs[i]->SetImageSize(0.5f,0.5f);
@@ -28,9 +27,6 @@ void App::Map0107Loading() {
 		m_Soldiers[i]->SetLooping(false);
 		m_0107.AddChild(m_Soldiers[i]);
 	}
-	m_Sussurro->SetState(CharacterState::Default);
-	m_Sussurro->SetLooping(true);
-	m_0107.AddChild(m_Sussurro);
 	
 	m_Throwers = std::vector<std::shared_ptr<Thrower>>();
 	m_Throwers.resize(2);

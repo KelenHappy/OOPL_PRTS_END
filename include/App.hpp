@@ -5,9 +5,7 @@
 #include "MainScream.hpp"
 #include "Map.hpp"
 #include "Util/Renderer.hpp"
-#include "AnimatedCharacter.hpp"
-#include "AnimatedEnemy.hpp"
-#include "Enemy.hpp"
+
 #include "Character/AnimatedCharacter.hpp"
 #include "Character/CharacterState.hpp"
 #include "GameTimer.hpp"
@@ -66,14 +64,8 @@ private:
     Util::Renderer m_0107;
     // Character
 	std::shared_ptr<Medic> m_Sussurro;
-	
-	
 	std::shared_ptr<Sniper> m_Exudiai;
-	
-	
 	std::shared_ptr<Vanguard> m_Texas;
-	
-	
     //Charcter Choosen
 	std::vector<std::shared_ptr<AnimatedCharacter>> m_StartCharacter;
 	std::vector<std::shared_ptr<AnimatedCharacter>> m_LevelCharacter;
