@@ -46,6 +46,8 @@ add_executable(${PROJECT_NAME}
 		src/Card.cpp
 		
 		src/Character/AnimatedCharacter.cpp
+		
+		src/Enemy/Enemy.cpp
         src/Map.cpp
 
 

@@ -3,6 +3,7 @@
 #include "AnimatedEnemy.hpp"
 #include "GamePlayMode/CharacterAttackImpact.hpp"
 #include <set>
+
 class Enemy : public AnimatedEnemy{
 public:
     Enemy(std::string EnemyName, int IdleCont, int AttackCont,int DieCont, int MoveCont) : AnimatedEnemy(){
@@ -48,7 +49,13 @@ public:
             SetPath(IdleImage, AttackImage, DieImage, MoveImage, DefaultImage);
 
     }
-	void SetImageSize(float x, float y){
+	// Function
+	void takeDamage(CharacterAttackImpact impact, float damage);
+	void ImpactDizzy();
+	void ImpactSleep();
+	void ImpactFrozen();
+	// Set
+		void SetImageSize(float x, float y){
 		m_Transform.scale={x, y}; 
 	}
 	void SetInfo(int Health, int Attack, int Defend, int MagicDefend, int AttackSpeed
@@ -68,48 +75,59 @@ public:
 		DizzyDefend = Dizzy;
 		SleepDefend = Sleep;
 		FrozenDefend = Frozen;
-		attack_type = attack_t;
-	}
-
-    float GetAttack() { return AttackNum;}
-	float GetDefend() { return DefendNum;}
-	float GetMagicDefend() { return MagicDefendNum;}
-
-	void takeDamage(CharacterAttackImpact impact, float damage){
-		switch(impact){
-			case CharacterAttackImpact::Null:
-				break;
-			case CharacterAttackImpact::Dizzy:
-				ImpactDizzy();
-				break;
-			case CharacterAttackImpact::Sleep:
-				ImpactSleep();
-				break;
-			case CharacterAttackImpact::Frozen:
-				ImpactFrozen();
-				break;
-			default:
-				std::cout << "Take DamageError." << std::endl;
-				break;
-		}
-		HealthNum -= damage;
+		AttackType = attack_t;
 	}
 	
+	// Get
 	int GetHP(){
 		return HealthNum;
 	}
-
-	void ImpactDizzy(){
-
+	float GetAttack() { 
+		return AttackNum;
+	}
+	float GetDefend() { 
+		return DefendNum;
+	}
+	float GetMagicDefend() { 
+		return MagicDefendNum;
+	}
+	float GetAttackSpeed(){
+		return AttackSpeedNum;
+	}
+	float GetAttackDistance(){	
+		return AttackDistanceNum;
+	}
+	int GetAttackCastle(){	
+		return AttackCastleNum;
+	}
+	float GetMoveSpeed(){
+		return MoveSpeedNum;
+	}
+	int GetHeavyLevel(){
+		return HeavyLevelNum;
+	}
+	int GetHealthRecover(){
+		return HealthRecoverNum;
+	}
+	bool GetDizzyDefend(){
+		return DizzyDefend;
+	}
+	bool GetSleepDefend(){
+		return SleepDefend;
+	}
+	bool GetFrozenDefend(){
+		return FrozenDefend;
 	}
 
-	void ImpactSleep(){
-
+	CharacterAttackImpact GetAttackImpact(){
+		return AttackImpact;
 	}
-
-	void ImpactFrozen(){
-
+    CharacterAttackType GetAttackType(){
+		return AttackType;
 	}
+	
+
+	
 	~Enemy(){}
 protected:
 	std::vector<std::string> DefaultImage;
@@ -133,8 +151,8 @@ protected:
 	bool SleepDefend = false;
 	bool FrozenDefend = false;
 
-	CharacterAttackType attack_type = CharacterAttackType::Physics;
-	CharacterAttackImpact attackImpact = CharacterAttackImpact::Null;
+	CharacterAttackType AttackType = CharacterAttackType::Physics;
+	CharacterAttackImpact AttackImpact = CharacterAttackImpact::Null;
 
 };
 
