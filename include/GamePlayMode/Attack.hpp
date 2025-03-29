@@ -8,7 +8,7 @@ void attack(T1 &thisC, T2 &that){
             damage -= that.GetDefend();
             break;
         case CharacterAttackType::Magic:
-            damage -= that.GetMagicDefend();
+            damage = damage*( (100 - that.GetMagicDefend())/100);
             break;
         default:
             std::cout << "Take Damage Error." << std::endl;
