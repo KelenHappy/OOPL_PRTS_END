@@ -49,7 +49,6 @@ add_executable(${PROJECT_NAME}
 
     ${HEADER_FILES}
         include/App.hpp
-		include/Attack.hpp
         include/AnimatedCharacter.hpp
         include/AnimatedEnemy.hpp
 		
