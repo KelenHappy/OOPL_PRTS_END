@@ -26,4 +26,5 @@ void App::Map0107Loading() {
 		m_StartCharacter[i]->SetPosition({575 - i*150, -289});
 		m_0107.AddChild(m_StartCharacter[i]);
 	}
+	
 }
