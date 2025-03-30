@@ -25,6 +25,16 @@ class Map :public Util::GameObject{
         result.push_back(m_map);
         return result;
     }
+    [[nodiscard]] std::vector<std::shared_ptr<Util::GameObject>> GetChildrenCard() const {
+        std::vector<std::shared_ptr<Util::GameObject>> result;
+        for(size_t i=0;i<m_Card.size();i++) {
+            result.push_back(m_Card[i]);
+            result.push_back(m_Card[i]->GetCardback());
+            result.push_back(m_Card[i]->GetCosttext());
+            result.push_back(m_Card[i]->Getclass());
+        }
+        return result;
+    }
     [[nodiscard]] std::vector<std::shared_ptr<Block>> Getblock() {return m_block;}
     [[nodiscard]] int GetTowerHP(){return TowerHP;}
     [[nodiscard]] void SetTowerHP(int hp) {TowerHP = hp;}
@@ -35,6 +45,10 @@ class Map :public Util::GameObject{
      void SetEnemyTotal(int n){EnemyTotal=n;}
      void EnemyDied(){EnemyTotal++;}
      int Getmapcost(){return cost;}
+    void Setmapcost(int n){cost=n;}
+    void AddCard(std::shared_ptr<Card> card) {
+        m_Card.push_back(card);
+    };
 
     private:
     int TowerHP;

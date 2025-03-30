@@ -88,8 +88,7 @@ void App::Debug() {
     }
 }
 void App::GameTick() {
-    std::cout << m_Carry << std::endl;
-    m_Carry++;
+
 
 }
 

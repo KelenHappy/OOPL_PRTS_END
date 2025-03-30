@@ -3,20 +3,25 @@
 //
 
 #include "Card.hpp"
-Card::Card(ClassState classState,int cost) {
-    m_Drawable = std::make_shared<Util::Image>(RESOURCE_DIR"/Character/Vanguard/Texas/Default/1.png");
+Card::Card(std::shared_ptr<AnimatedCharacter> Character) {
+    this->m_Character=Character;
+    m_Drawable = std::make_shared<Util::Image>(RESOURCE_DIR"/Character/"+Character->GetJob()+"/"+Character->GetCharacterName()+"/Default/1.png");
     SetZIndex(27);
     cardsize=0.8f;
     m_cost= std::make_shared<TextBox>(20);
     m_Cardback=std::make_shared<ImgItem>("/Maps/CardBack.png");
     m_Cardback->setsize(0.7,0.7);
     m_Cardback->SetZIndex(26);
-    this->m_classState = classState;
-    this->cost = cost;
-    createclass(classState);
+    this->m_classState =m_Character->GetJobClass();
+    this->cost =m_Character->GetSetCost();
+    createclass(m_classState);
     createinfo();
     SetCardSize(cardsize);
 }
+
+
+
+
 
 void Card::createclass(ClassState cs) {
     switch (cs) {

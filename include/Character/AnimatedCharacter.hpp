@@ -7,6 +7,7 @@
 #include "Util/Animation.hpp"
 #include "Util/GameObject.hpp"
 #include "CharacterState.hpp"
+#include "ClassState.hpp"
 
 #include "GamePlayMode/CharacterAttackImpact.hpp"
 #include "GamePlayMode/CharacterSkill.hpp"
@@ -171,6 +172,10 @@ public:
 	[[nodiscard]] CharacterState GetState() {
         return m_CurrentState;
     }
+	[[nodiscard]]std::string GetCharacterName(){return CharacterName;};
+	[[nodiscard]]void SetCharacterName(std::string name){CharacterName=name;}
+	virtual std::string GetJob()=0;
+	virtual ClassState GetJobClass()=0;
 	
 	~AnimatedCharacter(){}
 protected:
@@ -189,6 +194,7 @@ protected:
     float AttackNum = 0;
     float DefendNum = 0;
     float MagicDefendNum = 0;
+	std::string CharacterName;
 	
 	//std::shared_ptr<std::vector <Block>> AttackRangeNow = nullptr;
     //std::shared_ptr<std::vector <Block> >AttackRangeDefault = nullptr;

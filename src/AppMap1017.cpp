@@ -14,7 +14,6 @@ void App::LevelMain17() {
 	for (const auto& character : m_StartCharacter) {
 		if(character->GetHP() > 0){
 			character->SetLooping(true);
-			character->SetVisible(true);
 		}
 		else{
 			character->SetState(CharacterState::Die);
@@ -24,11 +23,6 @@ void App::LevelMain17() {
 			}
 		}
         }
-	if (m_Sussurro->GetHP() > 0){
-		m_Sussurro->SetVisible(true);
-		m_Sussurro->SetLooping(true);
-		m_Sussurro->SetState(CharacterState::Idle);
-	}
     //Debug();
 	//敵人重生
 	m_BugAs[0]->SetVisible(true);     

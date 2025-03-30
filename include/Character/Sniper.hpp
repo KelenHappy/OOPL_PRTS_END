@@ -4,7 +4,8 @@
 class Sniper : public AnimatedCharacter{
 public:
     Sniper(std::string CharacterName, int IdleCont, int AttackCont,int DieCont, int StartCont) : AnimatedCharacter(){
-			int defaultNum = 24; 
+			int defaultNum = 24;
+    		SetCharacterName(CharacterName);
             DefaultImage.reserve(1);
             DefaultImage.emplace_back(RESOURCE_DIR"/Character/Sniper/"+CharacterName+"/Default/1.png");
             IdleImage.reserve(defaultNum + 2);
@@ -46,9 +47,12 @@ public:
             SetPath(IdleImage, AttackImage, DieImage, StartImage, DefaultImage);
 
     }
-	std::string GetJob(){
+	std::string GetJob() override{
 		return "Sniper";
 	}
+	ClassState GetJobClass() override {
+    	return ClassState::Sniper;
+    }
 	
 	~Sniper(){}
 protected:

@@ -4,7 +4,8 @@
 class Medic : public AnimatedCharacter{
 public:
     Medic(std::string CharacterName, int IdleCont, int AttackCont,int DieCont, int StartCont) : AnimatedCharacter(){
-			int defaultNum = 24; 
+			int defaultNum = 24;
+    		SetCharacterName(CharacterName);
             DefaultImage.reserve(1);
             DefaultImage.emplace_back(RESOURCE_DIR"/Character/Medic/"+CharacterName+"/Default/1.png");
             IdleImage.reserve(defaultNum + 2);
@@ -47,9 +48,12 @@ public:
 
     }
 	
-	std::string GetJob(){
+	std::string GetJob() override{
 		return "Medic";
 	}
+	ClassState GetJobClass() override {
+    	return ClassState::Medic;
+    }
 	~Medic(){}
 protected:
 	

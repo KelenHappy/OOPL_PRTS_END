@@ -12,7 +12,7 @@
 
 class Card:public Util::GameObject {
     public:
-    Card(ClassState classState,int cost);
+    Card(std::shared_ptr<AnimatedCharacter> Character);
     std::shared_ptr<ImgItem> Getclass(){return m_class;}
     std::shared_ptr<TextBox> GetCosttext(){return m_cost;}
     std::shared_ptr<ImgItem> GetCardback(){return m_Cardback;}
@@ -26,7 +26,7 @@ class Card:public Util::GameObject {
     std::shared_ptr<TextBox> m_cost;
     int cost;
     float cardsize;
-    //std::shared_ptr<AnimatedCharacter> m_Character;
+    std::shared_ptr<AnimatedCharacter> m_Character;
     ClassState m_classState;
 
 };
