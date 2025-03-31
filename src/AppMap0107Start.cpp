@@ -11,8 +11,8 @@ void App::Map0107Loading() {
 	for (int i = 0; i < 7; ++i) {
     /*
 	m_BugAs.reserve(50);
-	m_BugAs.resize(50);
-	for (int i = 0; i < 10; ++i) {
+	m_BugAs.resize(7);
+	for (int i = 0; i < 7; ++i) {
 		m_BugAs[i] = std::make_shared<BugA>();
 		m_BugAs[i]->SetZIndex(10);
 		m_BugAs[i]->SetImageSize(0.5f,0.5f);
@@ -57,6 +57,7 @@ void App::Map0107Loading() {
 		m_0107.AddChild(m_Varlorants[i]);
 	}
 	//角色選則
+
 	for (size_t i = 0; i < m_StartCharacter.size(); ++i) {
 		m_StartCharacter[i]->SetState(CharacterState::Default);
 		m_StartCharacter[i]->SetLooping(true);

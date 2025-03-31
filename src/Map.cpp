@@ -52,9 +52,6 @@ Map::Map() {
         bk->m_Transform.translation.y = positions[i].y;
         this->m_block.push_back(bk);
     }
-    std::shared_ptr<Card> cd=std::make_shared<Card>(ClassState::Vanguard,20);
-    cd->SetTranform(570,-300);
-    this->m_Card.push_back(cd);
 }
 void Map::Update() {
 
@@ -65,7 +62,7 @@ void Map::CreatotherItem() {
     m_CostBar=std::make_shared<ImgItem>("/Maps/CostBar.png");
     m_EmemyandHp=std::make_shared<ImgItem>("/Maps/EnemyandHp.png");
     m_PutLimit=std::make_shared<TextBox>(20);
-    m_PutLimit->SetText("剩餘可放置角色:"+std::to_string(PutLimit));
+    m_PutLimit->SetText("可放置角色:"+std::to_string(PutLimit));
     m_PutlimitBar=std::make_shared<ImgItem>("/Maps/CardBack.png");
 
 

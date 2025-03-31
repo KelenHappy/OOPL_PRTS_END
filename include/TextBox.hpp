@@ -22,6 +22,11 @@ public:
         temp->SetText(Phase);
     }
 
+    void SetColor(const std::string& Phase) {
+        auto temp = std::dynamic_pointer_cast<Util::Text>(m_Drawable);
+        temp->SetColor(Util::Color::FromName(Util::Colors::YELLOW));
+    }
+
 };
 
 #endif //TEXTBOX_HPP

@@ -23,6 +23,8 @@ class Map :public Util::GameObject{
             result.push_back(m_Card[i]->Getclass());
         }
         result.push_back(m_Cost);
+        result.push_back(m_EmemyandHp);
+        result.push_back(m_CostBar);
         result.push_back(m_PutLimit);
         result.push_back(m_PutlimitBar);
         //result.push_back(m_PutLimit);
