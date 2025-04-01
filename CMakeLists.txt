@@ -86,7 +86,8 @@ add_executable(${PROJECT_NAME}
 		include/ImgItem.hpp
 
 		include/UseTime.hpp
-		
+		include/move.hpp
+
 )
 
 if(MSVC)
