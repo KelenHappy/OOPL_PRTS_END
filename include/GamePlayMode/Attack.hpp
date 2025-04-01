@@ -1,3 +1,5 @@
+#ifndef ATTACK_HPP
+#define ATTACK_HPP
 #include "CharacterAttackImpact.hpp"
 #include <iostream>
 template <typename T1, typename T2>
@@ -18,4 +20,4 @@ void attack(T1 &thisC, T2 &that){
         thisC.GetAttackImpact(),
         damage);
 }
-
+#endif
