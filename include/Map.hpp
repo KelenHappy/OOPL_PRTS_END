@@ -36,6 +36,7 @@ class Map :public Util::GameObject{
     void AddCard(std::shared_ptr<Card> card) {
         m_Card.push_back(card);
     };
+    std::shared_ptr<Block> XYGetBlock(int x,int y){return m_block[x+9*y];}
     void Update();
     void CreatotherItem();
 
@@ -55,8 +56,6 @@ class Map :public Util::GameObject{
     std::shared_ptr<TextBox> m_Cost;
     std::shared_ptr<TextBox> m_HPText;
     std::shared_ptr<TextBox> m_EnemyText;
-
-
 
 };
 #endif //MAP_HPP

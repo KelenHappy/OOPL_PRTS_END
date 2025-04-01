@@ -35,7 +35,7 @@ void App::Update() {
         Util::Input::IfExit()) {
             m_CurrentState = State::END;
         }
-        //Debug();
+        Debug();
         // test
 		for (int i = 0; i < 1; ++i) {
 			m_BugAs[i]->SetVisible(true);     
@@ -74,7 +74,7 @@ void App::Debug() {
                 if(checkCollisionNearMouse( mouseT,m_map0107->Getblock()[i]->m_Transform, 30)) {
                     m_Carry=i;
                     carry=true;
-                    LOG_DEBUG("carry ");
+                    std::cout << "X"<<m_map0107->Getblock()[i]->GetX()<< "  Y"<<m_map0107->Getblock()[i]->GetY()<<"  i"<<i;
                 }
             }
             if(carry==false) {
