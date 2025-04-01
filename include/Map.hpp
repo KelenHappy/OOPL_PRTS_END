@@ -38,7 +38,7 @@ class Map :public Util::GameObject{
     };
     void Update();
     void CreatotherItem();
-
+	~Map(){}
     private:
     int TowerHP;
     int EnemyTotalMax;
