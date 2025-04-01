@@ -30,7 +30,7 @@ void App::Map0107Loading() {
 	}
 	m_Sussurro->SetState(CharacterState::Default);
 	m_Sussurro->SetLooping(true);
-	m_0107.AddChild(m_Sussurro);*/
+	m_0107.AddChild(m_Sussurro);
 	
 	m_Throwers = std::vector<std::shared_ptr<Thrower>>();
 	m_Throwers.resize(2);
