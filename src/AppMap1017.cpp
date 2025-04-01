@@ -11,7 +11,7 @@ void App::LevelMain17() {
 			m_CurrentState = State::END;
     }
 	// 設定角色出現與否
-	/*
+
 	for (const auto& character : m_StartCharacter) {
 		if(character->GetHP() > 0){
 			character->SetLooping(true);
@@ -49,7 +49,7 @@ void App::LevelMain17() {
 			}
 		}
 	}
-	*/
+
 	
 	}*/
     m_0107.Update();

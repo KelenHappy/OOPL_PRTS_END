@@ -30,7 +30,7 @@ void App::Update() {
         m_Root.Update();
     }
     else if(m_level==level::main17) {
-        /*
+
         if (Util::Input::IsKeyUp(Util::Keycode::ESCAPE) ||
         Util::Input::IfExit()) {
             m_CurrentState = State::END;
@@ -42,7 +42,7 @@ void App::Update() {
 			m_BugAs[i]->SetLooping(true);     
 			m_BugAs[i]->SetState(EnemyState::Move);
 		}
-        */
+
         LevelMain17();
     }
 }
