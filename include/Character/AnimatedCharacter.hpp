@@ -173,7 +173,7 @@ public:
         return m_CurrentState;
     }
 	[[nodiscard]]std::string GetCharacterName(){return CharacterName;};
-	[[nodiscard]]void SetCharacterName(std::string name){CharacterName=name;}
+	void SetCharacterName(std::string name){CharacterName=name;}
 	virtual std::string GetJob()=0;
 	virtual ClassState GetJobClass()=0;
 	
