@@ -72,6 +72,7 @@ add_executable(${PROJECT_NAME}
 		include/GamePlayMode/Attack.hpp
 		include/GamePlayMode/CharacterAttackImpact.hpp
 		include/GamePlayMode/CharacterSkill.hpp
+		include/GamePlayMode/AttackRange.hpp
 		
 		include/Map.hpp
 		include/MainScream.hpp

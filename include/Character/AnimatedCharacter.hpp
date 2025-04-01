@@ -1,7 +1,6 @@
 #ifndef ANIMATED_CHARACTER_HPP
 #define ANIMATED_CHARACTER_HPP
 
-#include "Block.hpp"
 #include <vector>
 #include <string>
 #include <iostream>
@@ -11,8 +10,9 @@
 
 #include "GamePlayMode/CharacterAttackImpact.hpp"
 #include "GamePlayMode/CharacterSkill.hpp"
+#include "GameplayMode/AttackRange.hpp"
 
-class AnimatedCharacter : public Util::GameObject, public CharacterSkill {
+class AnimatedCharacter : public Util::GameObject, public CharacterSkill , public AttackRange{
 public:
 	// IdleEnd, AttackEnd, DieEnd, StartEnd, Default
     // AnitmationPaths 使用 default path
@@ -96,12 +96,6 @@ public:
         SkillName = skillname;
         HeavyLevelNum = DefendCout;
     }
-
-	void SetRange(std::shared_ptr<std::vector<Block>> Range){
-		if (Range) {  // 避免空指针
-            AttackRangeNow = std::make_shared<std::vector<Block>>(*Range); // 	複製vector 數據
-        }		
-	}
 	void SetAttackType(CharacterAttackType tt){
         AttackType = tt;
     }
@@ -196,8 +190,8 @@ protected:
     float DefendNum = 0;
     float MagicDefendNum = 0;
 	
-	std::shared_ptr<std::vector <Block>> AttackRangeNow = nullptr;
-    std::shared_ptr<std::vector <Block> >AttackRangeDefault = nullptr;
+	//std::shared_ptr<std::vector <Block>> AttackRangeNow = nullptr;
+    //std::shared_ptr<std::vector <Block> >AttackRangeDefault = nullptr;
 	int SkillDefaultNum = 0;
     int SkillCostNum = 0;
     float SkillTimeNum = 0;

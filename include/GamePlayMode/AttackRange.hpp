@@ -1,9 +1,17 @@
 #ifndef ATTACK_RANGE_HPP
 #define ATTACK_RANGE_HPP
+#include "Block.hpp"
 #include <iostream>
-//丟入Character和Map
-template <typename T1, typename T2>
-void attack_range(T1 &thisC, T2 &that){
-    //thisC->SetRange();
-}
+class AttackRange{
+public:
+	void SetRange(std::shared_ptr<std::vector<Block>> Range){
+		if (Range) {  // 避免空指针
+            AttackRangeNow = std::make_shared<std::vector<Block>>(*Range); // 	複製vector 數據
+        }		
+	}
+
+protected:
+	std::shared_ptr<std::vector <Block>> AttackRangeNow = nullptr;
+	std::shared_ptr<std::vector <Block> >AttackRangeDefault = nullptr;
+};
 #endif
