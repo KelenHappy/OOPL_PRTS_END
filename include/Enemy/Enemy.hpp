@@ -2,9 +2,10 @@
 #define ENEMY_HPP
 #include "AnimatedEnemy.hpp"
 #include "GamePlayMode/CharacterAttackImpact.hpp"
+#include "GamePlayMode/CharacterSkill.hpp"
 #include <set>
 
-class Enemy : public AnimatedEnemy{
+class Enemy : public AnimatedEnemy, public CharacterSkill{
 public:
     Enemy(std::string EnemyName, int IdleCont, int AttackCont,int DieCont, int MoveCont) : AnimatedEnemy(){
 			int defaultNum = 10; 
@@ -54,6 +55,8 @@ public:
 	void ImpactDizzy();
 	void ImpactSleep();
 	void ImpactFrozen();
+	void ApplySkillEffects();
+	void CloseSkill();
 	// Set
 		void SetImageSize(float x, float y){
 		m_Transform.scale={x, y}; 

@@ -1,6 +1,5 @@
 #ifndef CHARACTER_SKILL_HPP
 #define CHARACTER_SKILL_HPP
-#include "Character/AnimatedCharacter.hpp"
 #include "GamePlayMode/CharacterAttackImpact.hpp"
 #include "Block.hpp"
 class CharacterSkill{

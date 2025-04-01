@@ -93,9 +93,9 @@ void AnimatedCharacter::ImpactFrozen(){
 }
 
 void AnimatedCharacter::ApplySkillEffects() {
-    if (SetTimeBuff < 0) SetTimeNum *= SetTimeBuff;
+    if (SetTimeBuff > 0 and SetTimeBuff < 1) SetTimeNum *= SetTimeBuff;
 	if (SetCostBuff > 0) SetCostNum -= SetCostBuff;
-	if (AttackTimeBuff < 0) AttackTimeNum *= AttackTimeBuff;
+	if (AttackTimeBuff > 0 and AttackTimeBuff < 1) AttackTimeNum *= AttackTimeBuff;
 	if (HealthBuff > 0)	HealthNum *= HealthBuff;
 	if (AttackBuff > 0) AttackNum *= AttackBuff;
 	if (DefendBuff > 0) DefendNum *= DefendBuff;
@@ -103,7 +103,7 @@ void AnimatedCharacter::ApplySkillEffects() {
 	if (AttackRangeBuff != nullptr) AttackRangeNow = AttackRangeBuff;
 	if (SkillDefaultBuff > 0) SkillDefaultNum -= SkillDefaultBuff;
 	if (SkillCostBuff > 0) SkillCostNum -= SkillCostBuff;
-	if (SkillTimeBuff < 0) SkillTimeNum *= SkillTimeBuff;
+	if (SkillTimeBuff > 0 and SkillTimeBuff < 1) SkillTimeNum *= SkillTimeBuff;
 	
 	if (HeavyLevelBuff > 0) HeavyLevelNum += HeavyLevelBuff;
 	if (HealthRecoverBuff > 0) HealthRecoverNum += HealthRecoverBuff;
@@ -114,9 +114,9 @@ void AnimatedCharacter::ApplySkillEffects() {
 	
 
 void AnimatedCharacter::CloseSkill(){
-	if (SetTimeBuff < 0) SetTimeNum /= SetTimeBuff;
+	if (SetTimeBuff > 0 and SetTimeBuff < 1) SetTimeNum /= SetTimeBuff;
 	if (SetCostBuff > 0) SetCostNum += SetCostBuff;
-	if (AttackTimeBuff < 0) AttackTimeNum /= AttackTimeBuff;
+	if (AttackTimeBuff > 0 and AttackTimeBuff < 1) AttackTimeNum /= AttackTimeBuff;
 	if (HealthBuff > 0)	HealthNum /= HealthBuff;
 	if (AttackBuff > 0) AttackNum /= AttackBuff;
 	if (DefendBuff > 0) DefendNum /= DefendBuff;
@@ -124,7 +124,7 @@ void AnimatedCharacter::CloseSkill(){
 	if (AttackRangeBuff != nullptr) AttackRangeNow = AttackRangeDefault;
 	if (SkillDefaultBuff > 0) SkillDefaultNum += SkillDefaultBuff;
 	if (SkillCostBuff > 0) SkillCostNum += SkillCostBuff;
-	if (SkillTimeBuff < 0) SkillTimeNum /= SkillTimeBuff;
+	if (SkillTimeBuff > 0 and SkillTimeBuff < 1) SkillTimeNum /= SkillTimeBuff;
 	if (HeavyLevelBuff > 0) HeavyLevelNum -= HeavyLevelBuff;
 	if (HealthRecoverBuff > 0) HealthRecoverNum -= HealthRecoverBuff;
 

@@ -37,14 +37,15 @@ void App::Start() {
 
 	m_Exudiai = std::make_shared<Sniper>("Exusiai", 240, 61, 60, 60);
 	m_Exudiai->SetInfo(70, 12, 1, 1673, 540, 161, 0,
-	20, 30, 15, "攻擊變為5連射，攻擊間隔一定程度縮短(-0.22)，攻擊力提升至110%技能會自動開啟", "過載模式"
+	20, 30, 15, "攻擊變為5連射，攻擊間隔一定程度縮短(-0.22)", "過載模式"
 	, 1);
 	m_Exudiai->SetZIndex(15);
 	m_Exudiai->SetState(CharacterState::Default);
 	m_Exudiai->SetVisible(false);
 	m_Exudiai->SetLooping(false);
 	//角色技能建立
-	
+	m_Exudiai->SetAttackBuff(5);
+	m_Exudiai->SetAttackTimeBuff(1+100/m_Exudiai->GetAttackTime());
 
 	m_Texas = std::make_shared<Vanguard>("Texas", 120, 60, 60, 61);
 	m_Texas->SetInfo(70, 11, 1.05, 1950, 500, 343, 0, 
@@ -55,7 +56,8 @@ void App::Start() {
 	m_Texas->SetVisible(false);
 	m_Texas->SetLooping(false);
 	//角色技能建立
-	
+	m_Texas->SetImpact(CharacterAttackImpact::Dizzy);
+	m_Texas->SetAttackBuff(1.7);
 	// 角色擁有
 	m_StartCharacter.push_back(m_Sussurro);
 	m_StartCharacter.push_back(m_Exudiai);
