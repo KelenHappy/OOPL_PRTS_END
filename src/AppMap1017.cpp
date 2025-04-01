@@ -24,6 +24,9 @@ void App::LevelMain17() {
 			}
 		}
         }
+	m_BugAs[0]->SetVisible(true);     
+	m_BugAs[0]->SetLooping(true);     
+	m_BugAs[0]->SetState(EnemyState::Move);
 	/*if (m_Sussurro->GetHP() > 0){
 		m_Sussurro->SetVisible(true);
 		m_Sussurro->SetLooping(true);
@@ -31,9 +34,7 @@ void App::LevelMain17() {
 	}
     //Debug();
 	//敵人重生
-	m_BugAs[0]->SetVisible(true);     
-	m_BugAs[0]->SetLooping(true);     
-	m_BugAs[0]->SetState(EnemyState::Move);
+	
 	
 	for (size_t i = 0; i < m_BugAs.size(); ++i) {
 		if(m_BugAs[i]->GetHP() > 0){

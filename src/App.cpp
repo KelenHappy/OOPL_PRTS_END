@@ -37,12 +37,6 @@ void App::Update() {
         }
         //Debug();
         // test
-		for (int i = 0; i < 1; ++i) {
-			m_BugAs[i]->SetVisible(true);     
-			m_BugAs[i]->SetLooping(true);     
-			m_BugAs[i]->SetState(EnemyState::Move);
-		}
-
         LevelMain17();
     }
 }
