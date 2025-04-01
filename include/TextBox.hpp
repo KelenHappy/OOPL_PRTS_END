@@ -22,9 +22,9 @@ public:
         temp->SetText(Phase);
     }
 
-    void SetColor(const std::string& Phase) {
+    void SetColor(Util::Colors C) {
         auto temp = std::dynamic_pointer_cast<Util::Text>(m_Drawable);
-        temp->SetColor(Util::Color::FromName(Util::Colors::YELLOW));
+        temp->SetColor(Util::Color::FromName(C));
     }
 
 };

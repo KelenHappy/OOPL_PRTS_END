@@ -6,7 +6,10 @@ struct vec2 {
 };
 Map::Map() {
     TowerHP=3;
+    EnemyTotalMax=10;
+    EnemyTotal=0;
     PutLimit=5;
+    cost=10;
     m_map = std::make_shared<CreateIMG>("/Maps/main_0107/main_0107.png", -10);
     std::vector<vec2> positions = {
         vec2(-502.000000, -155.000000), vec2(-374.000000, -162.000000), vec2(-251.000000, -159.000000),
@@ -50,22 +53,63 @@ Map::Map() {
         std::shared_ptr<Block> bk = std::make_shared<Block>(col, row, state);
         bk->m_Transform.translation.x = positions[i].x;
         bk->m_Transform.translation.y = positions[i].y;
+        bk->SetVisible(false);
         this->m_block.push_back(bk);
     }
+    CreatotherItem();
+
 }
 void Map::Update() {
-
+    m_PutLimit->SetText("可放置角色:"+std::to_string(PutLimit));
+    m_EnemyText->SetText(std::to_string(EnemyTotal)+"/"+std::to_string(EnemyTotalMax));
+    m_HPText->SetText(std::to_string(TowerHP));
+    m_Cost->SetText(std::to_string(cost));
 }
 void Map::CreatotherItem() {
-    m_Cost=std::make_shared<TextBox>(20);
+    m_Cost=std::make_shared<TextBox>(40);
     m_Cost->SetText(std::to_string(cost));
+    m_Cost->SetZIndex(27);
+    m_Cost->m_Transform.translation={ 620, -173 };
     m_CostBar=std::make_shared<ImgItem>("/Maps/CostBar.png");
+    m_CostBar->m_Transform.scale={ 0.2, 0.2 };
+    m_CostBar->m_Transform.translation={ 582, -168 };
+    m_CostBar->SetZIndex(26);
     m_EmemyandHp=std::make_shared<ImgItem>("/Maps/EnemyandHp.png");
+    m_EmemyandHp->m_Transform.scale={ 0.8, 0.8 };
+    m_EmemyandHp->m_Transform.translation={ 0, 340 };
+    m_EmemyandHp->SetZIndex(60);
     m_PutLimit=std::make_shared<TextBox>(20);
     m_PutLimit->SetText("可放置角色:"+std::to_string(PutLimit));
+    m_PutLimit->SetZIndex(27);
+    m_PutLimit->m_Transform.translation={565,-212};
     m_PutlimitBar=std::make_shared<ImgItem>("/Maps/CardBack.png");
-
-
+    m_PutlimitBar->m_Transform.translation={570,-212};
+    m_PutlimitBar->m_Transform.scale={ 0.65, 0.1 };
+    m_PutlimitBar->SetZIndex(26);
+    m_HPText=std::make_shared<TextBox>(30);
+    m_HPText->SetText(std::to_string(TowerHP));
+    m_HPText->SetZIndex(61);
+    m_HPText->SetColor(Util::Colors::DEEP_PINK);
+    m_HPText->m_Transform.translation={153,337};
+    m_EnemyText=std::make_shared<TextBox>(30);
+    m_EnemyText->SetText(std::to_string(EnemyTotal)+"/"+std::to_string(EnemyTotalMax));
+    m_EnemyText->m_Transform.translation={-72,337};
+    m_EnemyText->SetZIndex(61);
+}
+std::vector<std::shared_ptr<Util::GameObject>> Map::GetChildren() const {
+    std::vector<std::shared_ptr<Util::GameObject>> result;
+    for(size_t i=0;i<m_block.size();i++) {
+        result.push_back(m_block[i]);
+    }
+    result.push_back(m_Cost);
+    result.push_back(m_EmemyandHp);
+    result.push_back(m_CostBar);
+    result.push_back(m_PutLimit);
+    result.push_back(m_PutlimitBar);
+    result.push_back(m_HPText);
+    result.push_back(m_EnemyText);
+    result.push_back(m_map);
+    return result;
 }
 
 
