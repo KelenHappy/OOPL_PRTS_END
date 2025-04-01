@@ -15,7 +15,8 @@ class Block:public Util::GameObject {
     void SetPosition(const glm::vec2& Position) { m_Transform.translation = Position; }
     BlockState GetBlockState(){return blockState;}
     void SetBlockState(BlockState b){blockState=b;}
-	
+    int GetX(){ return x; }
+	int GetY(){ return y; }
 
     private:
     bool HaveCharacter;
