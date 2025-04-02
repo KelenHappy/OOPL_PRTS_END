@@ -23,8 +23,9 @@ void App::Start() {
     int SkillDefault, int SkillCost, float SkillTime, std::string skillinfo, std::string skillname,
 	defendlevel
 	*/
+	//Temp
+	std::shared_ptr<std::vector<std::vector<std::string>>> AttackRangeTemp = std::make_shared<std::vector<std::vector<std::string>>>();
 	//角色建立
-	
 
 	m_Sussurro = std::make_shared<Medic>("Sussurro", 119, 61, 60, 61);
 	m_Sussurro->SetInfo(70, 18, 2.85, 1345, -488, 122, 0,
@@ -37,6 +38,15 @@ void App::Start() {
 	//角色技能建立
 	m_Sussurro->SetAttackBuff(2);
 	m_Sussurro->SetAttackTimeBuff(1+100/m_Sussurro->GetAttackTime());
+	//建立初始攻擊範圍
+	m_Sussurro->SetDefaultRange();
+	AttackRangeTemp->push_back(std::vector<std::string>(5, "0"));
+	AttackRangeTemp->push_back({"1", "1", "1", "1", "0"});
+	AttackRangeTemp->push_back({"2", "1", "1", "1", "0"});
+	AttackRangeTemp->push_back({"1", "1", "1", "1", "0"});
+	AttackRangeTemp->push_back(std::vector<std::string>(5, "0"));
+	m_Sussurro->SetNowRange(AttackRangeTemp);
+	AttackRangeTemp.reset();
 
 	m_Exudiai = std::make_shared<Sniper>("Exusiai", 240, 61, 60, 60);
 	m_Exudiai->SetInfo(70, 12, 1, 1673, 540, 161, 0,
@@ -49,6 +59,15 @@ void App::Start() {
 	//角色技能建立
 	m_Exudiai->SetAttackBuff(5);
 	m_Exudiai->SetAttackTimeBuff(1+100/m_Exudiai->GetAttackTime());
+	//建立初始攻擊範圍
+	m_Exudiai->SetDefaultRange();
+	AttackRangeTemp->push_back(std::vector<std::string>(5, "0"));
+	AttackRangeTemp->push_back({"1", "1", "1", "1", "0"});
+	AttackRangeTemp->push_back({"2", "1", "1", "1", "0"});
+	AttackRangeTemp->push_back({"1", "1", "1", "1", "0"});
+	AttackRangeTemp->push_back(std::vector<std::string>(5, "0"));
+	m_Exudiai->SetNowRange(AttackRangeTemp);
+	AttackRangeTemp.reset();
 
 	m_Texas = std::make_shared<Vanguard>("Texas", 120, 60, 60, 61);
 	m_Texas->SetInfo(70, 11, 1.05, 1950, 500, 343, 0, 
@@ -61,6 +80,16 @@ void App::Start() {
 	//角色技能建立
 	m_Texas->SetImpact(CharacterAttackImpact::Dizzy);
 	m_Texas->SetAttackBuff(1.7);
+	//建立初始攻擊範圍
+	m_Texas->SetDefaultRange();
+	AttackRangeTemp->push_back(std::vector<std::string>(5, "0"));
+	AttackRangeTemp->push_back(std::vector<std::string>(5, "0"));
+	AttackRangeTemp->push_back({"2", "1", "0", "0", "0"});
+	AttackRangeTemp->push_back(std::vector<std::string>(5, "0"));
+	AttackRangeTemp->push_back(std::vector<std::string>(5, "0"));
+	m_Texas->SetNowRange(AttackRangeTemp);
+	AttackRangeTemp.reset();
+
 	// 角色擁有
 	m_StartCharacter.push_back(m_Sussurro);
 	m_StartCharacter.push_back(m_Exudiai);
