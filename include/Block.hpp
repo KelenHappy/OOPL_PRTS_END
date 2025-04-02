@@ -13,6 +13,7 @@ class Block:public Util::GameObject {
     bool carry;
     Block(int x,int y,BlockState BS);
     void SetPosition(const glm::vec2& Position) { m_Transform.translation = Position; }
+    glm::vec2 GetPosition(){return m_Transform.translation;}
     BlockState GetBlockState(){return blockState;}
     void SetBlockState(BlockState b){blockState=b;}
     int GetX(){ return x; }
