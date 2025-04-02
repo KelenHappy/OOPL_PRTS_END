@@ -35,8 +35,7 @@ void App::Update() {
         Util::Input::IfExit()) {
             m_CurrentState = State::END;
         }
-        Debug();
-        // test
+		Debug();
         LevelMain17();
     }
 }
@@ -53,34 +52,52 @@ bool App::checkCollisionNearMouse(Util::Transform Mouse, Util::Transform Item, i
     return distance <= range;
 }
 void App::Debug() {
-    auto mouse=Util::Input::GetCursorPosition();
+/*
+    auto mouse = Util::Input::GetCursorPosition();
     Util::Transform mouseT;
-    mouseT.translation=mouse;
-    if(Util::Input::IsKeyDown(Util::Keycode::KP_ENTER)) {
-        for(size_t i=0;i<m_map0107->Getblock().size();i++) {
-            LOG_DEBUG( m_map0107->Getblock()[i]->m_Transform.translation);
+    mouseT.translation = mouse;
+
+    if (Util::Input::IsKeyDown(Util::Keycode::KP_ENTER)) {
+        for (size_t i = 0; i < m_map0107->Getblock().size(); i++) {
+            if (!m_map0107->Getblock()[i]) {
+                std::cerr << "Warning: Block[" << i << "] is nullptr!" << std::endl;
+                continue;
+            }
+            LOG_DEBUG(m_map0107->Getblock()[i]->m_Transform.translation);
         }
     }
-    if(Util::Input::IsKeyDown(Util::Keycode::MOUSE_LB)) {
-        if(carry==false) {
-            carry=false;
-            for(size_t i=0;i<m_map0107->Getblock().size();i++) {
-                if(checkCollisionNearMouse( mouseT,m_map0107->Getblock()[i]->m_Transform, 30)) {
-                    m_Carry=i;
-                    carry=true;
-                    std::cout << "X"<<m_map0107->Getblock()[i]->GetX()<< "  Y"<<m_map0107->Getblock()[i]->GetY()<<"  i"<<i;
-                }
-            }
-            if(carry==false) {
-                m_Carry=-1;
+
+    if (Util::Input::IsKeyDown(Util::Keycode::MOUSE_LB)) {
+        // 點到 Card
+		
+        for (size_t i = 0; i < m_map0107->GetCard().size(); ++i) {
+            if (!m_map0107->GetCard()[i]) continue;  // 避免 nullptr 存取
+            if (checkCollisionNearMouse(mouseT, m_map0107->GetCard()[i]->m_Transform, 30)) {
+                CheckCard = true;
+                m_CardCarry = i;
+                break;
             }
         }
-        else {carry=false;}
+        // 點到 Block
+        for (size_t i = 0; i < m_map0107->Getblock().size(); ++i) {
+            if (!m_map0107->Getblock()[i]) continue;  // 避免 nullptr 存取
+            if (checkCollisionNearMouse(mouseT, m_map0107->Getblock()[i]->m_Transform, 30)) {
+                m_Carry = i;
+                carry = true;
+                break;
+            }
+        }
     }
-    if(carry) {
-        m_map0107->Getblock()[m_Carry]->m_Transform.translation=mouse;
-    }
+	/*
+    if (carry) {
+        if (m_Carry < m_map0107->Getblock().size() && m_map0107->Getblock()[m_Carry]) {
+            m_map0107->Getblock()[m_Carry]->m_Transform.translation = mouse;
+        } else {
+            std::cerr << "Error: m_Carry out of range or block is nullptr!" << std::endl;
+        }
+    }*/
 }
+
 void App::GameTick() {
 
 

@@ -23,6 +23,7 @@ class Map :public Util::GameObject{
         return result;
     }
     [[nodiscard]] std::vector<std::shared_ptr<Block>> Getblock() {return m_block;}
+	std::vector<std::shared_ptr<Card>> GetCard() {return m_Card;}
     [[nodiscard]] int GetTowerHP(){return TowerHP;}
     [[nodiscard]] void SetTowerHP(int hp) {TowerHP = hp;}
     [[nodiscard]] void EmenyEnterTower() {TowerHP--;}

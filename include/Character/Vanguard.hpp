@@ -1,7 +1,7 @@
 #ifndef VANGUARD_HPP
 #define VANGUARD_HPP
 #include "AnimatedCharacter.hpp"
-#include "Enemy/EnemyState.hpp"
+#include "BlockState.hpp"
 
 class Vanguard : public AnimatedCharacter{
 public:
@@ -56,6 +56,9 @@ public:
 	ClassState GetJobClass() override {
 	    return ClassState::Vanguard;
     }
+	BlockState GetBlockState(){
+		return BlockState::GROUND;
+	}
 	~Vanguard(){}
 protected:
 	

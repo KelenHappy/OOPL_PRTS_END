@@ -11,18 +11,20 @@ void App::LevelMain17() {
 			m_CurrentState = State::END;
     }
 	// 設定角色出現與否
-
 	for (size_t i = 0; i < m_StartCharacter.size(); ++i) {
 		auto& character = m_StartCharacter[i];
+		CharacterState state = character->GetState();
 		// 判斷是否活著
-		if (character->GetHP() <= 0) {
+		if (character->GetHP() <= 0 and character->GetVisibility()) {
 			character->SetState(CharacterState::Die);
 			if (character->IfAnimationEnds()) {
 				character->SetLooping(false);
 				character->SetVisible(false);
+				/*
 				// 從容器中移除死亡角色
 				m_StartCharacter.erase(m_StartCharacter.begin() + i);
 				--i;  // 刪除後需要調整索引
+				*/
 				continue;
 			}
 		}
@@ -30,11 +32,34 @@ void App::LevelMain17() {
 			character->SetLooping(true);
 		}
 		//判斷被放置
-
+		
+		if(carry == true and CheckCard == true) {
+			// SetPosition
+			//character->SetPosition(m_map0107->Getblock()[m_Carry].GetPosition());
+			character->SetLooping(true);
+			character->SetState(CharacterState::Start);
+			character->SetVisible(true);
+			if (character->IfAnimationEnds()){
+				character->SetState(CharacterState::Idle);
+			}
+			CheckCard = false;
+			carry = false;
+			m_Carry = -1;
+			m_CardCarry = -1;
+        }
+		else if(carry == false and CheckCard == true and state != CharacterState::Default){
+				// 開技能
+		}
+		else if(carry == true and CheckCard == false){
+				// 收回角色
+				
+		}
+		else{
+				
+		}
 		//判斷攻擊
-
+		
 		//判斷Idle
-		CharacterState state = character->GetState();
 		if (!(state == CharacterState::Default ||
 			state == CharacterState::Die ||
 			state == CharacterState::Attack ||

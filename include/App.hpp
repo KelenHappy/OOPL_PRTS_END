@@ -76,9 +76,10 @@ private:
     std::vector<std::shared_ptr <Thrower>> m_Throwers;
     std::vector<std::shared_ptr <Varlorant>> m_Varlorants;
     // 大便
-
+	bool CheckCard = false;
     bool carry=false;
     int m_Carry=-1;
+	int m_CardCarry = -1;
 };
 
 #endif

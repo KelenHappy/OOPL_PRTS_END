@@ -1,6 +1,7 @@
 #ifndef SNIPER_HPP
 #define SNIPER_HPP
 #include "AnimatedCharacter.hpp"
+#include "BlockState.hpp"
 class Sniper : public AnimatedCharacter{
 public:
     Sniper(std::string CharacterName, int IdleCont, int AttackCont,int DieCont, int StartCont) : AnimatedCharacter(){
@@ -53,6 +54,9 @@ public:
 	ClassState GetJobClass() override {
     	return ClassState::Sniper;
     }
+	BlockState GetBlockState(){
+		return BlockState::HIGH;
+	}
 	
 	~Sniper(){}
 protected:

@@ -47,6 +47,7 @@ void App::Start() {
 	AttackRangeTemp->push_back(std::vector<std::string>(5, "0"));
 	m_Sussurro->SetNowRange(AttackRangeTemp);
 	AttackRangeTemp.reset();
+	AttackRangeTemp = std::make_shared<std::vector<std::vector<std::string>>>();
 
 	m_Exudiai = std::make_shared<Sniper>("Exusiai", 240, 61, 60, 60);
 	m_Exudiai->SetInfo(70, 12, 1, 1673, 540, 161, 0,
@@ -68,6 +69,7 @@ void App::Start() {
 	AttackRangeTemp->push_back(std::vector<std::string>(5, "0"));
 	m_Exudiai->SetNowRange(AttackRangeTemp);
 	AttackRangeTemp.reset();
+	AttackRangeTemp = std::make_shared<std::vector<std::vector<std::string>>>();
 
 	m_Texas = std::make_shared<Vanguard>("Texas", 120, 60, 60, 61);
 	m_Texas->SetInfo(70, 11, 1.05, 1950, 500, 343, 0, 
@@ -89,11 +91,12 @@ void App::Start() {
 	AttackRangeTemp->push_back(std::vector<std::string>(5, "0"));
 	m_Texas->SetNowRange(AttackRangeTemp);
 	AttackRangeTemp.reset();
+	AttackRangeTemp = std::make_shared<std::vector<std::vector<std::string>>>();
 
 	// 角色擁有
 	m_StartCharacter.push_back(m_Sussurro);
 	m_StartCharacter.push_back(m_Exudiai);
 	m_StartCharacter.push_back(m_Texas);
-	m_Texas = std::make_shared<Vanguard>("Texas", 120, 60, 60, 61);
+
 
 }

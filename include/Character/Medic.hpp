@@ -1,6 +1,7 @@
 #ifndef MEDIC_HPP
 #define MEDIC_HPP
 #include "AnimatedCharacter.hpp"
+#include "BlockState.hpp"
 class Medic : public AnimatedCharacter{
 public:
     Medic(std::string CharacterName, int IdleCont, int AttackCont,int DieCont, int StartCont) : AnimatedCharacter(){
@@ -54,6 +55,10 @@ public:
 	ClassState GetJobClass() override {
     	return ClassState::Medic;
     }
+	
+	BlockState GetBlockState(){
+		return BlockState::HIGH;
+	}
 	~Medic(){}
 protected:
 	
