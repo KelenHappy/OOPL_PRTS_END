@@ -23,6 +23,7 @@ void App::LevelMain17() {
 				// 從容器中移除死亡角色
 				m_StartCharacter.erase(m_StartCharacter.begin() + i);
 				--i;  // 刪除後需要調整索引
+				continue;
 			}
 		}
 		else {
@@ -33,12 +34,11 @@ void App::LevelMain17() {
 		//判斷攻擊
 
 		//判斷Idle
-		if(character->GetState() != CharacterState::Default and
-			character->GetState() != CharacterState::Die and
-			character->GetState() != CharacterState::Attack and
-			character->GetState() != CharacterState::Start
-		){
-			character->SetLooping(true);
+		CharacterState state = character->GetState();
+		if (!(state == CharacterState::Default ||
+			state == CharacterState::Die ||
+			state == CharacterState::Attack ||
+			state == CharacterState::Start)) {
 			character->SetState(CharacterState::Idle);
 		}
 	}
