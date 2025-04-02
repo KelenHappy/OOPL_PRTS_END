@@ -8,6 +8,7 @@
 #include "Util/GameObject.hpp"
 #include "CharacterState.hpp"
 #include "ClassState.hpp"
+#include "BlockState.hpp"
 
 #include "GamePlayMode/CharacterAttackImpact.hpp"
 #include "GamePlayMode/CharacterSkill.hpp"
@@ -62,7 +63,7 @@ public:
 	}
 	
 	void SetPosition(const glm::vec2& Position) { 
-		m_Transform.translation = Position; 
+		m_Transform.translation = {Position.x, Position.y + 55};
 	}
 	
 	void SetState(CharacterState temp) {
@@ -176,6 +177,7 @@ public:
 	void SetCharacterName(std::string name){CharacterName=name;}
 	virtual std::string GetJob()=0;
 	virtual ClassState GetJobClass()=0;
+	virtual BlockState GetBlockState() = 0;
 	
 	~AnimatedCharacter(){}
 protected:

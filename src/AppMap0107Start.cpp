@@ -57,7 +57,7 @@ void App::Map0107Loading() {
 		m_StartCharacter[i]->SetState(CharacterState::Default);
 		m_StartCharacter[i]->SetLooping(true);
 		m_StartCharacter[i]->SetVisible(false);
-		m_StartCharacter[i]->SetImageSize(0.8f, 0.8f);
+		m_StartCharacter[i]->SetImageSize(0.34f, 0.34f);
 		m_StartCharacter[i]->SetPosition({575 - i*150, -289});
 		std::shared_ptr<Card> cd=std::make_shared<Card>(m_StartCharacter[i]);
 		cd->SetTranform(570-(i*144),-300);

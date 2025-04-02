@@ -78,8 +78,10 @@ private:
     // 大便
 	bool CheckCard = false;
     bool carry=false;
+	bool CheckCharacter = false;
     int m_Carry=-1;
 	int m_CardCarry = -1;
+	int m_CharacterCarry = -1;
 };
 
 #endif

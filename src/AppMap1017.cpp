@@ -20,11 +20,9 @@ void App::LevelMain17() {
 			if (character->IfAnimationEnds()) {
 				character->SetLooping(false);
 				character->SetVisible(false);
-				/*
 				// 從容器中移除死亡角色
 				m_StartCharacter.erase(m_StartCharacter.begin() + i);
 				--i;  // 刪除後需要調整索引
-				*/
 				continue;
 			}
 		}
@@ -35,36 +33,44 @@ void App::LevelMain17() {
 		
 		if(carry == true and CheckCard == true) {
 			// SetPosition
-			//character->SetPosition(m_map0107->Getblock()[m_Carry].GetPosition());
-			character->SetLooping(true);
-			character->SetState(CharacterState::Start);
-			character->SetVisible(true);
-			if (character->IfAnimationEnds()){
-				character->SetState(CharacterState::Idle);
+			if(m_StartCharacter[m_CardCarry]->GetBlockState() == m_map0107->Getblock()[m_Carry]->GetBlockState() and m_StartCharacter[m_CardCarry]->GetState() == CharacterState::Default){
+				m_StartCharacter[m_CardCarry]->SetPosition(m_map0107->Getblock()[m_Carry]->GetPosition());
+				m_StartCharacter[m_CardCarry]->SetLooping(true);
+				m_StartCharacter[m_CardCarry]->SetState(CharacterState::Start);
+				m_StartCharacter[m_CardCarry]->SetVisible(true);
 			}
+			
 			CheckCard = false;
 			carry = false;
 			m_Carry = -1;
 			m_CardCarry = -1;
         }
-		else if(carry == false and CheckCard == true and state != CharacterState::Default){
-				// 開技能
+		else if(carry == false and CheckCard == true and m_StartCharacter[m_CardCarry]->GetState() == CharacterState::Default){
+			
 		}
-		else if(carry == true and CheckCard == false){
-				// 收回角色
-				
+		else if(carry == true and CheckCard == false and CheckCharacter){
+			// 收回角色
+			m_StartCharacter[m_CharacterCarry]->SetVisible(false);
+			m_StartCharacter[m_CharacterCarry]->SetState(CharacterState::Default);
+			m_Carry = -1;
+			carry = false;
+			m_CharacterCarry = -1;
+			CheckCharacter = false;
 		}
 		else{
-				
+			CheckCard = false;
+			carry = false;
+			m_Carry = -1;
+			m_CardCarry = -1;	
 		}
 		//判斷攻擊
 		
 		//判斷Idle
 		if (!(state == CharacterState::Default ||
-			state == CharacterState::Die ||
-			state == CharacterState::Attack ||
-			state == CharacterState::Start)) {
-			character->SetState(CharacterState::Idle);
+			state == CharacterState::Attack) and character->GetVisibility()) {
+			if(character->IfAnimationEnds()){
+				character->SetState(CharacterState::Idle);
+			}
 		}
 	}
 
