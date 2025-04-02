@@ -11,7 +11,7 @@
 
 #include "GamePlayMode/CharacterAttackImpact.hpp"
 #include "GamePlayMode/CharacterSkill.hpp"
-#include "GameplayMode/AttackRange.hpp"
+#include "GamePlayMode/AttackRange.hpp"
 
 class AnimatedCharacter : public Util::GameObject, public CharacterSkill , public AttackRange{
 public:
