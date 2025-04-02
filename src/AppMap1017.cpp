@@ -66,6 +66,7 @@ void App::LevelMain17() {
 		//判斷攻擊
 		
 		//判斷Idle
+		//有問題，拿起來重新放下無法撥動畫
 		if (!(state == CharacterState::Default ||
 			state == CharacterState::Attack) and character->GetVisibility()) {
 			if(character->IfAnimationEnds()){

@@ -72,7 +72,7 @@ void App::Debug() {
 		
         for (size_t i = 0; i < m_map0107->GetCard().size(); ++i) {
             if (!m_map0107->GetCard()[i]) continue;  // 避免 nullptr 存取
-            if (checkCollisionNearMouse(mouseT, m_map0107->GetCard()[i]->m_Transform, 40)) {
+            if (checkCollisionNearMouse(mouseT, m_map0107->GetCard()[i]->m_Transform, 50)) {
                 CheckCard = true;
                 m_CardCarry = i;
 				std::cout << m_CardCarry << std::endl;
@@ -90,21 +90,14 @@ void App::Debug() {
         }
 		//點到角色
 		for (size_t i = 0; i < m_StartCharacter.size(); ++i) {
-            if (checkCollisionNearMouse(mouseT, m_StartCharacter[i]->m_Transform, 20)) {
+            if (checkCollisionNearMouse(mouseT, m_StartCharacter[i]->m_Transform, 30)) {
                 m_CharacterCarry = i;
                 CheckCharacter = true;
                 break;
             }
         }
     }
-	
-    if (carry) {
-        if (m_Carry < m_map0107->Getblock().size() && m_map0107->Getblock()[m_Carry]) {
-            m_map0107->Getblock()[m_Carry]->m_Transform.translation = mouse;
-        } else {
-            std::cerr << "Error: m_Carry out of range or block is nullptr!" << std::endl;
-        }
-    }
+
 }
 
 void App::GameTick() {

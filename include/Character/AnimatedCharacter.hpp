@@ -63,7 +63,7 @@ public:
 	}
 	
 	void SetPosition(const glm::vec2& Position) { 
-		m_Transform.translation = {Position.x, Position.y + 55};
+		m_Transform.translation = {Position.x, Position.y + 80};
 	}
 	
 	void SetState(CharacterState temp) {
