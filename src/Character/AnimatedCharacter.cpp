@@ -4,9 +4,10 @@
 // 更換Animation
 void AnimatedCharacter::Update() {
 	switch (m_CurrentState) {
-		case CharacterState::Idle:
-			m_Drawable = m_IdleAnimation;
+		case CharacterState::Start:
+			m_Drawable= m_StartAnimation;
 			break;
+		
 		case CharacterState::Attack:
 			m_Drawable = m_AttackAnimation;
 			break;
@@ -16,8 +17,8 @@ void AnimatedCharacter::Update() {
 		case CharacterState::Default:
 			m_Drawable = m_Default;
 			break;
-		case CharacterState::Start:
-			m_Drawable= m_StartAnimation;
+		case CharacterState::Idle:
+			m_Drawable = m_IdleAnimation;
 			break;
 		default:
 			std::cout << "Error input Current CharacterState" << std::endl;
@@ -25,9 +26,10 @@ void AnimatedCharacter::Update() {
 	}
 }	
 
-[[nodiscard]] bool AnimatedCharacter::IfAnimationEnds() {
+[[nodiscard]] bool AnimatedCharacter::IfAnimationEnds() const{
 	auto animation = std::dynamic_pointer_cast<Util::Animation>(m_Drawable);
 	//std::cout << animation->GetFrameCount() << std::endl;
+	
 	return animation->GetCurrentFrameIndex() == animation->GetFrameCount() - 1;
 }
 

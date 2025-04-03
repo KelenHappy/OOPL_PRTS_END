@@ -19,6 +19,9 @@
 #include "Enemy/Soldier.hpp"
 #include "Enemy/Thrower.hpp"
 #include "Enemy/Varlorant.hpp"
+
+#include "GamePlayMode/Attack.hpp"
+
 class App {
 public:
     enum class State {

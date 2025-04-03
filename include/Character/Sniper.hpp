@@ -5,7 +5,7 @@
 class Sniper : public AnimatedCharacter{
 public:
     Sniper(std::string CharacterName, int IdleCont, int AttackCont,int DieCont, int StartCont) : AnimatedCharacter(){
-			int defaultNum = 24;
+			int defaultNum = 30;
     		SetCharacterName(CharacterName);
             DefaultImage.reserve(1);
             DefaultImage.emplace_back(RESOURCE_DIR"/Character/Sniper/"+CharacterName+"/Default/1.png");

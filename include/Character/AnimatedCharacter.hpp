@@ -31,7 +31,7 @@ public:
 	void ImpactDizzy();
 	void ImpactSleep();
 	void ImpactFrozen();
-	[[nodiscard]] bool IfAnimationEnds();
+	[[nodiscard]] bool IfAnimationEnds() const;
 	
 	// Set
 	//設定path
@@ -42,19 +42,19 @@ public:
                  std::vector<std::string>& DefaultEnd){
         // 初始化動畫
         this->m_Drawable = std::make_shared<Util::Animation>
-        (DefaultEnd, false, 50, false, 0);
+        (DefaultEnd, false, 35, false, 0);
         this->m_Default = std::make_shared<Util::Animation>
-        (DefaultEnd, false, 50, false, 0);
+        (DefaultEnd, false, 35, false, 0);
         this->m_Drawable = m_Default;
 
         this->m_IdleAnimation = std::make_shared<Util::Animation>
-        (IdleEnd, false, 50, false, 0);
+        (IdleEnd, false, 35, false, 0);
         this->m_AttackAnimation = std::make_shared<Util::Animation>
-        (AttackEnd, false, 50, false, 0);
+        (AttackEnd, false, 35, false, 0);
         this->m_DieAnimation = std::make_shared<Util::Animation>
-        (DieEnd, false, 50, false, 0);
+        (DieEnd, false, 35, false, 0);
         this->m_StartAnimation = std::make_shared<Util::Animation>
-        (StartEnd, false, 50, false, 0);
+        (StartEnd, false, 35, false, 0);
     }
 	
 	//Set 圖片大小
@@ -74,7 +74,7 @@ public:
 	
     void SetLooping(bool looping) {
         auto temp = std::dynamic_pointer_cast<Util::Animation>(m_Drawable);
-        temp->SetLooping(looping);
+        //temp->SetLooping(looping);
         if(looping)temp->Play();
         else{
             temp->Pause();

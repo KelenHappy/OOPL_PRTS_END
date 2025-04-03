@@ -14,8 +14,9 @@ void App::LevelMain17() {
 	for (size_t i = 0; i < m_StartCharacter.size(); ++i) {
 		auto& character = m_StartCharacter[i];
 		CharacterState state = character->GetState();
+
 		// 判斷是否活著
-		if (character->GetHP() <= 0 and character->GetVisibility()) {
+		if (character->GetHP() <= 0 and character->GetVisibility() or state == CharacterState::Die) {
 			character->SetState(CharacterState::Die);
 			if (character->IfAnimationEnds()) {
 				character->SetLooping(false);
@@ -25,8 +26,11 @@ void App::LevelMain17() {
 				--i;  // 刪除後需要調整索引
 				continue;
 			}
+			else{
+				character->SetLooping(true);
+			}
 		}
-		else {
+		else{
 			character->SetLooping(true);
 		}
 		//判斷被放置
@@ -35,7 +39,6 @@ void App::LevelMain17() {
 			// SetPosition
 			if(m_StartCharacter[m_CardCarry]->GetBlockState() == m_map0107->Getblock()[m_Carry]->GetBlockState() and m_StartCharacter[m_CardCarry]->GetState() == CharacterState::Default){
 				m_StartCharacter[m_CardCarry]->SetPosition(m_map0107->Getblock()[m_Carry]->GetPosition());
-				m_StartCharacter[m_CardCarry]->SetLooping(true);
 				m_StartCharacter[m_CardCarry]->SetState(CharacterState::Start);
 				m_StartCharacter[m_CardCarry]->SetVisible(true);
 			}
@@ -51,6 +54,7 @@ void App::LevelMain17() {
 		else if(carry == true and CheckCard == false and CheckCharacter){
 			// 收回角色
 			m_StartCharacter[m_CharacterCarry]->SetVisible(false);
+			m_StartCharacter[m_CharacterCarry]->SetLooping(false);
 			m_StartCharacter[m_CharacterCarry]->SetState(CharacterState::Default);
 			m_Carry = -1;
 			carry = false;
@@ -58,31 +62,41 @@ void App::LevelMain17() {
 			CheckCharacter = false;
 		}
 		else{
+			CheckCharacter = false;
 			CheckCard = false;
 			carry = false;
 			m_Carry = -1;
 			m_CardCarry = -1;	
+			m_CharacterCarry = -1;
 		}
 		//判斷攻擊
-		
+		for(size_t j = 0; j < m_BugAs.size() and character->GetVisibility(); ++j){
+			auto& bug = m_BugAs[j];
+			double distance = calculateDistance(character->m_Transform, bug->m_Transform);
+			if(character->GetState() != CharacterState::Default and distance <= 150 and bug->GetVisibility()){
+				character->SetState(CharacterState::Attack);
+				character->SetLooping(true);
+				attack(character, bug);
+			}
+		}
 		//判斷Idle
 		//有問題，拿起來重新放下無法撥動畫
-		if (!(state == CharacterState::Default ||
-			state == CharacterState::Attack) and character->GetVisibility()) {
-			if(character->IfAnimationEnds()){
+		if(state == CharacterState::Start){
+			if(!character->IfAnimationEnds()){
+				character->SetLooping(true);
+			}
+			else{
+				character->SetLooping(false);
 				character->SetState(CharacterState::Idle);
 			}
 		}
 	}
+	
 
 	m_BugAs[0]->SetVisible(true);
 	m_BugAs[0]->SetLooping(true);
 	m_BugAs[0]->SetState(EnemyState::Move);
-	/*if (m_Sussurro->GetHP() > 0){
-		m_Sussurro->SetVisible(true);
-		m_Sussurro->SetLooping(true);
-		m_Sussurro->SetState(CharacterState::Idle);
-	}
+	/*
     //Debug();
 	//敵人重生
 
