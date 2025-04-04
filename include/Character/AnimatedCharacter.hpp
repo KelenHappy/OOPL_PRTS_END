@@ -31,6 +31,8 @@ public:
 	void ImpactDizzy();
 	void ImpactSleep();
 	void ImpactFrozen();
+	void FrameReset();
+	
 	[[nodiscard]] bool IfAnimationEnds() const;
 	
 	// Set
@@ -88,6 +90,7 @@ public:
         SetCostNum = SetCost;
         AttackTimeNum = AttackTime;
         HealthNum = Health;
+		HealthRecoverNum = Health;
         AttackNum = Attack;
         DefendNum = Defend;
         MagicDefendNum = DefendMagic;
@@ -193,6 +196,7 @@ protected:
     int SetCostNum = 0;
     float AttackTimeNum = 0;
     float HealthNum = 0;
+	float HealthNow = 0;
     float AttackNum = 0;
     float DefendNum = 0;
     float MagicDefendNum = 0;

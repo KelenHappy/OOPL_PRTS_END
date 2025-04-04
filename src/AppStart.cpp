@@ -39,6 +39,7 @@ void App::Start() {
 	m_Sussurro->SetAttackBuff(2);
 	m_Sussurro->SetAttackTimeBuff(1+100/m_Sussurro->GetAttackTime());
 	//建立初始攻擊範圍
+	m_Sussurro->SetAttackRangeNum(4);
 	m_Sussurro->SetDefaultRange();
 	AttackRangeTemp->push_back(std::vector<std::string>(5, "0"));
 	AttackRangeTemp->push_back({"1", "1", "1", "1", "0"});
@@ -61,6 +62,7 @@ void App::Start() {
 	m_Exudiai->SetAttackBuff(5);
 	m_Exudiai->SetAttackTimeBuff(1+100/m_Exudiai->GetAttackTime());
 	//建立初始攻擊範圍
+	m_Exudiai->SetAttackRangeNum(4);
 	m_Exudiai->SetDefaultRange();
 	AttackRangeTemp->push_back(std::vector<std::string>(5, "0"));
 	AttackRangeTemp->push_back({"1", "1", "1", "1", "0"});
@@ -83,6 +85,7 @@ void App::Start() {
 	m_Texas->SetImpact(CharacterAttackImpact::Dizzy);
 	m_Texas->SetAttackBuff(1.7);
 	//建立初始攻擊範圍
+	m_Texas->SetAttackRangeNum(2);
 	m_Texas->SetDefaultRange();
 	AttackRangeTemp->push_back(std::vector<std::string>(5, "0"));
 	AttackRangeTemp->push_back(std::vector<std::string>(5, "0"));

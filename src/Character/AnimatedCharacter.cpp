@@ -133,3 +133,12 @@ void AnimatedCharacter::CloseSkill(){
 	if (ImpactBuff != CharacterAttackImpact::Null) AttackImpact = CharacterAttackImpact::Null;
 	if (TypeBuff != AttackType) AttackType = CharacterAttackType::Physics;
 }
+
+void AnimatedCharacter::FrameReset(){
+	m_IdleAnimation->SetCurrentFrame(0);
+    m_AttackAnimation->SetCurrentFrame(0);
+    m_DieAnimation->SetCurrentFrame(0);
+    m_StartAnimation->SetCurrentFrame(0);
+    m_Default->SetCurrentFrame(0);
+	
+}

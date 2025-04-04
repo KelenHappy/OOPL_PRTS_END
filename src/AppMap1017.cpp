@@ -16,11 +16,12 @@ void App::LevelMain17() {
 		CharacterState state = character->GetState();
 
 		// 判斷是否活著
-		if (character->GetHP() <= 0 and character->GetVisibility() or state == CharacterState::Die) {
+		if (character->GetHealthRecover() <= 0 and character->GetVisibility() or state == CharacterState::Die) {
 			character->SetState(CharacterState::Die);
 			if (character->IfAnimationEnds()) {
 				character->SetLooping(false);
 				character->SetVisible(false);
+				character->FrameReset();
 				// 從容器中移除死亡角色
 				m_StartCharacter.erase(m_StartCharacter.begin() + i);
 				--i;  // 刪除後需要調整索引
@@ -70,23 +71,39 @@ void App::LevelMain17() {
 			m_CharacterCarry = -1;
 		}
 		//判斷攻擊
-		for(size_t j = 0; j < m_BugAs.size() and character->GetVisibility(); ++j){
-			auto& bug = m_BugAs[j];
-			double distance = calculateDistance(character->m_Transform, bug->m_Transform);
-			if(character->GetState() != CharacterState::Default and distance <= 150 and bug->GetVisibility()){
-				character->SetState(CharacterState::Attack);
-				character->SetLooping(true);
-				attack(character, bug);
+		if(character->GetJob() != "Medic"){
+			for(size_t j = 0; j < m_BugAs.size() and character->GetVisibility(); ++j){
+				auto& bug = m_BugAs[j];
+				double distance = calculateDistance(character->m_Transform, bug->m_Transform);
+				if(character->GetState() != CharacterState::Default and distance <= character->GetAttackRangeNum()*75 and bug->GetVisibility()){
+					character->SetState(CharacterState::Attack);
+					character->SetLooping(true);
+					attack(character, bug);
+					break;
+				}
+			}
+		}
+		// 判斷回血
+		else{
+			for(size_t j = 0; j < m_StartCharacter.size(); ++j){
+				auto& cc = m_StartCharacter[j];
+				double distance = calculateDistance(character->m_Transform, cc->m_Transform);
+				if(cc->GetHP() > cc->GetHealthRecover() and distance <= character->GetAttackRangeNum()*70){
+					character->SetState(CharacterState::Attack);
+					character->SetLooping(true);
+					attack(character, cc);
+					break;
+				}
 			}
 		}
 		//判斷Idle
-		//有問題，拿起來重新放下無法撥動畫
-		if(state == CharacterState::Start){
+		if(state == CharacterState::Start or state == CharacterState::Attack){
 			if(!character->IfAnimationEnds()){
 				character->SetLooping(true);
 			}
 			else{
 				character->SetLooping(false);
+				character->FrameReset();
 				character->SetState(CharacterState::Idle);
 			}
 		}

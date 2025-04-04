@@ -8,6 +8,13 @@
 
 class AttackRange {
 public:
+	void SetAttackRangeNum(int Range){
+		AttackRangeNum = Range;
+	}
+	
+	int GetAttackRangeNum(){
+		return AttackRangeNum;
+	}
     void SetAttackRangeNow(std::shared_ptr<std::vector<Block>> Range) {
         if (Range) {  // 避免空指針
             AttackRangeNow = std::make_shared<std::vector<Block>>(*Range); // 複製 vector 數據
@@ -34,8 +41,9 @@ public:
     void SetNowRange(std::shared_ptr<std::vector<std::vector<std::string>>> In) {
         m_DefaultRange = In;
     }
-
+	
 protected:
+	int AttackRangeNum = 0 ;
     std::shared_ptr<std::vector<std::vector<std::string>>> m_DefaultRange;
     std::shared_ptr<std::vector<Block>> AttackRangeNow = nullptr;
     std::shared_ptr<std::vector<Block>> AttackRangeDefault = nullptr;
