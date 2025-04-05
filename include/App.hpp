@@ -52,7 +52,7 @@ private:
     double calculateDistance(Util::Transform a, Util::Transform b);
 	void Map0107Loading();
     void GameTick();
-
+	void GameSecondTick();
 
 private:
 
@@ -85,6 +85,7 @@ private:
     int m_Carry=-1;
 	int m_CardCarry = -1;
 	int m_CharacterCarry = -1;
+	int Tickcount=0;
 };
 
 #endif

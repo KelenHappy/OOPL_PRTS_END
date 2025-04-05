@@ -111,5 +111,13 @@ std::vector<std::shared_ptr<Util::GameObject>> Map::GetChildren() const {
     result.push_back(m_map);
     return result;
 }
+bool Map::Takemapcost(int n) {
+    if (cost>=n) {
+        cost-=n;
+        return true;
+    }
+    return false;
+}
+
 
 

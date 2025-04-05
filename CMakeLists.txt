@@ -34,23 +34,19 @@ list(TRANSFORM INCLUDE_FILES PREPEND ${INCLUDE_DIR}/)
 add_executable(${PROJECT_NAME}
     ${SRC_DIR}/main.cpp
     ${SRC_FILES}
-        src/App.cpp
-		src/AppUpdate.cpp
-		src/AppStart.cpp
-		src/AppEnd.cpp
-		src/AppMap1017.cpp
-		src/AppMap0107Start.cpp
-		
+		src/App.cpp
+		src/App/AppUpdate.cpp
+		src/App/AppStart.cpp
+		src/App/AppEnd.cpp
+		src/App/AppMap1017.cpp
+		src/App/AppMap0107Start.cpp
+		src/App/AppGametick.cpp
+		src/App/AppSecondTick.cpp
 		src/Block.cpp
-
 		src/Card.cpp
-		
 		src/Character/AnimatedCharacter.cpp
-		
 		src/Enemy/Enemy.cpp
         src/Map.cpp
-
-
     ${HEADER_FILES}
         include/App.hpp	
 		include/Block.hpp
@@ -87,6 +83,9 @@ add_executable(${PROJECT_NAME}
 		include/ImgItem.hpp
 		include/GameTimer.hpp
 		include/move.hpp
+		include/Pathpoints.hpp
+		include/MobSpawner.hpp
+
 
 )
 

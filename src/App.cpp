@@ -16,6 +16,8 @@ void App::Update() {
     }
     if (gametimer->HasElapsed(50)) { // 每 50 毫秒執行一次
         GameTick();
+        Tickcount++;
+        if (Tickcount >=20) {Tickcount=0;GameSecondTick();}
         gametimer->Reset();
     }
     if(m_level==level::lobby){
@@ -100,9 +102,5 @@ void App::Debug() {
 
 }
 
-void App::GameTick() {
-
-
-}
 
 
