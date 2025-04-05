@@ -127,6 +127,13 @@ public:
 			}
 		}
     }
+	void FrameReset(){
+		m_IdleAnimation->SetCurrentFrame(0);
+		m_AttackAnimation->SetCurrentFrame(0);
+		m_DieAnimation->SetCurrentFrame(0);
+		m_MoveAnimation->SetCurrentFrame(0);
+		m_Default->SetCurrentFrame(0);
+	}
 	~AnimatedEnemy(){}
 protected:
     EnemyState m_CurrentState;
