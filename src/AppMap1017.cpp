@@ -16,7 +16,7 @@ void App::LevelMain17() {
 		CharacterState state = character->GetState();
 
 		// 判斷是否活著
-		if (character->GetHealthRecover() <= 0 and character->GetVisibility() or state == CharacterState::Die) {
+		if ((character->GetHealthRecover() <= 0 and character->GetVisibility()) or state == CharacterState::Die) {
 			character->SetState(CharacterState::Die);
 			if (character->IfAnimationEnds()) {
 				character->SetLooping(false);
@@ -81,6 +81,11 @@ void App::LevelMain17() {
 					attack(character, bug);
 					break;
 				}
+				else if(character->IfAnimationEnds()){
+					character->SetLooping(true);
+					character->FrameReset();
+					character->SetState(CharacterState::Idle);
+				}
 			}
 		}
 		// 判斷回血
@@ -94,10 +99,15 @@ void App::LevelMain17() {
 					attack(character, cc);
 					break;
 				}
+				else if(character->IfAnimationEnds()){
+					character->SetLooping(true);
+					character->FrameReset();
+					character->SetState(CharacterState::Idle);
+				}
 			}
 		}
 		//判斷Idle
-		if(state == CharacterState::Start or state == CharacterState::Attack){
+		if(state == CharacterState::Start){
 			if(!character->IfAnimationEnds()){
 				character->SetLooping(true);
 			}
