@@ -1,5 +1,15 @@
 #include "Enemy/Enemy.hpp"
 
+#include "move.hpp"
+#include "MyTool.hpp"
+
+void Enemy::Update() {
+	moveGameObject(shared_from_this(),PathPoints->GetnowPoint(),MoveSpeedNum/20);
+	if (glm::length(m_Transform.translation-PathPoints->GetnowPoint())<5) {
+		PathPoints->getNextPoint();
+	}
+}
+
 void Enemy::takeDamage(CharacterAttackImpact impact, float damage){
 	switch(impact){
 		case CharacterAttackImpact::Null:

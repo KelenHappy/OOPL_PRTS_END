@@ -7,6 +7,10 @@
 #include <vector>
 void App::Map0107Loading() {
     //加載敵人
+	m_Spawner=std::make_shared<Spawner>();
+	Enemies=m_Spawner->GetEnemies();
+	m_0107.AddChildren(m_Spawner->GetEnemiesGameobject());
+	/*
 	m_BugAs.reserve(50);
 	m_BugAs.resize(7);
 	for (int i = 0; i < 7; ++i) {
@@ -50,7 +54,7 @@ void App::Map0107Loading() {
 		m_Varlorants[i]->SetVisible(false);     
 		m_Varlorants[i]->SetLooping(false);
 		m_0107.AddChild(m_Varlorants[i]);
-	}
+	}*/
 	//角色選則
 
 	for (size_t i = 0; i < m_StartCharacter.size(); ++i) {

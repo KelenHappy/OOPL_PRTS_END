@@ -1,7 +1,6 @@
 #ifndef APP_HPP
 #define APP_HPP
 
-#include "pch.hpp" // IWYU pragma: export
 #include "MainScream.hpp"
 #include "Map.hpp"
 #include "Util/Renderer.hpp"
@@ -9,6 +8,7 @@
 #include "Character/AnimatedCharacter.hpp"
 #include "Character/CharacterState.hpp"
 #include "GameTimer.hpp"
+#include "MobSpawner.hpp"
 #include "Character/Medic.hpp"
 #include "Character/Sniper.hpp"
 #include "Character/Vanguard.hpp"
@@ -69,15 +69,13 @@ private:
 	std::shared_ptr<Medic> m_Sussurro;
 	std::shared_ptr<Sniper> m_Exudiai;
 	std::shared_ptr<Vanguard> m_Texas;
+	std::shared_ptr<Spawner> m_Spawner;
     //Charcter Choosen
 	std::vector<std::shared_ptr<AnimatedCharacter>> m_StartCharacter;
 	std::vector<std::shared_ptr<AnimatedCharacter>> m_LevelCharacter;
 	// Enemy
     // idle attack die move
-    std::vector<std::shared_ptr<BugA>> m_BugAs;
-    std::vector<std::shared_ptr <Soldier>> m_Soldiers;
-    std::vector<std::shared_ptr <Thrower>> m_Throwers;
-    std::vector<std::shared_ptr <Varlorant>> m_Varlorants;
+    std::vector<std::shared_ptr<Enemy>> Enemies;
     // 大便
 	bool CheckCard = false;
     bool carry=false;

@@ -3,8 +3,9 @@
 #define MOVE_HPP
 #include "Card.hpp"
 #include "Util/GameObject.hpp"
-template <typename T, typename = std::enable_if_t<std::is_base_of_v<Util::GameObject, T>>>
+template <typename T>
 void moveGameObject(std::shared_ptr<T> obj, const glm::vec2& target, float stepSize) {
+    // 如果 T 不是 GameObject，但有 m_Transform 並且 m_Transform 有 translation，這也會通
     glm::vec2 start = obj->m_Transform.translation;
     glm::vec2 direction = target - start;
     float distance = glm::length(direction);

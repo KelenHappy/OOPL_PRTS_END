@@ -5,7 +5,9 @@
 #include "GamePlayMode/CharacterSkill.hpp"
 #include <set>
 
-class Enemy : public AnimatedEnemy, public CharacterSkill{
+#include "Pathpoints.hpp"
+
+class Enemy : public AnimatedEnemy, public CharacterSkill,public std::enable_shared_from_this<Enemy>{
 public:
     Enemy(std::string EnemyName, int IdleCont, int AttackCont,int DieCont, int MoveCont) : AnimatedEnemy(){
 			int defaultNum = 10; 
@@ -57,10 +59,12 @@ public:
 	void ImpactFrozen();
 	void ApplySkillEffects();
 	void CloseSkill();
+	void Update();
 	// Set
 		void SetImageSize(float x, float y){
 		m_Transform.scale={x, y}; 
 	}
+	void SetPathPoint(std::shared_ptr<PathPoints> P){PathPoints=P;}
 	void SetInfo(int Health, int Attack, int Defend, int MagicDefend, int AttackSpeed
 	, float AttackDistance, int AttackCastle, float MoveSpeed, int HeavyLevel, int HealthRecover
 	, bool Dizzy, bool Sleep, bool Frozen
@@ -140,7 +144,9 @@ protected:
 	std::vector<std::string> MoveImage;
 	std::vector<std::string> AttackImage;
 	std::vector<std::string> DieImage;
+	std::shared_ptr<PathPoints>  PathPoints;
 	// 角色數值
+	int PathPointsindex=0;
 	float HealthNum = 0;
 	float AttackNum = 0;
 	float DefendNum = 0;

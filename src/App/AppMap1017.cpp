@@ -117,13 +117,15 @@ void App::LevelMain17() {
 				character->SetState(CharacterState::Idle);
 			}
 		}
-	}
-	
+	}/*
 
-	m_BugAs[0]->SetVisible(true);
 	m_BugAs[0]->SetLooping(true);
-	m_BugAs[0]->SetState(EnemyState::Move);
-	/*
+	m_BugAs[0]->SetState(EnemyState::Move);*/
+	/*if (m_Sussurro->GetHP() > 0){
+		m_Sussurro->SetVisible(true);
+		m_Sussurro->SetLooping(true);
+		m_Sussurro->SetState(CharacterState::Idle);
+	}
     //Debug();
 	//敵人重生
 

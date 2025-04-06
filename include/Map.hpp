@@ -25,9 +25,9 @@ class Map :public Util::GameObject{
     [[nodiscard]] std::vector<std::shared_ptr<Block>> Getblock() {return m_block;}
 	std::vector<std::shared_ptr<Card>> GetCard() {return m_Card;}
     [[nodiscard]] int GetTowerHP(){return TowerHP;}
-    [[nodiscard]] void SetTowerHP(int hp) {TowerHP = hp;}
-    [[nodiscard]] void EmenyEnterTower() {TowerHP--;}
-    [[nodiscard]] void Addmapcost(int n) {cost+=n;}
+    void SetTowerHP(int hp) {TowerHP = hp;}
+    void EmenyEnterTower() {TowerHP--;}
+    void Addmapcost(int n) {cost+=n;}
     [[nodiscard]] bool Takemapcost(int n);
      int GetEnemytotal(){return EnemyTotal;}
      int GetEnemytotalMax(){return EnemyTotalMax;}

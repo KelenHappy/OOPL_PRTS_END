@@ -87,6 +87,7 @@ add_executable(${PROJECT_NAME}
 		include/MobSpawner.hpp
 		include/Enemy/EnemyType.hpp
 		src/MobSpawner.cpp
+		include/MyTool.hpp
 
 
 )

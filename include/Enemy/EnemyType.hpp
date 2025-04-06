@@ -7,7 +7,7 @@
 enum class Enemytype {
     BugA,
     Soldier,
-    Thrrower,
+    Thrower,
     Valorant
 };
 #endif /Enemytype/ENEMYTYPE_HPP

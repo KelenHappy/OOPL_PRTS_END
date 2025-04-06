@@ -1,5 +1,5 @@
 #include <vector>
-#include "GameTimer.hpp"
+#include "Pathpoints.hpp"
 #include "Enemy/Enemy.hpp"
 #include "Enemy/EnemyType.hpp"
 #include "Util/Transform.hpp"
@@ -14,24 +14,26 @@ public:
     Spawner();
     ~Spawner();
     std::shared_ptr<Enemy> SpawnEnemy(Enemytype type);
-    struct Path {
-        std::vector<Util::Transform> waypoints;
-    };
 
-
-    void AddPath(const std::vector<Util::Transform>& waypoints) {
-        paths.push_back({waypoints});
+    void AddPath(const std::shared_ptr<PathPoints> Point) {
+        paths.push_back(Point);
     }
 
     void AddSpawn(float time, int type, int pathIndex) {
         spawnQueue.push_back({time, type, pathIndex});
     }
-
-
+    std::vector<std::shared_ptr<Enemy>> GetEnemies() {return enemies;}
+    std::vector<std::shared_ptr<Util::GameObject>> GetEnemiesGameobject() {
+        std::vector<std::shared_ptr<Util::GameObject>>result;
+        for (size_t i = 0; i < enemies.size(); i++) {
+            result.emplace_back(enemies[i]);
+        }
+        return result;
+    }
 
 private:
     std::vector<SpawnInfo> spawnQueue;
-    std::vector<Path> paths;
+    std::vector<std::shared_ptr<PathPoints>> paths;
     void AddSpawnEnemy(Enemytype type);
     std::vector<std::shared_ptr<Enemy>> enemies;
 };
