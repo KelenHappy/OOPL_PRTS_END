@@ -47,6 +47,7 @@ add_executable(${PROJECT_NAME}
 		src/Character/AnimatedCharacter.cpp
 		src/Enemy/Enemy.cpp
         src/Map.cpp
+		src/MobSpawner.cpp
     ${HEADER_FILES}
         include/App.hpp	
 		include/Block.hpp
@@ -86,7 +87,6 @@ add_executable(${PROJECT_NAME}
 		include/Pathpoints.hpp
 		include/MobSpawner.hpp
 		include/Enemy/EnemyType.hpp
-		src/MobSpawner.cpp
 		include/MyTool.hpp
 
 

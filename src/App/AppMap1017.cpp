@@ -72,8 +72,8 @@ void App::LevelMain17() {
 		}
 		//判斷攻擊
 		if(character->GetJob() != "Medic"){
-			for(size_t j = 0; j < m_BugAs.size() and character->GetVisibility(); ++j){
-				auto& bug = m_BugAs[j];
+			for(size_t j = 0; j < Enemies.size() and character->GetVisibility(); ++j){
+				auto& bug = Enemies[j];
 				double distance = calculateDistance(character->m_Transform, bug->m_Transform);
 				if(character->GetState() != CharacterState::Default and distance <= character->GetAttackRangeNum()*75 and bug->GetVisibility()){
 					character->SetState(CharacterState::Attack);
