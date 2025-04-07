@@ -10,157 +10,138 @@ void App::LevelMain17() {
         Util::Input::IfExit()) {
 			m_CurrentState = State::END;
     }
+	//判斷被放置
+	if(carry == true and CheckCard == true) {
+		// SetPosition
+		if(m_StartCharacter[m_CardCarry]->GetBlockState() == m_map0107->Getblock()[m_Carry]->GetBlockState() and 
+		(m_StartCharacter[m_CardCarry]->GetState() == CharacterState::Default)){
+			m_StartCharacter[m_CardCarry]->SetPosition(m_map0107->Getblock()[m_Carry]->GetPosition());
+			m_StartCharacter[m_CardCarry]->SetState(CharacterState::Start);
+			m_StartCharacter[m_CardCarry]->SetVisible(true);
+		}
+		
+		CheckCard = false;
+		carry = false;
+		m_Carry = -1;
+		m_CardCarry = -1;
+	}
+	else if(carry == false and CheckCard == true and m_StartCharacter[m_CardCarry]->GetState() == CharacterState::Default){
+		
+	}
+	else if(carry == true and CheckCard == false and CheckCharacter){
+		// 收回角色
+		m_StartCharacter[m_CharacterCarry]->SetVisible(false);
+		m_StartCharacter[m_CharacterCarry]->SetLooping(false);
+		m_StartCharacter[m_CharacterCarry]->SetState(CharacterState::Default);
+		m_Carry = -1;
+		carry = false;
+		m_CharacterCarry = -1;
+		CheckCharacter = false;
+	}
+	else{
+		CheckCharacter = false;
+		CheckCard = false;
+		carry = false;
+		m_Carry = -1;
+		m_CardCarry = -1;	
+		m_CharacterCarry = -1;
+	}
 	// 設定角色出現與否
 	for (size_t i = 0; i < m_StartCharacter.size(); ++i) {
-		auto& character = m_StartCharacter[i];
-		CharacterState state = character->GetState();
+		CharacterState state = m_StartCharacter[i]->GetState();
 
 		// 判斷是否活著
-		if ((character->GetHealthRecover() <= 0 and character->GetVisibility()) or state == CharacterState::Die) {
-			character->SetState(CharacterState::Die);
-			if (character->IfAnimationEnds()) {
-				character->SetLooping(false);
-				character->SetVisible(false);
-				character->FrameReset();
+		if ((m_StartCharacter[i]->GetHealthRecover() <= 0 and m_StartCharacter[i]->GetVisibility()) or state == CharacterState::Die) {
+			m_StartCharacter[i]->SetState(CharacterState::Die);
+			if (m_StartCharacter[i]->IfAnimationEnds()) {
+				m_StartCharacter[i]->SetLooping(false);
+				m_StartCharacter[i]->SetVisible(false);
+				m_StartCharacter[i]->FrameReset();
 				// 從容器中移除死亡角色
 				m_StartCharacter.erase(m_StartCharacter.begin() + i);
 				--i;  // 刪除後需要調整索引
 				continue;
 			}
 			else{
-				character->SetLooping(true);
+				m_StartCharacter[i]->SetLooping(true);
 			}
 		}
 		else{
-			character->SetLooping(true);
-		}
-		//判斷被放置
-		
-		if(carry == true and CheckCard == true) {
-			// SetPosition
-			if(m_StartCharacter[m_CardCarry]->GetBlockState() == m_map0107->Getblock()[m_Carry]->GetBlockState() and m_StartCharacter[m_CardCarry]->GetState() == CharacterState::Default){
-				m_StartCharacter[m_CardCarry]->SetPosition(m_map0107->Getblock()[m_Carry]->GetPosition());
-				m_StartCharacter[m_CardCarry]->SetState(CharacterState::Start);
-				m_StartCharacter[m_CardCarry]->SetVisible(true);
-			}
-			
-			CheckCard = false;
-			carry = false;
-			m_Carry = -1;
-			m_CardCarry = -1;
-        }
-		else if(carry == false and CheckCard == true and m_StartCharacter[m_CardCarry]->GetState() == CharacterState::Default){
-			
-		}
-		else if(carry == true and CheckCard == false and CheckCharacter){
-			// 收回角色
-			m_StartCharacter[m_CharacterCarry]->SetVisible(false);
-			m_StartCharacter[m_CharacterCarry]->SetLooping(false);
-			m_StartCharacter[m_CharacterCarry]->SetState(CharacterState::Default);
-			m_Carry = -1;
-			carry = false;
-			m_CharacterCarry = -1;
-			CheckCharacter = false;
-		}
-		else{
-			CheckCharacter = false;
-			CheckCard = false;
-			carry = false;
-			m_Carry = -1;
-			m_CardCarry = -1;	
-			m_CharacterCarry = -1;
+			m_StartCharacter[i]->SetLooping(true);
 		}
 		//判斷攻擊
-		if(character->GetJob() != "Medic"){
-			for(size_t j = 0; j < Enemies.size() and character->GetVisibility(); ++j){
+		if(m_StartCharacter[i]->GetJob() != "Medic"){
+			for(size_t j = 0; j < Enemies.size() and m_StartCharacter[i]->GetVisibility(); ++j){
 				auto& bug = Enemies[j];
-				double distance = calculateDistance(character->m_Transform, bug->m_Transform);
-				if(character->GetState() != CharacterState::Default and distance <= character->GetAttackRangeNum()*75 and bug->GetVisibility()){
-					character->SetState(CharacterState::Attack);
-					character->SetLooping(true);
-					attack(character, bug);
-					//std::cout << bug->GetHealthRecover();
+				double distance = calculateDistance(m_StartCharacter[i]->m_Transform, bug->m_Transform);
+				if(m_StartCharacter[i]->GetState() != CharacterState::Default and distance <= m_StartCharacter[i]->GetAttackRangeNum()*75 and bug->GetVisibility()){
+					m_StartCharacter[i]->SetState(CharacterState::Attack);
+					m_StartCharacter[i]->SetLooping(true);
+					attack(m_StartCharacter[i], bug);
 					break;
-				}
-				else if(character->IfAnimationEnds()){
-					character->SetLooping(true);
-					character->FrameReset();
-					character->SetState(CharacterState::Idle);
 				}
 			}
 		}
 		// 判斷回血
-		else{
-			for(size_t j = 0; j < m_StartCharacter.size(); ++j){
-				auto& cc = m_StartCharacter[j];
-				double distance = calculateDistance(character->m_Transform, cc->m_Transform);
-				if(cc->GetHP() > cc->GetHealthRecover() and distance <= character->GetAttackRangeNum()*70){
-					character->SetState(CharacterState::Attack);
-					character->SetLooping(true);
-					attack(character, cc);
+		else if(m_StartCharacter[i]->GetJob() == "Medic"){
+			for(size_t j = 0; j < m_StartCharacter.size() and m_StartCharacter[i]->GetVisibility(); ++j){
+				double distance = calculateDistance(m_StartCharacter[i]->m_Transform, m_StartCharacter[j]->m_Transform);
+				if(j !=i and m_StartCharacter[j]->GetHP() > m_StartCharacter[j]->GetHealthRecover() and 
+				distance <= m_StartCharacter[i]->GetAttackRangeNum()*70){
+					m_StartCharacter[i]->SetState(CharacterState::Attack);
+					m_StartCharacter[i]->SetLooping(true);
+					attack(m_StartCharacter[i], m_StartCharacter[j]);
 					break;
-				}
-				else if(character->IfAnimationEnds()){
-					character->SetLooping(true);
-					character->FrameReset();
-					character->SetState(CharacterState::Idle);
 				}
 			}
 		}
 		//判斷Idle
-		if(state == CharacterState::Start){
-			if(!character->IfAnimationEnds()){
-				character->SetLooping(true);
-			}
-			else{
-				character->SetLooping(false);
-				character->FrameReset();
-				character->SetState(CharacterState::Idle);
-			}
+		if (m_StartCharacter[i]->IfAnimationEnds() and m_StartCharacter[i]->GetState() != CharacterState::Default) {
+			m_StartCharacter[i]->SetVisible(true);
+			m_StartCharacter[i]->SetLooping(true);
+			m_StartCharacter[i]->FrameReset();
+			m_StartCharacter[i]->SetState(CharacterState::Idle);
 		}
 	}
-	
 	//敵人
 	for(size_t i = 0; i < Enemies.size(); ++i){
-		auto& enemy = Enemies[i];
-		EnemyState state = enemy->GetState();
+		EnemyState state = Enemies[i]->GetState();
 
 		// 判斷是否活著
 		
-		if ((enemy->GetHealthRecover() <= 0 and enemy->GetVisibility()) or state == EnemyState::Die) {
-			enemy->SetState(EnemyState::Die);
-			std::cout << enemy->GetJob()<< "Die" << std::endl;
-			if (enemy->IfAnimationEnds()) {
-				enemy->SetLooping(false);
-				enemy->SetVisible(false);
-				enemy->FrameReset();
+		if ((Enemies[i]->GetHealthRecover() <= 0 and Enemies[i]->GetVisibility()) or state == EnemyState::Die) {
+			Enemies[i]->SetState(EnemyState::Die);
+			//std::cout << enemy->GetJob()<< "Die" << std::endl;
+			if (Enemies[i]->IfAnimationEnds()) {
+				Enemies[i]->SetLooping(false);
+				Enemies[i]->SetVisible(false);
+				Enemies[i]->FrameReset();
 				// 從容器中移除死亡角色
 				Enemies.erase(Enemies.begin() + i);
 				--i;  // 刪除後需要調整索引
 				continue;
 			}
 			else{
-				enemy->SetLooping(true);
+				Enemies[i]->SetLooping(true);
 			}
 		}
 		else{
-			enemy->SetLooping(true);
+			Enemies[i]->SetLooping(true);
 		}
 		//判斷移動碰撞
 		//判斷攻擊
-		if(enemy->GetJob() != "None"){
-			for(size_t j = 0; j < m_StartCharacter.size() and enemy->GetVisibility(); ++j){
-				auto& cc = m_StartCharacter[j];
-				double distance = calculateDistance(cc->m_Transform, enemy->m_Transform);
-				if(enemy->GetState() != EnemyState::Default and distance <= 75 and cc->GetVisibility()){
-					enemy->SetState(EnemyState::Attack);
-					attack(enemy, cc);
+		if(Enemies[i]->GetJob() != "None"){
+			for(size_t j = 0; j < m_StartCharacter.size() and Enemies[i]->GetVisibility(); ++j){
+				double distance = calculateDistance(m_StartCharacter[j]->m_Transform, Enemies[i]->m_Transform);
+				if(Enemies[i]->GetState() != EnemyState::Default and distance <= 75 and m_StartCharacter[j]->GetVisibility()){
+					Enemies[i]->SetState(EnemyState::Attack);
+					attack(Enemies[i], m_StartCharacter[j]);
 					break;
 				}
-				else if(enemy->IfAnimationEnds()){
-					enemy->SetLooping(true);
-					enemy->FrameReset();
-					enemy->SetState(EnemyState::Move);
+				else if(Enemies[i]->IfAnimationEnds()){
+					Enemies[i]->SetLooping(true);
+					Enemies[i]->FrameReset();
+					Enemies[i]->SetState(EnemyState::Move);
 				}
 			}
 		}
@@ -170,13 +151,13 @@ void App::LevelMain17() {
 		}
 		//判斷Idle
 		if(state == EnemyState::Idle){
-			if(!enemy->IfAnimationEnds()){
-				enemy->SetLooping(true);
+			if(!Enemies[i]->IfAnimationEnds()){
+				Enemies[i]->SetLooping(true);
 			}
 			else{
-				enemy->SetLooping(false);
-				enemy->FrameReset();
-				enemy->SetState(EnemyState::Idle);
+				Enemies[i]->SetLooping(false);
+				Enemies[i]->FrameReset();
+				Enemies[i]->SetState(EnemyState::Idle);
 			}
 		}
 	}
