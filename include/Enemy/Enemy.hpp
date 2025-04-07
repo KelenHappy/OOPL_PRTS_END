@@ -64,7 +64,7 @@ public:
 		void SetImageSize(float x, float y){
 		m_Transform.scale={x, y}; 
 	}
-	void SetPathPoint(std::shared_ptr<PathPoints> P){PathPoints=P;}
+	void SetPathPoint(std::shared_ptr<PathPoints> P){PathPoint=P;}
 	void SetInfo(int Health, int Attack, int Defend, int MagicDefend, int AttackSpeed
 	, float AttackDistance, int AttackCastle, float MoveSpeed, int HeavyLevel, int HealthRecover
 	, bool Dizzy, bool Sleep, bool Frozen
@@ -128,7 +128,7 @@ public:
 	int GetPathPointsindex(){return PathPointsindex;}
 	void SetPathPointsindex(int n){PathPointsindex=n;}
 	void AddPathPointsindex(){PathPointsindex++;}
-	std::shared_ptr<PathPoints> GetPathPoints(){return PathPoints;}
+	std::shared_ptr<PathPoints> GetPathPoints(){return PathPoint;}
 
 	CharacterAttackImpact GetAttackImpact(){
 		return AttackImpact;
@@ -148,7 +148,7 @@ protected:
 	std::vector<std::string> MoveImage;
 	std::vector<std::string> AttackImage;
 	std::vector<std::string> DieImage;
-	std::shared_ptr<PathPoints>  PathPoints;
+	std::shared_ptr<PathPoints>  PathPoint;
 	// 角色數值
 	int PathPointsindex=0;
 	float HealthNum = 0;

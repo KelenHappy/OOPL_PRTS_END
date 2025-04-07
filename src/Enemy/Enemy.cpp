@@ -4,8 +4,8 @@
 #include "MyTool.hpp"
 
 void Enemy::Updatemove() {
-	moveGameObject(shared_from_this(),PathPoints->GetindexPoint(PathPointsindex)+glm::vec2{0,250*abs(m_Transform.scale.y)},MoveSpeedNum*5);
-	if (glm::length(m_Transform.translation-(PathPoints->GetindexPoint(PathPointsindex)+glm::vec2{0,250*abs(m_Transform.scale.y)}))<5) {
+	moveGameObject(shared_from_this(),PathPoint->GetindexPoint(PathPointsindex)+glm::vec2{0,250*abs(m_Transform.scale.y)},MoveSpeedNum*5);
+	if (glm::length(m_Transform.translation-(PathPoint->GetindexPoint(PathPointsindex)+glm::vec2{0,250*abs(m_Transform.scale.y)}))<5) {
 		PathPointsindex++;
 	}
 }

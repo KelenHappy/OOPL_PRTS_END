@@ -133,7 +133,9 @@ void Spawner::Update() {
         index++;
         Update();
     }
-    else{Time++;}
+    else{
+		Time++;
+	}
 
 }
 
