@@ -50,7 +50,7 @@ void AnimatedCharacter::takeDamage(CharacterAttackImpact impact, float damage){
 			std::cout << "Take DamageError." << std::endl;
 			break;
 	}
-	HealthNum -= damage;
+	HealthRecoverNum -= damage;
 }
 
 void AnimatedCharacter::ImpactDizzy(){

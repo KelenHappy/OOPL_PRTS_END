@@ -78,7 +78,7 @@ public:
 		AttackCastleNum = AttackCastle;
 		MoveSpeedNum = MoveSpeed;
 		HeavyLevelNum = HeavyLevel;
-		HealthRecoverNum = HealthRecover;
+		HealthRecoverNum = Health;
 		DizzyDefend = Dizzy;
 		SleepDefend = Sleep;
 		FrozenDefend = Frozen;

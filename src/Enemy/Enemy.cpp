@@ -13,18 +13,18 @@ void Enemy::Updatemove() {
 void Enemy::takeDamage(CharacterAttackImpact impact, float damage){
 	switch(impact){
 		case CharacterAttackImpact::Null:
-			HealthNum -= damage;
+			HealthRecoverNum -= damage;
 			break;
 		case CharacterAttackImpact::Dizzy:
 			ImpactDizzy();
-			HealthNum -= damage;
+			HealthRecoverNum -= damage;
 			break;
 		case CharacterAttackImpact::Sleep:
 			ImpactSleep();
 			break;
 		case CharacterAttackImpact::Frozen:
 			ImpactFrozen();
-			HealthNum -= damage;
+			HealthRecoverNum -= damage;
 			break;
 		default:
 			std::cout << "Take DamageError." << std::endl;

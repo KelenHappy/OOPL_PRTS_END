@@ -79,6 +79,7 @@ void App::LevelMain17() {
 					character->SetState(CharacterState::Attack);
 					character->SetLooping(true);
 					attack(character, bug);
+					//std::cout << bug->GetHealthRecover();
 					break;
 				}
 				else if(character->IfAnimationEnds()){
@@ -117,37 +118,68 @@ void App::LevelMain17() {
 				character->SetState(CharacterState::Idle);
 			}
 		}
-	}/*
-
-	m_BugAs[0]->SetLooping(true);
-	m_BugAs[0]->SetState(EnemyState::Move);*/
-	/*if (m_Sussurro->GetHP() > 0){
-		m_Sussurro->SetVisible(true);
-		m_Sussurro->SetLooping(true);
-		m_Sussurro->SetState(CharacterState::Idle);
 	}
-    //Debug();
-	//敵人重生
+	
+	//敵人
+	for(size_t i = 0; i < Enemies.size(); ++i){
+		auto& enemy = Enemies[i];
+		EnemyState state = enemy->GetState();
 
-
-	for (size_t i = 0; i < m_BugAs.size(); ++i) {
-		auto& bug = m_BugAs[i];
-		if(bug->GetHP <= 0){
-			bug->SetState(CharacterState::Die);
-			if (bug->IfAnimationEnds()) {
-				bug->SetLooping(false);
-				bug->SetVisible(false);
+		// 判斷是否活著
+		
+		if ((enemy->GetHealthRecover() <= 0 and enemy->GetVisibility()) or state == EnemyState::Die) {
+			enemy->SetState(EnemyState::Die);
+			std::cout << enemy->GetJob()<< "Die" << std::endl;
+			if (enemy->IfAnimationEnds()) {
+				enemy->SetLooping(false);
+				enemy->SetVisible(false);
+				enemy->FrameReset();
 				// 從容器中移除死亡角色
-				m_BugAs.erase(m_BugAs.begin() + i);
+				Enemies.erase(Enemies.begin() + i);
 				--i;  // 刪除後需要調整索引
+				continue;
+			}
+			else{
+				enemy->SetLooping(true);
 			}
 		}
-		else {
-			bugr->SetLooping(true);
+		else{
+			enemy->SetLooping(true);
+		}
+		//判斷移動碰撞
+		//判斷攻擊
+		if(enemy->GetJob() != "None"){
+			for(size_t j = 0; j < m_StartCharacter.size() and enemy->GetVisibility(); ++j){
+				auto& cc = m_StartCharacter[j];
+				double distance = calculateDistance(cc->m_Transform, enemy->m_Transform);
+				if(enemy->GetState() != EnemyState::Default and distance <= 75 and cc->GetVisibility()){
+					enemy->SetState(EnemyState::Attack);
+					attack(enemy, cc);
+					break;
+				}
+				else if(enemy->IfAnimationEnds()){
+					enemy->SetLooping(true);
+					enemy->FrameReset();
+					enemy->SetState(EnemyState::Move);
+				}
+			}
+		}
+		// 判斷特殊角色
+		else{
+			
+		}
+		//判斷Idle
+		if(state == EnemyState::Idle){
+			if(!enemy->IfAnimationEnds()){
+				enemy->SetLooping(true);
+			}
+			else{
+				enemy->SetLooping(false);
+				enemy->FrameReset();
+				enemy->SetState(EnemyState::Idle);
+			}
 		}
 	}
-
-
-	}*/
+	
     m_0107.Update();
 }
