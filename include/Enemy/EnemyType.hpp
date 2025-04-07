@@ -10,4 +10,4 @@ enum class Enemytype {
     Thrower,
     Valorant
 };
-#endif /Enemytype/ENEMYTYPE_HPP
+#endif

@@ -59,7 +59,7 @@ public:
 	void ImpactFrozen();
 	void ApplySkillEffects();
 	void CloseSkill();
-	void Update();
+	void Updatemove();
 	// Set
 		void SetImageSize(float x, float y){
 		m_Transform.scale={x, y}; 
@@ -125,6 +125,10 @@ public:
 	bool GetFrozenDefend(){
 		return FrozenDefend;
 	}
+	int GetPathPointsindex(){return PathPointsindex;}
+	void SetPathPointsindex(int n){PathPointsindex=n;}
+	void AddPathPointsindex(){PathPointsindex++;}
+	std::shared_ptr<PathPoints> GetPathPoints(){return PathPoints;}
 
 	CharacterAttackImpact GetAttackImpact(){
 		return AttackImpact;

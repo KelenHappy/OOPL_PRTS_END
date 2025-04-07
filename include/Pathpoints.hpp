@@ -10,7 +10,6 @@
 class PathPoints {
 private:
     std::vector<glm::vec2> points;
-    size_t currentIndex = 0;
 public:
 
     void addPoint(const glm::vec2& point) {
@@ -19,15 +18,16 @@ public:
     void setPoint(std::vector<glm::vec2> P) {
         this->points = P;
     }
-    glm::vec2 GetnowPoint() {
-        return points[currentIndex];
+    glm::vec2 GetStartPoint() {
+        return points[0];
     }
-    glm::vec2 getNextPoint() {
-        if (currentIndex < points.size()-1) {
-            return points[currentIndex++];
-        }
-        return points.back(); // Return last point if at end
+    glm::vec2 GetindexPoint(int index) {
+        return points[index];
     }
+    glm::vec2 getEndPoint() {
+        return points[points.size() - 1];
+    }
+    size_t GetPointsize() {return points.size();}
 };
 
 #endif //PATHPOINTS_HPP

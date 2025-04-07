@@ -6,9 +6,10 @@
 #include "Enemy/Varlorant.hpp"
 
 Spawner::Spawner() {
+    Time=0;
+    index=0;
     std::vector<std::vector<glm::vec2>> allPaths = {
         {
-            glm::vec2(-29.0f, -58.0f),
             glm::vec2(488.0f, 202.0f),
             glm::vec2(-98.0f, 197.0f),
             glm::vec2(-103.0f, 116.0f),
@@ -49,48 +50,48 @@ Spawner::Spawner() {
     float currentTime = 0.0f;
 
     // 0
-    AddSpawn(currentTime += 6.0f, static_cast<int>(Enemytype::BugA), 0); // x1
+    AddSpawn(currentTime += 6.0f, Enemytype::BugA, 0); // x1
 
     // 1
-    AddSpawn(currentTime += 1.0f, static_cast<int>(Enemytype::BugA), 0); // x2
-    AddSpawn(currentTime += 1.0f, static_cast<int>(Enemytype::BugA), 0);
+    AddSpawn(currentTime += 1.0f, Enemytype::BugA, 3); // x2
+    AddSpawn(currentTime += 1.0f, Enemytype::BugA, 3);
 
     // 2
-    AddSpawn(currentTime += 5.0f, static_cast<int>(Enemytype::BugA), 0); // x2
-    AddSpawn(currentTime += 1.0f, static_cast<int>(Enemytype::BugA), 0);
+    AddSpawn(currentTime += 5.0f, Enemytype::BugA, 1); // x2
+    AddSpawn(currentTime += 1.0f, Enemytype::BugA, 1);
 
     // 3
-    AddSpawn(currentTime += 5.0f, static_cast<int>(Enemytype::BugA), 0); // x2
-    AddSpawn(currentTime += 1.0f, static_cast<int>(Enemytype::BugA), 0);
+    AddSpawn(currentTime += 5.0f, Enemytype::BugA, 0); // x2
+    AddSpawn(currentTime += 1.0f,Enemytype::BugA, 0);
 
     // 4
-    AddSpawn(currentTime += 7.0f, static_cast<int>(Enemytype::Valorant), 0); // x2
-    AddSpawn(currentTime += 1.0f, static_cast<int>(Enemytype::Valorant), 0);
+    AddSpawn(currentTime += 7.0f, Enemytype::Valorant, 2); // x2
+    AddSpawn(currentTime += 1.0f, Enemytype::Valorant, 2);
 
     // 5
-    AddSpawn(currentTime += 7.0f, static_cast<int>(Enemytype::Soldier), 0); // x2
-    AddSpawn(currentTime += 1.0f, static_cast<int>(Enemytype::Soldier), 0);
+    AddSpawn(currentTime += 7.0f, Enemytype::Soldier, 3); // x2
+    AddSpawn(currentTime += 1.0f, Enemytype::Soldier, 3);
 
     // 6
-    AddSpawn(currentTime += 15.0f, static_cast<int>(Enemytype::Thrower), 0); // x1
+    AddSpawn(currentTime += 15.0f, Enemytype::Thrower, 0); // x1
 
     // 7
-    AddSpawn(currentTime += 1.0f, static_cast<int>(Enemytype::Thrower), 0); // x1
+    AddSpawn(currentTime += 1.0f, Enemytype::Thrower, 3); // x1
 
     // 8
-    AddSpawn(currentTime += 3.0f, static_cast<int>(Enemytype::Soldier), 0); // x1
+    AddSpawn(currentTime += 3.0f, Enemytype::Soldier, 1); // x1
 
     // 9
-    AddSpawn(currentTime += 3.0f, static_cast<int>(Enemytype::Soldier), 0); // x1
+    AddSpawn(currentTime += 3.0f, Enemytype::Soldier, 2); // x1
 
     // 10
-    AddSpawn(currentTime += 9.0f, static_cast<int>(Enemytype::Valorant), 0); // x1
+    AddSpawn(currentTime += 9.0f, Enemytype::Valorant, 0); // x1
 
     // 11
-    AddSpawn(currentTime += 0.0f, static_cast<int>(Enemytype::Valorant), 0); // x1 (同時間)
+    AddSpawn(currentTime += 0.0f, Enemytype::Valorant, 3); // x1 (同時間)
 
     // 12
-    AddSpawn(currentTime += 6.0f, static_cast<int>(Enemytype::Soldier), 0); // x1
+    AddSpawn(currentTime += 6.0f, Enemytype::Soldier, 0); // x1
 }
 std::shared_ptr<Enemy> Spawner::SpawnEnemy(Enemytype type) {
     std::shared_ptr<Enemy> Emy;
@@ -109,13 +110,31 @@ std::shared_ptr<Enemy> Spawner::SpawnEnemy(Enemytype type) {
             break;
     }
     Emy->SetZIndex(10);
-    Emy->SetImageSize(0.5f,0.5f);
+    Emy->SetImageSize(-0.3f,0.3f);
     Emy->SetVisible(false);
     Emy->SetLooping(false);
     return Emy;
 }
 void Spawner::AddSpawnEnemy(Enemytype type) {
     enemies.push_back(SpawnEnemy(type));
+}
+void Spawner::AddSpawn(float time, Enemytype type, int pathIndex) {
+    spawnQueue.push_back({time, type, pathIndex});
+    AddSpawnEnemy(type);
+}
+void Spawner::Update() {
+    if(index>=int(spawnQueue.size())) {return;}
+    if(spawnQueue[index].spawnTime<Time) {
+        enemies[index]->SetPathPoint(paths[spawnQueue[index].pathIndex]);
+        enemies[index]->SetVisible(true);
+        enemies[index]->m_Transform.translation=paths[spawnQueue[index].pathIndex]->GetStartPoint()+glm::vec2{0,250 *abs(enemies[index]-> m_Transform.scale.y)};
+        enemies[index]->SetState(EnemyState::Move);
+        enemies[index]->SetLooping(true);
+        index++;
+        Update();
+    }
+    else{Time++;}
+
 }
 
 Spawner::~Spawner() {

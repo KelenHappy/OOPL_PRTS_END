@@ -3,10 +3,10 @@
 #include "move.hpp"
 #include "MyTool.hpp"
 
-void Enemy::Update() {
-	moveGameObject(shared_from_this(),PathPoints->GetnowPoint(),MoveSpeedNum/20);
-	if (glm::length(m_Transform.translation-PathPoints->GetnowPoint())<5) {
-		PathPoints->getNextPoint();
+void Enemy::Updatemove() {
+	moveGameObject(shared_from_this(),PathPoints->GetindexPoint(PathPointsindex)+glm::vec2{0,250*abs(m_Transform.scale.y)},MoveSpeedNum*5);
+	if (glm::length(m_Transform.translation-(PathPoints->GetindexPoint(PathPointsindex)+glm::vec2{0,250*abs(m_Transform.scale.y)}))<5) {
+		PathPointsindex++;
 	}
 }
 
