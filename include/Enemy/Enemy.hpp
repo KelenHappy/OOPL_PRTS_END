@@ -77,6 +77,7 @@ public:
 		AttackDistanceNum = AttackDistance;
 		AttackCastleNum = AttackCastle;
 		MoveSpeedNum = MoveSpeed;
+		HealthNum = Health;
 		HeavyLevelNum = HeavyLevel;
 		HealthRecoverNum = Health;
 		DizzyDefend = Dizzy;
