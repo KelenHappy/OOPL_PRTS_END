@@ -74,7 +74,7 @@ void Map::CreatotherItem() {
     m_CostBar->m_Transform.scale={ 0.2, 0.2 };
     m_CostBar->m_Transform.translation={ 582, -168 };
     m_CostBar->SetZIndex(26);
-    m_EmemyandHp=std::make_shared<ImgItem>("/Maps/EnemyandHp.png");
+    m_EmemyandHp=std::make_shared<ImgItem>("/Maps/EnemyandHP.png");
     m_EmemyandHp->m_Transform.scale={ 0.8, 0.8 };
     m_EmemyandHp->m_Transform.translation={ 0, 340 };
     m_EmemyandHp->SetZIndex(60);
