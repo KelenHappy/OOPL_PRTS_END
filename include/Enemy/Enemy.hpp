@@ -10,47 +10,54 @@
 class Enemy : public AnimatedEnemy, public CharacterSkill,public std::enable_shared_from_this<Enemy>{
 public:
     Enemy(std::string EnemyName, int IdleCont, int AttackCont,int DieCont, int MoveCont) : AnimatedEnemy(){
-			int defaultNum = 10; 
-            DefaultImage.reserve(1);
-            DefaultImage.emplace_back(RESOURCE_DIR"/Enemy/"+EnemyName+"/Default/1.png");
-            IdleImage.reserve(defaultNum + 2);
-            MoveImage.reserve(defaultNum + 2);
-            DieImage.reserve(defaultNum + 2);
-            AttackImage.reserve(defaultNum + 2);
-            for(float i = 0; i < IdleCont; i += (float)IdleCont / defaultNum){
-				std::set<int> seen;
-				int int_i = static_cast<int>(i);  // 強制轉為 int
-				if (seen.find(int_i) != seen.end()) {
-					continue;  // 如果已經出現過該值，跳過這次循環
-				}
-                IdleImage.emplace_back(RESOURCE_DIR"/Enemy/"+EnemyName+"/Idle/"+std::to_string(int_i+1)+".png");
-            }
-            for(float i = 0; i < MoveCont; i += (float)MoveCont / defaultNum){
-				std::set<int> seen;
-				int int_i = static_cast<int>(i);  // 強制轉為 int
-				if (seen.find(int_i) != seen.end()) {
-					continue;  // 如果已經出現過該值，跳過這次循環
-				}
-                MoveImage.emplace_back(RESOURCE_DIR"/Enemy/"+EnemyName+"/Move/"+std::to_string(int_i+1)+".png");
-            }
-            for(float i = 0; i < DieCont; i += (float)DieCont / defaultNum){
-				std::set<int> seen;
-				int int_i = static_cast<int>(i);  // 強制轉為 int
-				if (seen.find(int_i) != seen.end()) {
-					continue;  // 如果已經出現過該值，跳過這次循環
-				}
-                DieImage.emplace_back(RESOURCE_DIR"/Enemy/"+EnemyName+"/Die/"+std::to_string(int_i+1)+".png");
-            }
-            for(float i = 0; i < AttackCont; i += (float)AttackCont / defaultNum){
-				std::set<int> seen;
-				int int_i = static_cast<int>(i);  // 強制轉為 int
-				if (seen.find(int_i) != seen.end()) {
-					continue;  // 如果已經出現過該值，跳過這次循環
-				}
-                AttackImage.emplace_back(RESOURCE_DIR"/Enemy/"+EnemyName+"/Attack/"+std::to_string(int_i+1)+".png");
-            }
-            SetPath(IdleImage, AttackImage, DieImage, MoveImage, DefaultImage);
+		int defaultNum = 10;
+		DefaultImage.reserve(1);
+		DefaultImage.emplace_back(RESOURCE_DIR"/Enemy/" + EnemyName + "/Default/1.png");
 
+		IdleImage.reserve(defaultNum + 2);
+		MoveImage.reserve(defaultNum + 2);
+		DieImage.reserve(defaultNum + 2);
+		AttackImage.reserve(defaultNum + 2);
+
+		std::set<int> seen;
+
+		// Idle
+		seen.clear();
+		for (float i = 0; i < IdleCont; i += (float)IdleCont / defaultNum) {
+			int int_i = static_cast<int>(i);
+			if (seen.find(int_i) != seen.end()) continue;
+			seen.insert(int_i);
+			IdleImage.emplace_back(RESOURCE_DIR"/Enemy/" + EnemyName + "/Idle/" + std::to_string(int_i + 1) + ".png");
+		}
+
+		// Move
+		seen.clear();
+		for (float i = 0; i < MoveCont; i += (float)MoveCont / defaultNum) {
+			int int_i = static_cast<int>(i);
+			if (seen.find(int_i) != seen.end()) continue;
+			seen.insert(int_i);
+			MoveImage.emplace_back(RESOURCE_DIR"/Enemy/" + EnemyName + "/Move/" + std::to_string(int_i + 1) + ".png");
+		}
+
+		// Die
+		seen.clear();
+		for (float i = 0; i < DieCont; i += (float)DieCont / defaultNum) {
+			int int_i = static_cast<int>(i);
+			if (seen.find(int_i) != seen.end()) continue;
+			seen.insert(int_i);
+			DieImage.emplace_back(RESOURCE_DIR"/Enemy/" + EnemyName + "/Die/" + std::to_string(int_i + 1) + ".png");
+		}
+
+		// Attack
+		seen.clear();
+		for (float i = 0; i < AttackCont; i += (float)AttackCont / defaultNum) {
+			int int_i = static_cast<int>(i);
+			if (seen.find(int_i) != seen.end()) continue;
+			seen.insert(int_i);
+			AttackImage.emplace_back(RESOURCE_DIR"/Enemy/" + EnemyName + "/Attack/" + std::to_string(int_i + 1) + ".png");
+		}
+
+		SetPath(IdleImage, AttackImage, DieImage, MoveImage, DefaultImage);
     }
 	// Function
 	void takeDamage(CharacterAttackImpact impact, float damage);
