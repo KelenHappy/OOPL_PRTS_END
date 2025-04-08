@@ -73,12 +73,11 @@ void App::LevelMain17() {
 		//判斷攻擊
 		if(m_StartCharacter[i]->GetJob() != "Medic"){
 			for(size_t j = 0; j < Enemies.size() and m_StartCharacter[i]->GetVisibility(); ++j){
-				auto& bug = Enemies[j];
-				double distance = calculateDistance(m_StartCharacter[i]->m_Transform, bug->m_Transform);
-				if(m_StartCharacter[i]->GetState() != CharacterState::Default and distance <= m_StartCharacter[i]->GetAttackRangeNum()*75 and bug->GetVisibility()){
+				float distance = calculateDistance(m_StartCharacter[i]->m_Transform, Enemies[j]->m_Transform);
+				if(m_StartCharacter[i]->GetState() != CharacterState::Default and distance <= m_StartCharacter[i]->GetAttackRangeNum()*75 and Enemies[j]->GetVisibility()){
 					m_StartCharacter[i]->SetState(CharacterState::Attack);
 					m_StartCharacter[i]->SetLooping(true);
-					attack(m_StartCharacter[i], bug);
+					attack(m_StartCharacter[i], Enemies[j]);
 					break;
 				}
 			}
@@ -86,7 +85,7 @@ void App::LevelMain17() {
 		// 判斷回血
 		else if(m_StartCharacter[i]->GetJob() == "Medic"){
 			for(size_t j = 0; j < m_StartCharacter.size() and m_StartCharacter[i]->GetVisibility(); ++j){
-				double distance = calculateDistance(m_StartCharacter[i]->m_Transform, m_StartCharacter[j]->m_Transform);
+				float distance = calculateDistance(m_StartCharacter[i]->m_Transform, m_StartCharacter[j]->m_Transform);
 				if(j !=i and m_StartCharacter[j]->GetHP() > m_StartCharacter[j]->GetHealthRecover() and 
 				distance <= m_StartCharacter[i]->GetAttackRangeNum()*70){
 					m_StartCharacter[i]->SetState(CharacterState::Attack);
@@ -100,8 +99,8 @@ void App::LevelMain17() {
 		if (m_StartCharacter[i]->IfAnimationEnds() and m_StartCharacter[i]->GetState() != CharacterState::Default) {
 			m_StartCharacter[i]->SetVisible(true);
 			m_StartCharacter[i]->SetLooping(true);
-			m_StartCharacter[i]->FrameReset();
 			m_StartCharacter[i]->SetState(CharacterState::Idle);
+			m_StartCharacter[i]->FrameReset();
 		}
 	}
 	//敵人
@@ -133,16 +132,11 @@ void App::LevelMain17() {
 		//判斷攻擊
 		if(Enemies[i]->GetJob() != "None"){
 			for(size_t j = 0; j < m_StartCharacter.size() and Enemies[i]->GetVisibility(); ++j){
-				double distance = calculateDistance(m_StartCharacter[j]->m_Transform, Enemies[i]->m_Transform);
+				float distance = calculateDistance(m_StartCharacter[j]->m_Transform, Enemies[i]->m_Transform);
 				if(Enemies[i]->GetState() != EnemyState::Default and distance <= 75 and m_StartCharacter[j]->GetVisibility()){
 					Enemies[i]->SetState(EnemyState::Attack);
 					attack(Enemies[i], m_StartCharacter[j]);
 					break;
-				}
-				else if(Enemies[i]->IfAnimationEnds()){
-					Enemies[i]->SetLooping(true);
-					Enemies[i]->FrameReset();
-					Enemies[i]->SetState(EnemyState::Move);
 				}
 			}
 		}
@@ -150,16 +144,10 @@ void App::LevelMain17() {
 		else{
 			
 		}
-		//判斷Idle
-		if(state == EnemyState::Idle){
-			if(!Enemies[i]->IfAnimationEnds()){
-				Enemies[i]->SetLooping(true);
-			}
-			else{
-				Enemies[i]->SetLooping(false);
-				Enemies[i]->FrameReset();
-				Enemies[i]->SetState(EnemyState::Idle);
-			}
+		if(Enemies[i]->IfAnimationEnds() and Enemies[i]->GetVisibility()){
+			Enemies[i]->SetLooping(true);
+			Enemies[i]->SetState(EnemyState::Move);
+			Enemies[i]->FrameReset();
 		}
 	}
 	

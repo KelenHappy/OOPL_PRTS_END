@@ -44,19 +44,19 @@ public:
                  std::vector<std::string>& DefaultEnd){
         // 初始化動畫
         this->m_Drawable = std::make_shared<Util::Animation>
-        (DefaultEnd, false, 35, false, 0);
+        (DefaultEnd, false, 35, false, 35);
         this->m_Default = std::make_shared<Util::Animation>
-        (DefaultEnd, false, 35, false, 0);
+        (DefaultEnd, false, 35, false, 35);
         this->m_Drawable = m_Default;
 
         this->m_IdleAnimation = std::make_shared<Util::Animation>
-        (IdleEnd, false, 35, false, 0);
+        (IdleEnd, false, 35, false, 35);
         this->m_AttackAnimation = std::make_shared<Util::Animation>
-        (AttackEnd, false, 35, false, 0);
+        (AttackEnd, false, 35, false, 35);
         this->m_DieAnimation = std::make_shared<Util::Animation>
-        (DieEnd, false, 35, false, 0);
+        (DieEnd, false, 35, false, 35);
         this->m_StartAnimation = std::make_shared<Util::Animation>
-        (StartEnd, false, 35, false, 0);
+        (StartEnd, false, 35, false, 35);
     }
 	
 	//Set 圖片大小
