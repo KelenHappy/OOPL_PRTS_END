@@ -91,7 +91,8 @@ void App::Debug() {
         }
 		//點到角色
 		for (size_t i = 0; i < m_StartCharacter.size(); ++i) {
-            if (checkCollisionNearMouse(mouseT, m_StartCharacter[i]->m_Transform, 40)) {
+            if (checkCollisionNearMouse(mouseT, m_StartCharacter[i]->m_Transform, 40) 
+			and m_StartCharacter[i]->GetState() != CharacterState::Default) {
                 m_CharacterCarry = i;
                 CheckCharacter = true;
                 break;

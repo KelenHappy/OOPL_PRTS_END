@@ -29,7 +29,7 @@ void App::LevelMain17() {
 	else if(carry == false and CheckCard == true and m_StartCharacter[m_CardCarry]->GetState() == CharacterState::Default){
 		
 	}
-	else if(carry == true and CheckCard == false and CheckCharacter){
+	else if(carry == false and CheckCard == false and CheckCharacter){
 		// 收回角色
 		m_StartCharacter[m_CharacterCarry]->SetVisible(false);
 		m_StartCharacter[m_CharacterCarry]->SetLooping(false);
