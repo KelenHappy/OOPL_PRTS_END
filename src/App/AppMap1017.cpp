@@ -14,7 +14,8 @@ void App::LevelMain17() {
 	if(carry == true and CheckCard == true) {
 		// SetPosition
 		if(m_StartCharacter[m_CardCarry]->GetBlockState() == m_map0107->Getblock()[m_Carry]->GetBlockState() and 
-		(m_StartCharacter[m_CardCarry]->GetState() == CharacterState::Default)){
+		m_StartCharacter[m_CardCarry]->GetState() == CharacterState::Default and
+		m_map0107->Takemapcost(m_StartCharacter[m_CardCarry]->GetSetCost())){
 			m_StartCharacter[m_CardCarry]->SetPosition(m_map0107->Getblock()[m_Carry]->GetPosition());
 			m_StartCharacter[m_CardCarry]->SetState(CharacterState::Start);
 			m_StartCharacter[m_CardCarry]->SetVisible(true);
