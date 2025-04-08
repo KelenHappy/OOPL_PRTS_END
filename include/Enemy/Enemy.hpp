@@ -9,8 +9,9 @@
 
 class Enemy : public AnimatedEnemy, public CharacterSkill,public std::enable_shared_from_this<Enemy>{
 public:
-    Enemy(std::string EnemyName, int IdleCont, int AttackCont,int DieCont, int MoveCont) : AnimatedEnemy(){
+    Enemy(std::string EnemyNameI, int IdleCont, int AttackCont,int DieCont, int MoveCont) : AnimatedEnemy(){
 		int defaultNum = 10;
+		EnemyName = EnemyNameI;
 		DefaultImage.reserve(1);
 		DefaultImage.emplace_back(RESOURCE_DIR"/Enemy/" + EnemyName + "/Default/1.png");
 
@@ -157,6 +158,8 @@ protected:
 	std::vector<std::string> AttackImage;
 	std::vector<std::string> DieImage;
 	std::shared_ptr<PathPoints>  PathPoint;
+	//Name
+	std::string EnemyName = "";
 	// 角色數值
 	int PathPointsindex=0;
 	float HealthNum = 0;
