@@ -55,6 +55,6 @@ cmake -DCMAKE_BUILD_TYPE=Debug -B build # -G Ninja
 better read [PTSD README](https://github.com/ntut-open-source-club/practical-tools-for-simple-design)  
 # 轉換png
 ``` sh
-ffmpeg -i test.webm -vf "colorkey=0x00FF00:0.3:0.1" -pix_fmt rgba %d.png
+ffmpeg -i test.webm -vf "fps=50,colorkey=0x00FF00:0.3:0.1" -pix_fmt rgba %d.png
 ```
 
