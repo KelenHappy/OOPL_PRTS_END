@@ -77,7 +77,7 @@ void App::LevelMain17() {
 		if(m_StartCharacter[i]->GetJob() != "Medic"){
 			for(size_t j = 0; j < Enemies.size() ; ++j){
 				float distance = calculateDistance(m_StartCharacter[i]->m_Transform, Enemies[j]->m_Transform);
-				if(state != CharacterState::Default and distance <= m_StartCharacter[i]->GetAttackRangeNum()*75 
+				if(state != CharacterState::Default and distance <= m_StartCharacter[i]->GetAttackRangeNum()*70 
 				and Enemies[j]->GetVisibility()
 				and m_StartCharacter[i]->IfAnimationEnds()){
 					m_StartCharacter[i]->SetState(CharacterState::Attack);
@@ -107,7 +107,7 @@ void App::LevelMain17() {
 		}
 		//判斷Idle
 		if (m_StartCharacter[i]->IfAnimationEnds() 
-		and state != CharacterState::Default and state != CharacterState::Die and state != CharacterState::Attack) {
+		and state != CharacterState::Default and state != CharacterState::Die and state != CharacterState::Attack or Enemies.size() <= 0) {
 			m_StartCharacter[i]->SetVisible(true);
 			m_StartCharacter[i]->SetLooping(true);
 			m_StartCharacter[i]->SetState(CharacterState::Idle);
@@ -146,7 +146,7 @@ void App::LevelMain17() {
 		if(Enemies[i]->GetJob() != "None"){
 			for(size_t j = 0; j < m_StartCharacter.size(); ++j){
 				float distance = calculateDistance(m_StartCharacter[j]->m_Transform, Enemies[i]->m_Transform);
-				if(state != EnemyState::Default and distance <= 75 and m_StartCharacter[j]->GetVisibility()
+				if(state != EnemyState::Default and distance <= 70 and m_StartCharacter[j]->GetVisibility()
 					and Enemies[i]->IfAnimationEnds()){
 					Enemies[i]->SetState(EnemyState::Attack);
 					attack(Enemies[i], m_StartCharacter[j]);
