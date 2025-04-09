@@ -39,6 +39,8 @@ class Map :public Util::GameObject{
     void AddCard(std::shared_ptr<Card> card) {
         m_Card.push_back(card);
     };
+    std::vector<std::shared_ptr<Block>> GetTypeOfBlock(BlockState B);
+    std::vector<std::shared_ptr<Block>> GetHaveCharacterBlock(BlockState B);
     std::shared_ptr<Block> XYGetBlock(int x,int y){return m_block[x+9*y];}
     void Update();
     void CreatotherItem();

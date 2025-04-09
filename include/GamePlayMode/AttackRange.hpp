@@ -1,10 +1,10 @@
 #ifndef ATTACK_RANGE_HPP
 #define ATTACK_RANGE_HPP
 
-#include "Block.hpp"
 #include <iostream>
 #include <memory>
 #include <vector>
+#include "Block.hpp"
 
 class AttackRange {
 public:

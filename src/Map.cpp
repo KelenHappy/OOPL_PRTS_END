@@ -118,6 +118,26 @@ bool Map::Takemapcost(int n) {
     }
     return false;
 }
+std::vector<std::shared_ptr<Block>> Map::GetHaveCharacterBlock(BlockState B) {
+    std::vector<std::shared_ptr<Block>> result;
+    for(size_t i=0;i<m_block.size();i++) {
+        if (m_block[i]->GetBlockState()==B) {
+            result.push_back(m_block[i]);
+        }
+    }
+    return result;
+}
+std::vector<std::shared_ptr<Block> > Map::GetTypeOfBlock(BlockState B) {
+    std::vector<std::shared_ptr<Block>> result;
+    for(size_t i=0;i<m_block.size();i++) {
+        if (m_block[i]->GetBlockState()==B&&m_block[i]->HaveCharacter) {
+            result.push_back(m_block[i]);
+        }
+    }
+    return result;
+}
+
+
 
 
 

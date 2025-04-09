@@ -144,6 +144,7 @@ public:
     CharacterAttackType GetAttackType(){
 		return AttackType;
 	}
+	glm::vec2 GetPositionFix(){return  m_Transform.translation-glm::vec2{0,250*abs(m_Transform.scale.y)};}
 	
 	std::string GetJob(){
 		return "Enemy";

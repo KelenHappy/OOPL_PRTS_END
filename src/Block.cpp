@@ -8,5 +8,6 @@ Block::Block(int x,int y,BlockState BS) {
     this->x=x;
     this->y=y;
     this->HaveCharacter = false;
+    //this->Character = nullptr;
     this->blockState=BS;
 }

@@ -1,16 +1,15 @@
-//
-// Created by AaronChiu on 2025/3/14.
-//
 
 #ifndef BLOCK_H
 #define BLOCK_H
 #include "BlockState.hpp"
 #include "CreateIMG.hpp"
+#include "Util/Animation.hpp"
 #include "Util/GameObject.hpp"
 
 class Block:public Util::GameObject {
     public:
     bool carry;
+    bool HaveCharacter;
     Block(int x,int y,BlockState BS);
     void SetPosition(const glm::vec2& Position) { m_Transform.translation = Position; }
     glm::vec2 GetPosition(){return m_Transform.translation;}
@@ -20,12 +19,10 @@ class Block:public Util::GameObject {
 	int GetY(){ return y; }
 
     private:
-    bool HaveCharacter;
     int x;
     int y;
     BlockState blockState=BlockState::NONE;
-
-
+    //std::shared_ptr<AnimatedCharacter> Character;
 
 };
 #endif //BLOCK_H
