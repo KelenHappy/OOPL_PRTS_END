@@ -83,7 +83,7 @@ void App::Debug() {
         // 點到 Block
         for (size_t i = 0; i < m_map0107->Getblock().size(); ++i) {
             if (!m_map0107->Getblock()[i]) continue;  // 避免 nullptr 存取
-            if (checkCollisionNearMouse(mouseT, m_map0107->Getblock()[i]->m_Transform, 45)) {
+            if (checkCollisionNearMouse(mouseT, m_map0107->Getblock()[i]->m_Transform, 40)) {
                 m_Carry = i;
                 carry = true;
                 break;
@@ -91,7 +91,8 @@ void App::Debug() {
         }
 		//點到角色
 		for (size_t i = 0; i < m_StartCharacter.size(); ++i) {
-            if (checkCollisionNearMouse(mouseT, m_StartCharacter[i]->m_Transform, 35)) {
+            if (checkCollisionNearMouse(mouseT, m_StartCharacter[i]->m_Transform, 40) 
+			and m_StartCharacter[i]->GetState() != CharacterState::Default) {
                 m_CharacterCarry = i;
                 CheckCharacter = true;
                 break;

@@ -44,19 +44,19 @@ public:
                  std::vector<std::string>& DefaultEnd){
         // 初始化動畫
         this->m_Drawable = std::make_shared<Util::Animation>
-        (DefaultEnd, false, 35, false, 0);
+        (DefaultEnd, false, 40, false, 35);
         this->m_Default = std::make_shared<Util::Animation>
-        (DefaultEnd, false, 35, false, 0);
+        (DefaultEnd, false, 40, false, 35);
         this->m_Drawable = m_Default;
 
         this->m_IdleAnimation = std::make_shared<Util::Animation>
-        (IdleEnd, false, 35, false, 0);
+        (IdleEnd, false, 40, false, 35);
         this->m_AttackAnimation = std::make_shared<Util::Animation>
-        (AttackEnd, false, 35, false, 0);
+        (AttackEnd, false, 40, false, (int)GetAttackTime()*1000);
         this->m_DieAnimation = std::make_shared<Util::Animation>
-        (DieEnd, false, 35, false, 0);
+        (DieEnd, false, 40, false, 35);
         this->m_StartAnimation = std::make_shared<Util::Animation>
-        (StartEnd, false, 35, false, 0);
+        (StartEnd, false, 40, false, 35);
     }
 	
 	//Set 圖片大小
@@ -176,7 +176,9 @@ public:
 	[[nodiscard]] CharacterState GetState() {
         return m_CurrentState;
     }
-	[[nodiscard]]std::string GetCharacterName(){return CharacterName;};
+	std::string GetCharacterName(){
+		return CharacterName;
+	}
 	void SetCharacterName(std::string name){CharacterName=name;}
 	virtual std::string GetJob()=0;
 	virtual ClassState GetJobClass()=0;
