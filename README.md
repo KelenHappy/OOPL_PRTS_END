@@ -58,4 +58,4 @@ better read [PTSD README](https://github.com/ntut-open-source-club/practical-too
 ffmpeg -i test.webm -vf "colorkey=0x00FF00:0.3:0.1" -pix_fmt rgba %d.png
 ```
 # Resources要去Google Dirve下載  
-[點我前往](https://drive.google.com/drive/folders/1dGWjiqmMdWLbofvaHPUsZz9-yQ0pzoZv?usp=drive_link)  
+[點我前往](https://drive.google.com/drive/folders/1dGWjiqmMdWLbofvaHPUsZz9-yQ0pzoZv?usp=sharing)  
