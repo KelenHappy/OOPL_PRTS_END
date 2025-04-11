@@ -80,6 +80,10 @@ add_executable(${PROJECT_NAME}
 		include/Character/Sniper.hpp
 		include/Character/Vanguard.hpp
 		
+		include/Character/MakeCharacter/Sussurro.hpp
+		include/Character/MakeCharacter/Exudiai.hpp
+		include/Character/MakeCharacter/Texas.hpp
+		
 		include/TextBox.hpp
 		include/ImgItem.hpp
 		include/GameTimer.hpp

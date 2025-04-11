@@ -8,7 +8,7 @@ class HpBar : public Util::GameObject {
 public:
     HpBar() : GameObject(
         std::make_unique<Util::Text>(
-            RESOURCE_DIR"/Font/NSTCB.ttf",
+            RESOURCE_DIR"/Font/SWM.ttf",
             10,
             std::string(20, 'I'),  // 初始化為20個'I'
             Util::Color::FromName(Util::Colors::GREEN_YELLOW)),

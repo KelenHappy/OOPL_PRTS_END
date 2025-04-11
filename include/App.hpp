@@ -14,6 +14,10 @@
 #include "Character/Sniper.hpp"
 #include "Character/Vanguard.hpp"
 
+#include "Character/MakeCharacter/Sussurro.hpp"
+#include "Character/MakeCharacter/Exudiai.hpp"
+#include "Character/MakeCharacter/Texas.hpp"
+
 #include "Enemy/Enemy.hpp"
 #include "Enemy/EnemyState.hpp"
 #include "Enemy/BugA.hpp"
@@ -69,9 +73,11 @@ private:
     Util::Renderer m_0107;
     // Character
 	std::shared_ptr<HpBar> m_Hpbar;
-	std::shared_ptr<Medic> m_Sussurro;
-	std::shared_ptr<Sniper> m_Exudiai;
-	std::shared_ptr<Vanguard> m_Texas;
+	std::shared_ptr<Sussurro> m_Sussurro;
+	
+	std::shared_ptr<Exudiai> m_Exudiai;
+	
+	std::shared_ptr<Texas> m_Texas;
 	std::shared_ptr<Spawner> m_Spawner;
     //Charcter Choosen
 	std::vector<std::shared_ptr<AnimatedCharacter>> m_StartCharacter;
