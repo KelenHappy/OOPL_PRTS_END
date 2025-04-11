@@ -18,7 +18,7 @@
 ## 重裝 (Defender)
    - [ ] 蛇屠箱 (Cuora) - https://prts.wiki/w/%E8%9B%87%E5%B1%A0%E7%AE%B1
    - [ ] 塞雷娅 (Saria) - https://prts.wiki/w/%E5%A1%9E%E9%9B%B7%E5%A8%85
-   - [ ] 号角 (Horn) - https://prts.wiki/w/%E5%8F%B2%E5%B0%94%E7%89%B9%E5%B0%94
+   - [ ] 号角 (Horn) - https://prts.wiki/w/%E5%8F%B7%E8%A7%92
 
 ## 醫療 (Medic)
    - [x] 苏苏洛 (Sussurro) - https://prts.wiki/w/%E8%8B%8F%E8%8B%8F%E6%B4%9B
