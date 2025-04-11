@@ -26,6 +26,7 @@ public:
         std::vector<std::shared_ptr<Util::GameObject>>result;
         for (size_t i = 0; i < enemies.size(); i++) {
             result.emplace_back(enemies[i]);
+            result.emplace_back(enemies[i]->GetHpBar());
         }
         return result;
     }

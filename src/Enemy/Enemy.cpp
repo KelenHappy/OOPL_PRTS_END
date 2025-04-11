@@ -1,15 +1,19 @@
 #include "Enemy/Enemy.hpp"
 
+#include <d3d11sdklayers.h>
+
 #include "move.hpp"
 #include "MyTool.hpp"
 
 void Enemy::Updatemove() {
 	switch (m_CurrentState) {
 		case EnemyState::Move:
-			moveGameObject(shared_from_this(),PathPoint->GetindexPoint(PathPointsindex)+glm::vec2{0,250*abs(m_Transform.scale.y)},MoveSpeedNum*5);
+			moveGameObject(shared_from_this(),PathPoint->GetindexPoint(PathPointsindex)+glm::vec2{0,250*abs(m_Transform.scale.y)},MoveSpeedNum*4);
 			if (glm::length(m_Transform.translation-(PathPoint->GetindexPoint(PathPointsindex)+glm::vec2{0,250*abs(m_Transform.scale.y)}))<5) {
 				PathPointsindex++;
-			}break;
+			}
+			I_Hpbar->m_Transform.translation=GetPositionFix()-glm::vec2{ 0,16 };
+			break;
 
 		default:
 			break;
@@ -37,6 +41,7 @@ void Enemy::takeDamage(CharacterAttackImpact impact, float damage){
 			std::cout << "Take DamageError." << std::endl;
 			break;
 	}
+	I_Hpbar->Update(HealthRecoverNum,HealthNum);
 }
 
 void Enemy::ApplySkillEffects() {

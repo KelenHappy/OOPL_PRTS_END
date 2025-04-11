@@ -19,6 +19,7 @@ void attack(T1 thisC, T2 that){
             std::cout << "Take Damage Error." << std::endl;
             break;
     }
+    damage = glm::max(thisC->GetAttack()*0.02f,damage);
     that->takeDamage(
         thisC->GetAttackImpact(),
         damage);

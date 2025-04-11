@@ -51,6 +51,7 @@ void AnimatedCharacter::takeDamage(CharacterAttackImpact impact, float damage){
 			break;
 	}
 	HealthRecoverNum -= damage;
+	m_HpBar->Update(HealthRecoverNum,HealthNum);
 }
 
 void AnimatedCharacter::ImpactDizzy(){
@@ -141,4 +142,7 @@ void AnimatedCharacter::FrameReset(){
     m_StartAnimation->SetCurrentFrame(0);
     m_Default->SetCurrentFrame(0);
 	
+}
+void AnimatedCharacter::updatetransform() {
+	m_HpBar->m_Transform.translation=GetPositionFix()-glm::vec2{0,20};
 }

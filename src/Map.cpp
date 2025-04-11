@@ -118,10 +118,10 @@ bool Map::Takemapcost(int n) {
     }
     return false;
 }
-std::vector<std::shared_ptr<Block>> Map::GetHaveCharacterBlock(BlockState B) {
+std::vector<std::shared_ptr<Block>> Map::GetHaveCharacterBlock(BlockState B, bool HaveCharacter) {
     std::vector<std::shared_ptr<Block>> result;
     for(size_t i=0;i<m_block.size();i++) {
-        if (m_block[i]->GetBlockState()==B) {
+        if (m_block[i]->GetBlockState()==B&&m_block[i]->HaveCharacter==HaveCharacter) {
             result.push_back(m_block[i]);
         }
     }
@@ -130,7 +130,7 @@ std::vector<std::shared_ptr<Block>> Map::GetHaveCharacterBlock(BlockState B) {
 std::vector<std::shared_ptr<Block> > Map::GetTypeOfBlock(BlockState B) {
     std::vector<std::shared_ptr<Block>> result;
     for(size_t i=0;i<m_block.size();i++) {
-        if (m_block[i]->GetBlockState()==B&&m_block[i]->HaveCharacter) {
+        if (m_block[i]->GetBlockState()==B) {
             result.push_back(m_block[i]);
         }
     }

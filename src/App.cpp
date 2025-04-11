@@ -24,7 +24,15 @@ void App::Update() {
             Util::Input::IfExit()) {
             m_CurrentState = State::END;
         }
-        if(Util::Input::IsKeyDown(Util::Keycode::Q)) {
+        else if(Util::Input::IsKeyDown(Util::Keycode::L)) {
+            m_Hpbar->Update(Tickcount,1000);
+            Tickcount-=20;
+        }
+        else if(Util::Input::IsKeyDown(Util::Keycode::M)) {
+            Tickcount=1000;
+            m_Hpbar->Update(Tickcount,1000);
+        }
+        else if(Util::Input::IsKeyDown(Util::Keycode::Q)) {
             m_level=level::main17;
             Map0107Loading();
         }
@@ -53,7 +61,6 @@ bool App::checkCollisionNearMouse(Util::Transform Mouse, Util::Transform Item, i
     return distance <= range;
 }
 void App::Debug() {
-
     auto mouse = Util::Input::GetCursorPosition();
     Util::Transform mouseT;
     mouseT.translation = mouse;

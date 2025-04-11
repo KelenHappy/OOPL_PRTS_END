@@ -8,6 +8,7 @@
 #include "Character/AnimatedCharacter.hpp"
 #include "Character/CharacterState.hpp"
 #include "GameTimer.hpp"
+#include "Hpbar.hpp"
 #include "MobSpawner.hpp"
 #include "Character/Medic.hpp"
 #include "Character/Sniper.hpp"
@@ -53,6 +54,7 @@ private:
 	void Map0107Loading();
     void GameTick();
 	void GameSecondTick();
+	void PlaceCharacter(std::shared_ptr<Block> block,std::shared_ptr<AnimatedCharacter> Char );
 
 private:
 
@@ -66,6 +68,7 @@ private:
     Util::Renderer m_Root;
     Util::Renderer m_0107;
     // Character
+	std::shared_ptr<HpBar> m_Hpbar;
 	std::shared_ptr<Medic> m_Sussurro;
 	std::shared_ptr<Sniper> m_Exudiai;
 	std::shared_ptr<Vanguard> m_Texas;

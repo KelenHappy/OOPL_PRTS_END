@@ -127,6 +127,8 @@ void Spawner::Update() {
     if(spawnQueue[index].spawnTime<Time) {
         enemies[index]->SetPathPoint(paths[spawnQueue[index].pathIndex]);
         enemies[index]->SetVisible(true);
+        enemies[index]->GetHpBar()->SetVisible(true);
+        enemies[index]->GetHpBar()->m_Transform.translation=enemies[index]->GetPositionFix()-glm::vec2{ 0,20 };
         enemies[index]->m_Transform.translation=paths[spawnQueue[index].pathIndex]->GetStartPoint()+glm::vec2{0,250 *abs(enemies[index]-> m_Transform.scale.y)};
         enemies[index]->SetState(EnemyState::Move);
         enemies[index]->SetLooping(true);

@@ -9,6 +9,7 @@
 #include "CharacterState.hpp"
 #include "ClassState.hpp"
 #include "BlockState.hpp"
+#include "Hpbar.hpp"
 
 #include "GamePlayMode/CharacterAttackImpact.hpp"
 #include "GamePlayMode/CharacterSkill.hpp"
@@ -48,15 +49,15 @@ public:
         this->m_Default = std::make_shared<Util::Animation>
         (DefaultEnd, false, 40, false, 35);
         this->m_Drawable = m_Default;
-
         this->m_IdleAnimation = std::make_shared<Util::Animation>
         (IdleEnd, false, 40, false, 35);
         this->m_AttackAnimation = std::make_shared<Util::Animation>
-        (AttackEnd, false, 40, false, (int)GetAttackTime()*1000);
+        (AttackEnd, false, 40, false, ((int)GetAttackTime()-1.2)*1000);
         this->m_DieAnimation = std::make_shared<Util::Animation>
         (DieEnd, false, 40, false, 35);
         this->m_StartAnimation = std::make_shared<Util::Animation>
         (StartEnd, false, 40, false, 35);
+    	m_HpBar = std::make_shared<HpBar>();
     }
 	
 	//Set 圖片大小
@@ -65,8 +66,9 @@ public:
 	}
 	
 	void SetPosition(const glm::vec2& Position) { 
-		m_Transform.translation = {Position.x, Position.y + 80};
+		m_Transform.translation = {Position.x, Position.y + 250*m_Transform.scale.y};
 	}
+
 	
 	void SetState(CharacterState temp) {
 		//StopCurrentAnimation();
@@ -101,65 +103,28 @@ public:
         SkillName = skillname;
         HeavyLevelNum = DefendCout;
     }
-	void SetAttackType(CharacterAttackType tt){
-        AttackType = tt;
-    }
-	
-	void SetAttackImpact(CharacterAttackImpact tt){
-        AttackImpact = tt;
-    }
-	
+	void SetAttackType(CharacterAttackType tt){AttackType = tt;}
+	void SetAttackImpact(CharacterAttackImpact tt){AttackImpact = tt;}
+	void updatetransform();
 	// Get
-	float GetSetTime(){
-		return SetTimeNum;
-	}
-	int GetSetCost(){
-		return SetCostNum;
-	}
-	float GetAttackTime(){
-		return AttackTimeNum;
-	}
-	float GetHP(){
-		return HealthNum;
-	}
-    float GetAttack() { 
-		return AttackNum;
-	}
-	float GetDefend() { 
-		return DefendNum;
-	}
-	float GetMagicDefend() { 
-		return MagicDefendNum;
-	}
-	int GetSkillDefault(){
-		return SkillDefaultNum;
-	}
-    int GetSkillCost(){
-		return SkillCostNum;
-	}
-	float GetSkillTime(){
-		return SkillTimeNum;
-	}
-	std::string GetSkillInfo(){
-		return SkillInfo;
-	}
-    std::string GetSkillName(){
-		return SkillName;
-	}
-    int GetHeavyLevel(){
-		return HeavyLevelNum;
-	}
-	float GetHealthRecover(){
-		return HealthRecoverNum;
-	}
-	
-	CharacterAttackImpact GetAttackImpact(){
-		return AttackImpact;
-	}
-    CharacterAttackType GetAttackType(){
-		return AttackType;
-	}
-	
+	float GetSetTime(){return SetTimeNum;}
+	int GetSetCost(){return SetCostNum;}
+	float GetAttackTime(){return AttackTimeNum;}
+	float GetHP(){return HealthNum;}
+    float GetAttack() { return AttackNum;}
+	float GetDefend() { return DefendNum;}
+	float GetMagicDefend() { return MagicDefendNum;}
+	int GetSkillDefault(){return SkillDefaultNum;}
+    int GetSkillCost(){return SkillCostNum;}
+	float GetSkillTime(){return SkillTimeNum;}
+	std::shared_ptr<HpBar> Gethpbar(){return m_HpBar;}
+	glm::vec2 GetPositionFix(){return m_Transform.translation-glm::vec2{0,250*m_Transform.scale.y};}
+	std::string GetSkillInfo(){return SkillInfo;}
+    std::string GetSkillName(){return SkillName;}
+    int GetHeavyLevel(){return HeavyLevelNum;}
+	float GetHealthRecover(){return HealthRecoverNum;}
+	CharacterAttackImpact GetAttackImpact(){return AttackImpact;}
+    CharacterAttackType GetAttackType(){return AttackType;}
 	[[nodiscard]] int GetFrames() {
 		return std::dynamic_pointer_cast<Util::Animation>(m_Drawable)->GetCurrentFrameIndex();
 	}
@@ -192,6 +157,7 @@ protected:
     std::shared_ptr<Util::Animation> m_DieAnimation = nullptr;
     std::shared_ptr<Util::Animation> m_StartAnimation = nullptr;
     std::shared_ptr<Util::Animation> m_Default = nullptr;
+	std::shared_ptr<HpBar> m_HpBar = nullptr;
 
     // 角色info
     float SetTimeNum = 0;

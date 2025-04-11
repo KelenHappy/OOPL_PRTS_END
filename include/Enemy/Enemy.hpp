@@ -5,6 +5,7 @@
 #include "GamePlayMode/CharacterSkill.hpp"
 #include <set>
 
+#include "Hpbar.hpp"
 #include "Pathpoints.hpp"
 
 class Enemy : public AnimatedEnemy, public CharacterSkill,public std::enable_shared_from_this<Enemy>{
@@ -59,6 +60,10 @@ public:
 		}
 
 		SetPath(IdleImage, AttackImage, DieImage, MoveImage, DefaultImage);
+    	I_Hpbar=std::make_shared<HpBar>();
+    	I_Hpbar->Update(HealthRecoverNum,HealthNum);
+    	I_Hpbar->m_Transform.translation=GetPositionFix()-glm::vec2{ 0,13 };
+    	I_Hpbar->SetVisible(false);
     }
 	// Function
 	void takeDamage(CharacterAttackImpact impact, float damage);
@@ -95,6 +100,7 @@ public:
 	}
 	
 	// Get
+	std::shared_ptr<HpBar> GetHpBar(){return I_Hpbar;}
 	int GetHP(){
 		return HealthNum;
 	}
@@ -159,6 +165,7 @@ protected:
 	std::vector<std::string> AttackImage;
 	std::vector<std::string> DieImage;
 	std::shared_ptr<PathPoints>  PathPoint;
+	std::shared_ptr<HpBar> I_Hpbar;
 	//Name
 	std::string EnemyName = "";
 	// 角色數值

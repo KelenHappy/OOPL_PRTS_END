@@ -14,6 +14,8 @@ void App::Start() {
 	m_map0107=std::make_shared<Map>();
 	m_0107.AddChildren(m_map0107->GetChildren());
     gametimer=std::make_shared<GameTimer>();
+	m_Hpbar=std::make_shared<HpBar>();
+	m_Root.AddChild(m_Hpbar);
 
 
     // Character
@@ -74,7 +76,7 @@ void App::Start() {
 	AttackRangeTemp = std::make_shared<std::vector<std::vector<std::string>>>();
 
 	m_Texas = std::make_shared<Vanguard>("Texas", 120, 60, 60, 61);
-	m_Texas->SetInfo(70, 11, 1.05, 1950, 500, 343, 0, 
+	m_Texas->SetInfo(70, 11, 1.05, 1950, 500, 503, 0,
 	30, 40, 0, "立即獲得12點費用；對周圍所有敵人造成兩次相當於攻擊力170%的法術傷害，並擊中目標暈眩3秒", "劍雨"
 	, 2);
 	m_Texas->SetZIndex(15);
