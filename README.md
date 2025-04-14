@@ -40,10 +40,10 @@
    - [ ] 麒麟R夜刀 (Kirin R Yato) - https://prts.wiki/w/%E9%BA%92%E9%BA%9FR%E5%A4%9C%E5%88%80
    - [ ] 砾 (Gravel) - https://prts.wiki/w/%E7%A0%BE
 ## 敵人 (Enemy)  
-   - [x] 源石虫·α - https://prts.wiki/w/%E6%BA%90%E7%9F%B3%E8%99%AB%C2%B7%CE%B1
-   - [x] 暴徒 - https://prts.wiki/w/%E6%9A%B4%E5%BE%92
-   - [x] 鸡尾酒投掷者 - https://prts.wiki/w/%E9%B8%A1%E5%B0%BE%E9%85%92%E6%8A%95%E6%8E%B7%E8%80%85
-   - [x] 士兵 - https://prts.wiki/w/%E5%A3%AB%E5%85%B5
+   - [x] 源石虫·α (BugA) - https://prts.wiki/w/%E6%BA%90%E7%9F%B3%E8%99%AB%C2%B7%CE%B1
+   - [x] 暴徒 (Varlorant) - https://prts.wiki/w/%E6%9A%B4%E5%BE%92
+   - [x] 鸡尾酒投掷者 (Thrower) - https://prts.wiki/w/%E9%B8%A1%E5%B0%BE%E9%85%92%E6%8A%95%E6%8E%B7%E8%80%85
+   - [x] 士兵 (Soldier) - https://prts.wiki/w/%E5%A3%AB%E5%85%B5
 # 地圖
 https://map.ark-nights.com/map/main_01-07  
 https://map.ark-nights.com/map/ro2_e_5_3  
