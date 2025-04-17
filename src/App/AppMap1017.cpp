@@ -21,6 +21,8 @@ void App::LevelMain17() {
 			m_StartCharacter[m_CardCarry]->SetVisible(true);
 			m_StartCharacter[m_CardCarry]->Gethpbar()->SetVisible(true);
 			m_StartCharacter[m_CardCarry]->updatetransform();
+			m_map0107->closeMapblock();
+			m_flyUI->SetVisible(false);
 		}
 		CheckCard = false;
 		carry = false;
@@ -29,6 +31,8 @@ void App::LevelMain17() {
 	}
 	else if(carry == false and CheckCard == true 
 	and m_StartCharacter[m_CardCarry]->GetState() == CharacterState::Default){
+		m_flyUI->m_Transform.translation=Util::Input::GetCursorPosition()+glm::vec2(0,250*0.13);
+		m_flyUI->SetVisible(true);
 		
 	}
 	else if(carry == false and CheckCard == false 

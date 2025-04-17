@@ -8,6 +8,8 @@
 void App::Start() {
     LOG_TRACE("Start");
     m_CurrentState = State::UPDATE;
+	m_flyUI=std::make_shared<FlyUI>();
+	m_0107.AddChild(m_flyUI);
     m_MainScream= std::make_shared<MainScream>();
     m_TT = std::make_shared<TextBox>(40);
     m_Root.AddChildren(m_MainScream->GetChildren());
@@ -29,13 +31,13 @@ void App::Start() {
 	//角色建立
 	m_Sussurro = std::make_shared<Sussurro>();
 	
-	m_Exudiai = std::make_shared<Exudiai>();
+	m_Exusiai = std::make_shared<Exusiai>();
 	
 	m_Texas = std::make_shared<Texas>();
 
 	// 角色擁有
 	m_StartCharacter.push_back(m_Sussurro);
-	m_StartCharacter.push_back(m_Exudiai);
+	m_StartCharacter.push_back(m_Exusiai);
 	m_StartCharacter.push_back(m_Texas);
 
 

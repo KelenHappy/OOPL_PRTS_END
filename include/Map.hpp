@@ -44,6 +44,8 @@ class Map :public Util::GameObject{
     std::shared_ptr<Block> XYGetBlock(int x,int y){return m_block[x+9*y];}
     void Update();
     void CreatotherItem();
+    void openMapblock(BlockState B);
+    void closeMapblock();
 	~Map(){}
     private:
     int TowerHP;

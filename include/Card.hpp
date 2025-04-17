@@ -16,6 +16,7 @@ class Card:public Util::GameObject {
     std::shared_ptr<ImgItem> Getclass(){return m_class;}
     std::shared_ptr<TextBox> GetCosttext(){return m_cost;}
     std::shared_ptr<ImgItem> GetCardback(){return m_Cardback;}
+    std::shared_ptr<AnimatedCharacter> GetCharacter(){return m_Character;}
     void SetCardSize(float size);
     void SetTranform(float x, float y);//設所有Card物件的座標
     private:

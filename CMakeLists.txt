@@ -94,6 +94,7 @@ add_executable(${PROJECT_NAME}
 		include/MyTool.hpp
 		include/Hpbar.hpp
 		src/App/APPTool.cpp
+		include/FlyUI.hpp
 
 
 )

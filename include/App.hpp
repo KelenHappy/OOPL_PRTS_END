@@ -1,6 +1,7 @@
 #ifndef APP_HPP
 #define APP_HPP
 
+#include "FlyUI.hpp"
 #include "MainScream.hpp"
 #include "Map.hpp"
 #include "Util/Renderer.hpp"
@@ -69,13 +70,14 @@ private:
     std::shared_ptr<TextBox> m_TT;
     std::shared_ptr<Map> m_map0107;
     std::shared_ptr<GameTimer> gametimer;
+	std::shared_ptr<FlyUI>m_flyUI;
     Util::Renderer m_Root;
     Util::Renderer m_0107;
     // Character
 	std::shared_ptr<HpBar> m_Hpbar;
 	std::shared_ptr<Sussurro> m_Sussurro;
 	
-	std::shared_ptr<Exudiai> m_Exudiai;
+	std::shared_ptr<Exusiai> m_Exusiai;
 	
 	std::shared_ptr<Texas> m_Texas;
 	std::shared_ptr<Spawner> m_Spawner;

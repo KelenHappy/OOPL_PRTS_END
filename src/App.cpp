@@ -61,7 +61,7 @@ bool App::checkCollisionNearMouse(Util::Transform Mouse, Util::Transform Item, i
     return distance <= range;
 }
 void App::Debug() {
-    auto mouse = Util::Input::GetCursorPosition();
+    auto mouse =Util::Input::GetCursorPosition(); Util::Input::GetCursorPosition();
     Util::Transform mouseT;
     mouseT.translation = mouse;
 
@@ -83,6 +83,8 @@ void App::Debug() {
             if (checkCollisionNearMouse(mouseT, m_map0107->GetCard()[i]->m_Transform, 50)) {
                 CheckCard = true;
                 m_CardCarry = i;
+                m_map0107->openMapblock(m_map0107->GetCard()[i]->GetCharacter()->GetBlockState());
+                m_flyUI->setnewcharacter(m_map0107->GetCard()[i]->GetCharacter());
 				std::cout << m_CardCarry << std::endl;
                 break;
             }
