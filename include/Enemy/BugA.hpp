@@ -10,7 +10,7 @@ public:
 		//, int AttackDistance, int AttackCastle, int MoveSpeed, int HeavyLevel, int HealthRecover
 		//, bool Dizzy, bool Sleep, bool Frozen
 		//, AttackType attack_t
-		SetInfo(2850, 400, 0, 0, 1.7, 
+		SetInfo(1050, 185, 0, 0, 1.7, 
 		0, 1, 1.0, 0, 0,
 		false, false, false, 
 		CharacterAttackType::Physics);

@@ -11,15 +11,19 @@ void attack(T1 thisC, T2 that){
     switch(thisC->GetAttackType()){
         case CharacterAttackType::Physics:
             damage -= that->GetDefend();
+			if(damage < 0) damage = thisC->GetAttack()*0.02f;
             break;
         case CharacterAttackType::Magic:
             damage = damage*( (100 - that->GetMagicDefend())/100);
-            break;
+            if(damage < 0) damage = thisC->GetAttack()*0.02f;
+			break;
+		case CharacterAttackType::Health:
+			
+			break;
         default:
             std::cout << "Take Damage Error." << std::endl;
             break;
     }
-    damage = glm::max(thisC->GetAttack()*0.02f,damage);
     that->takeDamage(
         thisC->GetAttackImpact(),
         damage);

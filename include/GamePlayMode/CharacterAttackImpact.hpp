@@ -10,6 +10,7 @@ enum class CharacterAttackImpact{
 
 enum class CharacterAttackType {
 	Magic,
-	Physics
+	Physics,
+	Health
 };
 #endif // CHARACTER_ATTACK_TYPE_HPP

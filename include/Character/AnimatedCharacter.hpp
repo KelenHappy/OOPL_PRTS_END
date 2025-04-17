@@ -4,6 +4,7 @@
 #include <vector>
 #include <string>
 #include <iostream>
+#include <cstdlib> 
 #include "Util/Animation.hpp"
 #include "Util/GameObject.hpp"
 #include "CharacterState.hpp"
@@ -45,18 +46,18 @@ public:
                  std::vector<std::string>& DefaultEnd){
         // 初始化動畫
         this->m_Drawable = std::make_shared<Util::Animation>
-        (DefaultEnd, false, 40, false, 35);
+        (DefaultEnd, false, 40, false, 40);
         this->m_Default = std::make_shared<Util::Animation>
-        (DefaultEnd, false, 40, false, 35);
+        (DefaultEnd, false, 40, false, 40);
         this->m_Drawable = m_Default;
         this->m_IdleAnimation = std::make_shared<Util::Animation>
-        (IdleEnd, false, 40, false, 35);
+        (IdleEnd, false, 40, false, 40);
         this->m_AttackAnimation = std::make_shared<Util::Animation>
-        (AttackEnd, false, 40, false, ((int)GetAttackTime()-1.2)*1000);
+        (AttackEnd, false, 40, false, abs(((int)GetAttackTime()-1.2)*1000));
         this->m_DieAnimation = std::make_shared<Util::Animation>
-        (DieEnd, false, 40, false, 35);
+        (DieEnd, false, 40, false, 40);
         this->m_StartAnimation = std::make_shared<Util::Animation>
-        (StartEnd, false, 40, false, 35);
+        (StartEnd, false, 40, false, 40);
     	m_HpBar = std::make_shared<HpBar>();
     }
 	

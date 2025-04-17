@@ -50,6 +50,7 @@ void AnimatedCharacter::takeDamage(CharacterAttackImpact impact, float damage){
 			std::cout << "Take DamageError." << std::endl;
 			break;
 	}
+	//std::cout << damage << std::endl;
 	HealthRecoverNum -= damage;
 	m_HpBar->Update(HealthRecoverNum,HealthNum);
 }

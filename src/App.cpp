@@ -13,7 +13,7 @@ void App::Update() {
     if(Util::Input::IsKeyDown(Util::Keycode::MOUSE_LB)) {
         LOG_DEBUG(std::to_string(mouse.x)+" "+std::to_string(mouse.y));
     }
-    if (gametimer->HasElapsed(50)) { // 每 50 毫秒執行一次
+    if (gametimer->HasElapsed(40)) { // 每 50 毫秒執行一次
         GameTick();
         Tickcount++;
         if (Tickcount >=20) {Tickcount=0;GameSecondTick();}

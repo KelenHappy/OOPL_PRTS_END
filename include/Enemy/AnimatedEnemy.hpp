@@ -31,7 +31,7 @@ public:
         this->m_IdleAnimation = std::make_shared<Util::Animation>
         (IdleEnd, false, 50, false, 50);
         this->m_AttackAnimation = std::make_shared<Util::Animation>
-        (AttackEnd, false, 50, false, 1000);
+        (AttackEnd, false, 50, false, 500);
         this->m_DieAnimation = std::make_shared<Util::Animation>
         (DieEnd, false, 50, false, 50);
         this->m_MoveAnimation = std::make_shared<Util::Animation>
