@@ -39,6 +39,7 @@ void App::LevelMain17() {
 	and CheckCharacter and m_StartCharacter[m_CharacterCarry]->GetVisibility()){
 		// 收回角色
 		m_StartCharacter[m_CharacterCarry]->SetVisible(false);
+		m_StartCharacter[m_CharacterCarry]->Gethpbar()->SetVisible(false);
 		m_StartCharacter[m_CharacterCarry]->SetLooping(false);
 		m_StartCharacter[m_CharacterCarry]->SetState(CharacterState::Default);
 		m_Carry = -1;
