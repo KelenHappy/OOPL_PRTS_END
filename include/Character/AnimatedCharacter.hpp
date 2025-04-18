@@ -34,6 +34,7 @@ public:
 	void ImpactSleep();
 	void ImpactFrozen();
 	void FrameReset();
+    virtual void CreateAnimation() = 0;
 	
 	[[nodiscard]] bool IfAnimationEnds() const;
 	

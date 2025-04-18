@@ -53,9 +53,11 @@ public:
 			seen.insert(int_i);
 			AttackImage.emplace_back(RESOURCE_DIR"/Character/Sniper/" + CharacterName + "/Attack/" + std::to_string(int_i + 1) + ".png");
 		}
-
-		SetPath(IdleImage, AttackImage, DieImage, StartImage, DefaultImage);
     }
+
+	void CreateAnimation() override{
+		SetPath(IdleImage, AttackImage, DieImage, StartImage, DefaultImage);
+	}
 	std::string GetJob() override{
 		return "Sniper";
 	}

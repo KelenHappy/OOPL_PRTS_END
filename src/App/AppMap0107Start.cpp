@@ -14,6 +14,7 @@ void App::Map0107Loading() {
 
 	for (size_t i = 0; i < m_StartCharacter.size(); ++i) {
 		std::cout << "Get In Character" << m_StartCharacter[i]->GetCharacterName() << std::endl;
+		m_StartCharacter[i]->CreateAnimation();
 		m_StartCharacter[i]->SetState(CharacterState::Default);
 		m_StartCharacter[i]->SetLooping(false);
 		m_StartCharacter[i]->SetVisible(false);
