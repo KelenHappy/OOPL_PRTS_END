@@ -14,10 +14,6 @@ public:
 		SetInfo(70, 18, 2.85, 1345, -488, 122, 0,
 		10, 30, 25, "攻擊力+100%，攻擊速度+100同一次作戰中", "深度治療"
 		, 1);
-		SetZIndex(15);
-		SetState(CharacterState::Default);
-		SetVisible(false);     
-		SetLooping(false);
 		//角色技能建立
 		SetAttackBuff(2);
 		SetAttackTimeBuff(1+100/GetAttackTime());

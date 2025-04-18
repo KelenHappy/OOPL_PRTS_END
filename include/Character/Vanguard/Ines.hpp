@@ -14,10 +14,6 @@ public:
 		SetInfo(70, 11, 1.05, 1950, 500, 343, 0,
 		30, 40, 0, "立即獲得12點費用；對周圍所有敵人造成兩次相當於攻擊力170%的法術傷害，並擊中目標暈眩3秒", "劍雨"
 		, 2);
-		SetZIndex(15);
-		SetState(CharacterState::Default);
-		SetVisible(false);
-		SetLooping(false);
 		//角色技能建立
 		SetImpact(CharacterAttackImpact::Dizzy);
 		SetAttackBuff(1.7);

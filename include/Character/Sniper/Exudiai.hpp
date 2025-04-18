@@ -9,10 +9,6 @@ public:
 		SetInfo(70, 12, 1, 1673, 540, 161, 0,
 		20, 30, 15, "攻擊變為5連射，攻擊間隔一定程度縮短(-0.22)", "過載模式"
 		, 1);
-		SetZIndex(15);
-		SetState(CharacterState::Default);
-		SetVisible(false);
-		SetLooping(false);
 		//角色技能建立
 		SetAttackBuff(5);
 		SetAttackTimeBuff(1+100/GetAttackTime());
