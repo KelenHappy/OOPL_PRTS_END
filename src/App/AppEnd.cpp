@@ -8,5 +8,7 @@
 
 
 void App::End() { // NOLINT(this method will mutate members in the future)
+	m_StartCharacter.clear();
+	Enemies.clear();
     LOG_TRACE("End");
 }
