@@ -149,7 +149,8 @@ public:
 	virtual std::string GetJob()=0;
 	virtual ClassState GetJobClass()=0;
 	virtual BlockState GetBlockState() = 0;
-	
+	void PlaceCharacter(std::shared_ptr<Block> block,int index);
+	void OutPlaceCharacter();
 	~AnimatedCharacter(){}
 protected:
     CharacterState m_CurrentState;
@@ -170,7 +171,7 @@ protected:
     float DefendNum = 0;
     float MagicDefendNum = 0;
 	std::string CharacterName;
-	
+	std::shared_ptr<Block> m_PlaceBlock = nullptr;
 	//std::shared_ptr<std::vector <Block>> AttackRangeNow = nullptr;
     //std::shared_ptr<std::vector <Block> >AttackRangeDefault = nullptr;
 	int SkillDefaultNum = 0;

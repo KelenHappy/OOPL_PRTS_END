@@ -147,3 +147,23 @@ void AnimatedCharacter::FrameReset(){
 void AnimatedCharacter::updatetransform() {
 	m_HpBar->m_Transform.translation=GetPositionFix()-glm::vec2{0,20};
 }
+void AnimatedCharacter::PlaceCharacter(std::shared_ptr<Block> block,int index) {
+	if (block == nullptr) return;
+	m_PlaceBlock=block;
+	SetPosition(block->GetPosition());
+	SetState(CharacterState::Start);
+	SetVisible(true);
+	Gethpbar()->SetVisible(true);
+	block->placeCharacter(index);
+	updatetransform();
+}
+void AnimatedCharacter::OutPlaceCharacter() {
+	SetVisible(false);
+	Gethpbar()->SetVisible(false);
+	SetLooping(false);
+	SetState(CharacterState::Default);
+	m_PlaceBlock->outplaceCharacter();
+	m_PlaceBlock=nullptr;
+}
+
+

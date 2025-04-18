@@ -139,7 +139,7 @@ std::vector<std::shared_ptr<Block> > Map::GetTypeOfBlock(BlockState B) {
 
 void Map::openMapblock(BlockState B) {
     for(size_t i=0;i<m_block.size();i++) {
-        if (m_block[i]->GetBlockState()==B) {
+        if (m_block[i]->GetBlockState()==B&&m_block[i]->HaveCharacter==false) {
             m_block[i]->SetVisible(true);
         }
         else

@@ -17,10 +17,18 @@ class Block:public Util::GameObject {
     void SetBlockState(BlockState b){blockState=b;}
     int GetX(){ return x; }
 	int GetY(){ return y; }
-
+    void placeCharacter(int CI) {
+        Characterindex=CI;
+        HaveCharacter=true;
+    }
+    void outplaceCharacter() {
+        Characterindex=-1;
+        HaveCharacter=false;
+    }
     private:
     int x;
     int y;
+    int Characterindex;
     BlockState blockState=BlockState::NONE;
     //std::shared_ptr<AnimatedCharacter> Character;
 

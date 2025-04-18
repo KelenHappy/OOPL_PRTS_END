@@ -15,15 +15,15 @@ void App::LevelMain17() {
 		// SetPosition
 		if(m_StartCharacter[m_CardCarry]->GetBlockState() == m_map0107->Getblock()[m_Carry]->GetBlockState() and 
 		m_StartCharacter[m_CardCarry]->GetState() == CharacterState::Default and
-		m_map0107->Takemapcost(m_StartCharacter[m_CardCarry]->GetSetCost())){
-			m_StartCharacter[m_CardCarry]->SetPosition(m_map0107->Getblock()[m_Carry]->GetPosition());
-			m_StartCharacter[m_CardCarry]->SetState(CharacterState::Start);
-			m_StartCharacter[m_CardCarry]->SetVisible(true);
-			m_StartCharacter[m_CardCarry]->Gethpbar()->SetVisible(true);
-			m_StartCharacter[m_CardCarry]->updatetransform();
+		m_map0107->Takemapcost(m_StartCharacter[m_CardCarry]->GetSetCost())and
+		m_map0107->Getblock()[m_Carry]->HaveCharacter==false)
+			{
+			m_StartCharacter[m_CardCarry]->PlaceCharacter(m_map0107->Getblock()[m_Carry],m_CardCarry);
 			m_map0107->closeMapblock();
 			m_flyUI->SetVisible(false);
 		}
+		m_map0107->closeMapblock();
+		m_flyUI->SetVisible(false);
 		CheckCard = false;
 		carry = false;
 		m_Carry = -1;
@@ -38,10 +38,7 @@ void App::LevelMain17() {
 	else if(carry == false and CheckCard == false 
 	and CheckCharacter and m_StartCharacter[m_CharacterCarry]->GetVisibility()){
 		// 收回角色
-		m_StartCharacter[m_CharacterCarry]->SetVisible(false);
-		m_StartCharacter[m_CharacterCarry]->Gethpbar()->SetVisible(false);
-		m_StartCharacter[m_CharacterCarry]->SetLooping(false);
-		m_StartCharacter[m_CharacterCarry]->SetState(CharacterState::Default);
+		m_StartCharacter[m_CharacterCarry]->OutPlaceCharacter();
 		m_Carry = -1;
 		carry = false;
 		m_CharacterCarry = -1;

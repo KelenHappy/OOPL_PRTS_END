@@ -9,4 +9,5 @@ Block::Block(int x,int y,BlockState BS) {
     this->HaveCharacter = false;
     //this->Character = nullptr;
     this->blockState=BS;
+    this->Characterindex=-1;
 }

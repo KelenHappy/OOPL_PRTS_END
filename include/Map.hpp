@@ -27,7 +27,7 @@ class Map :public Util::GameObject{
     [[nodiscard]] int GetTowerHP(){return TowerHP;}
     void SetTowerHP(int hp) {TowerHP = hp;}
     void EmenyEnterTower() {TowerHP--;}
-    void Addmapcost(int n) {cost+=n;}
+    void Addmapcost(int n) {cost=std::min(cost+n,99);}
     [[nodiscard]] bool Takemapcost(int n);
      int GetEnemytotal(){return EnemyTotal;}
      int GetEnemytotalMax(){return EnemyTotalMax;}
