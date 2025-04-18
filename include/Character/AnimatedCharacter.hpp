@@ -27,15 +27,14 @@ public:
 	// Function
 	void Update();
     [[nodiscard]] bool IfCollides( std::shared_ptr<AnimatedCharacter>& other);
-	void ApplySkillEffects();
-	void CloseSkill();
 	void takeDamage(CharacterAttackImpact impact, float damage);
 	void ImpactDizzy();
 	void ImpactSleep();
 	void ImpactFrozen();
 	void FrameReset();
     virtual void CreateAnimation() = 0;
-	
+	virtual void OpenSkill() = 0;
+	virtual void CloseSkill() = 0;
 	[[nodiscard]] bool IfAnimationEnds() const;
 	
 	// Set

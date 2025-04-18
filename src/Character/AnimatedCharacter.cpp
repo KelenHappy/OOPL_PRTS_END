@@ -96,46 +96,6 @@ void AnimatedCharacter::ImpactFrozen(){
     return xContact && yContact; // 只有 X 和 Y 軸都重疊才判定為碰撞
 }
 
-void AnimatedCharacter::ApplySkillEffects() {
-    if (SetTimeBuff > 0 and SetTimeBuff < 1) SetTimeNum *= SetTimeBuff;
-	if (SetCostBuff > 0) SetCostNum -= SetCostBuff;
-	if (AttackTimeBuff > 0 and AttackTimeBuff < 1) AttackTimeNum *= AttackTimeBuff;
-	if (HealthBuff > 0)	HealthNum *= HealthBuff;
-	if (AttackBuff > 0) AttackNum *= AttackBuff;
-	if (DefendBuff > 0) DefendNum *= DefendBuff;
-	if (MagicDefendBuff > 0) MagicDefendNum *= MagicDefendBuff;
-	if (AttackRangeBuff != nullptr) AttackRangeNow = AttackRangeBuff;
-	if (SkillDefaultBuff > 0) SkillDefaultNum -= SkillDefaultBuff;
-	if (SkillCostBuff > 0) SkillCostNum -= SkillCostBuff;
-	if (SkillTimeBuff > 0 and SkillTimeBuff < 1) SkillTimeNum *= SkillTimeBuff;
-	
-	if (HeavyLevelBuff > 0) HeavyLevelNum += HeavyLevelBuff;
-	if (HealthRecoverBuff > 0) HealthRecoverNum += HealthRecoverBuff;
-
-	if (ImpactBuff != CharacterAttackImpact::Null) AttackImpact = ImpactBuff;
-	if (TypeBuff != AttackType) AttackType = TypeBuff;
-}
-	
-
-void AnimatedCharacter::CloseSkill(){
-	if (SetTimeBuff > 0 and SetTimeBuff < 1) SetTimeNum /= SetTimeBuff;
-	if (SetCostBuff > 0) SetCostNum += SetCostBuff;
-	if (AttackTimeBuff > 0 and AttackTimeBuff < 1) AttackTimeNum /= AttackTimeBuff;
-	if (HealthBuff > 0)	HealthNum /= HealthBuff;
-	if (AttackBuff > 0) AttackNum /= AttackBuff;
-	if (DefendBuff > 0) DefendNum /= DefendBuff;
-	if (MagicDefendBuff > 0) MagicDefendNum /= MagicDefendBuff;
-	if (AttackRangeBuff != nullptr) AttackRangeNow = AttackRangeDefault;
-	if (SkillDefaultBuff > 0) SkillDefaultNum += SkillDefaultBuff;
-	if (SkillCostBuff > 0) SkillCostNum += SkillCostBuff;
-	if (SkillTimeBuff > 0 and SkillTimeBuff < 1) SkillTimeNum /= SkillTimeBuff;
-	if (HeavyLevelBuff > 0) HeavyLevelNum -= HeavyLevelBuff;
-	if (HealthRecoverBuff > 0) HealthRecoverNum -= HealthRecoverBuff;
-
-	if (ImpactBuff != CharacterAttackImpact::Null) AttackImpact = CharacterAttackImpact::Null;
-	if (TypeBuff != AttackType) AttackType = CharacterAttackType::Physics;
-}
-
 void AnimatedCharacter::FrameReset(){
 	m_IdleAnimation->SetCurrentFrame(0);
     m_AttackAnimation->SetCurrentFrame(0);

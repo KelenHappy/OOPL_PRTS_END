@@ -13,11 +13,11 @@ public:
 		HeavyLevel
 		*/
 		SetInfo(35, 11, 1, 2121, 589, 281, 0,
-		15, 20, 12, "立即獲得12點費用；對周圍所有敵人造成兩次相當於攻擊力170%的法術傷害，並擊中目標暈眩3秒", "劍雨"
+		15, 20, 12, "攻擊範圍擴大，攻擊力+110%", "暗夜無明"
 		, 1);
 		//角色技能建立
-		SetImpact(CharacterAttackImpact::Dizzy);
-		SetAttackBuff(1.7);
+		SetAttackBuff(2.1);
+		SetAttackRangeNumBuff(1);
 		//建立初始攻擊範圍
 		SetAttackRangeNum(3);
 		SetDefaultRange();
@@ -27,6 +27,18 @@ public:
 		this->m_DefaultRange->push_back(std::vector<std::string>(5, "0"));
 		this->m_DefaultRange->push_back(std::vector<std::string>(5, "0"));
     }
+	
+	void OpenSkill() override{
+		SkillOpen = true;
+		AttackNum *= AttackBuff;
+		AttackRangeNum += AttackRangeNumBuff;
+	}
+	
+	void CloseSkill() override{
+		SkillOpen = false;
+		AttackNum /= AttackBuff;
+		AttackRangeNum -= AttackRangeNumBuff;
+	}
 
 protected:
 

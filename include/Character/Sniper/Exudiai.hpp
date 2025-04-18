@@ -11,7 +11,7 @@ public:
 		, 1);
 		//角色技能建立
 		SetAttackBuff(5);
-		SetAttackTimeBuff(1+100/GetAttackTime());
+		SetAttackTimeBuff((GetAttackTime()-0.22)/GetAttackTime());
 		//建立初始攻擊範圍
 		SetAttackRangeNum(4);
 		SetDefaultRange();
@@ -21,6 +21,18 @@ public:
 		this->m_DefaultRange->push_back({"1", "1", "1", "1", "0"});
 		this->m_DefaultRange->push_back(std::vector<std::string>(5, "0"));
     }
+	
+	void OpenSkill() override{
+		SkillOpen = true;
+		AttackNum *= AttackBuff;
+		AttackTimeNum *= AttackTimeBuff;
+	}
+	
+	void CloseSkill() override{
+		SkillOpen = false;
+		AttackNum /= AttackBuff;
+		AttackTimeNum /= AttackTimeBuff;
+	}
 
 protected:
 

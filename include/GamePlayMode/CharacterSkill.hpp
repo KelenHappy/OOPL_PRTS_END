@@ -7,6 +7,7 @@ public:
     CharacterSkill(){
 
     }
+	
     void SetSetTimeBuff(float timeBuff) {
         SetTimeBuff = timeBuff;
     }
@@ -34,7 +35,10 @@ public:
     void SetMagicDefendBuff(int magicDefendBuff) {
         MagicDefendBuff = magicDefendBuff;
     }
-
+	
+	void SetAttackRangeNumBuff(int in){
+		AttackRangeNumBuff = in;
+	}
     void SetAttackRangeBuff(std::shared_ptr<std::vector<Block>> rangeBuff) {
         AttackRangeBuff = rangeBuff;
     }
@@ -84,6 +88,7 @@ protected:
     float AttackBuff = 0;
     float DefendBuff = 0;
     int MagicDefendBuff = 0;
+	int AttackRangeNumBuff = 0;
     std::shared_ptr<std::vector <Block> >AttackRangeBuff = nullptr;
 	int SkillDefaultBuff = 0;
     int SkillCostBuff = 0;

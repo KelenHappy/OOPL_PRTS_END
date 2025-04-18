@@ -16,6 +16,7 @@ public:
 		, 2);
 		//角色技能建立
 		SetImpact(CharacterAttackImpact::Dizzy);
+		SetType(CharacterAttackType::Magic);
 		SetAttackBuff(1.7);
 		//建立初始攻擊範圍
 		SetAttackRangeNum(2);
@@ -26,6 +27,20 @@ public:
 		this->m_DefaultRange->push_back(std::vector<std::string>(5, "0"));
 		this->m_DefaultRange->push_back(std::vector<std::string>(5, "0"));
     }
+	
+	void OpenSkill() override{
+		SkillOpen = true;
+		AttackImpact =  ImpactBuff;
+		AttackType = TypeBuff;
+		AttackNum *= AttackBuff;
+	}
+	
+	void CloseSkill() override{
+		SkillOpen = false;
+		AttackImpact =  CharacterAttackImpact::Null;
+		AttackType = CharacterAttackType::Physics;
+		AttackNum /= AttackBuff;
+	}
 
 protected:
 
