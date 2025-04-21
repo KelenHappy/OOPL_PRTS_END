@@ -19,11 +19,11 @@ public:
 		SetAttackBuff(-0.5);
 		SetType(CharacterAttackType::Health);
 		//建立初始攻擊範圍
-		SetAttackRangeNum(3);
+		SetAttackRangeNum(2);
 		SetDefaultRange();
 		this->m_DefaultRange->push_back(std::vector<std::string>(5, "0"));
 		this->m_DefaultRange->push_back(std::vector<std::string>(5, "0"));
-		this->m_DefaultRange->push_back({"2", "1", "1", "0", "0"});
+		this->m_DefaultRange->push_back({"2", "1", "0", "0", "0"});
 		this->m_DefaultRange->push_back(std::vector<std::string>(5, "0"));
 		this->m_DefaultRange->push_back(std::vector<std::string>(5, "0"));
     }
