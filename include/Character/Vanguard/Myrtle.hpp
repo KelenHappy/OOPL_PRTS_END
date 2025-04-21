@@ -31,13 +31,13 @@ public:
 	void OpenSkill() override{
 		SkillOpen = true;
 		AttackNum *= AttackBuff;
-		AttackRangeNum += AttackRangeNumBuff;
+		AttackType = TypeBuff;
 	}
 	
 	void CloseSkill() override{
 		SkillOpen = false;
 		AttackNum /= AttackBuff;
-		AttackRangeNum -= AttackRangeNumBuff;
+		AttackType = CharacterAttackType::Physics;
 	}
 
 protected:
