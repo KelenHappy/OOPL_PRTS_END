@@ -5,6 +5,7 @@
 #include <string>
 #include <iostream>
 #include <cstdlib> 
+#include "ImgItem.hpp"
 #include "Util/Animation.hpp"
 #include "Util/GameObject.hpp"
 #include "CharacterState.hpp"
@@ -45,8 +46,6 @@ public:
                  std::vector<std::string>& StartEnd,
                  std::vector<std::string>& DefaultEnd){
         // 初始化動畫
-        this->m_Drawable = std::make_shared<Util::Animation>
-        (DefaultEnd, false, 40, false, 40);
         this->m_Default = std::make_shared<Util::Animation>
         (DefaultEnd, false, 40, false, 40);
         this->m_Drawable = m_Default;
@@ -159,6 +158,7 @@ protected:
     std::shared_ptr<Util::Animation> m_DieAnimation = nullptr;
     std::shared_ptr<Util::Animation> m_StartAnimation = nullptr;
     std::shared_ptr<Util::Animation> m_Default = nullptr;
+	std::shared_ptr<Util::Animation> m_HalfCard = nullptr;
 	std::shared_ptr<HpBar> m_HpBar = nullptr;
 
     // 角色info

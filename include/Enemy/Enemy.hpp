@@ -13,13 +13,12 @@ public:
     Enemy(std::string EnemyNameI, int IdleCont, int AttackCont,int DieCont, int MoveCont) : AnimatedEnemy(){
 		int defaultNum = 10;
 		EnemyName = EnemyNameI;
-		DefaultImage.reserve(1);
 		DefaultImage.emplace_back(RESOURCE_DIR"/Enemy/" + EnemyName + "/Default/1.png");
 
-		IdleImage.reserve(defaultNum + 2);
-		MoveImage.reserve(defaultNum + 2);
-		DieImage.reserve(defaultNum + 2);
-		AttackImage.reserve(defaultNum + 2);
+		IdleImage.reserve(defaultNum);
+		MoveImage.reserve(defaultNum);
+		DieImage.reserve(defaultNum);
+		AttackImage.reserve(defaultNum);
 
 		std::set<int> seen;
 

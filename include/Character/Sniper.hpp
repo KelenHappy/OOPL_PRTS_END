@@ -6,15 +6,18 @@ class Sniper : public AnimatedCharacter{
 public:
     Sniper(std::string CharacterName, int IdleCont, int AttackCont,int DieCont, int StartCont) : AnimatedCharacter(){
 		int defaultNum = 30;
+		
 		SetCharacterName(CharacterName);
 
-		DefaultImage.reserve(1);
+		HalfCardImage.emplace_back(RESOURCE_DIR"/HalfCard/Sniper/"+ CharacterName + ".png");
 		DefaultImage.emplace_back(RESOURCE_DIR"/Character/Sniper/" + CharacterName + "/Default/1.png");
-
-		IdleImage.reserve(defaultNum + 2);
-		StartImage.reserve(defaultNum + 2);
-		DieImage.reserve(defaultNum + 2);
-		AttackImage.reserve(defaultNum + 2);
+		this->m_HalfCard = std::make_shared<Util::Animation>(HalfCardImage, false, 40, false, 40);
+		this->m_Drawable = std::make_shared<Util::Animation>(HalfCardImage, false, 40, false, 40);
+		
+		IdleImage.reserve(defaultNum);
+		StartImage.reserve(defaultNum);
+		DieImage.reserve(defaultNum);
+		AttackImage.reserve(defaultNum);
 
 		std::set<int> seen;
 
@@ -70,7 +73,7 @@ public:
 	
 	~Sniper(){}
 protected:
-	
+	std::vector<std::string> HalfCardImage;
 	std::vector<std::string> DefaultImage;
 	std::vector<std::string> IdleImage;
 	std::vector<std::string> StartImage;

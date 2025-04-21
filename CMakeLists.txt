@@ -82,8 +82,10 @@ add_executable(${PROJECT_NAME}
 		
 		include/Character/Vanguard/Texas.hpp
 		include/Character/Vanguard/Ines.hpp
+		include/Character/Vanguard/Myrtle.hpp
 		
 		include/Character/Medic/Sussurro.hpp
+		
 		include/Character/Sniper/Exudiai.hpp
 		
 		

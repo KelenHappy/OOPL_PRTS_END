@@ -42,7 +42,7 @@ void App::GameTick() {
 			m_StartCharacter[i]->SetLooping(true);
 		}
 		//判斷攻擊
-		if(m_StartCharacter[i]->GetJob() != "Medic"){
+		if(m_StartCharacter[i]->GetAttackType() != CharacterAttackType::Health){
 			for(size_t j = 0; j < Enemies.size() ; ++j){
 				float distance = calculateDistance(m_StartCharacter[i]->m_Transform, Enemies[j]->m_Transform);
 				if(state != CharacterState::Default and distance <= m_StartCharacter[i]->GetAttackRangeNum()*70
@@ -58,7 +58,7 @@ void App::GameTick() {
 			}
 		}
 		// 判斷回血
-		else if(m_StartCharacter[i]->GetJob() == "Medic"){
+		else if(m_StartCharacter[i]->GetAttackType() != CharacterAttackType::Health){
 			for(size_t j = 0; j < m_StartCharacter.size(); ++j){
 				float distance = calculateDistance(m_StartCharacter[i]->m_Transform, m_StartCharacter[j]->m_Transform);
 				if(j !=i and m_StartCharacter[j]->GetHP() > m_StartCharacter[j]->GetHealthRecover()
