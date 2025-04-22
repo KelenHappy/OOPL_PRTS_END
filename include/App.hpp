@@ -79,11 +79,18 @@ private:
     Util::Renderer m_0107;
     // Character
 	std::shared_ptr<HpBar> m_Hpbar;
+    //Medic
 	std::shared_ptr<Sussurro> m_Sussurro;
 	
+    //Sniper
 	std::shared_ptr<Exusiai> m_Exusiai;
 	
+    //Vanguard
 	std::shared_ptr<Texas> m_Texas;
+    std::shared_ptr<Ines> m_Ines;
+    std::shared_ptr<Myrtle> m_Myrtle;
+
+    //Enemies
 	std::shared_ptr<Spawner> m_Spawner;
     //Charcter Choosen
 	std::vector<std::shared_ptr<AnimatedCharacter>> m_StartCharacter;
