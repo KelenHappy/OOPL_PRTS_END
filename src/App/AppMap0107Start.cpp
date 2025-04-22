@@ -10,6 +10,9 @@ void App::Map0107Loading() {
 	m_Spawner=std::make_shared<Spawner>();
 	Enemies=m_Spawner->GetEnemies();
 	m_0107.AddChildren(m_Spawner->GetEnemiesGameobject());
+	for (int i = 0; i < Enemies.size(); i++){
+		Enemies[i]->CreateAnimation();
+	}
 	//角色選則
 
 	for (size_t i = 0; i < m_StartCharacter.size(); ++i) {

@@ -124,10 +124,6 @@ void Spawner::AddSpawn(float time, Enemytype type, int pathIndex) {
 }
 void Spawner::Update() {
     if(index>=int(spawnQueue.size())) {return;}
-    if(!enemies[index]->GetIsCreateAnimation()){
-        enemies[index]->CreateAnimation();
-        enemies[index]->SetIsCreateAnimation(true);
-    }
     if(spawnQueue[index].spawnTime<Time) {
         enemies[index]->SetPathPoint(paths[spawnQueue[index].pathIndex]);
         enemies[index]->SetVisible(true);
