@@ -11,7 +11,7 @@ public:
 		//, bool Dizzy, bool Sleep, bool Frozen
 		//, AttackType attack_t
 		SetInfo(1050, 185, 0, 0, 1.7, 
-		0, 1, 1.0, 0, 0,
+		0, 1, 1.0, 0,
 		false, false, false, 
 		CharacterAttackType::Physics);
     }

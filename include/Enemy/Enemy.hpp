@@ -80,7 +80,7 @@ public:
 	}
 	void SetPathPoint(std::shared_ptr<PathPoints> P){PathPoint=P;}
 	void SetInfo(int Health, int Attack, int Defend, int MagicDefend, int AttackSpeed
-	, float AttackDistance, int AttackCastle, float MoveSpeed, int HeavyLevel, int HealthRecover
+	, float AttackDistance, int AttackCastle, float MoveSpeed, int HeavyLevel
 	, bool Dizzy, bool Sleep, bool Frozen
 	, CharacterAttackType attack_t){
 		HealthNum = Health;

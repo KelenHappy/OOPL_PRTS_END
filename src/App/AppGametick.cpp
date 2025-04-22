@@ -10,12 +10,12 @@ void App::GameTick() {
     for(size_t i = 0; i< Enemies.size(); i++) {
         if(Enemies[i]->GetVisibility()) {
            Enemies[i]->Updatemove();
-            if(Enemies[i]->GetPathPointsindex()>=Enemies[i]->GetPathPoints()->GetPointsize()) {
+            if(Enemies[i]->GetPathPointsindex() >= static_cast<int>(Enemies[i]->GetPathPoints()->GetPointsize())) {
                 m_map0107->EmenyEnterTower();
                 Enemies[i]->SetVisible(false);
             	Enemies[i]->GetHpBar()->SetVisible(false);
                 Enemies[i]->SetLooping(false);
-        }
+			}
         }
     }
     for (size_t i = 0; i < m_StartCharacter.size(); ++i) {
@@ -75,7 +75,7 @@ void App::GameTick() {
 		}
 		//判斷Idle
 		if (m_StartCharacter[i]->IfAnimationEnds()
-		and state != CharacterState::Default and state != CharacterState::Die and state != CharacterState::Attack or Enemies.size() <= 0) {
+		and state != CharacterState::Default and state != CharacterState::Die and state != CharacterState::Attack) {
 			m_StartCharacter[i]->SetVisible(true);
 			m_StartCharacter[i]->SetLooping(true);
 			m_StartCharacter[i]->SetState(CharacterState::Idle);
