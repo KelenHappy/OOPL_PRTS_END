@@ -11,7 +11,7 @@
 class Enemy : public AnimatedEnemy, public CharacterSkill,public std::enable_shared_from_this<Enemy>{
 public:
     Enemy(std::string EnemyNameI, int IdleCont, int AttackCont,int DieCont, int MoveCont) : AnimatedEnemy(){
-		int defaultNum = 7;
+		int defaultNum = 6;
 		EnemyName = EnemyNameI;
 		DefaultImage.emplace_back(RESOURCE_DIR"/Enemy/" + EnemyName + "/Default/1.png");
 
