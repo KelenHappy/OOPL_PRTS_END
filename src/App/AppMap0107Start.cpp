@@ -16,7 +16,7 @@ void App::Map0107Loading() {
 	//角色選則
 
 	for (size_t i = 0; i < m_StartCharacter.size(); ++i) {
-		std::cout << "Get In Character" << m_StartCharacter[i]->GetCharacterName() << std::endl;
+		std::cout << "Get In Character " << m_StartCharacter[i]->GetCharacterName() << std::endl;
 		m_StartCharacter[i]->CreateAnimation();
 		m_StartCharacter[i]->SetZIndex(15);
 		m_StartCharacter[i]->SetState(CharacterState::Default);
