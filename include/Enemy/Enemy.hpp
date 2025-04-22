@@ -58,12 +58,14 @@ public:
 			AttackImage.emplace_back(RESOURCE_DIR"/Enemy/" + EnemyName + "/Attack/" + std::to_string(int_i + 1) + ".png");
 		}
 
-		SetPath(IdleImage, AttackImage, DieImage, MoveImage, DefaultImage);
     	I_Hpbar=std::make_shared<HpBar>();
     	I_Hpbar->Update(HealthRecoverNum,HealthNum);
     	I_Hpbar->m_Transform.translation=GetPositionFix()-glm::vec2{ 0,13 };
     	I_Hpbar->SetVisible(false);
     }
+	void CreateAnimation(){
+		SetPath(this->IdleImage, this->AttackImage, this->DieImage, MoveImage, this->DefaultImage);
+	}
 	// Function
 	void takeDamage(CharacterAttackImpact impact, float damage);
 	void ImpactDizzy();
@@ -140,7 +142,9 @@ public:
 		return FrozenDefend;
 	}
 	int GetPathPointsindex(){return PathPointsindex;}
+	bool GetIsCreateAnimation(){return IsCreateAnimation;}
 	void SetPathPointsindex(int n){PathPointsindex=n;}
+	void SetIsCreateAnimation(bool in){IsCreateAnimation = in;}
 	void AddPathPointsindex(){PathPointsindex++;}
 	std::shared_ptr<PathPoints> GetPathPoints(){return PathPoint;}
 
@@ -158,6 +162,7 @@ public:
 	
 	~Enemy(){}
 protected:
+	bool IsCreateAnimation = false;
 	std::vector<std::string> DefaultImage;
 	std::vector<std::string> IdleImage;
 	std::vector<std::string> MoveImage;
