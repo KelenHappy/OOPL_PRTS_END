@@ -45,7 +45,7 @@ void App::GameTick() {
 		if(m_StartCharacter[i]->GetAttackType() != CharacterAttackType::Health){
 			for(size_t j = 0; j < Enemies.size() ; ++j){
 				float distance = calculateDistance(m_StartCharacter[i]->m_Transform, Enemies[j]->m_Transform);
-				if(state != CharacterState::Default and distance <= m_StartCharacter[i]->GetAttackRangeNum()*70
+				if(state != CharacterState::Default and distance <= m_StartCharacter[i]->GetAttackRangeNum()*75
 				and Enemies[j]->GetVisibility()
 				and m_StartCharacter[i]->IfAnimationEnds()){
 					m_StartCharacter[i]->SetState(CharacterState::Attack);
@@ -62,7 +62,7 @@ void App::GameTick() {
 			for(size_t j = 0; j < m_StartCharacter.size(); ++j){
 				float distance = calculateDistance(m_StartCharacter[i]->m_Transform, m_StartCharacter[j]->m_Transform);
 				if(j !=i and m_StartCharacter[j]->GetHP() > m_StartCharacter[j]->GetHealthRecover()
-				and distance <= m_StartCharacter[i]->GetAttackRangeNum()*70
+				and distance <= m_StartCharacter[i]->GetAttackRangeNum()*75
 				and m_StartCharacter[i]->IfAnimationEnds()){
 					m_StartCharacter[i]->SetState(CharacterState::Attack);
 					attack(m_StartCharacter[i], m_StartCharacter[j]);
