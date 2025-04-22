@@ -58,7 +58,7 @@ void App::GameTick() {
 			}
 		}
 		// 判斷回血
-		else if(m_StartCharacter[i]->GetAttackType() != CharacterAttackType::Health){
+		else if(m_StartCharacter[i]->GetAttackType() == CharacterAttackType::Health){
 			for(size_t j = 0; j < m_StartCharacter.size(); ++j){
 				float distance = calculateDistance(m_StartCharacter[i]->m_Transform, m_StartCharacter[j]->m_Transform);
 				if(j !=i and m_StartCharacter[j]->GetHP() > m_StartCharacter[j]->GetHealthRecover()
