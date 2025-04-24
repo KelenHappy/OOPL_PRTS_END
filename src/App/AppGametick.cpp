@@ -18,68 +18,68 @@ void App::GameTick() {
 			}
         }
     }
-    for (size_t i = 0; i < m_StartCharacter.size(); ++i) {
-		if(!m_StartCharacter[i]->GetVisibility()) continue;
-		CharacterState state = m_StartCharacter[i]->GetState();
+    for (size_t i = 0; i < m_LevelCharacter.size(); ++i) {
+		if(!m_LevelCharacter[i]->GetVisibility()) continue;
+		CharacterState state = m_LevelCharacter[i]->GetState();
 		// 判斷是否活著
-		if ((m_StartCharacter[i]->GetHealthRecover() <= 0) or state == CharacterState::Die) {
-			m_StartCharacter[i]->SetState(CharacterState::Die);
-			if (m_StartCharacter[i]->IfAnimationEnds()) {
-				m_StartCharacter[i]->SetLooping(false);
-				m_StartCharacter[i]->SetVisible(false);
-				m_StartCharacter[i]->FrameReset();
+		if ((m_LevelCharacter[i]->GetHealthRecover() <= 0) or state == CharacterState::Die) {
+			m_LevelCharacter[i]->SetState(CharacterState::Die);
+			if (m_LevelCharacter[i]->IfAnimationEnds()) {
+				m_LevelCharacter[i]->SetLooping(false);
+				m_LevelCharacter[i]->SetVisible(false);
+				m_LevelCharacter[i]->FrameReset();
 				// 從容器中移除死亡角色
-				m_StartCharacter.erase(m_StartCharacter.begin() + i);
+				m_LevelCharacter.erase(m_LevelCharacter.begin() + i);
 				--i;  // 刪除後需要調整索引
 				continue;
 			}
 			else{
-				m_StartCharacter[i]->SetLooping(true);
+				m_LevelCharacter[i]->SetLooping(true);
 				continue;
 			}
 		}
 		else{
-			m_StartCharacter[i]->SetLooping(true);
+			m_LevelCharacter[i]->SetLooping(true);
 		}
 		//判斷攻擊
-		if(m_StartCharacter[i]->GetAttackType() != CharacterAttackType::Health){
+		if(m_LevelCharacter[i]->GetAttackType() != CharacterAttackType::Health){
 			for(size_t j = 0; j < Enemies.size() ; ++j){
-				float distance = calculateDistance(m_StartCharacter[i]->m_Transform, Enemies[j]->m_Transform);
-				if(state != CharacterState::Default and distance <= m_StartCharacter[i]->GetAttackRangeNum()*75
+				float distance = calculateDistance(m_LevelCharacter[i]->m_Transform, Enemies[j]->m_Transform);
+				if(state != CharacterState::Default and distance <= m_LevelCharacter[i]->GetAttackRangeNum()*75
 				and Enemies[j]->GetVisibility()
-				and m_StartCharacter[i]->IfAnimationEnds()){
-					m_StartCharacter[i]->SetState(CharacterState::Attack);
-					attack(m_StartCharacter[i], Enemies[j]);
+				and m_LevelCharacter[i]->IfAnimationEnds()){
+					m_LevelCharacter[i]->SetState(CharacterState::Attack);
+					attack(m_LevelCharacter[i], Enemies[j]);
 					break;
 				}
-				else if(m_StartCharacter[i]->IfAnimationEnds()){
-					m_StartCharacter[i]->SetState(CharacterState::Idle);
+				else if(m_LevelCharacter[i]->IfAnimationEnds()){
+					m_LevelCharacter[i]->SetState(CharacterState::Idle);
 				}
 			}
 		}
 		// 判斷回血
-		else if(m_StartCharacter[i]->GetAttackType() == CharacterAttackType::Health){
-			for(size_t j = 0; j < m_StartCharacter.size(); ++j){
-				float distance = calculateDistance(m_StartCharacter[i]->m_Transform, m_StartCharacter[j]->m_Transform);
-				if(j !=i and m_StartCharacter[j]->GetHP() > m_StartCharacter[j]->GetHealthRecover()
-				and distance <= m_StartCharacter[i]->GetAttackRangeNum()*75
-				and m_StartCharacter[i]->IfAnimationEnds()){
-					m_StartCharacter[i]->SetState(CharacterState::Attack);
-					attack(m_StartCharacter[i], m_StartCharacter[j]);
+		else if(m_LevelCharacter[i]->GetAttackType() == CharacterAttackType::Health){
+			for(size_t j = 0; j < m_LevelCharacter.size(); ++j){
+				float distance = calculateDistance(m_LevelCharacter[i]->m_Transform, m_LevelCharacter[j]->m_Transform);
+				if(j !=i and m_LevelCharacter[j]->GetHP() > m_LevelCharacter[j]->GetHealthRecover()
+				and distance <= m_LevelCharacter[i]->GetAttackRangeNum()*75
+				and m_LevelCharacter[i]->IfAnimationEnds()){
+					m_LevelCharacter[i]->SetState(CharacterState::Attack);
+					attack(m_LevelCharacter[i], m_LevelCharacter[j]);
 					break;
 				}
-				else if(m_StartCharacter[i]->IfAnimationEnds()){
-					m_StartCharacter[i]->SetState(CharacterState::Idle);
+				else if(m_LevelCharacter[i]->IfAnimationEnds()){
+					m_LevelCharacter[i]->SetState(CharacterState::Idle);
 				}
 			}
 		}
 		//判斷Idle
-		if (m_StartCharacter[i]->IfAnimationEnds()
+		if (m_LevelCharacter[i]->IfAnimationEnds()
 		and state != CharacterState::Default and state != CharacterState::Die and state != CharacterState::Attack) {
-			m_StartCharacter[i]->SetVisible(true);
-			m_StartCharacter[i]->SetLooping(true);
-			m_StartCharacter[i]->SetState(CharacterState::Idle);
-			m_StartCharacter[i]->FrameReset();
+			m_LevelCharacter[i]->SetVisible(true);
+			m_LevelCharacter[i]->SetLooping(true);
+			m_LevelCharacter[i]->SetState(CharacterState::Idle);
+			m_LevelCharacter[i]->FrameReset();
 		}
 
 	}
@@ -112,12 +112,12 @@ void App::GameTick() {
 		//判斷移動碰撞
 		//判斷攻擊
 		if(Enemies[i]->GetJob() != "None"){
-			for(size_t j = 0; j < m_StartCharacter.size(); ++j){
-				float distance = calculateDistance(m_StartCharacter[j]->m_Transform, Enemies[i]->m_Transform);
-				if(state != EnemyState::Default and distance <= 70 and m_StartCharacter[j]->GetVisibility()
+			for(size_t j = 0; j < m_LevelCharacter.size(); ++j){
+				float distance = calculateDistance(m_LevelCharacter[j]->m_Transform, Enemies[i]->m_Transform);
+				if(state != EnemyState::Default and distance <= 70 and m_LevelCharacter[j]->GetVisibility()
 					and Enemies[i]->IfAnimationEnds()){
 					Enemies[i]->SetState(EnemyState::Attack);
-					attack(Enemies[i], m_StartCharacter[j]);
+					attack(Enemies[i], m_LevelCharacter[j]);
 					break;
 				}
 				else if(Enemies[i]->IfAnimationEnds()){

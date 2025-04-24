@@ -48,6 +48,7 @@ add_executable(${PROJECT_NAME}
 		src/Enemy/Enemy.cpp
         src/Map.cpp
 		src/MobSpawner.cpp
+		src/App/ChooseCharacter.cpp
     ${HEADER_FILES}
         include/App.hpp	
 		include/Block.hpp
@@ -65,6 +66,7 @@ add_executable(${PROJECT_NAME}
 		include/Card.hpp
 		include/ClassState.hpp
 		include/CharacterType.hpp
+		include/ChosenCharacter.hpp
 
 		include/GamePlayMode/Attack.hpp
 		include/GamePlayMode/CharacterAttackImpact.hpp

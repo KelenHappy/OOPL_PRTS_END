@@ -34,6 +34,8 @@ void App::Start() {
 	m_Exusiai = std::make_shared<Exusiai>();
 	
 	m_Texas = std::make_shared<Texas>();
+	m_Ines = std::make_shared<Ines>();
+    m_Myrtle = std::make_shared<Myrtle>();
 
 	// 角色擁有
 	m_StartCharacter.push_back(m_Sussurro);

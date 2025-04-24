@@ -44,6 +44,7 @@ public:
         main17,
         cc5,
         rog53,
+		chooseCharacter
     };
 
     State GetCurrentState() const { return m_CurrentState; }
@@ -58,6 +59,7 @@ private:
     void ValidTask();
     bool checkCollisionNearMouse(Util::Transform Mouse, Util::Transform Item, int range);
     void Debug();
+	void ChooseCharacter();
     void LevelMain17();
     double calculateDistance(Util::Transform a, Util::Transform b);
 	void Map0107Loading();

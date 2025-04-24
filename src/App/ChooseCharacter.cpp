@@ -5,10 +5,9 @@
 #include "Util/Keycode.hpp"
 #include "Util/Logger.hpp"
 #include <vector>
-
-
-void App::End() { // NOLINT(this method will mutate members in the future)
-	m_LevelCharacter.clear();
-	Enemies.clear();
-    LOG_TRACE("End");
+void App::ChooseCharacter() {
+    //選擇角色
+	for(size_t i = 0; i < m_StartCharacter.size(); i++){
+		
+	}
 }
