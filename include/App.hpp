@@ -3,9 +3,10 @@
 
 #include "FlyUI.hpp"
 #include "MainScream.hpp"
+#include "ChooseCharacter/ChosenCharacter.hpp"
 #include "Map.hpp"
 #include "Util/Renderer.hpp"
-
+#include "Card/HalfCard.hpp"
 #include "Character/AnimatedCharacter.hpp"
 #include "Character/CharacterState.hpp"
 #include "GameTimer.hpp"
@@ -73,12 +74,14 @@ private:
     State m_CurrentState = State::START;
     // 場景
     std::shared_ptr<MainScream> m_MainScream;
+	std::shared_ptr<ChosenCharacter> m_ChosenCharacter;
     std::shared_ptr<TextBox> m_TT;
     std::shared_ptr<Map> m_map0107;
     std::shared_ptr<GameTimer> gametimer;
 	std::shared_ptr<FlyUI>m_flyUI;
     Util::Renderer m_Root;
     Util::Renderer m_0107;
+	Util::Renderer m_HalfCardScreen;
     // Character
 	std::shared_ptr<HpBar> m_Hpbar;
     //Medic

@@ -49,6 +49,8 @@ add_executable(${PROJECT_NAME}
         src/Map.cpp
 		src/MobSpawner.cpp
 		src/App/ChooseCharacter.cpp
+		
+		src/Card/HalfCard.cpp
     ${HEADER_FILES}
         include/App.hpp	
 		include/Block.hpp
@@ -61,12 +63,14 @@ add_executable(${PROJECT_NAME}
 		include/Enemy/Soldier.hpp
 		include/Enemy/Thrower.hpp
 		include/Enemy/Varlorant.hpp
-
+		
+		include/Card/HalfCard.hpp
 		include/CreateIMG.hpp
 		include/Card.hpp
 		include/ClassState.hpp
 		include/CharacterType.hpp
-		include/ChosenCharacter.hpp
+		
+		include/ChooseCharacter/ChosenCharacter.hpp
 
 		include/GamePlayMode/Attack.hpp
 		include/GamePlayMode/CharacterAttackImpact.hpp

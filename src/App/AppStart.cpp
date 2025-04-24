@@ -10,8 +10,10 @@ void App::Start() {
     m_CurrentState = State::UPDATE;
 	m_flyUI=std::make_shared<FlyUI>();
 	m_0107.AddChild(m_flyUI);
-    m_MainScream= std::make_shared<MainScream>();
-    m_TT = std::make_shared<TextBox>(40);
+    
+	m_MainScream= std::make_shared<MainScream>();
+	m_ChosenCharacter = std::make_shared<ChosenCharacter>();
+	m_TT = std::make_shared<TextBox>(40);
     m_Root.AddChildren(m_MainScream->GetChildren());
 	m_map0107=std::make_shared<Map>();
 	m_0107.AddChildren(m_map0107->GetChildren());
@@ -19,6 +21,7 @@ void App::Start() {
 	m_Hpbar=std::make_shared<HpBar>();
 	m_Root.AddChild(m_Hpbar);
 
+	m_HalfCardScreen.AddChildren(m_ChosenCharacter->GetChildren());
 
     // Character
 	//std::string CharacterName, int IdleCont, int AttackCont,int DieCont, int StartCont

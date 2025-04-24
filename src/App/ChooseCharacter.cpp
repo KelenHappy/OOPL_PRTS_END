@@ -8,6 +8,9 @@
 void App::ChooseCharacter() {
     //選擇角色
 	for(size_t i = 0; i < m_StartCharacter.size(); i++){
+		m_StartCharacter[i]->SetState(CharacterState::HalfCard);
 		
 	}
+	
+	m_HalfCardScreen.Update();
 }
