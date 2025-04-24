@@ -13,6 +13,7 @@ void App::Start() {
     
 	m_MainScream= std::make_shared<MainScream>();
 	m_ChosenCharacter = std::make_shared<ChosenCharacter>();
+	
 	m_TT = std::make_shared<TextBox>(40);
     m_Root.AddChildren(m_MainScream->GetChildren());
 	m_map0107=std::make_shared<Map>();
@@ -20,8 +21,7 @@ void App::Start() {
     gametimer=std::make_shared<GameTimer>();
 	m_Hpbar=std::make_shared<HpBar>();
 	m_Root.AddChild(m_Hpbar);
-
-	m_HalfCardScreen.AddChildren(m_ChosenCharacter->GetChildren());
+	//m_Root.AddChildren();
 
     // Character
 	//std::string CharacterName, int IdleCont, int AttackCont,int DieCont, int StartCont
@@ -45,5 +45,11 @@ void App::Start() {
 	m_StartCharacter.push_back(m_Exusiai);
 	m_StartCharacter.push_back(m_Texas);
 
-
+	for(size_t i = 0; i < m_StartCharacter.size(); i++){
+		std::shared_ptr<HalfCard> cd=std::make_shared<HalfCard>(m_StartCharacter[i]);
+		cd->SetTranform(570-(i*144),-300);
+		m_ChosenCharacter->AddHalfCard(cd);
+		m_HalfCardScreen.AddChildren(m_ChosenCharacter->GetChildrenCard());
+		m_HalfCardScreen.AddChild(m_StartCharacter[i]);
+	}
 }

@@ -19,9 +19,21 @@ class ChosenCharacter:public Util::GameObject {
     [[nodiscard]] std::vector<std::shared_ptr<Util::GameObject>> GetChildren() const {
         return {m_start, m_background};
     }
-
+	void AddHalfCard(std::shared_ptr<HalfCard> card) {
+        m_HalfCard.push_back(card);
+    }
+	[[nodiscard]] std::vector<std::shared_ptr<Util::GameObject>> GetChildrenCard() const {
+        std::vector<std::shared_ptr<Util::GameObject>> result;
+        for(size_t i=0;i<m_HalfCard.size();i++) {
+            result.push_back(m_HalfCard[i]);
+            result.push_back(m_HalfCard[i]->GetCardback());
+            result.push_back(m_HalfCard[i]->GetCosttext());
+            result.push_back(m_HalfCard[i]->Getclass());
+        }
+        return result;
+    }
     private:
-	std::shared_ptr<HalfCard> m_HalfCard;
+	std::vector<std::shared_ptr<HalfCard>> m_HalfCard;
     std::shared_ptr<TextBox> m_start;
     std::shared_ptr<CreateIMG> m_background;
 

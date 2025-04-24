@@ -20,6 +20,9 @@ void AnimatedCharacter::Update() {
 		case CharacterState::Idle:
 			m_Drawable = m_IdleAnimation;
 			break;
+		case CharacterState::HalfCard:
+			m_Drawable = m_HalfCard;
+			break;
 		default:
 			std::cout << "Error input Current CharacterState" << std::endl;
 			break;
