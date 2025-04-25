@@ -17,8 +17,12 @@
 #include "Character/Vanguard.hpp"
 
 #include "Character/Medic/Sussurro.hpp"
+#include "Character/Medic/Warfarin.hpp"
+#include "Character/Medic/Ptilopsis.hpp"
 
 #include "Character/Sniper/Exudiai.hpp"
+#include "Character/Sniper/Kroos.hpp"
+#include "Character/Sniper/W.hpp"
 
 #include "Character/Vanguard/Texas.hpp"
 #include "Character/Vanguard/Ines.hpp"
@@ -90,9 +94,13 @@ private:
 	std::shared_ptr<HpBar> m_Hpbar;
     //Medic
 	std::shared_ptr<Sussurro> m_Sussurro;
-	
+	std::shared_ptr<Warfarin> m_Warfarin;
+    std::shared_ptr<Ptilopsis> m_Ptilopsis;
+
     //Sniper
 	std::shared_ptr<Exusiai> m_Exusiai;
+    std::shared_ptr<Kroos> m_Kroos;
+    std::shared_ptr<W> m_W;
 	
     //Vanguard
 	std::shared_ptr<Texas> m_Texas;

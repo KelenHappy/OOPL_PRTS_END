@@ -91,9 +91,13 @@ add_executable(${PROJECT_NAME}
 		include/Character/Vanguard/Myrtle.hpp
 		
 		include/Character/Medic/Sussurro.hpp
+		include/Character/Medic/Warfarin.hpp
+		include/Character/Medic/Ptilopsis.hpp
 		
 		include/Character/Sniper/Exudiai.hpp
-		
+		include/Character/Sniper/Kroos.hpp
+		include/Character/Sniper/W.hpp
+
 		
 		include/TextBox.hpp
 		include/ImgItem.hpp

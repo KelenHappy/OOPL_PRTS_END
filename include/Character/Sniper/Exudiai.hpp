@@ -10,7 +10,6 @@ public:
 		20, 30, 15, "攻擊變為5連射，攻擊間隔一定程度縮短(-0.22)", "過載模式"
 		, 1);
 		//角色技能建立
-		SetAttackBuff(5);
 		SetAttackTimeBuff((GetAttackTime()-0.22)/GetAttackTime());
 		//建立初始攻擊範圍
 		SetAttackRangeNum(4);
@@ -24,13 +23,13 @@ public:
 	
 	void OpenSkill() override{
 		SkillOpen = true;
-		AttackNum *= AttackBuff;
+		SetAttackTimesBuff(5);
 		AttackTimeNum *= AttackTimeBuff;
 	}
 	
 	void CloseSkill() override{
+		SetAttackTimesBuff(1);
 		SkillOpen = false;
-		AttackNum /= AttackBuff;
 		AttackTimeNum /= AttackTimeBuff;
 	}
 

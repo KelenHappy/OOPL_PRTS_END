@@ -33,9 +33,13 @@ void App::Start() {
 	//Temp
 	//角色建立
 	m_Sussurro = std::make_shared<Sussurro>();
+	m_Warfarin = std::make_shared<Warfarin>();
+	m_Ptilopsis = std::make_shared<Ptilopsis>();
 	
 	m_Exusiai = std::make_shared<Exusiai>();
-	
+	m_Kroos = std::make_shared<Kroos>();
+	m_W = std::make_shared<W>();
+
 	m_Texas = std::make_shared<Texas>();
 	m_Ines = std::make_shared<Ines>();
     m_Myrtle = std::make_shared<Myrtle>();

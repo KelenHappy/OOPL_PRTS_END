@@ -57,6 +57,9 @@ void AnimatedCharacter::takeDamage(CharacterAttackImpact impact, float damage){
 	HealthRecoverNum -= damage;
 	m_HpBar->Update(HealthRecoverNum,HealthNum);
 }
+void AnimatedCharacter::CharacterGetBuff(){
+
+}
 
 void AnimatedCharacter::ImpactDizzy(){
 	
