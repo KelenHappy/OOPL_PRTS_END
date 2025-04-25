@@ -33,13 +33,6 @@ void App::Start() {
 	//Temp
 	//角色建立
 	m_Sussurro = std::make_shared<Sussurro>();
-	m_Warfarin = std::make_shared<Warfarin>();
-	m_Ptilopsis = std::make_shared<Ptilopsis>();
-	
-	m_Exusiai = std::make_shared<Exusiai>();
-	m_Kroos = std::make_shared<Kroos>();
-	m_W = std::make_shared<W>();
-
 	m_Texas = std::make_shared<Texas>();
 	m_Ines = std::make_shared<Ines>();
     m_Myrtle = std::make_shared<Myrtle>();
@@ -48,12 +41,11 @@ void App::Start() {
 	m_StartCharacter.push_back(m_Sussurro);
 	m_StartCharacter.push_back(m_Exusiai);
 	m_StartCharacter.push_back(m_Texas);
-
+	m_HalfCardScreen.AddChildren(m_ChosenCharacter->GetChildren());
 	for(size_t i = 0; i < m_StartCharacter.size(); i++){
 		std::shared_ptr<HalfCard> cd=std::make_shared<HalfCard>(m_StartCharacter[i]);
-		cd->SetTranform(570-(i*144),-300);
 		m_ChosenCharacter->AddHalfCard(cd);
-		m_HalfCardScreen.AddChildren(m_ChosenCharacter->GetChildrenCard());
-		m_HalfCardScreen.AddChild(m_StartCharacter[i]);
+
 	}
+	m_HalfCardScreen.AddChildren(m_ChosenCharacter->GetChildrenCard());
 }

@@ -4,12 +4,14 @@ HalfCard::HalfCard(std::shared_ptr<AnimatedCharacter> Character) {
     m_Drawable = std::make_shared<Util::Image>(RESOURCE_DIR"/HalfCard/"+Character->GetJob()+"/"+Character->GetCharacterName()+".png");
     SetZIndex(27);
     cardsize=0.8f;
-    m_cost= std::make_shared<TextBox>(20);
-    m_Cardback=std::make_shared<ImgItem>("/HalfCard/BlankHalf.png");
+    m_cost= std::make_shared<TextBox>(30);
+    m_cost->SetColor(Util::Colors::DODGER_BLUE);
+    m_name= std::make_shared<TextBox>(20);
+    m_name->SetText(Character->GetCharacterName());
+    m_Cardback=std::make_shared<ImgItem>("/HalfCard/cardbackgraund.png");
     m_Cardback->setsize(0.7,0.7);
     m_Cardback->SetZIndex(26);
     this->m_classState =m_Character->GetJobClass();
-    this->cost =m_Character->GetSetCost();
     createclass(m_classState);
     createinfo();
     SetCardSize(cardsize);
@@ -42,7 +44,7 @@ void HalfCard::createclass(ClassState cs) {
             m_class = std::make_shared<ImgItem>("/Character/classimg/Specialist.png");
         break;
         default:
-                m_class = std::make_shared<ImgItem>("/Character/classimg/Specialist.png");
+            m_class = std::make_shared<ImgItem>("/Character/classimg/Specialist.png");
         break;
     }
     m_class->setsize(0.15,0.15);

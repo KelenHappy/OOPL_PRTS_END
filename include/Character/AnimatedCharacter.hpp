@@ -160,6 +160,7 @@ public:
 	virtual std::string GetJob()=0;
 	virtual ClassState GetJobClass()=0;
 	virtual BlockState GetBlockState() = 0;
+	virtual std::string GetChineseName()=0;
 	void PlaceCharacter(std::shared_ptr<Block> block,int index);
 	void OutPlaceCharacter();
 	~AnimatedCharacter(){}

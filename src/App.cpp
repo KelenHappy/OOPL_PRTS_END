@@ -13,6 +13,9 @@ void App::Update() {
     if(Util::Input::IsKeyDown(Util::Keycode::MOUSE_LB)) {
         LOG_DEBUG(std::to_string(mouse.x)+" "+std::to_string(mouse.y));
     }
+    if (Util::Input::IsKeyUp(Util::Keycode::ESCAPE) ||
+       Util::Input::IfExit()) {
+        m_CurrentState = State::END;}
     if (gametimer->HasElapsed(40)) { // 每 50 毫秒執行一次
         GameTick();
         Tickcount++;
@@ -20,11 +23,7 @@ void App::Update() {
         gametimer->Reset();
     }
     if(m_level==level::lobby){
-        if (Util::Input::IsKeyUp(Util::Keycode::ESCAPE) ||
-            Util::Input::IfExit()) {
-            m_CurrentState = State::END;
-        }
-        else if(Util::Input::IsKeyDown(Util::Keycode::Q)) {
+        if(Util::Input::IsKeyDown(Util::Keycode::Q)) {
             m_level=level::main17;
             Map0107Loading();
         }
@@ -41,14 +40,12 @@ void App::Update() {
         m_Root.Update();
     }
     else if(m_level==level::main17) {
-
-        if (Util::Input::IsKeyUp(Util::Keycode::ESCAPE) ||
-        Util::Input::IfExit()) {
-            m_CurrentState = State::END;
-        }
         LevelMain17();
 		Debug();
 	}
+    else if(m_level==level::chooseCharacter) {
+        m_HalfCardScreen.Update();
+    }
 }
 
 

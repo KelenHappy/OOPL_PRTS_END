@@ -54,6 +54,7 @@ public:
 		}
 
     }
+
 	void CreateAnimation() override{
 		SetPath(IdleImage, AttackImage, DieImage, StartImage, DefaultImage);
 	}
