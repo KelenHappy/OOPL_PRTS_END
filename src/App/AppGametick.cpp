@@ -49,7 +49,9 @@ void App::GameTick() {
 				and Enemies[j]->GetVisibility()
 				and m_LevelCharacter[i]->IfAnimationEnds()){
 					m_LevelCharacter[i]->SetState(CharacterState::Attack);
-					attack(m_LevelCharacter[i], Enemies[j]);
+					for(int k = 0; k < m_LevelCharacter[i]->GetAttackTimesBuff();k++){
+						attack(m_LevelCharacter[i], Enemies[j]);
+					}
 					break;
 				}
 				else if(m_LevelCharacter[i]->IfAnimationEnds()){
@@ -65,7 +67,9 @@ void App::GameTick() {
 				and distance <= m_LevelCharacter[i]->GetAttackRangeNum()*75
 				and m_LevelCharacter[i]->IfAnimationEnds()){
 					m_LevelCharacter[i]->SetState(CharacterState::Attack);
-					attack(m_LevelCharacter[i], m_LevelCharacter[j]);
+					for(int k; k < m_LevelCharacter[i]->GetAttackTimesBuff();k++){
+						attack(m_LevelCharacter[i], m_LevelCharacter[j]);
+					}
 					break;
 				}
 				else if(m_LevelCharacter[i]->IfAnimationEnds()){

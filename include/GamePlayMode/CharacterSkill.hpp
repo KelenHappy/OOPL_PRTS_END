@@ -74,10 +74,18 @@ public:
 	bool GetSkillOpen(){
 		return SkillOpen;
 	}
-	
+
 	void SetSkillOpen(bool t){
 		SkillOpen = t;
 	}
+
+	void SetAttackTimesBuff(int i){
+        AttackTimes = i;
+    }
+
+    int GetAttackTimesBuff(){
+        return AttackTimes;
+    }
     ~CharacterSkill(){}
 protected:
 	bool SkillOpen = false;
@@ -99,6 +107,8 @@ protected:
 	
 	CharacterAttackType TypeBuff = CharacterAttackType::Physics;
 	CharacterAttackImpact ImpactBuff = CharacterAttackImpact::Null;
+
+    int AttackTimes = 1;
 
 };
 
