@@ -24,14 +24,6 @@ void App::Update() {
             Util::Input::IfExit()) {
             m_CurrentState = State::END;
         }
-        else if(Util::Input::IsKeyDown(Util::Keycode::L)) {
-            m_Hpbar->Update(Tickcount,1000);
-            Tickcount-=20;
-        }
-        else if(Util::Input::IsKeyDown(Util::Keycode::M)) {
-            Tickcount=1000;
-            m_Hpbar->Update(Tickcount,1000);
-        }
         else if(Util::Input::IsKeyDown(Util::Keycode::Q)) {
             m_level=level::main17;
             Map0107Loading();
@@ -45,6 +37,7 @@ void App::Update() {
 			ChooseCharacter();
 			Debug();
 		}
+        choicemap();
         m_Root.Update();
     }
     else if(m_level==level::main17) {

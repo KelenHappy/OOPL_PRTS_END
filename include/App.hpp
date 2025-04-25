@@ -67,6 +67,8 @@ private:
     void GameTick();
 	void GameSecondTick();
 	void PlaceCharacter(std::shared_ptr<Block> block,std::shared_ptr<AnimatedCharacter> Char );
+	void choicemap();
+	bool checkCollision(glm::vec2 cursorPos, glm::vec2 itemPos, float rangeX, float rangeY);
 
 private:
 
@@ -82,6 +84,8 @@ private:
     Util::Renderer m_Root;
     Util::Renderer m_0107;
 	Util::Renderer m_HalfCardScreen;
+	Util::Renderer m_cc5;
+	Util::Renderer m_rog53;
     // Character
 	std::shared_ptr<HpBar> m_Hpbar;
     //Medic
@@ -104,6 +108,7 @@ private:
     // idle attack die move
     std::vector<std::shared_ptr<Enemy>> Enemies;
     // 大便
+	bool ckicking=false;
 	bool CheckCard = false;
     bool carry=false;
 	bool CheckCharacter = false;
