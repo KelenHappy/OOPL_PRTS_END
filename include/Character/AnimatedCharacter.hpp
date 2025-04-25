@@ -38,7 +38,11 @@ public:
 	virtual void OpenSkill() = 0;
 	virtual void CloseSkill() = 0;
 	[[nodiscard]] bool IfAnimationEnds() const;
-	
+	void DeDieCost(int i){DieCost -= i;}
+	void AddSkillCost(int i){
+        SkillNow += i;
+        SkillNow = std::min(SkillCostNum,SkillNow);
+    }
 	// Set
 	//設定path
     void SetPath(std::vector<std::string>& IdleEnd,
@@ -90,6 +94,7 @@ public:
     int SkillDefault, int SkillCost, float SkillTime, std::string skillinfo, std::string skillname, int DefendCout
     ){
         SetTimeNum = SetTime;
+        DieCost = SetTime;
         SetCostNum = SetCost;
         AttackTimeNum = AttackTime;
         HealthNum = Health;
@@ -98,14 +103,18 @@ public:
         DefendNum = Defend;
         MagicDefendNum = DefendMagic;
         SkillDefaultNum = SkillDefault;
+        SkillNow = SkillDefault;
         SkillCostNum = SkillCost;
         SkillTimeNum = SkillTime;
         SkillInfo = skillinfo;
         SkillName = skillname;
         HeavyLevelNum = DefendCout;
     }
+    void SetHP(){HealthNow = HealthNum;}
 	void SetAttackType(CharacterAttackType tt){AttackType = tt;}
 	void SetAttackImpact(CharacterAttackImpact tt){AttackImpact = tt;}
+	void SetDead(bool t){ Dead = t;}
+	void SetDieCost(){ DieCost = SetTimeNum;}
 	void updatetransform();
 	// Get
 	float GetSetTime(){return SetTimeNum;}
@@ -126,6 +135,8 @@ public:
 	float GetHealthRecover(){return HealthRecoverNum;}
 	CharacterAttackImpact GetAttackImpact(){return AttackImpact;}
     CharacterAttackType GetAttackType(){return AttackType;}
+    bool GetDie(){return Dead;}
+    int GetDieCost(){return DieCost;}
 	[[nodiscard]] int GetFrames() {
 		return std::dynamic_pointer_cast<Util::Animation>(m_Drawable)->GetCurrentFrameIndex();
 	}
@@ -185,6 +196,12 @@ protected:
 	float HealthRecoverNum = 0;
     CharacterAttackType AttackType = CharacterAttackType::Physics;
 	CharacterAttackImpact AttackImpact = CharacterAttackImpact::Null;
+
+    //Die Control
+    bool Dead = false;
+    int DieCost = 0;
+    // Slill Control
+    int SkillNow = 0;
 
 private:
     float m_Width = 15.0f;  // 角色寬度

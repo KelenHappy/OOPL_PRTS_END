@@ -28,9 +28,8 @@ void App::GameTick() {
 				m_LevelCharacter[i]->SetLooping(false);
 				m_LevelCharacter[i]->SetVisible(false);
 				m_LevelCharacter[i]->FrameReset();
-				// 從容器中移除死亡角色
-				m_LevelCharacter.erase(m_LevelCharacter.begin() + i);
-				--i;  // 刪除後需要調整索引
+				// 從容器中Reset角色
+				m_LevelCharacter[i]->SetDead(true);
 				continue;
 			}
 			else{
