@@ -17,6 +17,7 @@ void App::GameSecondTick() {
             m_LevelCharacter[i]->SetDieCost();
             m_LevelCharacter[i]->SetDead(false);
             m_LevelCharacter[i]->SetLooping(true);
+            m_LevelCharacter[i]->SetState(CharacterState::Default);
         }
     }
     m_map0107->Update();
