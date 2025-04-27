@@ -10,7 +10,7 @@ void App::choicemap() {
     if(Util::Input::IsKeyDown(Util::Keycode::MOUSE_LB)) {
         std::vector<std::shared_ptr<Util::GameObject>> choiceitems=m_MainScream->GetTextInfo();
 
-        for(int i=0;i<choiceitems.size();i++) {
+        for(size_t i=0;i<choiceitems.size();i++) {
             if(checkCollision(Util::Input::GetCursorPosition(),choiceitems[i]->m_Transform.translation,110,20)) {
                 if(i==0) {
                     m_level=level::main17;

@@ -30,22 +30,9 @@ void App::Start() {
     int SkillDefault, int SkillCost, float SkillTime, std::string skillinfo, std::string skillname,
 	defendlevel
 	*/
-	//Temp
-	//角色建立
-	m_Sussurro = std::make_shared<Sussurro>();
-	m_Texas = std::make_shared<Texas>();
-	m_Ines = std::make_shared<Ines>();
-    m_Myrtle = std::make_shared<Myrtle>();
-
 	// 角色擁有
-	m_StartCharacter.push_back(m_Sussurro);
-	m_StartCharacter.push_back(m_Exusiai);
-	m_StartCharacter.push_back(m_Texas);
 	m_HalfCardScreen.AddChildren(m_ChosenCharacter->GetChildren());
-	for(size_t i = 0; i < m_StartCharacter.size(); i++){
-		std::shared_ptr<HalfCard> cd=std::make_shared<HalfCard>(m_StartCharacter[i]);
-		m_ChosenCharacter->AddHalfCard(cd);
-
-	}
+	m_ChosenCharacter->CreateNewCharacter();
+	m_ChosenCharacter->Settran();
 	m_HalfCardScreen.AddChildren(m_ChosenCharacter->GetChildrenCard());
 }

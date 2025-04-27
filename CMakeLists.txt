@@ -49,7 +49,7 @@ add_executable(${PROJECT_NAME}
         src/Map.cpp
 		src/MobSpawner.cpp
 		src/App/ChooseCharacter.cpp
-		
+		src/Card/chosenCharacter.cpp
 		src/Card/HalfCard.cpp
     ${HEADER_FILES}
         include/App.hpp	
@@ -111,6 +111,7 @@ add_executable(${PROJECT_NAME}
 		include/Hpbar.hpp
 		src/App/APPTool.cpp
 		include/FlyUI.hpp
+
 
 
 )
