@@ -1,6 +1,7 @@
 #ifndef APP_HPP
 #define APP_HPP
 
+#include "Film/Film.hpp"
 #include "FlyUI.hpp"
 #include "MainScream.hpp"
 #include "ChooseCharacter/ChosenCharacter.hpp"
