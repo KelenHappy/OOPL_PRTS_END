@@ -48,6 +48,13 @@ void ChosenCharacter::UpDateChoiceCharacter() {
         m_ChoiceCard[i]->Setchoseindex(int(i+1));
     }
 }
+std::vector<std::shared_ptr<AnimatedCharacter> > ChosenCharacter::GetChoiceCharacter() {
+    std::vector<std::shared_ptr<AnimatedCharacter> > result;
+    for (size_t i = 0; i <  m_ChoiceCard.size(); i++) {
+        result.push_back(m_ChoiceCard[i]->GetCharacter());
+    }
+    return result;
+}
 
 
 

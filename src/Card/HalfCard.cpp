@@ -5,7 +5,7 @@ HalfCard::HalfCard(std::shared_ptr<AnimatedCharacter> Character) {
     m_Drawable = std::make_shared<Util::Image>(RESOURCE_DIR"/HalfCard/"+Character->GetJob()+"/"+Character->GetCharacterName()+".png");
     SetZIndex(27);
     cardsize=1.0f;
-    m_cost= std::make_shared<TextBox>(25);
+    m_cost= std::make_shared<TextBox>(35);
     m_cost->SetColor(Util::Colors::DODGER_BLUE);
     m_name= std::make_shared<TextBox>(15);
     m_name->SetText(Character->GetChineseName());
@@ -66,8 +66,9 @@ void HalfCard::createinfo() {
 void HalfCard::SetTranform(float x, float y) {
     m_Transform.translation.x = x;
     m_Transform.translation.y = y;
+    m_choicebar->m_Transform.translation={x,y};
     m_name->m_Transform.translation=glm::vec2{x+20,y-85};
-    m_cost->m_Transform.translation=glm::vec2{x+40,y+80};
+    m_cost->m_Transform.translation=glm::vec2{x+35,y+75};
     m_Cardback2->m_Transform.translation=glm::vec2{x,y-86};
     m_Cardback->m_Transform.translation.x = x;
     m_Cardback->m_Transform.translation.y = y;

@@ -27,14 +27,8 @@ void App::Update() {
             m_level=level::main17;
             Map0107Loading();
         }
-		else if(Util::Input::IsKeyDown(Util::Keycode::C) || m_level == level::chooseCharacter){
-			if (Util::Input::IsKeyUp(Util::Keycode::ESCAPE) ||
-			Util::Input::IfExit()) {
-				m_CurrentState = State::END;
-			}
+		else if(Util::Input::IsKeyDown(Util::Keycode::C)){
 			m_level=level::chooseCharacter;
-			ChooseCharacter();
-			Debug();
 		}
         choicemap();
         m_Root.Update();
@@ -44,7 +38,7 @@ void App::Update() {
 		Debug();
 	}
     else if(m_level==level::chooseCharacter) {
-        m_HalfCardScreen.Update();
+        ChooseCharacter();
     }
 }
 

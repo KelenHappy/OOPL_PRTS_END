@@ -15,7 +15,7 @@ void App::Map0107Loading() {
 	}
 	//角色選則
 
-	for (size_t i = 0; i < m_LevelCharacter.size(); ++i) {
+	for (size_t i = 0; i < m_LevelCharacter.size(); i++) {
 		std::cout << "Get In Character " << m_LevelCharacter[i]->GetCharacterName() << std::endl;
 		m_LevelCharacter[i]->CreateAnimation();
 		m_LevelCharacter[i]->SetZIndex(15);

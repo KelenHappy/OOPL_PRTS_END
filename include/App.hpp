@@ -92,8 +92,8 @@ private:
 	Util::Renderer m_cc5;
 	Util::Renderer m_rog53;
     // Character
-	std::shared_ptr<HpBar> m_Hpbar;
     //Medic
+	/*
 	std::shared_ptr<Sussurro> m_Sussurro;
 	std::shared_ptr<Warfarin> m_Warfarin;
     std::shared_ptr<Ptilopsis> m_Ptilopsis;
@@ -107,6 +107,7 @@ private:
 	std::shared_ptr<Texas> m_Texas;
     std::shared_ptr<Ines> m_Ines;
     std::shared_ptr<Myrtle> m_Myrtle;
+    */
 
     //Enemies
 	std::shared_ptr<Spawner> m_Spawner;

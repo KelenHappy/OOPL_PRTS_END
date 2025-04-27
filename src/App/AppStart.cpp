@@ -19,8 +19,6 @@ void App::Start() {
 	m_map0107=std::make_shared<Map>();
 	m_0107.AddChildren(m_map0107->GetChildren());
     gametimer=std::make_shared<GameTimer>();
-	m_Hpbar=std::make_shared<HpBar>();
-	m_Root.AddChild(m_Hpbar);
 	//m_Root.AddChildren();
 
     // Character

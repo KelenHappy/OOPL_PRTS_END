@@ -12,6 +12,7 @@ class FlyUI:public Util::GameObject {
     public:
     FlyUI() {
         m_Transform.scale={0.25,0.25};
+        SetZIndex(30);
     }
     void setnewcharacter(std::shared_ptr<AnimatedCharacter> Character) {
         m_Drawable = std::make_shared<Util::Image>(RESOURCE_DIR"/Character/"+Character->GetJob()+"/"+Character->GetCharacterName()+"/Idle/1.png");

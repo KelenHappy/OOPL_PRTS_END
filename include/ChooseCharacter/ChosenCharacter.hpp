@@ -30,7 +30,7 @@ class ChosenCharacter:public Util::GameObject {
     }
     std::vector<std::shared_ptr<AnimatedCharacter>> GetTotalCharacter() const {return m_ToTalCharacter;}
     std::vector<std::shared_ptr<AnimatedCharacter>> GetChoiceCharacter() ;
-    std::vector<std::shared_ptr<HalfCard>> GetChoiceCard() {return m_HalfCard;}
+    std::vector<std::shared_ptr<HalfCard>> GetChoiceCard() {return m_ChoiceCard;}
     void AddChoiceCharacter(std::shared_ptr<HalfCard> character) {m_ChoiceCard.push_back(character);}
     void RemoveChoiceCharacter(int index) {
         m_ChoiceCard.erase(m_ChoiceCard.begin() + (index - 1));

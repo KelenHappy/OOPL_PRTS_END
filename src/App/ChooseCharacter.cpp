@@ -14,6 +14,7 @@ void App::ChooseCharacter() {
 				int n=choiceitems[i]->Getchoseindex();
 				if (n==-1) {
 					if (m_ChosenCharacter->GetChoiceCard().size()<12) {
+						m_ChosenCharacter->AddChoiceCharacter(choiceitems[i]);
 						choiceitems[i]->Setchoseindex(int(m_ChosenCharacter->GetChoiceCard().size()));
 					}
 				}
@@ -22,6 +23,10 @@ void App::ChooseCharacter() {
 					m_ChosenCharacter->RemoveChoiceCharacter(n);
 				}
 			}
+		}
+		if(checkCollision(Util::Input::GetCursorPosition(),m_ChosenCharacter->GetExit()->m_Transform.translation,20,30)) {
+			m_LevelCharacter=m_ChosenCharacter->GetChoiceCharacter();
+			m_level=level::lobby;
 		}
 	}
 
