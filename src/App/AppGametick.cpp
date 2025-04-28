@@ -140,4 +140,12 @@ void App::GameTick() {
 			Enemies[i]->FrameReset();
 		}
 	}
+	if(Enemies.size() == 0){
+		for(size_t i = 0; i < m_LevelCharacter.size() and m_LevelCharacter[i]->GetVisibility(); i++){
+			m_LevelCharacter[i]->SetVisible(true);
+			m_LevelCharacter[i]->SetLooping(true);
+			m_LevelCharacter[i]->SetState(CharacterState::Idle);
+			m_LevelCharacter[i]->FrameReset();
+		}
+	}
 }
