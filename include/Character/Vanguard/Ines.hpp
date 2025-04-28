@@ -6,7 +6,7 @@
 class Ines : public Vanguard{
 public:
 //std::string CharacterName, int IdleCont, int AttackCont,int DieCont, int StartCont
-    Ines() : Vanguard("Ines", 60, 58, 59, 59){
+    Ines() : Vanguard("Ines", 239, 58, 59, 59){
 		/*
 		void SetInfo(int SetTime, int SetCost, float AttackTime, int Health, int Attack, int Defend, int DefendMagic,
 		int SkillDefault, int SkillCost, float SkillTime, std::string skillinfo, std::string skillname,

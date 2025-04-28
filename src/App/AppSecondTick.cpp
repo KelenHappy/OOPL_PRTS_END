@@ -18,6 +18,7 @@ void App::GameSecondTick() {
         }
         if(m_LevelCharacter[i]->GetDieCost() <= 0){
             m_LevelCharacter[i]->SetHP();
+			m_LevelCharacter[i]->Get();
             m_LevelCharacter[i]->SetDieCost();
             m_LevelCharacter[i]->SetDead(false);
             m_LevelCharacter[i]->SetLooping(true);

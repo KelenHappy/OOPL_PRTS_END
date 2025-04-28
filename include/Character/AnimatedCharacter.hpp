@@ -110,7 +110,7 @@ public:
         SkillName = skillname;
         HeavyLevelNum = DefendCout;
     }
-    void SetHP(){HealthNow = HealthNum;}
+    void SetHP(){HealthRecoverNum = HealthNum;}
 	void SetAttackType(CharacterAttackType tt){AttackType = tt;}
 	void SetAttackImpact(CharacterAttackImpact tt){AttackImpact = tt;}
 	void SetDead(bool t){ Dead = t;}
@@ -179,7 +179,6 @@ protected:
     int SetCostNum = 0;
     float AttackTimeNum = 0;
     float HealthNum = 0;
-	float HealthNow = 0;
     float AttackNum = 0;
     float DefendNum = 0;
     float MagicDefendNum = 0;
