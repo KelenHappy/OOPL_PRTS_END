@@ -29,8 +29,6 @@ public:
     }
 	std::string GetChineseName() override {return "伊內絲";}
 	
-	std::string GetChineseName() override {return "伊內絲";}
-	
 	void OpenSkill() override{
 		SkillOpen = true;
 		AttackNum *= AttackBuff;

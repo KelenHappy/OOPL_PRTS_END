@@ -7,7 +7,7 @@ Card::Card(std::shared_ptr<AnimatedCharacter> Character) {
     this->m_Character=Character;
     m_Drawable = std::make_shared<Util::Image>(RESOURCE_DIR"/Character/"+Character->GetJob()+"/"+Character->GetCharacterName()+"/Default/1.png");
     SetZIndex(27);
-    cardsize=0.8f;
+    cardsize=0.6f;
     m_cost= std::make_shared<TextBox>(20);
     m_Cardback=std::make_shared<ImgItem>("/Maps/CardBack.png");
     m_Cardback->setsize(0.7,0.7);
@@ -60,14 +60,12 @@ void Card::createinfo() {
     m_cost->SetText(std::to_string(cost));
 }
 void Card::SetTranform(float x, float y) {
-    m_Transform.translation.x = x;
-    m_Transform.translation.y = y;
-    m_Cardback->m_Transform.translation.x = x;
-    m_Cardback->m_Transform.translation.y = y;
-    m_cost->m_Transform.translation.x = x+30*cardsize;
-    m_cost->m_Transform.translation.y = y+67*cardsize;
+    m_Transform.translation={x,y};
+    m_Cardback->m_Transform.translation={x,y};
+    m_cost->m_Transform.translation.x = x+(30*cardsize);
+    m_cost->m_Transform.translation.y = y+(67*cardsize);
     m_class->m_Transform.translation.x = x;
-    m_class->m_Transform.translation.y = y+71*cardsize;
+    m_class->m_Transform.translation.y = y+(71*cardsize);
 
 }
 void Card::SetCardSize(float size) {

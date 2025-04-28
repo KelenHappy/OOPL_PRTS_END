@@ -76,7 +76,7 @@ void App::Debug() {
             if (checkCollisionNearMouse(mouseT, m_map0107->GetCard()[i]->m_Transform, 50)) {
                 CheckCard = true;
                 m_CardCarry = i;
-                m_map0107->openMapblock(m_map0107->GetCard()[i]->GetCharacter()->GetBlockState());
+                m_map0107->openMapblock(m_map0107->GetCard()[m_CardCarry]->GetCharacter()->GetBlockState());
                 m_flyUI->setnewcharacter(m_map0107->GetCard()[i]->GetCharacter());
 				std::cout << m_CardCarry << std::endl;
                 break;
@@ -92,9 +92,9 @@ void App::Debug() {
             }
         }
 		//點到角色
-		for (size_t i = 0; i < m_StartCharacter.size(); ++i) {
-            if (checkCollisionNearMouse(mouseT, m_StartCharacter[i]->m_Transform, 40) 
-			and m_StartCharacter[i]->GetState() != CharacterState::Default) {
+		for (size_t i = 0; i < m_LevelCharacter.size(); ++i) {
+            if (checkCollisionNearMouse(mouseT, m_LevelCharacter[i]->m_Transform, 40)
+			and m_LevelCharacter[i]->GetState() != CharacterState::Default) {
                 m_CharacterCarry = i;
                 CheckCharacter = true;
                 break;

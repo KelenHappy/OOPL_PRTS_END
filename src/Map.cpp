@@ -76,10 +76,10 @@ void Map::CreatotherItem() {
     m_Cost=std::make_shared<TextBox>(40);
     m_Cost->SetText(std::to_string(cost));
     m_Cost->SetZIndex(27);
-    m_Cost->m_Transform.translation={ 620, -173 };
+    m_Cost->m_Transform.translation={ 620, -205 };
     m_CostBar=std::make_shared<ImgItem>("/Maps/CostBar.png");
     m_CostBar->m_Transform.scale={ 0.2, 0.2 };
-    m_CostBar->m_Transform.translation={ 582, -168 };
+    m_CostBar->m_Transform.translation={ 582, -200  };
     m_CostBar->SetZIndex(26);
     m_EmemyandHp=std::make_shared<ImgItem>("/Maps/EnemyandHP.png");
     m_EmemyandHp->m_Transform.scale={ 0.8, 0.8 };
@@ -88,9 +88,9 @@ void Map::CreatotherItem() {
     m_PutLimit=std::make_shared<TextBox>(20);
     m_PutLimit->SetText("可放置角色:"+std::to_string(PutLimit));
     m_PutLimit->SetZIndex(27);
-    m_PutLimit->m_Transform.translation={565,-212};
+    m_PutLimit->m_Transform.translation={565,-245};
     m_PutlimitBar=std::make_shared<ImgItem>("/Maps/CardBack.png");
-    m_PutlimitBar->m_Transform.translation={570,-212};
+    m_PutlimitBar->m_Transform.translation={570,-245};
     m_PutlimitBar->m_Transform.scale={ 0.65, 0.1 };
     m_PutlimitBar->SetZIndex(26);
     m_HPText=std::make_shared<TextBox>(30);

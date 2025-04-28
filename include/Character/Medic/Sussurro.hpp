@@ -41,7 +41,6 @@ public:
 		AttackNum /=  AttackBuff;
 		AttackTimeNum /= AttackTimeBuff;
 	}
-	std::string GetChineseName() override {return "蘇蘇洛";}
 	
 	
 protected:

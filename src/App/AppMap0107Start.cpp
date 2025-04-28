@@ -26,11 +26,11 @@ void App::Map0107Loading() {
 		m_LevelCharacter[i]->SetImageSize(0.32f, 0.32f);
 		m_LevelCharacter[i]->SetPosition({575 - i*150, -289});
 		std::shared_ptr<Card> cd=std::make_shared<Card>(m_LevelCharacter[i]);
-		cd->SetTranform(570-(i*144),-300);
+		cd->SetTranform(588-int(i*(144)/0.8*0.6),-318);
 		m_map0107->AddCard(cd);
-		m_0107.AddChildren(m_map0107->GetChildrenCard());
 		m_0107.AddChild(m_LevelCharacter[i]);
 		m_0107.AddChild(m_LevelCharacter[i]->Gethpbar());
 	}
+	m_0107.AddChildren(m_map0107->GetChildrenCard());
 	gametimer->Start();
 }
