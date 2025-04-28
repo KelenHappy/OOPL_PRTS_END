@@ -14,8 +14,8 @@
 
 ## 狙擊 (Sniper)
    - [x] 能天使 (Exusiai) - https://prts.wiki/w/%E8%83%BD%E5%A4%A9%E4%BD%BF
-   - [ ] 克洛丝 (Kroos) - https://prts.wiki/w/%E5%85%8B%E6%B4%9B%E4%B8%9D
-   - [ ] 维什戴尔 (W) - https://prts.wiki/w/%E7%BB%B4%E4%BB%80%E6%88%B4%E5%B0%94
+   - [x] 克洛丝 (Kroos) - https://prts.wiki/w/%E5%85%8B%E6%B4%9B%E4%B8%9D
+   - [x] 维什戴尔 (W) - https://prts.wiki/w/%E7%BB%B4%E4%BB%80%E6%88%B4%E5%B0%94
 
 ## 重裝 (Defender)
    - [ ] 蛇屠箱 (Cuora) - https://prts.wiki/w/%E8%9B%87%E5%B1%A0%E7%AE%B1
@@ -24,8 +24,8 @@
 
 ## 醫療 (Medic)
    - [x] 苏苏洛 (Sussurro) - https://prts.wiki/w/%E8%8B%8F%E8%8B%8F%E6%B4%9B
-   - [ ] 华法琳 (Warfarin) - https://prts.wiki/w/%E5%8D%8E%E6%B3%95%E7%90%B3
-   - [ ] 白面鸮 (Ptilopsis) - https://prts.wiki/w/%E7%99%BD%E9%9D%A2%E9%B8%AE
+   - [x] 华法琳 (Warfarin) - https://prts.wiki/w/%E5%8D%8E%E6%B3%95%E7%90%B3
+   - [x] 白面鸮 (Ptilopsis) - https://prts.wiki/w/%E7%99%BD%E9%9D%A2%E9%B8%AE
 
 ## 輔助 (Supporter)
    - [ ] 铃兰 (Suzuran) - https://prts.wiki/w/%E9%93%83%E5%85%B0
