@@ -2,7 +2,7 @@
 #include "Util/Animation.hpp"
 #include "Util/Text.hpp"
 #include "Util/Color.hpp"
-
+#include "TextBox.hpp"
 #ifndef FILM_HPP
 #define FILM_HPP
 
@@ -23,11 +23,20 @@ public:
     void setsize(float x, float y) {
         m_Transform.scale = {x, y};  // 假設 m_Transform.scale 是有效的
     }
-
+	
+	void SetName(std::string name){
+		Name = name;
+	}
+	std::shared_ptr<TextBox> GetText(){return m_Text;}
+	void createinfo(std::string txt) {
+		m_Text->SetText(txt);
+	}
 private:
     int timers = 0;
     int lifeTimes = 0;
+	std::string Name = "";
     std::vector<std::string> FilmImage;
+	std::shared_ptr<TextBox> m_Text;
 };
 
 #endif // FILM_HPP

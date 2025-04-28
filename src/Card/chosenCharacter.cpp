@@ -1,5 +1,11 @@
 #include "Character/Medic/Sussurro.hpp"
+#include "Character/Medic/Ptilopsis.hpp"
+#include "Character/Medic/Warfarin.hpp" 
+
 #include "Character/Sniper/Exudiai.hpp"
+#include "Character/Sniper/Kroos.hpp"
+#include "Character/Sniper/W.hpp"
+
 #include "Character/Vanguard/Ines.hpp"
 #include "Character/Vanguard/Myrtle.hpp"
 #include "Character/Vanguard/Texas.hpp"
@@ -17,7 +23,13 @@ void ChosenCharacter::CreateNewCharacter() {
     if (Icreate) {return;}
     m_ToTalCharacter = {
         std::make_shared<Sussurro>(),
-        std::make_shared<Exusiai>(),
+        std::make_shared<Ptilopsis>(),
+		std::make_shared<Warfarin>(),
+		
+		std::make_shared<Exusiai>(),
+		std::make_shared<Kroos>(),
+		std::make_shared<W>(),
+		
         std::make_shared<Texas>(),
         std::make_shared<Ines>(),
         std::make_shared<Myrtle>()

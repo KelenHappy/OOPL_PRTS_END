@@ -29,6 +29,8 @@ public:
 		this->m_DefaultRange->push_back(std::vector<std::string>(5, "0"));
     }
 
+	std::string GetChineseName() override {return "華法琳";}
+	
 	void OpenSkill() override{
 		SkillOpen = true;
 		AttackNum *=  AttackBuff;

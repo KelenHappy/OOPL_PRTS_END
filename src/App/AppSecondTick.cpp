@@ -5,8 +5,12 @@
 #include "Util/Keycode.hpp"
 #include "Util/Logger.hpp"
 #include <vector>
+
 void App::GameSecondTick() {
     m_map0107->Addmapcost(1);
+	for(size_t i = 0; i < m_FilmVector.size();i++){
+		
+	}
     for(size_t i = 0; i < m_LevelCharacter.size(); i++){
         m_LevelCharacter[i]->AddSkillCost(1);
         if(m_LevelCharacter[i]->GetDie()){
