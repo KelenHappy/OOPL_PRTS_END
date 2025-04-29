@@ -20,10 +20,8 @@ public:
 		this->m_DefaultRange->push_back({"1", "1", "1", "1", "0"});
 		this->m_DefaultRange->push_back(std::vector<std::string>(5, "0"));
     }
-	
 	std::string GetChineseName() override {return "能天使";}
-	
-	void OpenSkill() override{
+		void OpenSkill() override{
 		SkillOpen = true;
 		SetAttackTimesBuff(5);
 		AttackTimeNum *= AttackTimeBuff;
