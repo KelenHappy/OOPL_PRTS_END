@@ -15,6 +15,7 @@ public:
         // 假設 RESOURCE_DIR 是有效的並已正確定義
         Impact = ff;
         Name = name+ff;
+		FilmSize = 0.8f;
         FilmImage = RESOURCE_DIR"/Film/" + ff + ".png";
         m_Text = std::make_shared<TextBox>(20);
         // 假設 Util::Animation 類別有這樣的構造函數
@@ -75,6 +76,7 @@ public:
 
     }
 private:
+	float FilmSize = 1;
     int timers = 0;
     int lifeTimes = 0;
 	std::string Name = "";
