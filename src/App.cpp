@@ -74,29 +74,33 @@ void App::Debug() {
         for (size_t i = 0; i < m_map0107->GetCard().size(); ++i) {
             if (!m_map0107->GetCard()[i]) continue;  // 避免 nullptr 存取
             if (checkCollisionNearMouse(mouseT, m_map0107->GetCard()[i]->m_Transform, 50)) {
-                CheckCard = true;
                 m_CardCarry = i;
-                m_map0107->openMapblock(m_map0107->GetCard()[m_CardCarry]->GetCharacter()->GetBlockState());
-                m_flyUI->setnewcharacter(m_map0107->GetCard()[i]->GetCharacter());
-				std::cout << m_CardCarry << std::endl;
+                if(m_LevelCharacter[m_CardCarry]->GetState() == CharacterState::Default){
+                    CheckCard = true;
+                    m_map0107->openMapblock(m_map0107->GetCard()[m_CardCarry]->GetCharacter()->GetBlockState());
+                    m_flyUI->setnewcharacter(m_map0107->GetCard()[i]->GetCharacter());}
+                std::cout << m_CardCarry << std::endl;
                 break;
             }
         }
         // 點到 Block
-        for (size_t i = 0; i < m_map0107->Getblock().size(); ++i) {
-            if (!m_map0107->Getblock()[i]) continue;  // 避免 nullptr 存取
-            if (checkCollisionNearMouse(mouseT, m_map0107->Getblock()[i]->m_Transform, 40)) {
-                m_Carry = i;
-                carry = true;
-                break;
+        if(CheckCard==true){
+            for (size_t i = 0; i < m_map0107->Getblock().size(); ++i) {
+                if (!m_map0107->Getblock()[i]) continue;  // 避免 nullptr 存取
+                if (checkCollisionNearMouse(mouseT, m_map0107->Getblock()[i]->m_Transform, 40)) {
+                    m_Carry = i;
+                    carry = true;
+                    break;
+                }
             }
         }
 		//點到角色
 		for (size_t i = 0; i < m_LevelCharacter.size(); ++i) {
-            if (checkCollisionNearMouse(mouseT, m_LevelCharacter[i]->m_Transform, 40)
+            if (checkCollision(mouse, m_LevelCharacter[i]->GetPositionFix(), 30,30)
 			and m_LevelCharacter[i]->GetState() != CharacterState::Default) {
                 m_CharacterCarry = i;
                 CheckCharacter = true;
+                //std::cout<<carry<<" "<<CheckCard<<" "<<CheckCharacter<<" "<<m_LevelCharacter[m_CharacterCarry]->GetVisibility()<<" "<<std::endl;
                 break;
             }
         }
