@@ -23,16 +23,6 @@ class Map :public Util::GameObject{
         }
         return result;
     }
-    std::vector<std::shared_ptr<Util::GameObject>> GetChildFilm(){
-        std::vector<std::shared_ptr<Util::GameObject>> result;
-        for(size_t i = 0; i < m_FilmVector.size();i++){
-            result.push_back(m_FilmVector[i]);
-            result.push_back(m_FilmVector[i]->GetFilm());
-            result.push_back(m_FilmVector[i]->GetText());
-
-        }
-        return result;
-    }
     std::vector<std::shared_ptr<Film>> GetFilm(){return m_FilmVector;}
     [[nodiscard]] std::vector<std::shared_ptr<Block>> Getblock() {return m_block;}
 	std::vector<std::shared_ptr<Card>> GetCard() {return m_Card;}

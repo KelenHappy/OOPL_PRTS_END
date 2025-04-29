@@ -29,6 +29,7 @@ void App::GameTick() {
 				m_LevelCharacter[i]->SetVisible(false);
 				m_LevelCharacter[i]->FrameReset();
 				// 從容器中Reset角色
+				m_LevelCharacter[i]->Gethpbar()->SetVisible(false);
 				m_LevelCharacter[i]->SetDead(true);
 				continue;
 			}

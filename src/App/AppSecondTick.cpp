@@ -8,11 +8,12 @@
 
 void App::GameSecondTick() {
     m_map0107->Addmapcost(1);
-	std::cout << m_LevelCharacter.size() << std::endl;
+
     for(size_t i = 0; i < m_LevelCharacter.size(); i++){
         if(m_LevelCharacter[i]->GetDie()){
             bool checkFirst = true;
             m_LevelCharacter[i]->DeDieCost(1);
+			
 			
             for (size_t j = 0; j < m_map0107->GetFilm().size(); j++) {
                 if (m_LevelCharacter[i]->GetCharacterName() + "die" == m_map0107->GetFilm()[j]->GetName()) {
@@ -20,17 +21,15 @@ void App::GameSecondTick() {
                     break;
                 }
             }
-			/*
+			
             if(checkFirst){
 				std::shared_ptr<Film> tempFilm = std::make_shared<Film>(m_LevelCharacter[i]->GetCharacterName(),"die");
 				tempFilm->SetLifeTimes(m_LevelCharacter[i]->GetSetTime());
-				tempFilm->createinfo(std::to_string(m_LevelCharacter[i]->GetSetTime()));
 				tempFilm->SetPosition(m_map0107->GetCard()[i]->GetPosition());
                 m_map0107->AddFilm(tempFilm);
                 std::cout << "Add Film" << std::endl;
-                m_0107.AddChildren(m_map0107->GetChildFilm());
-                std::cout << "WTF" << std::endl;
-            }*/
+                m_0107.AddChild(tempFilm);
+            }
         }
         else{
             m_LevelCharacter[i]->AddSkillCost(1);

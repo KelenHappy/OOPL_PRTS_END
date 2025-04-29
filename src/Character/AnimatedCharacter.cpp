@@ -115,6 +115,7 @@ void AnimatedCharacter::updatetransform() {
 }
 void AnimatedCharacter::PlaceCharacter(std::shared_ptr<Block> block,int index) {
 	if (block == nullptr) return;
+	m_HpBar->Update(HealthRecoverNum,HealthNum);
 	m_PlaceBlock=block;
 	SetPosition(block->GetPosition());
 	SetState(CharacterState::Start);
@@ -124,6 +125,7 @@ void AnimatedCharacter::PlaceCharacter(std::shared_ptr<Block> block,int index) {
 	updatetransform();
 }
 void AnimatedCharacter::OutPlaceCharacter() {
+	m_HpBar->Update(HealthRecoverNum,HealthNum);
 	SetVisible(false);
 	Gethpbar()->SetVisible(false);
 	SetLooping(false);

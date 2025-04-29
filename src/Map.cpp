@@ -66,24 +66,15 @@ void Map::Update() {
     m_Cost->SetText(std::to_string(cost));
     for (size_t i = 0; i < m_FilmVector.size(); i++) {
     if (!m_FilmVector[i]) {
-        std::cout << "m_FilmVector[" << i << "] is nullptr" << std::endl;
         continue;
     }
 
-    std::cout << "Before Update" << std::endl;
     m_FilmVector[i]->Update();
     
-    std::cout << "Before GetName" << std::endl;
-    std::cout << m_FilmVector[i]->GetName() << " Come in Film Ti" << std::endl;
-    
-    std::cout << "Before GetNowLife" << std::endl;
     if (m_FilmVector[i]->GetNowLife() <= 0) {
-        std::cout << "Life is zero, erase" << std::endl;
+		m_FilmVector[i]->SetVisible(false);
         m_FilmVector.erase(m_FilmVector.begin() + i);
         --i;
-        std::cout << "Erased" << std::endl;
-    }
-	else{
 		std::cout << "Film continue"  << std::endl;
 	}
 }
