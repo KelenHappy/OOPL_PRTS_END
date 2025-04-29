@@ -13,6 +13,7 @@
 class Card:public Util::GameObject {
     public:
     Card(std::shared_ptr<AnimatedCharacter> Character);
+    glm::vec2 GetPosition() const { return m_Transform.translation; }
     std::shared_ptr<ImgItem> Getclass(){return m_class;}
     std::shared_ptr<TextBox> GetCosttext(){return m_cost;}
     std::shared_ptr<ImgItem> GetCardback(){return m_Cardback;}

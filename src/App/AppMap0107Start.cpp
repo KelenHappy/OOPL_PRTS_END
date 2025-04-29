@@ -14,7 +14,6 @@ void App::Map0107Loading() {
 		Enemies[i]->CreateAnimation();
 	}
 	// 特效
-
 	//角色選則
 	for (size_t i = 0; i < m_LevelCharacter.size(); i++) {
 		std::cout << "Get In Character " << m_LevelCharacter[i]->GetCharacterName() << std::endl;

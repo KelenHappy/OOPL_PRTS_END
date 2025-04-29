@@ -145,7 +145,6 @@ void App::GameTick() {
 			m_LevelCharacter[i]->SetVisible(true);
 			m_LevelCharacter[i]->SetLooping(true);
 			m_LevelCharacter[i]->SetState(CharacterState::Idle);
-			m_LevelCharacter[i]->FrameReset();
 		}
 	}
 }
