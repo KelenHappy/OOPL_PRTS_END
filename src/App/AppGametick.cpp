@@ -118,7 +118,7 @@ void App::GameTick() {
 		if(Enemies[i]->GetJob() != "None"){
 			for(size_t j = 0; j < m_LevelCharacter.size(); ++j){
 				float distance = calculateDistance(m_LevelCharacter[j]->m_Transform, Enemies[i]->m_Transform);
-				if(state != EnemyState::Default and distance <= 70 and m_LevelCharacter[j]->GetVisibility()
+				if(state != EnemyState::Default and distance <= Enemies[i]->GetAttackRangeNum()* 70 and m_LevelCharacter[j]->GetVisibility()
 					and Enemies[i]->IfAnimationEnds()){
 					Enemies[i]->SetState(EnemyState::Attack);
 					attack(Enemies[i], m_LevelCharacter[j]);

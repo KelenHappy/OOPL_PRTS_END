@@ -3,12 +3,13 @@
 #include "AnimatedEnemy.hpp"
 #include "GamePlayMode/CharacterAttackImpact.hpp"
 #include "GamePlayMode/CharacterSkill.hpp"
+#include "GamePlayMode/AttackRange.hpp"
 #include <set>
 
 #include "Hpbar.hpp"
 #include "Pathpoints.hpp"
 
-class Enemy : public AnimatedEnemy, public CharacterSkill,public std::enable_shared_from_this<Enemy>{
+class Enemy : public AnimatedEnemy, public CharacterSkill,public std::enable_shared_from_this<Enemy>, public AttackRange{
 public:
     Enemy(std::string EnemyNameI, int IdleCont, int AttackCont,int DieCont, int MoveCont) : AnimatedEnemy(){
 		int defaultNum = 6;
@@ -57,7 +58,8 @@ public:
 			seen.insert(int_i);
 			AttackImage.emplace_back(RESOURCE_DIR"/Enemy/" + EnemyName + "/Attack/" + std::to_string(int_i + 1) + ".png");
 		}
-
+		//Set Default Attack Range
+		SetAttackRangeNum(1);
     	I_Hpbar=std::make_shared<HpBar>();
     	I_Hpbar->Update(HealthRecoverNum,HealthNum);
     	I_Hpbar->m_Transform.translation=GetPositionFix()-glm::vec2{ 0,13 };

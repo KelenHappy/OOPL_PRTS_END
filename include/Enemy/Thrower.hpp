@@ -14,6 +14,8 @@ public:
 		1.75, 1, 1.0, 0,
 		false, false, false,
 		CharacterAttackType::Physics);
+		// Attack Range
+		SetAttackRangeNum(2);
     }
 	std::string GetName(){
 		return "Thrower";
