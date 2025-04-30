@@ -6,7 +6,7 @@
 class Vanguard : public AnimatedCharacter{
 public:
     Vanguard(std::string CharacterName, int IdleCont, int AttackCont,int DieCont, int StartCont) : AnimatedCharacter(){
-		int defaultNum = 30;
+		int defaultNum = 25;
 		
 		SetCharacterName(CharacterName);
 		HalfCardImage.emplace_back(RESOURCE_DIR"/HalfCard/Vanguard/"+ CharacterName + ".png");

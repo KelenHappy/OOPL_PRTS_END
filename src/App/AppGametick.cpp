@@ -101,7 +101,7 @@ void App::GameTick() {
 				Enemies[i]->GetHpBar()->SetVisible(false);
 				Enemies[i]->FrameReset();
 				// 從容器中移除死亡角色
-				Enemies.erase(Enemies.begin() + i);
+				m_0107.RemoveChild(Enemies[i]);
 				--i;  // 刪除後需要調整索引
 				continue;
 			}

@@ -5,7 +5,7 @@
 class Sniper : public AnimatedCharacter{
 public:
     Sniper(std::string CharacterName, int IdleCont, int AttackCont,int DieCont, int StartCont) : AnimatedCharacter(){
-		int defaultNum = 30;
+		int defaultNum = 25;
 		
 		SetCharacterName(CharacterName);
 
