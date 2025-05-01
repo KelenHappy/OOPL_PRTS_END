@@ -70,3 +70,6 @@ ffmpeg -i test.webm -vf "colorkey=0x00FF00:0.3:0.1" -pix_fmt rgba %d.png
 ``` sh
 find . -name "*.png" -exec optipng -o7 {} \;
 ```
+- Vanguard
+- Supporter
+- Specialist
