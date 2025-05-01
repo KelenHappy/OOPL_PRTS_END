@@ -66,3 +66,7 @@ better read [PTSD README](https://github.com/ntut-open-source-club/practical-too
 ffmpeg -i test.webm -vf "colorkey=0x00FF00:0.3:0.1" -pix_fmt rgba %d.png
 ```
 
+# 無損壓縮
+``` sh
+find . -name "*.png" -exec optipng -o7 {} \;
+```
