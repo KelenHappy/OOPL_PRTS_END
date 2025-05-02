@@ -52,7 +52,7 @@ void App::GameTick() {
 					for(int k = 0; k < m_LevelCharacter[i]->GetAttackTimesBuff();k++){
 						attack(m_LevelCharacter[i], Enemies[j]);
 						std::shared_ptr<Film> tempFilm = std::make_shared<Film>(Enemies[j]->GetName(),"takeDamage");
-						tempFilm->SetLifeTimes(10);
+						tempFilm->SetLifeTimes(5);
 						tempFilm->SetPosition(Enemies[j]->GetPositionFix());
 						std::cout << "Add Film" << std::endl;
 						m_FilmVector.push_back(tempFilm);
