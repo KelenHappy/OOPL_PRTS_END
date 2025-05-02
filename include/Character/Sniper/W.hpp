@@ -6,7 +6,7 @@
 class W : public Sniper{
 public:
     //std::string CharacterName, int IdleCont, int AttackCont,int DieCont, int StartCont
-    W() : Sniper("W", 319, 125, 58, 58){
+    W() : Sniper("W", 53, 42, 58, 58){
         /*
          void SetInfo(int SetTime, int SetCost, float AttackTime, int Health, int Attack, int Defend, int DefendMagic,
          int SkillDefault, int SkillCost, float SkillTime, std::string skillinfo, std::string skillname,

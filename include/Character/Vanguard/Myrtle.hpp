@@ -6,7 +6,7 @@
 class Myrtle : public Vanguard{
 public:
 //std::string CharacterName, int IdleCont, int AttackCont,int DieCont, int StartCont
-    Myrtle() : Vanguard("Myrtle", 198, 78, 59, 60){
+    Myrtle() : Vanguard("Myrtle", 50, 26, 59, 60){
 		/*
 		void SetInfo(int SetTime, int SetCost, float AttackTime, int Health, int Attack, int Defend, int DefendMagic,
 		int SkillDefault, int SkillCost, float SkillTime, std::string skillinfo, std::string skillname,

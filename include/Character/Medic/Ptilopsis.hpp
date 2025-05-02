@@ -6,7 +6,7 @@
 class Ptilopsis : public Medic{
 public:
     //std::string CharacterName, int IdleCont, int AttackCont,int DieCont, int StartCont
-    Ptilopsis() : Medic("Ptilopsis", 119, 70, 58, 59){
+    Ptilopsis() : Medic("Ptilopsis", 30, 70, 58, 59){
 		/*
 		void SetInfo(int SetTime, int SetCost, float AttackTime, int Health, int Attack, int Defend, int DefendMagic,
 		int SkillDefault, int SkillCost, float SkillTime, std::string skillinfo, std::string skillname,
