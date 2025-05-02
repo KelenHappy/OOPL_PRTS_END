@@ -21,12 +21,11 @@ public:
 		SetAttackBuff(1.7);
 		//建立初始攻擊範圍
 		SetAttackRangeNum(2);
-		SetDefaultRange();
-		this->m_DefaultRange->push_back(std::vector<std::string>(5, "0"));
-		this->m_DefaultRange->push_back(std::vector<std::string>(5, "0"));
-		this->m_DefaultRange->push_back({"2", "1", "0", "0", "0"});
-		this->m_DefaultRange->push_back(std::vector<std::string>(5, "0"));
-		this->m_DefaultRange->push_back(std::vector<std::string>(5, "0"));
+		this->m_DefaultRange.push_back(std::vector<std::string>(5, "0"));
+		this->m_DefaultRange.push_back(std::vector<std::string>(5, "0"));
+		this->m_DefaultRange.push_back({"2", "1", "0", "0", "0"});
+		this->m_DefaultRange.push_back(std::vector<std::string>(5, "0"));
+		this->m_DefaultRange.push_back(std::vector<std::string>(5, "0"));
     }
 	std::string GetChineseName() override {return "德克薩斯";}
 

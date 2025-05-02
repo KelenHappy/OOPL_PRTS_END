@@ -44,7 +44,8 @@ public:
         main17,
         cc5,
         rog53,
-		chooseCharacter
+		chooseCharacter,
+    	loading
     };
 
     State GetCurrentState() const { return m_CurrentState; }
@@ -80,11 +81,13 @@ private:
     std::shared_ptr<Map> m_map0107;
     std::shared_ptr<GameTimer> gametimer;
 	std::shared_ptr<FlyUI>m_flyUI;
+	std::shared_ptr<CreateIMG> m_LoadingPage;
     Util::Renderer m_Root;
     Util::Renderer m_0107;
 	Util::Renderer m_HalfCardScreen;
 	Util::Renderer m_cc5;
 	Util::Renderer m_rog53;
+	Util::Renderer m_Loading;
     // Character
     //Medic
 	/*

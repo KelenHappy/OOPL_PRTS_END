@@ -117,6 +117,7 @@ void AnimatedCharacter::PlaceCharacter(std::shared_ptr<Block> block,int index) {
 	if (block == nullptr) return;
 	m_HpBar->Update(HealthRecoverNum,HealthNum);
 	m_PlaceBlock=block;
+	//AttackRangeDefault=map->ExtractBlocksFromPattern(m_DefaultRange,block->GetX(),block->GetY(),Direction::EAST);
 	SetPosition(block->GetPosition());
 	SetState(CharacterState::Start);
 	SetVisible(true);
@@ -133,5 +134,11 @@ void AnimatedCharacter::OutPlaceCharacter() {
 	m_PlaceBlock->outplaceCharacter();
 	m_PlaceBlock=nullptr;
 }
+void AnimatedCharacter::showrange() {
+	for(size_t i=0;i<AttackRangeNow.size();i++) {
+		AttackRangeNow[i]->SetVisible(true);
+	}
+}
+
 
 

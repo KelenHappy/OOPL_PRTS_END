@@ -8,6 +8,7 @@
 #include "Card.hpp"
 #include "CreateIMG.hpp"
 #include "Util/GameObject.hpp"
+enum class Direction { EAST, SOUTH, WEST, NORTH };
 class Map :public Util::GameObject{
     public:
     Map() ;
@@ -32,9 +33,9 @@ class Map :public Util::GameObject{
     [[nodiscard]] bool Takemapcost(int n);
      int GetEnemytotal(){return EnemyTotal;}
      int GetEnemytotalMax(){return EnemyTotalMax;}
-     void SetEnemyTotalMax(int n){EnemyTotalMax=n;}
+     void SetEnemyTotalMax(int n){EnemyTotalMax=n;Update();}
      void SetEnemyTotal(int n){EnemyTotal=n;}
-     void EnemyDied(){EnemyTotal++;}
+     void EnemyDied(){EnemyTotal++;Update();}
      int Getmapcost(){return cost;}
     void Setmapcost(int n){cost=n;}
     void AddCard(std::shared_ptr<Card> card) {
@@ -43,11 +44,13 @@ class Map :public Util::GameObject{
 
     std::vector<std::shared_ptr<Block>> GetTypeOfBlock(BlockState B);
     std::vector<std::shared_ptr<Block>> GetHaveCharacterBlock(BlockState B,bool HaveCharacter);
-    std::shared_ptr<Block> XYGetBlock(int x,int y){return m_block[x+9*y];}
+    std::shared_ptr<Block> XYGetBlock(int x,int y){return m_block[x+mapsize.x*y];}
     void Update();
     void CreatotherItem();
     void openMapblock(BlockState B);
     void closeMapblock();
+    std::vector<std::shared_ptr<Block>> ExtractBlocksFromPattern(const std::vector<std::vector<std::string>>& range,
+    int base_x, int base_y, Direction dir);
 	~Map(){}
     private:
     int TowerHP;
@@ -55,6 +58,7 @@ class Map :public Util::GameObject{
     int EnemyTotal;
     int cost;
     int PutLimit;
+    glm::vec2 mapsize;
     std::vector<std::shared_ptr<Block>>m_block;
     std::shared_ptr<CreateIMG> m_map;
     std::vector<std::shared_ptr<Card>>m_Card;

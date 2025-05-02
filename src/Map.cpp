@@ -36,10 +36,10 @@ Map::Map() {
         "hggghhhhn",
         "hhhgggggn"
     };
-
+    mapsize={9,5};
     for (size_t i = 0; i < positions.size(); i++) {
-        int row = i / 9;
-        int col = i % 9;
+        int row = i / int(mapsize.x);
+        int col = i % int(mapsize.x);
         BlockState state;
 
         switch (blockPattern[row][col]) {
@@ -152,6 +152,59 @@ void Map::closeMapblock() {
     for(size_t i=0;i<m_block.size();i++) {
        m_block[i]->SetVisible(false);
     }
+}
+
+//放入幹員的範圍getblock
+std::vector<std::shared_ptr<Block>> Map::ExtractBlocksFromPattern(
+    const std::vector<std::vector<std::string>>& range,
+    int base_x, int base_y, Direction dir)
+{
+    std::vector<std::shared_ptr<Block>> result;
+
+    int center_i = -1, center_j = -1;
+    int rows = range.size();
+    int cols = range[0].size();
+
+    // 找中心 "2"
+    for (int i = 0; i < rows; ++i)
+        for (int j = 0; j < cols; ++j)
+            if (range[i][j] == "2") {
+                center_i = i;
+                center_j = j;
+                break;
+            }
+
+    if (center_i == -1) {
+        std::cerr << "中心 '2' 未找到" << std::endl;
+        return result;
+    }
+
+    for (int i = 0; i < rows; ++i) {
+        for (int j = 0; j < cols; ++j) {
+            const std::string& val = range[i][j];
+            if (val == "1" || val == "2") {
+                int di = i - center_i;
+                int dj = j - center_j;
+                int dx, dy;
+
+                // 旋轉
+                switch (dir) {
+                    case Direction::EAST:  dx = dj;  dy = di;  break;
+                    case Direction::SOUTH: dx = -di; dy = dj;  break;
+                    case Direction::WEST:  dx = -dj; dy = -di; break;
+                    case Direction::NORTH: dx = di;  dy = -dj; break;
+                }
+                int x = base_x + dx;
+                int y = base_y + dy;
+                // 檢查是否落在合法地圖內
+                if (x >= 0 && x < mapsize.x && y >= 0 && y < mapsize.y) {
+                    result.push_back(m_block[x+mapsize.x*y]);
+                }
+            }
+        }
+    }
+
+    return result;
 }
 
 

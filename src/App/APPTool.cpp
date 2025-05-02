@@ -13,8 +13,8 @@ void App::choicemap() {
         for(size_t i=0;i<choiceitems.size();i++) {
             if(checkCollision(Util::Input::GetCursorPosition(),choiceitems[i]->m_Transform.translation,110,20)) {
                 if(i==0) {
-                    m_level=level::main17;
-                    Map0107Loading();
+                    m_level=level::loading;
+                    m_Loading.Update();
                 }
                 else if (i >= 1 && i <= 3) {
                     static constexpr Mapchoice maps[] = {Mapchoice::main17, Mapchoice::cc5, Mapchoice::rog53};
@@ -32,4 +32,15 @@ bool App::checkCollision(glm::vec2 cursorPos, glm::vec2 itemPos, float rangeX, f
     float dy = abs(cursorPos.y - itemPos.y);
     // 檢查是否在矩形範圍內
     return (dx <= rangeX) && (dy <= rangeY);
+}
+
+// 計算兩個座標之間的距離
+double App::calculateDistance(Util::Transform a, Util::Transform b) {
+    return sqrt((a.translation.x - b.translation.x) * (a.translation.x - b.translation.x) + (a.translation.y - b.translation.y) * (a.translation.y - b.translation.y));
+}
+
+// 檢查滑鼠座標與物品座標之間的距離是否小於等於 range
+bool App::checkCollisionNearMouse(Util::Transform Mouse, Util::Transform Item, int range) {
+    double distance = calculateDistance(Mouse, Item);
+    return distance <= range;
 }

@@ -40,19 +40,28 @@ void App::Update() {
     else if(m_level==level::chooseCharacter) {
         ChooseCharacter();
     }
+    else if(m_level==level::loading) {
+        m_Loading.Update();
+        switch (m_MainScream->GetMapchoice()) {
+            case Mapchoice::main17:
+                Map0107Loading();
+                m_level=level::main17;
+            break;
+            case Mapchoice::cc5:
+                Map0107Loading();
+                m_level=level::cc5;
+            break;
+            case Mapchoice::rog53:
+                Map0107Loading();
+                m_level=level::rog53;
+            break;
+            default:
+                break;
+        }
+    }
 }
 
 
-// 計算兩個座標之間的距離
-double App::calculateDistance(Util::Transform a, Util::Transform b) {
-    return sqrt((a.translation.x - b.translation.x) * (a.translation.x - b.translation.x) + (a.translation.y - b.translation.y) * (a.translation.y - b.translation.y));
-}
-
-// 檢查滑鼠座標與物品座標之間的距離是否小於等於 range
-bool App::checkCollisionNearMouse(Util::Transform Mouse, Util::Transform Item, int range) {
-    double distance = calculateDistance(Mouse, Item);
-    return distance <= range;
-}
 void App::Debug() {
     auto mouse =Util::Input::GetCursorPosition(); Util::Input::GetCursorPosition();
     Util::Transform mouseT;

@@ -14,6 +14,7 @@ void App::Map0107Loading() {
 		Enemies[i]->CreateAnimation();
 	}
 	// 特效
+	m_map0107->SetEnemyTotalMax(m_Spawner->GetAllEnemycount());
 	//角色選則
 
 	for (size_t i = 0; i < m_LevelCharacter.size(); i++) {

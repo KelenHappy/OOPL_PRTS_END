@@ -20,12 +20,11 @@ public:
         SetAttackRangeNum(3);
 		//建立初始攻擊範圍
 		SetAttackRangeNum(4);
-		SetDefaultRange();
-		this->m_DefaultRange->push_back({"1", "1", "1", "0", "0"});
-		this->m_DefaultRange->push_back({"1", "1", "1", "1", "0"});
-		this->m_DefaultRange->push_back({"2", "1", "1", "1", "1"});
-		this->m_DefaultRange->push_back({"1", "1", "1", "1", "0"});
-		this->m_DefaultRange->push_back({"1", "1", "1", "0", "0"});
+		this->m_DefaultRange.push_back({"1", "1", "1", "0", "0"});
+		this->m_DefaultRange.push_back({"1", "1", "1", "1", "0"});
+		this->m_DefaultRange.push_back({"2", "1", "1", "1", "1"});
+		this->m_DefaultRange.push_back({"1", "1", "1", "1", "0"});
+		this->m_DefaultRange.push_back({"1", "1", "1", "0", "0"});
     }
 	
 	std::string GetChineseName() override {return "維什戴爾";}

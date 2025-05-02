@@ -34,6 +34,7 @@ class MainScream:public Util::GameObject {
         this->m_info1->SetPosition({415, 0});
         this->m_choice=std::make_shared<ImgItem>("/MainScream/choiceblock.png");
         this->m_choice->m_Transform.translation=m_map0107->m_Transform.translation-glm::vec2(8,0);
+        mapchoice_=Mapchoice::main17;
     };
     [[nodiscard]] std::vector<std::shared_ptr<Util::GameObject>> GetChildren() const {
         return {m_start, m_background,m_map0107,m_cc5,m_rog53,m_info1,m_choice};

@@ -12,6 +12,7 @@ void App::GameTick() {
            Enemies[i]->Updatemove();
             if(Enemies[i]->GetPathPointsindex() >= static_cast<int>(Enemies[i]->GetPathPoints()->GetPointsize())) {
                 m_map0107->EmenyEnterTower();
+            	m_map0107->EnemyDied();
                 Enemies[i]->SetVisible(false);
             	Enemies[i]->GetHpBar()->SetVisible(false);
                 Enemies[i]->SetLooping(false);
@@ -25,11 +26,9 @@ void App::GameTick() {
 		if ((m_LevelCharacter[i]->GetHealthRecover() <= 0) or state == CharacterState::Die) {
 			m_LevelCharacter[i]->SetState(CharacterState::Die);
 			if (m_LevelCharacter[i]->IfAnimationEnds()) {
-				m_LevelCharacter[i]->SetLooping(false);
-				m_LevelCharacter[i]->SetVisible(false);
+				m_LevelCharacter[i]->OutPlaceCharacter();
 				m_LevelCharacter[i]->FrameReset();
 				// 從容器中Reset角色
-				m_LevelCharacter[i]->Gethpbar()->SetVisible(false);
 				m_LevelCharacter[i]->SetDead(true);
 				continue;
 			}
@@ -107,6 +106,7 @@ void App::GameTick() {
 				Enemies[i]->GetHpBar()->SetVisible(false);
 				Enemies[i]->FrameReset();
 				// 從容器中移除死亡角色
+				m_map0107->EnemyDied();
 				m_0107.RemoveChild(Enemies[i]);
 				--i;  // 刪除後需要調整索引
 				continue;

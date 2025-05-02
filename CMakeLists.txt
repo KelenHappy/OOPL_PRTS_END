@@ -51,6 +51,7 @@ add_executable(${PROJECT_NAME}
 		src/App/ChooseCharacter.cpp
 		src/Card/chosenCharacter.cpp
 		src/Card/HalfCard.cpp
+		src/App/APPTool.cpp
     ${HEADER_FILES}
         include/App.hpp	
 		include/Block.hpp
@@ -121,7 +122,6 @@ add_executable(${PROJECT_NAME}
 		include/Enemy/EnemyType.hpp
 		include/MyTool.hpp
 		include/Hpbar.hpp
-		src/App/APPTool.cpp
 		include/FlyUI.hpp
 
 

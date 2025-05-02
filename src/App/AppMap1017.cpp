@@ -19,6 +19,7 @@ void App::LevelMain17() {
 		m_map0107->Getblock()[m_Carry]->HaveCharacter==false)
 			{
 			m_LevelCharacter[m_CardCarry]->PlaceCharacter(m_map0107->Getblock()[m_Carry],m_CardCarry);
+			m_LevelCharacter[m_CardCarry]->SetAttackRangeDefault(m_map0107->ExtractBlocksFromPattern(m_LevelCharacter[m_CardCarry]->GetDefaultRange(),m_map0107->Getblock()[m_Carry]->GetX(),m_map0107->Getblock()[m_Carry]->GetY(),Direction::NORTH));
 			m_map0107->closeMapblock();
 			m_flyUI->SetVisible(false);
 		}
@@ -39,6 +40,7 @@ void App::LevelMain17() {
 	and CheckCharacter and m_LevelCharacter[m_CharacterCarry]->GetVisibility()){
 		// 收回角色
 		m_LevelCharacter[m_CharacterCarry]->OutPlaceCharacter();
+		m_LevelCharacter[m_CharacterCarry]->showrange();
 		m_Carry = -1;
 		carry = false;
 		m_CharacterCarry = -1;

@@ -34,6 +34,7 @@ public:
 	void ImpactSleep();
 	void ImpactFrozen();
 	void FrameReset();
+	void showrange();
     virtual void CreateAnimation() = 0;
 	virtual void OpenSkill() = 0;
 	virtual void CloseSkill() = 0;
@@ -116,6 +117,7 @@ public:
 	void SetDead(bool t){ Dead = t;}
 	void SetDieCost(){ DieCost = SetTimeNum;}
 	void updatetransform();
+	void SetAttackRangeDefault(std::vector<std::shared_ptr <Block>>AD){AttackRangeDefault=AD;AttackRangeNow=AD;}
 	// Get
 	float GetSetTime(){return SetTimeNum;}
 	int GetSetCost(){return SetCostNum;}

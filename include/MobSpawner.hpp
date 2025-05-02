@@ -22,6 +22,7 @@ public:
 
     void AddSpawn(float time, Enemytype type, int pathIndex);
     std::vector<std::shared_ptr<Enemy>> GetEnemies() {return enemies;}
+    int GetAllEnemycount() {return spawnQueue.size();}
     std::vector<std::shared_ptr<Util::GameObject>> GetEnemiesGameobject() {
         std::vector<std::shared_ptr<Util::GameObject>>result;
         for (size_t i = 0; i < enemies.size(); i++) {

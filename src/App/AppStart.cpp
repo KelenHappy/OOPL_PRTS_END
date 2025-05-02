@@ -10,7 +10,8 @@ void App::Start() {
     m_CurrentState = State::UPDATE;
 	m_flyUI=std::make_shared<FlyUI>();
 	m_0107.AddChild(m_flyUI);
-    
+	m_LoadingPage=std::make_shared<CreateIMG>("/MainScream/Loading.png",100);
+	m_Loading.AddChild(m_LoadingPage);
 	m_MainScream= std::make_shared<MainScream>();
 	m_ChosenCharacter = std::make_shared<ChosenCharacter>();
 	
