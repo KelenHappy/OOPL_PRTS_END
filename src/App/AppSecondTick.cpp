@@ -15,8 +15,8 @@ void App::GameSecondTick() {
             m_LevelCharacter[i]->DeDieCost(1);
 			
 			
-            for (size_t j = 0; j < m_map0107->GetFilm().size(); j++) {
-                if (m_LevelCharacter[i]->GetCharacterName() + "die" == m_map0107->GetFilm()[j]->GetName()) {
+            for (size_t j = 0; j < m_FilmVector.size(); j++) {
+                if (m_LevelCharacter[i]->GetCharacterName() + "die" == m_FilmVector[j]->GetName()) {
                     checkFirst = false;
                     break;
                 }
@@ -24,9 +24,9 @@ void App::GameSecondTick() {
 			
             if(checkFirst){
 				std::shared_ptr<Film> tempFilm = std::make_shared<Film>(m_LevelCharacter[i]->GetCharacterName(),"die");
-				tempFilm->SetLifeTimes(m_LevelCharacter[i]->GetSetTime());
+				tempFilm->SetLifeTimes(m_LevelCharacter[i]->GetSetTime()*20);
 				tempFilm->SetPosition(m_map0107->GetCard()[i]->GetPosition());
-                m_map0107->AddFilm(tempFilm);
+                m_FilmVector.push_back(tempFilm);
                 std::cout << "Add Film" << std::endl;
                 m_0107.AddChild(tempFilm);
             }

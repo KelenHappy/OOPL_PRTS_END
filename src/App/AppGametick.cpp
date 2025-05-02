@@ -52,10 +52,10 @@ void App::GameTick() {
 					for(int k = 0; k < m_LevelCharacter[i]->GetAttackTimesBuff();k++){
 						attack(m_LevelCharacter[i], Enemies[j]);
 						std::shared_ptr<Film> tempFilm = std::make_shared<Film>(Enemies[j]->GetName(),"takeDamage");
-						tempFilm->SetLifeTimes(1);
+						tempFilm->SetLifeTimes(10);
 						tempFilm->SetPosition(Enemies[j]->GetPositionFix());
 						std::cout << "Add Film" << std::endl;
-						m_map0107->AddFilm(tempFilm);
+						m_FilmVector.push_back(tempFilm);
 						m_0107.AddChild(tempFilm);
 					}
 					break;
@@ -152,6 +152,20 @@ void App::GameTick() {
 			m_LevelCharacter[i]->SetVisible(true);
 			m_LevelCharacter[i]->SetLooping(true);
 			m_LevelCharacter[i]->SetState(CharacterState::Idle);
+		}
+	}
+	for (size_t i = 0; i < m_FilmVector.size(); i++) {
+		if (!m_FilmVector[i]) {
+			continue;
+		}
+
+		m_FilmVector[i]->Update();
+
+		if (m_FilmVector[i]->GetNowLife() <= 0) {
+			m_FilmVector[i]->SetVisible(false);
+			m_FilmVector.erase(m_FilmVector.begin() + i);
+			--i;
+			std::cout << "Film continue"  << std::endl;
 		}
 	}
 }

@@ -42,6 +42,7 @@
 #include "Enemy/Varlorant.hpp"
 
 #include "GamePlayMode/Attack.hpp"
+#include "Film/Film.hpp"
 
 class App {
 public:
@@ -114,7 +115,7 @@ private:
     std::shared_ptr<Myrtle> m_Myrtle;
     */
 	// Film
-
+	std::vector<std::shared_ptr<Film>> m_FilmVector;
     //Enemies
 	std::shared_ptr<Spawner> m_Spawner;
     //Charcter Choosen

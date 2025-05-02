@@ -4,7 +4,6 @@
 
 #ifndef MAP_HPP
 #define MAP_HPP
-#include "Film/Film.hpp"
 #include "Block.hpp"
 #include "Card.hpp"
 #include "CreateIMG.hpp"
@@ -23,7 +22,7 @@ class Map :public Util::GameObject{
         }
         return result;
     }
-    std::vector<std::shared_ptr<Film>> GetFilm(){return m_FilmVector;}
+
     [[nodiscard]] std::vector<std::shared_ptr<Block>> Getblock() {return m_block;}
 	std::vector<std::shared_ptr<Card>> GetCard() {return m_Card;}
     [[nodiscard]] int GetTowerHP(){return TowerHP;}
@@ -41,9 +40,7 @@ class Map :public Util::GameObject{
     void AddCard(std::shared_ptr<Card> card) {
         m_Card.push_back(card);
     };
-    void AddFilm(std::shared_ptr<Film> film){
-        m_FilmVector.push_back(film);
-    }
+
     std::vector<std::shared_ptr<Block>> GetTypeOfBlock(BlockState B);
     std::vector<std::shared_ptr<Block>> GetHaveCharacterBlock(BlockState B,bool HaveCharacter);
     std::shared_ptr<Block> XYGetBlock(int x,int y){return m_block[x+9*y];}
@@ -68,7 +65,7 @@ class Map :public Util::GameObject{
     std::shared_ptr<TextBox> m_Cost;
     std::shared_ptr<TextBox> m_HPText;
     std::shared_ptr<TextBox> m_EnemyText;
-    std::vector<std::shared_ptr<Film>> m_FilmVector;
+
 
 };
 #endif //MAP_HPP

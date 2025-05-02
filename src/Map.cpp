@@ -64,20 +64,7 @@ void Map::Update() {
     m_EnemyText->SetText(std::to_string(EnemyTotal)+"/"+std::to_string(EnemyTotalMax));
     m_HPText->SetText(std::to_string(TowerHP));
     m_Cost->SetText(std::to_string(cost));
-    for (size_t i = 0; i < m_FilmVector.size(); i++) {
-    if (!m_FilmVector[i]) {
-        continue;
-    }
 
-    m_FilmVector[i]->Update();
-    
-    if (m_FilmVector[i]->GetNowLife() <= 0) {
-		m_FilmVector[i]->SetVisible(false);
-        m_FilmVector.erase(m_FilmVector.begin() + i);
-        --i;
-		std::cout << "Film continue"  << std::endl;
-	}
-}
 
 }
 void Map::CreatotherItem() {
