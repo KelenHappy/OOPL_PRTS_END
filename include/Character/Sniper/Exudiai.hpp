@@ -13,13 +13,11 @@ public:
 		SetAttackTimeBuff((GetAttackTime()-0.22)/GetAttackTime());
 		//建立初始攻擊範圍
 		SetAttackRangeNum(4);
-
 		this->m_DefaultRange.push_back(std::vector<std::string>(5, "0"));
 		this->m_DefaultRange.push_back({"1", "1", "1", "1", "0"});
 		this->m_DefaultRange.push_back({"2", "1", "1", "1", "0"});
 		this->m_DefaultRange.push_back({"1", "1", "1", "1", "0"});
 		this->m_DefaultRange.push_back(std::vector<std::string>(5, "0"));
-
     }
 	std::string GetChineseName() override {return "能天使";}
 		void OpenSkill() override{
