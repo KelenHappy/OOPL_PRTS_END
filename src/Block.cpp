@@ -11,3 +11,9 @@ Block::Block(int x,int y,BlockState BS) {
     this->blockState=BS;
     this->Characterindex=-1;
 }
+void Block::ChangeImage( std::string newImagePath) {
+    auto imagePtr = std::static_pointer_cast<Util::Image>(m_Drawable);
+    if (imagePtr) {
+        imagePtr->SetImage(RESOURCE_DIR+newImagePath);
+    }
+}

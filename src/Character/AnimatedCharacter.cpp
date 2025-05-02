@@ -137,6 +137,7 @@ void AnimatedCharacter::OutPlaceCharacter() {
 void AnimatedCharacter::showrange() {
 	for(size_t i=0;i<AttackRangeNow.size();i++) {
 		AttackRangeNow[i]->SetVisible(true);
+		AttackRangeNow[i]->ChangeImage("/Maps/Attackrange.png");
 	}
 }
 
