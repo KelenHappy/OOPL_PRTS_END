@@ -63,6 +63,12 @@ add_executable(${PROJECT_NAME}
 		include/Enemy/Soldier.hpp
 		include/Enemy/Thrower.hpp
 		include/Enemy/Varlorant.hpp
+		include/Enemy/CrazyHostThrower.hpp
+		include/Enemy/SnowmanTeam.hpp
+		include/Enemy/ColdWolf.hpp
+		include/Enemy/CrazyHostLeader.hpp
+		include/Enemy/ColdBug.hpp
+
 		
 		include/Card/HalfCard.hpp
 		include/CreateIMG.hpp

@@ -15,7 +15,7 @@ public:
 		false, false, false,
 		CharacterAttackType::Physics);
     }
-	std::string GetName(){
+	std::string GetName() override{
 		return "Soldier";
 	}
 	~Soldier(){}

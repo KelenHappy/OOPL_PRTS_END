@@ -17,7 +17,7 @@ public:
 		// Attack Range
 		SetAttackRangeNum(2);
     }
-	std::string GetName(){
+	std::string GetName() override{
 		return "Thrower";
 	}
 	~Thrower(){}

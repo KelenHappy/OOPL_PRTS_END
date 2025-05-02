@@ -69,6 +69,9 @@ public:
 		SetPath(this->IdleImage, this->AttackImage, this->DieImage, MoveImage, this->DefaultImage);
 	}
 	// Function
+	virtual void UpdateEffect() {
+
+    }
 	void takeDamage(CharacterAttackImpact impact, float damage);
 	void ImpactDizzy();
 	void ImpactSleep();
@@ -103,6 +106,7 @@ public:
 	}
 	
 	// Get
+	virtual std::string GetName() = 0;
 	std::shared_ptr<HpBar> GetHpBar(){return I_Hpbar;}
 	int GetHP(){
 		return HealthNum;

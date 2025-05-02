@@ -1,8 +1,6 @@
 #include "Util/GameObject.hpp"
 #include "Util/Animation.hpp"
-#include "Util/Text.hpp"
 #include "Util/Color.hpp"
-#include "TextBox.hpp"
 #include "ImgItem.hpp"
 #ifndef FILM_HPP
 #define FILM_HPP
@@ -16,11 +14,14 @@ public:
 		FilmSize = 0.6f;
 		SetCardSize(FilmSize);
         FilmImage = RESOURCE_DIR"/Film/" + ff + ".png";
-  
+
         // 假設 Util::Animation 類別有這樣的構造函數
         m_Drawable = std::make_shared<Util::Image>(FilmImage);
 
         SetZIndex(28);
+        if (Impact ==  "die")m_Transform.scale = {0.6f, 0.6f};
+        else if (Impact ==  "takeDamage")m_Transform.scale = {0.02f, 0.02f};
+
     }
 
     ~Film() = default;
