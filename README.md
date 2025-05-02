@@ -47,11 +47,16 @@
    - [x] 鸡尾酒投掷者 (Thrower) - https://prts.wiki/w/%E9%B8%A1%E5%B0%BE%E9%85%92%E6%8A%95%E6%8E%B7%E8%80%85
    - [x] 士兵 (Soldier) - https://prts.wiki/w/%E5%A3%AB%E5%85%B5
    
-   - [ ] 狂暴宿主投掷手 (CrazyHostThrower) - https://prts.wiki/w/%E7%8B%82%E6%9A%B4%E5%AE%BF%E4%B8%BB%E6%8A%95%E6%8E%B7%E6%89%8B
-   - [ ] 雪怪小队 (SnowmanTeam) - https://prts.wiki/w/%E9%9B%AA%E6%80%AA%E5%B0%8F%E9%98%9F
-   - [ ] 霜牙 (ColdWolf) - https://prts.wiki/w/%E9%9C%9C%E7%89%99
-   - [ ] 狂暴宿主组长 (CrazyHostLeader) - https://prts.wiki/w/%E7%8B%82%E6%9A%B4%E5%AE%BF%E4%B8%BB%E7%BB%84%E9%95%BF
-   - [ ] 冰爆源石虫 (ColdBug) - https://prts.wiki/w/%E5%86%B0%E7%88%86%E6%BA%90%E7%9F%B3%E8%99%AB
+   - [x] 狂暴宿主投掷手 (CrazyHostThrower) - https://prts.wiki/w/%E7%8B%82%E6%9A%B4%E5%AE%BF%E4%B8%BB%E6%8A%95%E6%8E%B7%E6%89%8B
+   - [x] 雪怪小队 (SnowmanTeam) - https://prts.wiki/w/%E9%9B%AA%E6%80%AA%E5%B0%8F%E9%98%9F
+   - [x] 霜牙 (ColdWolf) - https://prts.wiki/w/%E9%9C%9C%E7%89%99
+   - [x] 狂暴宿主组长 (CrazyHostLeader) - https://prts.wiki/w/%E7%8B%82%E6%9A%B4%E5%AE%BF%E4%B8%BB%E7%BB%84%E9%95%BF
+   - [x] 冰爆源石虫 (ColdBug) - https://prts.wiki/w/%E5%86%B0%E7%88%86%E6%BA%90%E7%9F%B3%E8%99%AB
+
+   - [ ] 无名独立骑士 (NoNameSoldier) - https://prts.wiki/w/%E6%97%A0%E5%90%8D%E7%8B%AC%E7%AB%8B%E9%AA%91%E5%A3%AB
+   - [ ] 训练用钳兽 (TraingMonster) - https://prts.wiki/w/%E8%AE%AD%E7%BB%83%E7%94%A8%E9%92%B3%E5%85%BD
+   - [ ] 持盾独立骑士 (DefendSoloSoldier) - https://prts.wiki/w/%E6%8C%81%E7%9B%BE%E7%8B%AC%E7%AB%8B%E9%AA%91%E5%A3%AB
+
 # 地圖
 https://map.ark-nights.com/map/main_01-07  
 https://map.ark-nights.com/map/ro2_e_5_3  
