@@ -107,6 +107,8 @@ add_executable(${PROJECT_NAME}
 		include/Character/Sniper/Exudiai.hpp
 		include/Character/Sniper/Kroos.hpp
 		include/Character/Sniper/W.hpp
+
+		include/Character/Guard/Mlynar.hpp
 		
 		include/Film/Film.hpp
 		

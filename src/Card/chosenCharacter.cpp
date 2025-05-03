@@ -9,6 +9,10 @@
 #include "Character/Vanguard/Ines.hpp"
 #include "Character/Vanguard/Myrtle.hpp"
 #include "Character/Vanguard/Texas.hpp"
+
+#include "Character/Guard/Mlynar.hpp"
+
+
 #include "ChooseCharacter/ChosenCharacter.hpp"
 #include "Util/Logger.hpp"
 
@@ -32,7 +36,9 @@ void ChosenCharacter::CreateNewCharacter() {
 		
         std::make_shared<Texas>(),
         std::make_shared<Ines>(),
-        std::make_shared<Myrtle>()
+        std::make_shared<Myrtle>(),
+
+        std::make_shared<Mlynar>()
     };
     CreateHalfCard();
     Icreate=true;

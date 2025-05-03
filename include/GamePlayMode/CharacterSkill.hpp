@@ -8,6 +8,8 @@ public:
 
     }
 	
+	//void Set
+
     void SetSetTimeBuff(float timeBuff) {
         SetTimeBuff = timeBuff;
     }
@@ -97,6 +99,7 @@ protected:
     float DefendBuff = 0;
     int MagicDefendBuff = 0;
 	int AttackRangeNumBuff = 0;
+    std::shared_ptr<std::vector<std::vector<std::string>>> m_RangeBuff;
     std::shared_ptr<std::vector <Block> >AttackRangeBuff = nullptr;
 	int SkillDefaultBuff = 0;
     int SkillCostBuff = 0;

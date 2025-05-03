@@ -22,18 +22,6 @@
 #include "Character/Supporter.hpp"
 #include "Character/Caster.hpp"
 
-#include "Character/Medic/Sussurro.hpp"
-#include "Character/Medic/Warfarin.hpp"
-#include "Character/Medic/Ptilopsis.hpp"
-
-#include "Character/Sniper/Exudiai.hpp"
-#include "Character/Sniper/Kroos.hpp"
-#include "Character/Sniper/W.hpp"
-
-#include "Character/Vanguard/Texas.hpp"
-#include "Character/Vanguard/Ines.hpp"
-#include "Character/Vanguard/Myrtle.hpp"
-
 #include "Enemy/Enemy.hpp"
 #include "Enemy/EnemyState.hpp"
 #include "Enemy/BugA.hpp"
