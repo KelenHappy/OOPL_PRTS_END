@@ -32,7 +32,13 @@ void App::GameSecondTick() {
             }
         }
         else{
-            m_LevelCharacter[i]->AddSkillCost(1);
+            if(!m_LevelCharacter[i]->GetSkillOpen()){m_LevelCharacter[i]->AddSkillCost(1);}
+            else{
+                m_LevelCharacter[i]->DeSkillTime(1);
+                if(m_LevelCharacter[i]->GetSkillTime() <= 0){
+                    m_LevelCharacter[i]->CloseSkill();
+                }
+            }
         }
         if(m_LevelCharacter[i]->GetDieCost() <= 0){
             m_LevelCharacter[i]->SetHP();

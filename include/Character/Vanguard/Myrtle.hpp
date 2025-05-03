@@ -12,7 +12,7 @@ public:
 		int SkillDefault, int SkillCost, float SkillTime, std::string skillinfo, std::string skillname,
 		HeavyLevel
 		*/
-		SetInfo(70, 10, 1.3, 1565, 520, 300, 0,
+		SetInfo(70, 8, 1.3, 1565, 520, 300, 0,
 		10, 24, 16, "停止攻擊，並每秒治療周圍一名友方單位，相當桃金娘攻擊力50%的生命", "治癒之翼"
 		, 1);
 		//角色技能建立
@@ -29,19 +29,38 @@ public:
 	std::string GetChineseName() override {return "桃金娘";}
 
 	void OpenSkill() override{
+		// Skill Func
 		SkillOpen = true;
+		SkillNow -= SkillCostNum;
+		SkillTimeTemp = SkillTimeNum;
+		// Skill Make
 		AttackNum *= AttackBuff;
 		AttackType = TypeBuff;
+		this->m_DefaultRange.clear();
+		this->m_DefaultRange.push_back(std::vector<std::string>(5, "0"));
+		this->m_DefaultRange.push_back({"0", "1", "1", "1", "0"});
+		this->m_DefaultRange.push_back({"0", "1", "2", "1", "0"});
+		this->m_DefaultRange.push_back({"0", "1", "1", "1", "0"});
+		this->m_DefaultRange.push_back(std::vector<std::string>(5, "0"));
 	}
 	
 	void CloseSkill() override{
+		// Skill Func
 		SkillOpen = false;
+		SkillTimeNum = SkillTimeTemp;
+		// Skill Make
 		AttackNum /= AttackBuff;
 		AttackType = CharacterAttackType::Physics;
+		this->m_DefaultRange.clear();
+		this->m_DefaultRange.push_back(std::vector<std::string>(5, "0"));
+		this->m_DefaultRange.push_back(std::vector<std::string>(5, "0"));
+		this->m_DefaultRange.push_back({"2", "1", "0", "0", "0"});
+		this->m_DefaultRange.push_back(std::vector<std::string>(5, "0"));
+		this->m_DefaultRange.push_back(std::vector<std::string>(5, "0"));
 	}
 
 protected:
-
+	int SkillTimeTemp = 0;
 };
 
 #endif

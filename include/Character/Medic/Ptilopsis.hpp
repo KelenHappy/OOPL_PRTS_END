@@ -23,7 +23,7 @@ public:
 		SetAttackRangeNum(4);
 		this->m_DefaultRange.push_back(std::vector<std::string>(5, "0"));
 		this->m_DefaultRange.push_back({"1", "1", "1", "1", "0"});
-		this->m_DefaultRange.push_back({"2", "1", "1", "1", "0"});
+		this->m_DefaultRange.push_back({"1", "2", "1", "1", "0"});
 		this->m_DefaultRange.push_back({"1", "1", "1", "1", "0"});
 		this->m_DefaultRange.push_back(std::vector<std::string>(5, "0"));
     }
@@ -31,19 +31,36 @@ public:
 	std::string GetChineseName() override {return "白面鴞";}
 	
 	void OpenSkill() override{
+		// Skill Func
 		SkillOpen = true;
-		AttackRangeNum +=  AttackRangeNumBuff;
+		SkillNow -= SkillCostNum;
+		SkillTimeTemp = SkillTimeNum;
+		// Skill Make
+		this->m_DefaultRange.clear();
+		this->m_DefaultRange.push_back(std::vector<std::string>(5, "0"));
+		this->m_DefaultRange.push_back({"1", "1", "1", "1", "1"});
+		this->m_DefaultRange.push_back({"1", "2", "1", "1", "1"});
+		this->m_DefaultRange.push_back({"1", "1", "1", "1", "1"});
+		this->m_DefaultRange.push_back(std::vector<std::string>(5, "0"));
 		AttackTimeNum *= AttackTimeBuff;
 	}
 
 	void CloseSkill() override{
+		// Skill Func
 		SkillOpen = false;
-		AttackRangeNum -=  AttackRangeNumBuff;
+		SkillTimeNum = SkillTimeTemp;
+		// Skill Make
+		this->m_DefaultRange.clear();
+		this->m_DefaultRange.push_back(std::vector<std::string>(5, "0"));
+		this->m_DefaultRange.push_back({"1", "1", "1", "1", "0"});
+		this->m_DefaultRange.push_back({"1", "2", "1", "1", "0"});
+		this->m_DefaultRange.push_back({"1", "1", "1", "1", "0"});
+		this->m_DefaultRange.push_back(std::vector<std::string>(5, "0"));
 		AttackTimeNum /= AttackTimeBuff;
 	}
 
 protected:
-
+	int SkillTimeTemp = 0;
 };
 
 #endif

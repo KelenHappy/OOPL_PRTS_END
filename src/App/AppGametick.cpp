@@ -68,7 +68,7 @@ void App::GameTick() {
 		else if(m_LevelCharacter[i]->GetAttackType() == CharacterAttackType::Health){
 			for(size_t j = 0; j < m_LevelCharacter.size(); ++j){
 				float distance = calculateDistance(m_LevelCharacter[i]->m_Transform, m_LevelCharacter[j]->m_Transform);
-				if(j !=i and m_LevelCharacter[j]->GetHP() > m_LevelCharacter[j]->GetHealthRecover()
+				if(m_LevelCharacter[j]->GetHP() > m_LevelCharacter[j]->GetHealthRecover()
 				and distance <= m_LevelCharacter[i]->GetAttackRangeNum()*75
 				and m_LevelCharacter[i]->IfAnimationEnds()){
 					m_LevelCharacter[i]->SetState(CharacterState::Attack);

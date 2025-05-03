@@ -88,6 +88,7 @@ public:
     int GetAttackTimesBuff(){
         return AttackTimes;
     }
+
     ~CharacterSkill(){}
 protected:
 	bool SkillOpen = false;

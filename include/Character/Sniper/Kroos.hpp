@@ -29,19 +29,26 @@ public:
 	std::string GetChineseName() override {return "克洛里斯";}
 	
 	void OpenSkill() override{
+		// Skill Func
 		SkillOpen = true;
+		SkillNow -= SkillCostNum;
+		SkillTimeTemp = SkillTimeNum;
+		// Skill Make
 		AttackNum *= AttackBuff;
         SetAttackTimesBuff(2);
 	}
 
 	void CloseSkill() override{
+		// Skill Func
 		SkillOpen = false;
+		SkillTimeNum = SkillTimeTemp;
+		// Skill Make
 		AttackNum /= AttackBuff;
         SetAttackTimesBuff(1);
 	}
 
 protected:
-
+	int SkillTimeTemp = 0;
 };
 
 #endif

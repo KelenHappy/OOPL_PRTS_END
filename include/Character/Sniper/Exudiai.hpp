@@ -23,19 +23,26 @@ public:
     }
 	std::string GetChineseName() override {return "能天使";}
 		void OpenSkill() override{
+		// Skill Func
 		SkillOpen = true;
+		SkillNow -= SkillCostNum;
+		SkillTimeTemp = SkillTimeNum;
+		// Skill Make
 		SetAttackTimesBuff(5);
 		AttackTimeNum *= AttackTimeBuff;
 	}
 	
 	void CloseSkill() override{
-		SetAttackTimesBuff(1);
+		// Skill Func
 		SkillOpen = false;
+		SkillTimeNum = SkillTimeTemp;
+		// Skill Make
+		SetAttackTimesBuff(1);
 		AttackTimeNum /= AttackTimeBuff;
 	}
 
 protected:
-
+	int SkillTimeTemp = 0;
 };
 
 #endif

@@ -30,19 +30,36 @@ public:
 	std::string GetChineseName() override {return "維什戴爾";}
 	
 	void OpenSkill() override{
+		// Skill Func
 		SkillOpen = true;
+		SkillNow -= SkillCostNum;
+		SkillTimeTemp = SkillTimeNum;
+		// Skill Make
 		AttackNum *= AttackBuff;
-        AttackRangeNum += AttackRangeNumBuff;
+		this->m_DefaultRange.clear();
+		this->m_DefaultRange.push_back({"1", "1", "1", "0", "0"});
+		this->m_DefaultRange.push_back({"1", "1", "1", "1", "0"});
+		this->m_DefaultRange.push_back({"2", "1", "1", "1", "1"});
+		this->m_DefaultRange.push_back({"1", "1", "1", "1", "0"});
+		this->m_DefaultRange.push_back({"1", "1", "1", "0", "0"});
 	}
 
 	void CloseSkill() override{
+		// Skill Func
 		SkillOpen = false;
+		SkillTimeNum = SkillTimeTemp;
+		// Skill Make
 		AttackNum /= AttackBuff;
-        AttackRangeNum -= AttackRangeNumBuff;
+		this->m_DefaultRange.clear();
+		this->m_DefaultRange.push_back({"1", "1", "1", "0", "0"});
+		this->m_DefaultRange.push_back({"1", "1", "1", "1", "0"});
+		this->m_DefaultRange.push_back({"2", "1", "1", "1", "1"});
+		this->m_DefaultRange.push_back({"1", "1", "1", "1", "0"});
+		this->m_DefaultRange.push_back({"1", "1", "1", "0", "0"});
 	}
 
 protected:
-
+	int SkillTimeTemp = 0;
 };
 
 #endif

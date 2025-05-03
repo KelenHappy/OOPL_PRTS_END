@@ -44,6 +44,9 @@ public:
         SkillNow += i;
         SkillNow = std::min(SkillCostNum,SkillNow);
     }
+    void DeSkillTime(int i){
+        SkillTimeNum -= i;
+    }
 	// Set
 	//設定path
     void SetPath(std::vector<std::string>& IdleEnd,
