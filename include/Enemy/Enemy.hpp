@@ -120,7 +120,7 @@ public:
 	float GetMagicDefend() { 
 		return MagicDefendNum;
 	}
-	float GetAttackSpeed(){
+	float GetAttackSpeed() override{
 		return AttackSpeedNum;
 	}
 	float GetAttackDistance(){	

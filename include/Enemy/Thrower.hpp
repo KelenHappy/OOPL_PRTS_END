@@ -11,7 +11,7 @@ public:
 		//, bool Dizzy, bool Sleep, bool Frozen
 		//, AttackType attack_t
 		SetInfo(1550, 180, 50, 0, 2.7,
-		1.75, 1, 1.0, 0,
+		1.7, 1, 1.0, 0,
 		false, false, false,
 		CharacterAttackType::Physics);
 		// Attack Range

@@ -18,6 +18,7 @@ public:
         : m_CurrentState(EnemyState::Default) {
     }
     // 設定path
+    virtual float GetAttackSpeed() = 0;
     void SetPath(std::vector<std::string>& IdleEnd,
                  std::vector<std::string>& AttackEnd,
                  std::vector<std::string>& DieEnd,
@@ -31,7 +32,7 @@ public:
         this->m_IdleAnimation = std::make_shared<Util::Animation>
         (IdleEnd, false, 90, false, 50);
         this->m_AttackAnimation = std::make_shared<Util::Animation>
-        (AttackEnd, false, 90, false, 500);
+        (AttackEnd, false, 90, false, std::abs((GetAttackSpeed()-1)*1000));
         this->m_DieAnimation = std::make_shared<Util::Animation>
         (DieEnd, false, 90, false, 50);
         this->m_MoveAnimation = std::make_shared<Util::Animation>

@@ -1,24 +1,24 @@
-#ifndef VARLORANT_HPP
-#define VARLORANT_HPP
+#ifndef NO_NAME_SOLDIER_HPP
+#define NO_NAME_SOLDIER_HPP
 #include "Enemy.hpp"
 #include "GamePlayMode/CharacterAttackImpact.hpp"
-class Varlorant : public Enemy{
+class NoNameSoldier : public Enemy{
 public:
     //              EnemyName, int IdleCont, int AttackCont,int DieCont, int MoveCont
-    Varlorant() : Enemy("Varlorant", 59, 62, 57, 57){
+    NoNameSoldier() : Enemy("NoNameSoldier", 119, 54, 57, 48){
 		//int Health, int Attack, int Defend, int MagicDefend, int AttackSpeed
 		//, int AttackDistance, int AttackCastle, int MoveSpeed, int HeavyLevel, int HealthRecover
 		//, bool Dizzy, bool Sleep, bool Frozen
 		//, AttackType attack_t
-		SetInfo(1700, 250, 50, 0, 2.0,
-		1, 1, 1.0, 0,
+		SetInfo(2800, 280, 150, 0, 2.0,
+		1, 1, 1.1, 0,
 		false, false, false,
 		CharacterAttackType::Physics);
     }
 	std::string GetName() override{
-		return "Varlorant";
+		return "NoNameSoldier";
 	}
-	~Varlorant(){}
+	~NoNameSoldier(){}
 
 
 private:
@@ -26,5 +26,3 @@ private:
 };
 
 #endif
-
-

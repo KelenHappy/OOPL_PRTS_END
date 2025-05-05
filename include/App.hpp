@@ -29,6 +29,15 @@
 #include "Enemy/Thrower.hpp"
 #include "Enemy/Varlorant.hpp"
 
+#include "Enemy/CrazyHostThrower.hpp"
+#include "Enemy/SnowmanTeam.hpp"
+#include "Enemy/ColdWolf.hpp"
+#include "Enemy/CrazyHostLeader.hpp"
+#include "Enemy/ColdBug.hpp"
+
+#include "Enemy/NoNameSoldier.hpp"
+#include "Enemy/TraingMonster.hpp"
+
 #include "GamePlayMode/Attack.hpp"
 #include "Film/Film.hpp"
 

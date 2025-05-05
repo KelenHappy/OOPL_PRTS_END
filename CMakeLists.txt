@@ -70,6 +70,9 @@ add_executable(${PROJECT_NAME}
 		include/Enemy/CrazyHostLeader.hpp
 		include/Enemy/ColdBug.hpp
 
+		include/Enemy/NoNameSoldier.hpp
+		include/Enemy/TraingMonster.hpp
+
 		
 		include/Card/HalfCard.hpp
 		include/CreateIMG.hpp
