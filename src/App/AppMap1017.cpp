@@ -40,6 +40,7 @@ void App::LevelMain17() {
 	and CheckCharacter and m_LevelCharacter[m_CharacterCarry]->GetVisibility()){
 		// 收回角色
 		m_LevelCharacter[m_CharacterCarry]->OutPlaceCharacter();
+		m_map0107->closeMapblock();
 		m_LevelCharacter[m_CharacterCarry]->showrange();
 		m_Carry = -1;
 		carry = false;

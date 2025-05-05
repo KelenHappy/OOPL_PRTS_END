@@ -85,11 +85,12 @@ private:
 	void PlaceCharacter(std::shared_ptr<Block> block,std::shared_ptr<AnimatedCharacter> Char );
 	void choicemap();
 	bool checkCollision(glm::vec2 cursorPos, glm::vec2 itemPos, float rangeX, float rangeY);
+	void ClickOfMap();
 
 private:
 
     level m_level=level::lobby;
-    State m_CurrentState = State::START;
+    State m_CurrentState = State::START;w
     // 場景
     std::shared_ptr<MainScream> m_MainScream;
 	std::shared_ptr<ChosenCharacter> m_ChosenCharacter;

@@ -143,6 +143,7 @@ void Map::openMapblock(BlockState B) {
     for(size_t i=0;i<m_block.size();i++) {
         if (m_block[i]->GetBlockState()==B&&m_block[i]->HaveCharacter==false) {
             m_block[i]->SetVisible(true);
+            m_block[i]->ChangeImage("/Maps/block.png") ;
         }
         else
             m_block[i]->SetVisible(false);
@@ -151,7 +152,6 @@ void Map::openMapblock(BlockState B) {
 void Map::closeMapblock() {
     for(size_t i=0;i<m_block.size();i++) {
        m_block[i]->SetVisible(false);
-       m_block[i]->ChangeImage("/Maps/block.png") ;
     }
 }
 
