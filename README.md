@@ -81,3 +81,8 @@ ffmpeg -i test.webm -vf "colorkey=0x00FF00:0.3:0.1" -pix_fmt rgba %d.png
 find . -name "*.png" -exec optipng -o7 {} \;
 ```
 
+# 打包
+``` sh
+7z a -t7z -mx=9 -m0=LZMA2 -ms=on -md=512m Resources.7z Resources
+```
+
