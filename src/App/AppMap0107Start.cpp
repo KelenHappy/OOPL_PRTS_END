@@ -6,6 +6,8 @@
 #include "Util/Logger.hpp"
 #include <vector>
 void App::Map0107Loading() {
+	m_map0107=std::make_shared<Map>(m_MainScream->GetMapchoice());
+	m_0107.AddChildren(m_map0107->GetChildren());
     //加載敵人
 	m_Spawner=std::make_shared<Spawner>();
 	Enemies=m_Spawner->GetEnemies();
@@ -34,4 +36,5 @@ void App::Map0107Loading() {
 	}
 	m_0107.AddChildren(m_map0107->GetChildrenCard());
 	gametimer->Start();
+	NowMap=m_map0107;
 }

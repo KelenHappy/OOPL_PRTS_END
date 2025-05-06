@@ -14,11 +14,7 @@ void App::Start() {
 	m_Loading.AddChild(m_LoadingPage);
 	m_MainScream= std::make_shared<MainScream>();
 	m_ChosenCharacter = std::make_shared<ChosenCharacter>();
-	
-	m_TT = std::make_shared<TextBox>(40);
     m_Root.AddChildren(m_MainScream->GetChildren());
-	m_map0107=std::make_shared<Map>();
-	m_0107.AddChildren(m_map0107->GetChildren());
     gametimer=std::make_shared<GameTimer>();
 	//m_Root.AddChildren();
 

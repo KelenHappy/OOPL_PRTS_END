@@ -10,7 +10,7 @@ class Block:public Util::GameObject {
     public:
     bool carry;
     bool HaveCharacter;
-    Block(int x,int y,BlockState BS);
+    Block(int x,int y,BlockState BS,float Blocksize);
     void SetPosition(const glm::vec2& Position) { m_Transform.translation = Position; }
     glm::vec2 GetPosition(){return m_Transform.translation;}
     void ChangeImage(std::string newImagePath);
@@ -30,6 +30,7 @@ class Block:public Util::GameObject {
     int x;
     int y;
     int Characterindex;
+    float Blocksize;
     BlockState blockState=BlockState::NONE;
     //std::shared_ptr<AnimatedCharacter> Character;
 

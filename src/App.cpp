@@ -34,6 +34,14 @@ void App::Update() {
         LevelMain17();
 		Debug();
 	}
+    else if(m_level==level::cc5) {
+        LevelMain17();
+        Debug();
+    }
+    else if(m_level==level::rog53) {
+        LevelMain17();
+        Debug();
+    }
     else if(m_level==level::chooseCharacter) {
         ChooseCharacter();
     }
@@ -45,11 +53,11 @@ void App::Update() {
                 m_level=level::main17;
             break;
             case Mapchoice::cc5:
-                Map0107Loading();
+                MapStart();
                 m_level=level::cc5;
             break;
             case Mapchoice::rog53:
-                Map0107Loading();
+                MapStart();
                 m_level=level::rog53;
             break;
             default:

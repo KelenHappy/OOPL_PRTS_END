@@ -63,6 +63,12 @@ public:
 		chooseCharacter,
     	loading
     };
+	enum class UIMapLevel {
+		Main,
+		Clickcard,
+		ChoiceDirection,
+		ClickCharacter
+	};
 
     State GetCurrentState() const { return m_CurrentState; }
 
@@ -80,22 +86,28 @@ private:
     void LevelMain17();
     double calculateDistance(Util::Transform a, Util::Transform b);
 	void Map0107Loading();
+	void MapCC5Loading();
+	void MapRog53Loading();
     void GameTick();
 	void GameSecondTick();
 	void PlaceCharacter(std::shared_ptr<Block> block,std::shared_ptr<AnimatedCharacter> Char );
 	void choicemap();
 	bool checkCollision(glm::vec2 cursorPos, glm::vec2 itemPos, float rangeX, float rangeY);
 	void ClickOfMap();
+	void DeBug2();
+	void MapStart();
 
 private:
 
     level m_level=level::lobby;
-    State m_CurrentState = State::START;w
+    State m_CurrentState = State::START;
+	UIMapLevel  m_UIMapLevel = UIMapLevel::Main;
     // 場景
     std::shared_ptr<MainScream> m_MainScream;
 	std::shared_ptr<ChosenCharacter> m_ChosenCharacter;
     std::shared_ptr<TextBox> m_TT;
     std::shared_ptr<Map> m_map0107;
+	std::shared_ptr<Map> NowMap;
     std::shared_ptr<GameTimer> gametimer;
 	std::shared_ptr<FlyUI>m_flyUI;
 	std::shared_ptr<CreateIMG> m_LoadingPage;

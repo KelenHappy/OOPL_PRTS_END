@@ -7,11 +7,12 @@
 #include "Block.hpp"
 #include "Card.hpp"
 #include "CreateIMG.hpp"
+#include "MainScream.hpp"
 #include "Util/GameObject.hpp"
 enum class Direction { EAST, SOUTH, WEST, NORTH };
 class Map :public Util::GameObject{
     public:
-    Map() ;
+    Map(Mapchoice Mc);
     [[nodiscard]] std::vector<std::shared_ptr<Util::GameObject>> GetChildren() const ;
     [[nodiscard]] std::vector<std::shared_ptr<Util::GameObject>> GetChildrenCard() const {
         std::vector<std::shared_ptr<Util::GameObject>> result;
@@ -41,7 +42,7 @@ class Map :public Util::GameObject{
     void AddCard(std::shared_ptr<Card> card) {
         m_Card.push_back(card);
     };
-
+    void CreateMapchoice(Mapchoice Mc);
     std::vector<std::shared_ptr<Block>> GetTypeOfBlock(BlockState B);
     std::vector<std::shared_ptr<Block>> GetHaveCharacterBlock(BlockState B,bool HaveCharacter);
     std::shared_ptr<Block> XYGetBlock(int x,int y){return m_block[x+mapsize.x*y];}
@@ -52,7 +53,12 @@ class Map :public Util::GameObject{
     std::vector<std::shared_ptr<Block>> ExtractBlocksFromPattern(const std::vector<std::vector<std::string>>& range,
     int base_x, int base_y, Direction dir);
 	~Map(){}
+
+
     private:
+    void CreateMain0107();
+    void CreateCC5();
+    void CreateRog53();
     int TowerHP;
     int EnemyTotalMax;
     int EnemyTotal;

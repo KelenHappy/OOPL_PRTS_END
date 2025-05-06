@@ -44,3 +44,74 @@ bool App::checkCollisionNearMouse(Util::Transform Mouse, Util::Transform Item, i
     double distance = calculateDistance(Mouse, Item);
     return distance <= range;
 }
+void App::DeBug2() {
+    auto mouse=Util::Input::GetCursorPosition();
+    Util::Transform mouseT;
+    mouseT.translation=mouse;
+    if(Util::Input::IsKeyDown(Util::Keycode::KP_ENTER)) {
+        for(int i=0;i<m_map0107->Getblock().size();i++) {
+            LOG_DEBUG( m_map0107->Getblock()[i]->m_Transform.translation);
+        }
+    }
+    if(Util::Input::IsKeyDown(Util::Keycode::MOUSE_LB)) {
+        if(carry==false) {
+            carry=false;
+            for(int i=0;i<m_map0107->Getblock().size();i++) {
+                if(checkCollisionNearMouse( mouseT,m_map0107->Getblock()[i]->m_Transform, 30)) {
+                    m_Carry=i;
+                    carry=true;
+                    LOG_DEBUG("carry ");
+                }
+            }
+            if(carry==false) {
+                m_Carry=-1;
+            }
+        }
+        else {carry=false;}
+    }
+    if(carry) {
+        m_map0107->Getblock()[m_Carry]->m_Transform.translation=mouse;
+    }
+
+}
+
+void App::ClickOfMap(){
+    if (Util::Input::IsKeyDown(Util::Keycode::MOUSE_LB)) {
+        auto mouse =Util::Input::GetCursorPosition();
+        Util::Transform mouseT;
+        mouseT.translation = mouse;
+        // 點到 Card
+        for (size_t i = 0; i < NowMap->GetCard().size(); ++i) {
+            if (!NowMap->GetCard()[i]) continue;  // 避免 nullptr 存取
+            if (checkCollisionNearMouse(mouseT, NowMap->GetCard()[i]->m_Transform, 50)) {
+                m_CardCarry = i;
+                if(m_LevelCharacter[m_CardCarry]->GetState() == CharacterState::Default){
+                    CheckCard = true;
+                    NowMap->openMapblock(NowMap->GetCard()[m_CardCarry]->GetCharacter()->GetBlockState());
+                    m_flyUI->setnewcharacter(NowMap->GetCard()[i]->GetCharacter());}
+                std::cout << m_CardCarry << std::endl;
+                break;
+            }
+        }
+        // 點到 Block
+        if(CheckCard==true){
+            for (size_t i = 0; i < NowMap->Getblock().size(); ++i) {
+                if (!NowMap->Getblock()[i]) continue;  // 避免 nullptr 存取
+                if (checkCollisionNearMouse(mouseT, NowMap->Getblock()[i]->m_Transform, 40)) {
+                    m_Carry = i;
+                    carry = true;
+                    break;
+                }
+            }
+        }
+        //點到角色
+        for (size_t i = 0; i < m_LevelCharacter.size(); ++i) {
+            if (checkCollision(mouse, m_LevelCharacter[i]->GetPositionFix(), 30,30)
+            and m_LevelCharacter[i]->GetState() != CharacterState::Default) {
+                m_CharacterCarry = i;
+                CheckCharacter = true;
+                break;
+            }
+        }
+    }
+}

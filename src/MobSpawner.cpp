@@ -51,7 +51,7 @@ Spawner::Spawner() {
 
     // 0
     AddSpawn(currentTime += 6.0f, Enemytype::BugA, 0); // x1
-
+/*
     // 1
     AddSpawn(currentTime += 1.0f, Enemytype::BugA, 3); // x2
     AddSpawn(currentTime += 1.0f, Enemytype::BugA, 3);
@@ -91,7 +91,7 @@ Spawner::Spawner() {
     AddSpawn(currentTime += 0.0f, Enemytype::Valorant, 3); // x1 (同時間)
 
     // 12
-    AddSpawn(currentTime += 6.0f, Enemytype::Soldier, 0); // x1
+    AddSpawn(currentTime += 6.0f, Enemytype::Soldier, 0); // x1*/
 }
 std::shared_ptr<Enemy> Spawner::SpawnEnemy(Enemytype type) {
     std::shared_ptr<Enemy> Emy;

@@ -132,7 +132,13 @@ add_executable(${PROJECT_NAME}
 		include/MyTool.hpp
 		include/Hpbar.hpp
 		include/FlyUI.hpp
-
+		src/MapCreate/MapCreateMain0107.cpp
+		src/MapCreate/MapCreateCC5.cpp
+		src/MapCreate/MapCreateRog53.cpp
+		src/App/AppMapCC5.cpp
+		src/App/AppMapRog53Start.cpp
+		src/App/AppMapRog53.cpp
+		src/App/AppMapStart.cpp
 
 
 )
