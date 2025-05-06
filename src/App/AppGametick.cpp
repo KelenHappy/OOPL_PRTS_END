@@ -50,12 +50,17 @@ void App::GameTick() {
 					m_LevelCharacter[i]->SetState(CharacterState::Attack);
 					for(int k = 0; k < m_LevelCharacter[i]->GetAttackTimesBuff();k++){
 						attack(m_LevelCharacter[i], Enemies[j]);
-						std::shared_ptr<Film> tempFilm = std::make_shared<Film>(Enemies[j]->GetName(),"takeDamage");
-						tempFilm->SetLifeTimes(5);
+						std::shared_ptr<TakeDamage> tempFilm = std::make_shared<TakeDamage>(Enemies[j]->GetName(),"takeDamage");
 						tempFilm->SetPosition(Enemies[j]->GetPositionFix());
-						std::cout << "Add Film" << std::endl;
 						m_FilmVector.push_back(tempFilm);
 						m_0107.AddChild(tempFilm);
+						if(m_LevelCharacter[i]->GetJob() == "Sniper"){
+							std::shared_ptr<Bullet> tempB = std::make_shared<Bullet> (m_LevelCharacter[i]->GetCharacterName(), "Bullet");
+							tempB->SetPosition(m_LevelCharacter[i]->GetPosition());
+							tempB->SetEnemyPoint(Enemies[j]->GetPositionFix());
+							m_FilmVector.push_back(tempB);
+							m_0107.AddChild(tempB);
+						}
 					}
 					break;
 				}
@@ -168,7 +173,6 @@ void App::GameTick() {
 			m_FilmVector[i]->SetVisible(false);
 			m_FilmVector.erase(m_FilmVector.begin() + i);
 			--i;
-			std::cout << "Film continue"  << std::endl;
 		}
 	}
 }

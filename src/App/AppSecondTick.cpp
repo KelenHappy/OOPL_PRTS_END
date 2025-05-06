@@ -35,6 +35,7 @@ void App::GameSecondTick() {
             if(!m_LevelCharacter[i]->GetSkillOpen()){m_LevelCharacter[i]->AddSkillCost(1);}
             else{
                 m_LevelCharacter[i]->DeSkillTime(1);
+                std::cout << m_LevelCharacter[i]->GetCharacterName() << " Open Skill" << std::endl;
                 if(m_LevelCharacter[i]->GetSkillTime() <= 0){
                     m_LevelCharacter[i]->CloseSkill();
                 }

@@ -2,6 +2,9 @@
 #define APP_HPP
 
 #include "Film/Film.hpp"
+#include "Film/TakeDamage.hpp"
+#include "Film/Bullet.hpp"
+
 #include "FlyUI.hpp"
 #include "MainScream.hpp"
 #include "ChooseCharacter/ChosenCharacter.hpp"
@@ -44,7 +47,6 @@
 #include "Enemy/BOSS.hpp"
 
 #include "GamePlayMode/Attack.hpp"
-#include "Film/Film.hpp"
 
 class App {
 public:

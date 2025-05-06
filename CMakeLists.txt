@@ -119,6 +119,8 @@ add_executable(${PROJECT_NAME}
 		include/Character/Guard/Mlynar.hpp
 		
 		include/Film/Film.hpp
+		include/Film/TakeDamage.hpp
+		include/Film/Bullet.hpp
 		
 		include/TextBox.hpp
 		include/ImgItem.hpp

@@ -2,6 +2,7 @@
 #include "Util/Animation.hpp"
 #include "Util/Color.hpp"
 #include "ImgItem.hpp"
+#include <iostream>
 #ifndef FILM_HPP
 #define FILM_HPP
 
@@ -21,6 +22,8 @@ public:
         SetZIndex(28);
         if (Impact ==  "die")m_Transform.scale = {0.6f, 0.6f};
         else if (Impact ==  "takeDamage")m_Transform.scale = {0.02f, 0.02f};
+        else if (Impact == "Bullet") m_Transform.scale = {0.05f, 0.05f};
+        else{std::cout << "None In Film." << std::endl;}
 
     }
 
@@ -28,6 +31,9 @@ public:
 	
 	void AddLife(int i){
         timers -= i;
+        if(timers <= 0){
+            SetVisible(false);
+        }
     }
 
     int GetNowLife(){
@@ -65,13 +71,17 @@ public:
 		m_Transform.scale={size,size };
 	}
 	
-	void Update(){
+	virtual void Update(){
         AddLife(1);
         SetVisible(true);
 
     }
-	
-private:
+
+    virtual void SetEnemyPoint(glm::vec2 EE){
+        EnemyPath = EE;
+    }
+
+protected:
 	float FilmSize = 1;
     int timers = 0;
     int lifeTimes = 0;
@@ -79,6 +89,7 @@ private:
     std::string Impact = "";
     std::string FilmImage;
 
+    glm::vec2 EnemyPath;  // 儲存敵人位置
 };
 
 #endif // FILM_HPP
