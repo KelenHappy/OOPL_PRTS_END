@@ -14,6 +14,11 @@ void App::Map0107Loading() {
 		Enemies[i]->CreateAnimation();
 	}
 	// 特效
+
+	std::shared_ptr<TakeDamage> tempFilm = std::make_shared<TakeDamage>("None","takeDamage");
+	m_FilmVector.push_back(tempFilm);
+
+
 	m_map0107->SetEnemyTotalMax(m_Spawner->GetAllEnemycount());
 	//角色選則
 

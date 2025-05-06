@@ -14,7 +14,7 @@ void App::LevelMain17() {
 	if(carry == true and CheckCard == true) {
 		// SetPosition
 		if(m_LevelCharacter[m_CardCarry]->GetBlockState() == m_map0107->Getblock()[m_Carry]->GetBlockState() and 
-		m_LevelCharacter[m_CardCarry]->GetState() == CharacterState::Default and
+		m_LevelCharacter[m_CardCarry]->GetState() == CharacterState::Default and m_LevelCharacter[m_CardCarry]->GetHealthRecover() > 0 and
 		m_map0107->Takemapcost(m_LevelCharacter[m_CardCarry]->GetSetCost())and
 		m_map0107->Getblock()[m_Carry]->HaveCharacter==false)
 			{

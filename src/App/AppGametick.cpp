@@ -171,6 +171,7 @@ void App::GameTick() {
 
 		if (m_FilmVector[i]->GetNowLife() <= 0) {
 			m_FilmVector[i]->SetVisible(false);
+			m_0107.RemoveChild(m_FilmVector[i]);
 			m_FilmVector.erase(m_FilmVector.begin() + i);
 			--i;
 		}
