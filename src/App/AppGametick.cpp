@@ -121,6 +121,7 @@ void App::GameTick() {
 		}
 		//判斷移動碰撞
 		//判斷攻擊
+		int Count = Enemies[i]->GetAttackTimesBuff();
 		if(Enemies[i]->GetJob() != "None"){
 			for(size_t j = 0; j < m_LevelCharacter.size(); ++j){
 				float distance = calculateDistance(m_LevelCharacter[j]->m_Transform, Enemies[i]->m_Transform);
@@ -128,7 +129,9 @@ void App::GameTick() {
 					and Enemies[i]->IfAnimationEnds()){
 					Enemies[i]->SetState(EnemyState::Attack);
 					attack(Enemies[i], m_LevelCharacter[j]);
-					break;
+					Count--;
+					if(Count <= 0){break;}
+					else{continue;}
 				}
 				else if(Enemies[i]->IfAnimationEnds()){
 					Enemies[i]->SetState(EnemyState::Move);

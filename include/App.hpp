@@ -37,6 +37,11 @@
 
 #include "Enemy/NoNameSoldier.hpp"
 #include "Enemy/TraingMonster.hpp"
+#include "Enemy/DefendSoloSoldier.hpp"
+#include "Enemy/SoldierStudent.hpp"
+#include "Enemy/ComplieMagic.hpp"
+#include "Enemy/KingStudent.hpp"
+#include "Enemy/BOSS.hpp"
 
 #include "GamePlayMode/Attack.hpp"
 #include "Film/Film.hpp"
