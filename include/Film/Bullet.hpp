@@ -1,3 +1,5 @@
+#include <cmath>
+#include <glm/gtx/vector_angle.hpp>
 class Bullet : public Film {
 public:
     Bullet(std::string name, std::string ff) : Film(name, ff) {
@@ -28,6 +30,7 @@ public:
             // 更新子彈的位置
             glm::vec2 newPosition = here + direction * static_cast<float>(speed);  // 將speed轉換為float
             SetPosition(newPosition);
+            m_Transform.rotation = glm::radians(angle);
         } else {
             // 當距離小於某個閾值時，停止並消失
             SetLifeTimes(0);  // 結束子彈生命週期
@@ -43,6 +46,13 @@ public:
 
         // 根據距離更新生命週期，這裡使用距離來確定時間
         SetLifeTimes(static_cast<int>(std::abs(distance / speed)));
+
+        glm::vec2 direction = EnemyPath - here;
+        direction = glm::normalize(direction);  // 標準化方向向量
+        glm::vec2 dirA = glm::normalize(here);
+        glm::vec2 dirB = glm::normalize(EnemyPath);
+        float radians = glm::angle(dirA, dirB);
+        angle = glm::degrees(radians*-1);
     }
     // 計算兩點之間的距離
     int CalculateDistance(const glm::vec2& point1, const glm::vec2& point2) {
@@ -53,5 +63,8 @@ public:
         // 使用整數計算距離的平方
         return static_cast<int>(std::sqrt(dx * dx + dy * dy));
     }
+
+private:
+    float angle = 0;
 
 };
