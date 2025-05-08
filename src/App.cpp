@@ -5,9 +5,6 @@
 #include "Util/Keycode.hpp"
 #include "Util/Logger.hpp"
 #include <vector>
-
-
-
 void App::Update() {
     auto mouse=Util::Input::GetCursorPosition();
     if(Util::Input::IsKeyDown(Util::Keycode::MOUSE_LB)) {
