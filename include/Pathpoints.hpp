@@ -10,16 +10,27 @@
 class PathPoints {
 private:
     std::vector<glm::vec2> points;
+    std::vector<int> WaitTime;
 public:
 
-    void addPoint(const glm::vec2& point) {
+    void addPoint(const glm::vec2& point,int Wt) {
         points.push_back(point);
+        WaitTime.push_back(Wt);
     }
     void setPoint(std::vector<glm::vec2> P) {
         this->points = P;
     }
+    void setWaitTime(std::vector<int> Wt) {
+        this->WaitTime = Wt;
+    }
     glm::vec2 GetStartPoint() {
         return points[0];
+    }
+    int GetStartWaitPoint() {
+        return WaitTime[0];
+    }
+    int GetIndexWaitPoint(int index) {
+        return WaitTime[index];
     }
     glm::vec2 GetindexPoint(int index) {
         return points[index];

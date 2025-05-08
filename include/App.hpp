@@ -15,7 +15,7 @@
 #include "Character/CharacterState.hpp"
 #include "GameTimer.hpp"
 #include "Hpbar.hpp"
-#include "MobSpawner.hpp"
+#include "MobSpawner/MobSpawner.hpp"
 
 #include "Character/Medic.hpp"
 #include "Character/Sniper.hpp"

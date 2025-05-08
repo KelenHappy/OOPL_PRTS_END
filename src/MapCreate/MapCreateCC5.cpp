@@ -84,7 +84,7 @@ std::vector<vec2> positions = {
         std::shared_ptr<Block> bk = std::make_shared<Block>(col, row, state,0.8);
         bk->m_Transform.translation.x = positions[i].x;
         bk->m_Transform.translation.y = positions[i].y;
-        bk->SetVisible(true);
+        bk->SetVisible(false);
         bk->HaveCharacter=yn;
         this->m_block.push_back(bk);
     }

@@ -52,6 +52,13 @@ add_executable(${PROJECT_NAME}
 		src/Card/chosenCharacter.cpp
 		src/Card/HalfCard.cpp
 		src/App/APPTool.cpp
+		src/MapCreate/MapCreateMain0107.cpp
+		src/MapCreate/MapCreateCC5.cpp
+		src/MapCreate/MapCreateRog53.cpp
+		src/App/AppMapCC5.cpp
+		src/App/AppMapRog53Start.cpp
+		src/App/AppMapRog53.cpp
+		src/App/AppMapStart.cpp
     ${HEADER_FILES}
         include/App.hpp	
 		include/Block.hpp
@@ -127,18 +134,12 @@ add_executable(${PROJECT_NAME}
 		include/GameTimer.hpp
 		include/move.hpp
 		include/Pathpoints.hpp
-		include/MobSpawner.hpp
+		include/MobSpawner/MobSpawner.hpp
 		include/Enemy/EnemyType.hpp
 		include/MyTool.hpp
 		include/Hpbar.hpp
 		include/FlyUI.hpp
-		src/MapCreate/MapCreateMain0107.cpp
-		src/MapCreate/MapCreateCC5.cpp
-		src/MapCreate/MapCreateRog53.cpp
-		src/App/AppMapCC5.cpp
-		src/App/AppMapRog53Start.cpp
-		src/App/AppMapRog53.cpp
-		src/App/AppMapStart.cpp
+
 
 
 )

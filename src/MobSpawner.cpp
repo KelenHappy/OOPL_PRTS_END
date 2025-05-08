@@ -1,5 +1,6 @@
-#include <MobSpawner.hpp>
 
+
+#include "MobSpawner/MobSpawner.hpp"
 #include "Enemy/BugA.hpp"
 #include "Enemy/Soldier.hpp"
 #include "Enemy/Thrower.hpp"
@@ -8,6 +9,7 @@
 Spawner::Spawner() {
     Time=0;
     index=0;
+    std::vector<int> Waittime={-1,-1,-1,-1,-1,-1} ;
     std::vector<std::vector<glm::vec2>> allPaths = {
         {
             glm::vec2(488.0f, 202.0f),
@@ -45,13 +47,13 @@ Spawner::Spawner() {
     for (const auto& pathPoints : allPaths) {
         std::shared_ptr<PathPoints> path = std::make_shared<PathPoints>();
         path->setPoint(pathPoints);
+        path->setWaitTime(Waittime);
         AddPath(path);
     }
     float currentTime = 0.0f;
 
     // 0
     AddSpawn(currentTime += 6.0f, Enemytype::BugA, 0); // x1
-/*
     // 1
     AddSpawn(currentTime += 1.0f, Enemytype::BugA, 3); // x2
     AddSpawn(currentTime += 1.0f, Enemytype::BugA, 3);
@@ -91,7 +93,7 @@ Spawner::Spawner() {
     AddSpawn(currentTime += 0.0f, Enemytype::Valorant, 3); // x1 (同時間)
 
     // 12
-    AddSpawn(currentTime += 6.0f, Enemytype::Soldier, 0); // x1*/
+    AddSpawn(currentTime += 6.0f, Enemytype::Soldier, 0); // x1
 }
 std::shared_ptr<Enemy> Spawner::SpawnEnemy(Enemytype type) {
     std::shared_ptr<Enemy> Emy;
