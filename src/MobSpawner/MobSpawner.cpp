@@ -90,7 +90,7 @@ Spawner::Spawner() {
     AddSpawn(currentTime += 9.0f, Enemytype::Valorant, 0); // x1
 
     // 11
-    AddSpawn(currentTime += 0.0f, EMnemytype::Valorant, 3); // x1 (同時間)
+    AddSpawn(currentTime += 0.0f, Enemytype::Valorant, 3); // x1 (同時間)
 
     // 12
     AddSpawn(currentTime += 6.0f, Enemytype::Soldier, 0); // x1
