@@ -124,6 +124,9 @@ add_executable(${PROJECT_NAME}
 		include/Character/Sniper/W.hpp
 
 		include/Character/Guard/Mlynar.hpp
+		include/Character/Guard/SilverAsh.hpp
+		include/Character/Guard/Surtr.hpp
+		include/Character/Guard/Lappland.hpp
 		
 		include/Film/Film.hpp
 		include/Film/TakeDamage.hpp

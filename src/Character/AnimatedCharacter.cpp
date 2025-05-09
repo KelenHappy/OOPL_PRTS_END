@@ -115,6 +115,7 @@ void AnimatedCharacter::updatetransform() {
 }
 void AnimatedCharacter::PlaceCharacter(std::shared_ptr<Block> block,int index) {
 	if (block == nullptr) return;
+	HealthRecoverNum = HealthNum;
 	m_HpBar->Update(HealthRecoverNum,HealthNum);
 	m_PlaceBlock=block;
 	//AttackRangeDefault=map->ExtractBlocksFromPattern(m_DefaultRange,block->GetX(),block->GetY(),Direction::EAST);

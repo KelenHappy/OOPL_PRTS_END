@@ -20,6 +20,7 @@ void App::LevelMain17() {
 			if(m_map0107->Takemapcost(m_LevelCharacter[m_CardCarry]->GetSetCost())) {
 				m_LevelCharacter[m_CardCarry]->PlaceCharacter(m_map0107->Getblock()[m_Carry],m_CardCarry);
 				m_LevelCharacter[m_CardCarry]->SetAttackRangeDefault(m_map0107->ExtractBlocksFromPattern(m_LevelCharacter[m_CardCarry]->GetDefaultRange(),m_map0107->Getblock()[m_Carry]->GetX(),m_map0107->Getblock()[m_Carry]->GetY(),Direction::NORTH));
+
 				m_map0107->closeMapblock();
 				m_flyUI->SetVisible(false);
 			}

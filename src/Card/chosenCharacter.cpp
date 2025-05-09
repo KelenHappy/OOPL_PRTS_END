@@ -11,7 +11,12 @@
 #include "Character/Vanguard/Texas.hpp"
 
 #include "Character/Guard/Mlynar.hpp"
+#include "Character/Guard/SilverAsh.hpp"
+#include "Character/Guard/Surtr.hpp"
+#include "Character/Guard/Lappland.hpp"
 
+#include "Character/Defender/Cuora.hpp"
+#include "Character/Defender/Saria.hpp"
 
 #include "ChooseCharacter/ChosenCharacter.hpp"
 #include "Util/Logger.hpp"
@@ -38,7 +43,13 @@ void ChosenCharacter::CreateNewCharacter() {
         std::make_shared<Ines>(),
         std::make_shared<Myrtle>(),
 
-        std::make_shared<Mlynar>()
+        std::make_shared<Mlynar>(),
+        std::make_shared<SilverAsh>(),
+        std::make_shared<Surtr>(),
+        std::make_shared<Lappland>(),
+
+        std::make_shared<Cuora>(),
+        std::make_shared<Saria>()
     };
     CreateHalfCard();
     Icreate=true;

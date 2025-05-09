@@ -49,6 +49,12 @@ void App::GameSecondTick() {
             m_LevelCharacter[i]->SetState(CharacterState::Default);
         }
     }
+    for (size_t i =0; i < Enemies.size(); i++) {
+        Enemies[i]->UpdateEffect();
+    }
+    for (size_t i = 0; i < m_LevelCharacter.size(); i++) {
+        m_LevelCharacter[i]->UpdateEffect();
+    }
     m_map0107->Update();
     m_Spawner->Update();
 

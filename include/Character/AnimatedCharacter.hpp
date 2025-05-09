@@ -47,6 +47,9 @@ public:
     void DeSkillTime(int i){
         SkillTimeNum -= i;
     }
+	virtual void UpdateEffect() {
+
+	}
 	// Set
 	//設定path
     void SetPath(std::vector<std::string>& IdleEnd,
