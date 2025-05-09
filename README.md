@@ -7,7 +7,7 @@
    - [x] 德克萨斯 (Texas) - https://prts.wiki/w/%E5%BE%B7%E5%85%8B%E8%90%A8%E6%96%AF
 
 ## 近衛 (Guard)
-   - [ ] 玛恩纳 (Mlynar) - https://prts.wiki/w/%E7%8E%9B%E6%81%A9%E7%BA%B3
+   - [x] 玛恩纳 (Mlynar) - https://prts.wiki/w/%E7%8E%9B%E6%81%A9%E7%BA%B3
    - [ ] 银灰 (SilverAsh) - https://prts.wiki/w/%E9%93%B6%E7%81%B0
    - [ ] 史尔特尔 (Surtr) - https://prts.wiki/w/%E5%8F%B2%E5%B0%94%E7%89%B9%E5%B0%94
    - [ ] 拉普兰德 (Lappland) - https://prts.wiki/w/%E6%8B%89%E6%99%AE%E5%85%B0%E5%BE%B7
