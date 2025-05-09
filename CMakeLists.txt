@@ -47,7 +47,7 @@ add_executable(${PROJECT_NAME}
 		src/Character/AnimatedCharacter.cpp
 		src/Enemy/Enemy.cpp
         src/Map.cpp
-		src/MobSpawner.cpp
+        src/MobSpawner/MobSpawner.cpp
 		src/App/ChooseCharacter.cpp
 		src/Card/chosenCharacter.cpp
 		src/Card/HalfCard.cpp
