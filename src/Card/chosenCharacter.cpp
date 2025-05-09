@@ -17,6 +17,7 @@
 
 #include "Character/Defender/Cuora.hpp"
 #include "Character/Defender/Saria.hpp"
+#include "Character/Defender/Horn.hpp"
 
 #include "ChooseCharacter/ChosenCharacter.hpp"
 #include "Util/Logger.hpp"
@@ -49,7 +50,9 @@ void ChosenCharacter::CreateNewCharacter() {
         std::make_shared<Lappland>(),
 
         std::make_shared<Cuora>(),
-        std::make_shared<Saria>()
+        std::make_shared<Saria>(),
+        std::make_shared<Horn>()
+
     };
     CreateHalfCard();
     Icreate=true;

@@ -1,6 +1,7 @@
 #ifndef BUFF_HPP
 #define BUFF_HPP
 
+#include "GamePlayMode/BuffType.hpp"
 #include "Util/GameObject.hpp"
 #include <vector>
 
@@ -55,6 +56,7 @@ protected:
   bool GetBuff = false;               // 是否允許 Buff（可作為角色可被 Buff 條件）
   bool BuffTT = false;                // 是否正在 Buff 狀態
   std::vector<int> BuffInfo;         // Buff 效果資料（如：攻擊加成、移速等）
+  std::vector<BuffType> bufftype;
   int NowTicks = 0;                  // 當前 Buff 經過的時間
   int MaxTicks = 0;                  // Buff 持續的時間
 };

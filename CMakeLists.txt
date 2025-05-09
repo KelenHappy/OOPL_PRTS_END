@@ -98,6 +98,8 @@ add_executable(${PROJECT_NAME}
 		include/GamePlayMode/CharacterAttackImpact.hpp
 		include/GamePlayMode/CharacterSkill.hpp
 		include/GamePlayMode/AttackRange.hpp
+		include/GamePlayMode/Buff.hpp
+		include/GamePlayMode/BuffType.hpp
 		
 		include/Map.hpp
 		include/MainScream.hpp
@@ -128,6 +130,10 @@ add_executable(${PROJECT_NAME}
 		include/Character/Guard/SilverAsh.hpp
 		include/Character/Guard/Surtr.hpp
 		include/Character/Guard/Lappland.hpp
+
+		include/Character/Defender/Cuora.hpp
+		include/Character/Defender/Horn.hpp
+		include/Character/Defender/Saria.hpp
 		
 		include/Film/Film.hpp
 		include/Film/TakeDamage.hpp

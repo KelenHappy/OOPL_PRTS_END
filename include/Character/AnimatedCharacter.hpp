@@ -16,8 +16,10 @@
 #include "GamePlayMode/CharacterAttackImpact.hpp"
 #include "GamePlayMode/CharacterSkill.hpp"
 #include "GamePlayMode/AttackRange.hpp"
+#include "GamePlayMode/Buff.hpp"
+#include "GamePlayMode/BuffType.hpp"
 
-class AnimatedCharacter : public Util::GameObject, public CharacterSkill , public AttackRange{
+class AnimatedCharacter : public Util::GameObject, public CharacterSkill , public AttackRange, public Buff{
 public:
 	// IdleEnd, AttackEnd, DieEnd, StartEnd, Default
     // AnitmationPaths 使用 default path
@@ -210,6 +212,8 @@ protected:
     int DieCost = 0;
     // Slill Control
     int SkillNow = 0;
+    // Buff Control
+    bool BuffTicket = false;
 
 private:
     float m_Width = 15.0f;  // 角色寬度

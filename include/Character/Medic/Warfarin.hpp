@@ -37,6 +37,10 @@ public:
 		SkillTimeTemp = SkillTimeNum;
 		// Skill Make
 		AttackNum *=  AttackBuff;
+		bufftype.push_back(BuffType::Attack);
+		BuffInfo.push_back(1.9);
+		bufftype.push_back(BuffType::Health);
+		BuffInfo.push_back(0.97);
 
 	}
 
