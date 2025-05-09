@@ -7,6 +7,7 @@
 
 #include "FlyUI.hpp"
 #include "MainScream.hpp"
+#include "Mapchoice.hpp"
 #include "ChooseCharacter/ChosenCharacter.hpp"
 #include "Map.hpp"
 #include "Util/Renderer.hpp"
