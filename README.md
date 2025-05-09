@@ -8,9 +8,9 @@
 
 ## 近衛 (Guard)
    - [x] 玛恩纳 (Mlynar) - https://prts.wiki/w/%E7%8E%9B%E6%81%A9%E7%BA%B3
-   - [ ] 银灰 (SilverAsh) - https://prts.wiki/w/%E9%93%B6%E7%81%B0
-   - [ ] 史尔特尔 (Surtr) - https://prts.wiki/w/%E5%8F%B2%E5%B0%94%E7%89%B9%E5%B0%94
-   - [ ] 拉普兰德 (Lappland) - https://prts.wiki/w/%E6%8B%89%E6%99%AE%E5%85%B0%E5%BE%B7
+   - [x] 银灰 (SilverAsh) - https://prts.wiki/w/%E9%93%B6%E7%81%B0
+   - [x] 史尔特尔 (Surtr) - https://prts.wiki/w/%E5%8F%B2%E5%B0%94%E7%89%B9%E5%B0%94
+   - [x] 拉普兰德 (Lappland) - https://prts.wiki/w/%E6%8B%89%E6%99%AE%E5%85%B0%E5%BE%B7
 
 ## 狙擊 (Sniper)
    - [x] 能天使 (Exusiai) - https://prts.wiki/w/%E8%83%BD%E5%A4%A9%E4%BD%BF
@@ -18,8 +18,8 @@
    - [x] 维什戴尔 (W) - https://prts.wiki/w/%E7%BB%B4%E4%BB%80%E6%88%B4%E5%B0%94
 
 ## 重裝 (Defender)
-   - [ ] 蛇屠箱 (Cuora) - https://prts.wiki/w/%E8%9B%87%E5%B1%A0%E7%AE%B1
-   - [ ] 塞雷娅 (Saria) - https://prts.wiki/w/%E5%A1%9E%E9%9B%B7%E5%A8%85
+   - [x] 蛇屠箱 (Cuora) - https://prts.wiki/w/%E8%9B%87%E5%B1%A0%E7%AE%B1
+   - [x] 塞雷娅 (Saria) - https://prts.wiki/w/%E5%A1%9E%E9%9B%B7%E5%A8%85
    - [ ] 号角 (Horn) - https://prts.wiki/w/%E5%8F%B7%E8%A7%92
 
 ## 醫療 (Medic)
@@ -60,7 +60,7 @@
    - [x] 呼啸骑士团学徒 (SoldierStudent) - https://prts.wiki/w/%E5%91%BC%E5%95%B8%E9%AA%91%E5%A3%AB%E5%9B%A2%E5%AD%A6%E5%BE%92
    - [x] 编制术师 (ComplieMagic) - https://prts.wiki/w/%E7%BC%96%E5%88%B6%E6%9C%AF%E5%B8%88
    - [x] 锋盔骑士团学徒 (KingStudent) - https://prts.wiki/w/%E9%94%8B%E7%9B%94%E9%AA%91%E5%A3%AB%E5%9B%A2%E5%AD%A6%E5%BE%92
-   - [ ] 凋零骑士 (DeSoldier) - https://prts.wiki/w/%E5%87%8B%E9%9B%B6%E9%AA%91%E5%A3%AB
+   - [x] 凋零骑士 (DeSoldier) - https://prts.wiki/w/%E5%87%8B%E9%9B%B6%E9%AA%91%E5%A3%AB
    - [x] 腐败骑士 (FailingSoldier) - https://prts.wiki/w/%E8%85%90%E8%B4%A5%E9%AA%91%E5%A3%AB
 
 # 地圖
