@@ -99,7 +99,7 @@ add_executable(${PROJECT_NAME}
 		include/GamePlayMode/CharacterSkill.hpp
 		include/GamePlayMode/AttackRange.hpp
 		include/GamePlayMode/Buff.hpp
-		include/GamePlayMode/BuffType.hpp
+
 		
 		include/Map.hpp
 		include/MainScream.hpp

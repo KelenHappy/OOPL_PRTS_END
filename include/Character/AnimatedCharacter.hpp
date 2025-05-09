@@ -17,7 +17,7 @@
 #include "GamePlayMode/CharacterSkill.hpp"
 #include "GamePlayMode/AttackRange.hpp"
 #include "GamePlayMode/Buff.hpp"
-#include "GamePlayMode/BuffType.hpp"
+
 
 class AnimatedCharacter : public Util::GameObject, public CharacterSkill , public AttackRange, public Buff{
 public:
@@ -52,6 +52,32 @@ public:
 	virtual void UpdateEffect() {
 
 	}
+	bool BuffTicket = false;
+	void ApplyBuff(int attack, int defend, int attackspeed, int hp) {
+        if(GetBuff){
+            if(BuffTicket){
+                return;
+            }
+            GAttackBuff = attack;
+            GDefendBuff = defend;
+            GAttackSpeedBuff = attackspeed;
+            GHealthBuff = hp;
+            BuffTicket = true;
+            AttackNum *= attack;
+            DefendNum *= defend;
+            AttackTimeNum *= attackspeed;
+            HealthRecoverNum *= hp;
+        }
+    }
+    void CloseBuff(){
+        if(GetBuff){
+            BuffTicket = false;
+            AttackNum /= GAttackBuff;
+            DefendNum /= GDefendBuff;
+            AttackTimeNum /= GAttackSpeedBuff;
+            HealthRecoverNum /= GHealthBuff;
+        }
+    }
 	// Set
 	//設定path
     void SetPath(std::vector<std::string>& IdleEnd,
@@ -213,7 +239,7 @@ protected:
     // Slill Control
     int SkillNow = 0;
     // Buff Control
-    bool BuffTicket = false;
+
 
 private:
     float m_Width = 15.0f;  // 角色寬度
