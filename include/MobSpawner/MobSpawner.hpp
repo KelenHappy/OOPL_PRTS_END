@@ -1,4 +1,6 @@
 #include <vector>
+
+#include "Mapchoice.hpp"
 #include "Pathpoints.hpp"
 #include "Enemy/Enemy.hpp"
 #include "Enemy/EnemyType.hpp"
@@ -11,7 +13,7 @@ public:
         Enemytype enemyType;    // 生成的敵人類型
         int pathIndex;    // 怪物走哪條路線
     };
-    Spawner();
+    Spawner(Mapchoice Mc);
     ~Spawner();
     void Update();
     std::shared_ptr<Enemy> SpawnEnemy(Enemytype type);
@@ -31,6 +33,7 @@ public:
         }
         return result;
     }
+    void CreateSpawner(Mapchoice Mc);
 
 private:
     int Time;
@@ -39,4 +42,7 @@ private:
     std::vector<std::shared_ptr<PathPoints>> paths;
     void AddSpawnEnemy(Enemytype type);
     std::vector<std::shared_ptr<Enemy>> enemies;
+    void CreateEnemies0107();
+    void CreateEnemiesCC5();
+    void CreateEnemiesRog53();
 };

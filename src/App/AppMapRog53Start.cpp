@@ -7,7 +7,7 @@
 #include <vector>
 void App::MapRog53Loading() {
     //加載敵人
-    m_Spawner=std::make_shared<Spawner>();
+    m_Spawner=std::make_shared<Spawner>(m_MainScream->GetMapchoice());
     Enemies=m_Spawner->GetEnemies();
     m_0107.AddChildren(m_Spawner->GetEnemiesGameobject());
     for (size_t i = 0; i < Enemies.size(); i++){
