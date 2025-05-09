@@ -44,7 +44,8 @@
 #include "Enemy/SoldierStudent.hpp"
 #include "Enemy/ComplieMagic.hpp"
 #include "Enemy/KingStudent.hpp"
-#include "Enemy/BOSS.hpp"
+#include "Enemy/FailingSoldier.hpp"
+#include "Enemy/DeSoldier.hpp"
 
 #include "GamePlayMode/Attack.hpp"
 

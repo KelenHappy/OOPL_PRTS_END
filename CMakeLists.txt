@@ -82,7 +82,8 @@ add_executable(${PROJECT_NAME}
 		include/Enemy/SoldierStudent.hpp
 		include/Enemy/ComplieMagic.hpp
 		include/Enemy/KingStudent.hpp
-		include/Enemy/BOSS.hpp
+		include/Enemy/DeSoldier.hpp
+		include/Enemy/FailingSoldier.hpp
 
 		
 		include/Card/HalfCard.hpp
