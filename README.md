@@ -60,7 +60,8 @@
    - [x] 呼啸骑士团学徒 (SoldierStudent) - https://prts.wiki/w/%E5%91%BC%E5%95%B8%E9%AA%91%E5%A3%AB%E5%9B%A2%E5%AD%A6%E5%BE%92
    - [x] 编制术师 (ComplieMagic) - https://prts.wiki/w/%E7%BC%96%E5%88%B6%E6%9C%AF%E5%B8%88
    - [x] 锋盔骑士团学徒 (KingStudent) - https://prts.wiki/w/%E9%94%8B%E7%9B%94%E9%AA%91%E5%A3%AB%E5%9B%A2%E5%AD%A6%E5%BE%92
-   - [x] 腐败骑士 (BOSS) - https://prts.wiki/w/%E8%85%90%E8%B4%A5%E9%AA%91%E5%A3%AB
+   - [ ] 凋零骑士 (DeSoldier) - https://prts.wiki/w/%E5%87%8B%E9%9B%B6%E9%AA%91%E5%A3%AB
+   - [x] 腐败骑士 (FailingSoldier) - https://prts.wiki/w/%E8%85%90%E8%B4%A5%E9%AA%91%E5%A3%AB
 
 # 地圖
 https://map.ark-nights.com/map/main_01-07  
