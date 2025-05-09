@@ -1,11 +1,11 @@
-#ifndef BOSS_HPP
-#define BOSS_HPP
+#ifndef FAILING_SOLDIER_HPP
+#define FAILING_SOLDIER_HPP
 #include "Enemy.hpp"
 #include "GamePlayMode/CharacterAttackImpact.hpp"
-class BOSS : public Enemy{
+class FailingSoldier : public Enemy{
 public:
     //              EnemyName, int IdleCont, int AttackCont,int DieCont, int MoveCont
-    BOSS() : Enemy("BOSS", 30, 24, 40, 34){
+    FailingSoldier() : Enemy("FailingSoldier", 30, 24, 40, 34){
         //int Health, int Attack, int Defend, int MagicDefend, int AttackSpeed
         //, int AttackDistance, int AttackCastle, int MoveSpeed, int HeavyLevel, int HealthRecover
         //, bool Dizzy, bool Sleep, bool Frozen
@@ -19,12 +19,12 @@ public:
         SetAttackTimesBuff(4);
     }
     std::string GetName() override{
-        return "BOSS";
+        return "FailingSoldier";
     }
     void UpdateEffect() override {
 
     }
-    ~BOSS(){}
+    ~FailingSoldier(){}
 
 
 
@@ -32,4 +32,4 @@ private:
     int HPCounts = 1;
 };
 
-#endif // BOSS
+#endif // FailingSoldier
