@@ -1,5 +1,5 @@
-#ifndef THROWER_HPP
-#define THROWER_HPP
+#ifndef  ComplieMagic_HPP
+#define  ComplieMagic_HPP
 #include "Enemy.hpp"
 #include "GamePlayMode/CharacterAttackImpact.hpp"
 class ComplieMagic : public Enemy{

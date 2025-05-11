@@ -190,6 +190,7 @@ protected:
 	float MoveSpeedNum = 0;
 	int HeavyLevelNum = 0;
 	int HealthRecoverNum = 0;
+	int RodeWaitTime = 0;
 
 	bool DizzyDefend = false;
 	bool SleepDefend = false;
