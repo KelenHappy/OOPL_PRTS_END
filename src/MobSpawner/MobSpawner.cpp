@@ -111,14 +111,18 @@ void Spawner::AddSpawnEnemy(Enemytype type) {
 void Spawner::AddSpawn(float time, Enemytype type, int pathIndex) {
     SpawnInfo info = {time, type, pathIndex};
 
-    // 使用 std::lower_bound 來找出插入位置
     auto it = std::lower_bound(spawnQueue.begin(), spawnQueue.end(), info,
         [](const SpawnInfo& a, const SpawnInfo& b) {
             return a.spawnTime < b.spawnTime;
         });
 
+    // 計算插入位置的索引
+    int insertIndex = std::distance(spawnQueue.begin(), it);
+
     spawnQueue.insert(it, info);
-    AddSpawnEnemy(type);  // 加入敵人
+
+    // 插入敵人也要插在相同位置，保持與 spawnQueue 對齊
+    enemies.insert(enemies.begin() + insertIndex, SpawnEnemy(type));
 }
 void Spawner::Update() {
     if(index>=int(spawnQueue.size())) {return;}
