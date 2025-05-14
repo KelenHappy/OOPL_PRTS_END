@@ -93,12 +93,15 @@ void Spawner::CreateEnemiesCC5() {
     currentTime = 208;  spawn(1, 1, Enemytype::ComplieMagic, 0);
     currentTime = 211;  spawn(1, 1, Enemytype::SoldierStudent, 2);
     currentTime = 220;  spawn(2, 8, Enemytype::NoNameSoldier, 2);
-    currentTime = 228;  spawn(1, 1, Enemytype::BOSS, 4);
+    currentTime = 228;  spawn(1, 1, Enemytype::FailingSoldier, 4);
    // currentTime = 233;  spawn(1, 1, Enemytype::DemonKnight2, 2);
+    currentTime = 233;  spawn(1, 1, Enemytype::DeSoldier, 2);
+
     currentTime = 248;  spawn(2, 3, Enemytype::TraingMonster, 3);
     currentTime = 251;  spawn(1, 1, Enemytype::SoldierStudent, 2);
     currentTime = 256;  spawn(1, 1, Enemytype::KingStudent, 5);
-   // currentTime = 278;  spawn(1, 1, Enemytype::DemonKnight2, 2);
+   // currentTime = 278;  spawn(1, 1, Enemytype::DeSoldier, 2);
+    currentTime = 278;  spawn(1, 1, Enemytype::DeSoldier, 2);
 }
 
 

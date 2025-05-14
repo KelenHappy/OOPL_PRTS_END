@@ -32,4 +32,4 @@ private:
     int HPCounts = 1;
 };
 
-#endif // FailingSoldier
+#endif // FAILING_SOLDIER_HPP

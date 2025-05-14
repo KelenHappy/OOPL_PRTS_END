@@ -4,21 +4,26 @@
 
 #include <Enemy/DefendSoloSoldier.hpp>
 
-#include "Enemy/BOSS.hpp"
 #include "Enemy/BugA.hpp"
-#include "Enemy/ColdBug.hpp"
-#include "Enemy/ColdWolf.hpp"
-#include "Enemy/ComplieMagic.hpp"
+#include "Enemy/Varlorant.hpp"
+#include "Enemy/Thrower.hpp"
+#include "Enemy/Soldier.hpp"
+
 #include "Enemy/CrazyHostLeader.hpp"
 #include "Enemy/CrazyHostThrower.hpp"
+#include "Enemy/ColdBug.hpp"
+#include "Enemy/ColdWolf.hpp"
+#include "Enemy/SnowmanTeam.hpp"
+
+#include "Enemy/ComplieMagic.hpp"
 #include "Enemy/KingStudent.hpp"
 #include "Enemy/NoNameSoldier.hpp"
-#include "Enemy/SnowmanTeam.hpp"
-#include "Enemy/Soldier.hpp"
 #include "Enemy/SoldierStudent.hpp"
-#include "Enemy/Thrower.hpp"
 #include "Enemy/TraingMonster.hpp"
-#include "Enemy/Varlorant.hpp"
+#include "Enemy/DefendSoloSoldier.hpp"
+#include "Enemy/DeSoldier.hpp"
+#include "Enemy/FailingSoldier.hpp"
+
 
 Spawner::Spawner(Mapchoice Mc) {
     Time=0;
@@ -88,13 +93,17 @@ std::shared_ptr<Enemy> Spawner::SpawnEnemy(Enemytype type) {
         case(Enemytype::KingStudent):
             Emy = std::make_shared<KingStudent>();
             break;
-        case(Enemytype::BOSS):
-            Emy = std::make_shared<BOSS>();
+        case(Enemytype::FailingSoldier):
+            Emy = std::make_shared<FailingSoldier>();
+            break;
+        case(Enemytype::DeSoldier):
+            Emy = std::make_shared<DeSoldier>();
             break;
         default:
             // 可以選擇拋出異常或返回空指針
             throw std::invalid_argument("Unknown enemy type");
             // 或者: return nullptr;
+            break;
     }
     if (Emy) {  // 只有在成功創建敵人的情況下才設置屬性
         Emy->SetZIndex(10);
