@@ -25,6 +25,7 @@
 #include "Enemy/FailingSoldier.hpp"
 
 
+
 Spawner::Spawner(Mapchoice Mc) {
     Time=0;
     index=0;
@@ -94,7 +95,7 @@ std::shared_ptr<Enemy> Spawner::SpawnEnemy(Enemytype type) {
             Emy = std::make_shared<KingStudent>();
             break;
         case(Enemytype::FailingSoldier):
-            Emy = std::make_shared<FailingSoldier>();
+            Emy = std::make_shared<KingStudent>();
             break;
         case(Enemytype::DeSoldier):
             Emy = std::make_shared<DeSoldier>();
