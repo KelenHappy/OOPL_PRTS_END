@@ -95,7 +95,7 @@ std::shared_ptr<Enemy> Spawner::SpawnEnemy(Enemytype type) {
             Emy = std::make_shared<KingStudent>();
             break;
         case(Enemytype::FailingSoldier):
-            Emy = std::make_shared<KingStudent>();
+            Emy = std::make_shared<FailingSoldier>();
             break;
         case(Enemytype::DeSoldier):
             Emy = std::make_shared<DeSoldier>();
