@@ -13,11 +13,11 @@ public:
 		HeavyLevel
 		*/
 		SetInfo(70, 17, 2.85, 1520, -505, 125, 0,
-                50, 60, 15, "自身和攻擊範圍内隨機一名我方單位獲得以下狀態：攻擊力+90%，每秒流失3%最大生命值，持續15秒", "不穩定血漿"
+                50, 60, 15, "自身和攻擊範圍内隨機一名我方單位獲得以下狀態：攻擊力+90%，流失15%最大生命值，持續15秒", "不穩定血漿"
 		, 1);
 		//角色技能建立
 		SetAttackBuff(1.9);
-
+		SetInfoForBuffU(1.9,1,1, 0.85);
 		//建立初始攻擊範圍
 		SetAttackType(CharacterAttackType::Health);
 		SetAttackRangeNum(4);
@@ -29,6 +29,13 @@ public:
     }
 
 	std::string GetChineseName() override {return "華法琳";}
+	void BuffU(std::shared_ptr<AnimatedCharacter> getBuff) override{
+		if (getBuff) {
+			getBuff->SetGetBuff(true);
+			getBuff->SetBuffTime(15);
+			(getBuff)->ApplyBuff(AttackBB, DefendBB, AttackSpeedBB, HPBB);
+		}
+	}
 	
 	void OpenSkill() override{
 		// Skill Func

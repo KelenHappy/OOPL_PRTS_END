@@ -23,7 +23,7 @@ void App::GameSecondTick() {
             }
 			
             if(checkFirst){
-				std::shared_ptr<Film> tempFilm = std::make_shared<Film>(m_LevelCharacter[i]->GetCharacterName(),"die");
+				std::shared_ptr<Film> tempFilm = std::make_shared<Film>(m_LevelCharacter[i]->GetCharacterName(),"die", FilmState::Die);
 				tempFilm->SetLifeTimes(m_LevelCharacter[i]->GetSetTime()*20);
 				tempFilm->SetPosition(m_map0107->GetCard()[i]->GetPosition());
                 m_FilmVector.push_back(tempFilm);
@@ -54,6 +54,7 @@ void App::GameSecondTick() {
     }
     for (size_t i = 0; i < m_LevelCharacter.size(); i++) {
         if(m_LevelCharacter[i]->GetVisibility())m_LevelCharacter[i]->UpdateEffect();
+        if(m_LevelCharacter[i]->GetVisibility() and m_LevelCharacter[i]->BuffTicket)m_LevelCharacter[i]->UpdateBuffTime();
     }
     m_map0107->Update();
     m_Spawner->Update();

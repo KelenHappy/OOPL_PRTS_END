@@ -4,7 +4,7 @@
 
 class TakeDamage : public Film {  // 使用 public 繼承
 public:
-    TakeDamage(std::string name, std::string ff): Film(name, ff) {
+    TakeDamage(std::string name, std::string ff): Film(name, ff,FilmState::TakeDamage) {
         SetLifeTimes(3);
     }
 

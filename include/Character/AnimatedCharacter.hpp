@@ -53,7 +53,14 @@ public:
 
 	}
 	bool BuffTicket = false;
-	void ApplyBuff(int attack, int defend, int attackspeed, int hp) {
+    virtual void BuffU(std::shared_ptr<AnimatedCharacter> getBuff) {
+        if (getBuff) {
+            getBuff->SetGetBuff(true);
+            getBuff->SetBuffTime(5);
+            (getBuff)->ApplyBuff(AttackBB, DefendBB, AttackSpeedBB, HPBB);
+        }
+    }
+	void ApplyBuff(float attack, float defend, float attackspeed, float hp) {
         if(GetBuff){
             if(BuffTicket){
                 return;
@@ -63,10 +70,10 @@ public:
             GAttackSpeedBuff = attackspeed;
             GHealthBuff = hp;
             BuffTicket = true;
-            AttackNum *= attack;
-            DefendNum *= defend;
-            AttackTimeNum *= attackspeed;
-            HealthRecoverNum *= hp;
+            AttackNum = (int)(AttackNum * attack);
+            DefendNum = (int)(DefendNum * defend);
+            AttackTimeNum = (int)(AttackTimeNum * attackspeed);
+            HealthRecoverNum = (int)(HealthRecoverNum * hp);
         }
     }
     void CloseBuff(){
@@ -75,7 +82,6 @@ public:
             AttackNum /= GAttackBuff;
             DefendNum /= GDefendBuff;
             AttackTimeNum /= GAttackSpeedBuff;
-            HealthRecoverNum /= GHealthBuff;
         }
     }
 	// Set

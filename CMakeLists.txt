@@ -140,6 +140,7 @@ add_executable(${PROJECT_NAME}
 		include/Film/Film.hpp
 		include/Film/TakeDamage.hpp
 		include/Film/Bullet.hpp
+		include/Film/FilmState.hpp
 		
 		include/TextBox.hpp
 		include/ImgItem.hpp

@@ -2,13 +2,14 @@
 #include "Util/Animation.hpp"
 #include "Util/Color.hpp"
 #include "ImgItem.hpp"
+#include "Film/FilmState.hpp"
 #include <iostream>
 #ifndef FILM_HPP
 #define FILM_HPP
 
 class Film : public Util::GameObject {  // 使用 public 繼承
 public:
-    Film(std::string name, std::string ff) {
+    Film(std::string name, std::string ff, FilmState fState) {
         // 假設 RESOURCE_DIR 是有效的並已正確定義
         Impact = ff;
         Name = name+ff;
@@ -20,10 +21,20 @@ public:
         m_Drawable = std::make_shared<Util::Image>(FilmImage);
 
         SetZIndex(28);
-        if (Impact ==  "die")m_Transform.scale = {0.6f, 0.6f};
-        else if (Impact ==  "takeDamage")m_Transform.scale = {0.02f, 0.02f};
-        else if (Impact == "Bullet") m_Transform.scale = {0.05f, 0.05f};
-        else{std::cout << "None In Film." << std::endl;}
+        switch(fState){
+            case FilmState::Die:
+                m_Transform.scale = {0.6f, 0.6f};
+                break;
+            case FilmState::TakeDamage:
+                m_Transform.scale = {0.02f, 0.02f};
+                break;
+            case FilmState::Bullet:
+                m_Transform.scale = {0.05f, 0.05f};
+                break;
+            default:
+                std::cout << "None In Film." << std::endl;
+                break;
+        }
 
     }
 

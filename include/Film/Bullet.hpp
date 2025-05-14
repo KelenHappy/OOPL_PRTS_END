@@ -2,7 +2,7 @@
 #include <glm/gtx/vector_angle.hpp>
 class Bullet : public Film {
 public:
-    Bullet(std::string name, std::string ff) : Film(name, ff) {
+    Bullet(std::string name, std::string ff) : Film(name, ff, FilmState::Bullet) {
         // 根據敵人位置計算移動方向
 
     }
