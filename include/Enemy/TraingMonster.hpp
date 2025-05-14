@@ -5,7 +5,7 @@
 class TraingMonster : public Enemy{
 public:
     //              EnemyName, int IdleCont, int AttackCont,int DieCont, int MoveCont
-    TraingMonster() : Enemy("TraingMonster", 79, 70, 59, 58){
+    TraingMonster() : Enemy("TraingMonster", 13, 12, 59, 58){
 		//int Health, int Attack, int Defend, int MagicDefend, int AttackSpeed
 		//, int AttackDistance, int AttackCastle, int MoveSpeed, int HeavyLevel, int HealthRecover
 		//, bool Dizzy, bool Sleep, bool Frozen

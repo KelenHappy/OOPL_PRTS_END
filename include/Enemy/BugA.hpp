@@ -5,7 +5,7 @@
 class BugA : public Enemy{
 public:
     //              EnemyName, int IdleCont, int AttackCont,int DieCont, int MoveCont
-    BugA() : Enemy("Bug_A", 119, 47, 31, 120){
+    BugA() : Enemy("Bug_A", 20, 47, 31, 20){
 		//int Health, int Attack, int Defend, int MagicDefend, int AttackSpeed
 		//, int AttackDistance, int AttackCastle, int MoveSpeed, int HeavyLevel, int HealthRecover
 		//, bool Dizzy, bool Sleep, bool Frozen

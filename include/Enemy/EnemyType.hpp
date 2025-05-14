@@ -22,6 +22,6 @@ enum class Enemytype {
     KingStudent,
     DeSoldier,
     FailingSoldier,
-    boss
+    BOSS
 };
 #endif

@@ -5,7 +5,7 @@
 class CrazyHostThrower : public Enemy{
 public:
     //              EnemyName, int IdleCont, int AttackCont,int DieCont, int MoveCont
-    CrazyHostThrower() : Enemy("CrazyHostThrower", 118, 77, 57, 118){
+    CrazyHostThrower() : Enemy("CrazyHostThrower", 15, 25, 60, 12){
         //int Health, int Attack, int Defend, int MagicDefend, int AttackSpeed
         //, int AttackDistance, int AttackCastle, int MoveSpeed, int HeavyLevel, int HealthRecover
         //, bool Dizzy, bool Sleep, bool Frozen

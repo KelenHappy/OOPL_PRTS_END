@@ -5,7 +5,7 @@
 class NoNameSoldier : public Enemy{
 public:
     //              EnemyName, int IdleCont, int AttackCont,int DieCont, int MoveCont
-    NoNameSoldier() : Enemy("NoNameSoldier", 119, 54, 57, 48){
+    NoNameSoldier() : Enemy("NoNameSoldier", 20, 54, 57, 48){
 		//int Health, int Attack, int Defend, int MagicDefend, int AttackSpeed
 		//, int AttackDistance, int AttackCastle, int MoveSpeed, int HeavyLevel, int HealthRecover
 		//, bool Dizzy, bool Sleep, bool Frozen
