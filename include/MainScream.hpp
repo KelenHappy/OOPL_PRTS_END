@@ -7,12 +7,7 @@
 #include "Util/GameObject.hpp"
 #include "Util/Image.hpp"
 #include "Util/Text.hpp"
-enum class Mapchoice {
-    cc5,          // 八號競技場
-    main17,       // 主線 1-7
-    rog53,        // 緊急失控
-};
-
+#include "Mapchoice.hpp"
 class MainScream:public Util::GameObject {
     public:
     MainScream() {

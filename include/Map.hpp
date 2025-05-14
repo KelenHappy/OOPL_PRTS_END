@@ -7,7 +7,7 @@
 #include "Block.hpp"
 #include "Card.hpp"
 #include "CreateIMG.hpp"
-#include "MainScream.hpp"
+#include "Mapchoice.hpp"
 #include "Util/GameObject.hpp"
 enum class Direction { EAST, SOUTH, WEST, NORTH };
 class Map :public Util::GameObject{
