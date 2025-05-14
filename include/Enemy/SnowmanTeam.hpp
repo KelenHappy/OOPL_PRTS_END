@@ -5,7 +5,7 @@
 class SnowmanTeam : public Enemy{
 public:
     //              EnemyName, int IdleCont, int AttackCont,int DieCont, int MoveCont
-    SnowmanTeam () : Enemy("SnowmanTeam", 118, 77, 57, 118){
+    SnowmanTeam () : Enemy("SnowmanTeam", 59, 57, 57, 47){
         //int Health, int Attack, int Defend, int MagicDefend, int AttackSpeed
         //, int AttackDistance, int AttackCastle, int MoveSpeed, int HeavyLevel, int HealthRecover
         //, bool Dizzy, bool Sleep, bool Frozen
