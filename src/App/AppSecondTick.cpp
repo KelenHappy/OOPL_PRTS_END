@@ -50,10 +50,10 @@ void App::GameSecondTick() {
         }
     }
     for (size_t i =0; i < Enemies.size(); i++) {
-        Enemies[i]->UpdateEffect();
+        if(Enemies[i]->GetVisibility())Enemies[i]->UpdateEffect();
     }
     for (size_t i = 0; i < m_LevelCharacter.size(); i++) {
-        m_LevelCharacter[i]->UpdateEffect();
+        if(m_LevelCharacter[i]->GetVisibility())m_LevelCharacter[i]->UpdateEffect();
     }
     m_map0107->Update();
     m_Spawner->Update();
