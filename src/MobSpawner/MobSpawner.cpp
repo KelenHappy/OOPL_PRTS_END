@@ -20,7 +20,7 @@
 #include "Enemy/NoNameSoldier.hpp"
 #include "Enemy/SoldierStudent.hpp"
 #include "Enemy/TraingMonster.hpp"
-#include "Enemy/DefendSoloSoldier.hpp"
+
 #include "Enemy/DeSoldier.hpp"
 #include "Enemy/FailingSoldier.hpp"
 

@@ -1,5 +1,5 @@
-#ifndef FAILING_SOLDIER_HPP
-#define FAILING_SOLDIER_HPP
+#ifndef DeSoldier_HPP
+#define DeSoldier_HPP
 #include "Enemy.hpp"
 #include "GamePlayMode/CharacterAttackImpact.hpp"
 class DeSoldier : public Enemy{
