@@ -1,128 +1,128 @@
 
 
 #include "MobSpawner/MobSpawner.hpp"
+
+#include <Enemy/DefendSoloSoldier.hpp>
+
+#include "Enemy/BOSS.hpp"
 #include "Enemy/BugA.hpp"
+#include "Enemy/ColdBug.hpp"
+#include "Enemy/ColdWolf.hpp"
+#include "Enemy/ComplieMagic.hpp"
+#include "Enemy/CrazyHostLeader.hpp"
+#include "Enemy/CrazyHostThrower.hpp"
+#include "Enemy/KingStudent.hpp"
+#include "Enemy/NoNameSoldier.hpp"
+#include "Enemy/SnowmanTeam.hpp"
 #include "Enemy/Soldier.hpp"
+#include "Enemy/SoldierStudent.hpp"
 #include "Enemy/Thrower.hpp"
+#include "Enemy/TraingMonster.hpp"
 #include "Enemy/Varlorant.hpp"
 
-Spawner::Spawner() {
+Spawner::Spawner(Mapchoice Mc) {
     Time=0;
     index=0;
-    std::vector<int> Waittime={-1,-1,-1,-1,-1,-1} ;
-    std::vector<std::vector<glm::vec2>> allPaths = {
-        {
-            glm::vec2(488.0f, 202.0f),
-            glm::vec2(-98.0f, 197.0f),
-            glm::vec2(-103.0f, 116.0f),
-            glm::vec2(-310.0f, 120.0f),
-            glm::vec2(-324.0f, 28.0f),
-            glm::vec2(-550.0f, 36.0f)
-        },
-        {
-            glm::vec2(543.0f, 33.0f),
-            glm::vec2(-108.0f, 34.0f),
-            glm::vec2(-108.0f, 115.0f),
-            glm::vec2(-309.0f, 116.0f),
-            glm::vec2(-319.0f, 33.0f),
-            glm::vec2(-550.0f, 36.0f)
-        },
-        {
-            glm::vec2(548.0f, 33.0f),
-            glm::vec2(-111.0f, 35.0f),
-            glm::vec2(-117.0f, -67.0f),
-            glm::vec2(-346.0f, -67.0f),
-            glm::vec2(-324.0f, 32.0f),
-            glm::vec2(-553.0f, 36.0f)
-        },
-        {
-            glm::vec2(613.0f, -174.0f),
-            glm::vec2(-122.0f, -177.0f),
-            glm::vec2(-121.0f, -67.0f),
-            glm::vec2(-342.0f, -63.0f),
-            glm::vec2(-326.0f, 33.0f),
-            glm::vec2(-550.0f, 36.0f)
-        }
-    };
-    for (const auto& pathPoints : allPaths) {
-        std::shared_ptr<PathPoints> path = std::make_shared<PathPoints>();
-        path->setPoint(pathPoints);
-        path->setWaitTime(Waittime);
-        AddPath(path);
-    }
-    float currentTime = 0.0f;
+    CreateSpawner(Mc);
 
-    // 0
-    AddSpawn(currentTime += 6.0f, Enemytype::BugA, 0); // x1
-    // 1
-    AddSpawn(currentTime += 1.0f, Enemytype::BugA, 3); // x2
-    AddSpawn(currentTime += 1.0f, Enemytype::BugA, 3);
-
-    // 2
-    AddSpawn(currentTime += 5.0f, Enemytype::BugA, 1); // x2
-    AddSpawn(currentTime += 1.0f, Enemytype::BugA, 1);
-
-    // 3
-    AddSpawn(currentTime += 5.0f, Enemytype::BugA, 0); // x2
-    AddSpawn(currentTime += 1.0f,Enemytype::BugA, 0);
-
-    // 4
-    AddSpawn(currentTime += 7.0f, Enemytype::Valorant, 2); // x2
-    AddSpawn(currentTime += 1.0f, Enemytype::Valorant, 2);
-
-    // 5
-    AddSpawn(currentTime += 7.0f, Enemytype::Soldier, 3); // x2
-    AddSpawn(currentTime += 1.0f, Enemytype::Soldier, 3);
-
-    // 6
-    AddSpawn(currentTime += 15.0f, Enemytype::Thrower, 0); // x1
-
-    // 7
-    AddSpawn(currentTime += 1.0f, Enemytype::Thrower, 3); // x1
-
-    // 8
-    AddSpawn(currentTime += 3.0f, Enemytype::Soldier, 1); // x1
-
-    // 9
-    AddSpawn(currentTime += 3.0f, Enemytype::Soldier, 2); // x1
-
-    // 10
-    AddSpawn(currentTime += 9.0f, Enemytype::Valorant, 0); // x1
-
-    // 11
-    AddSpawn(currentTime += 0.0f, Enemytype::Valorant, 3); // x1 (同時間)
-
-    // 12
-    AddSpawn(currentTime += 6.0f, Enemytype::Soldier, 0); // x1
 }
+void Spawner::CreateSpawner(Mapchoice Mc) {
+    switch (Mc) {
+        case(Mapchoice::cc5):
+            CreateEnemiesCC5();
+        break;
+        case(Mapchoice::main17):
+            CreateEnemies0107();
+        break;
+        case(Mapchoice::rog53):
+            CreateEnemiesRog53();
+        break;
+    }
+}
+
 std::shared_ptr<Enemy> Spawner::SpawnEnemy(Enemytype type) {
     std::shared_ptr<Enemy> Emy;
     switch (type) {
         case(Enemytype::Soldier):
-            Emy=std::make_shared<Soldier>();
+            Emy = std::make_shared<Soldier>();
             break;
         case(Enemytype::Thrower):
-            Emy=std::make_shared<Thrower>();
+            Emy = std::make_shared<Thrower>();
             break;
         case(Enemytype::Valorant):
-            Emy=std::make_shared<Varlorant>();
+            Emy = std::make_shared<Varlorant>();
             break;
         case(Enemytype::BugA):
-            Emy=std::make_shared<BugA>();
+            Emy = std::make_shared<BugA>();
             break;
+        case(Enemytype::CrazyHostThrower):
+            Emy = std::make_shared<CrazyHostThrower>();
+            break;
+        case(Enemytype::SnowmanTeam):
+            Emy = std::make_shared<SnowmanTeam>();
+            break;
+        case(Enemytype::ColdWolf):
+            Emy = std::make_shared<ColdWolf>();
+            break;
+        case(Enemytype::CrazyHostLeader):
+            Emy = std::make_shared<CrazyHostLeader>();
+            break;
+        case(Enemytype::ColdBug):
+            Emy = std::make_shared<ColdBug>();
+            break;
+        case(Enemytype::NoNameSoldier):
+            Emy = std::make_shared<NoNameSoldier>();  // 注意 Soldier 拼寫是否正確
+            break;
+        case(Enemytype::TraingMonster):
+            Emy = std::make_shared<TraingMonster>();  // 注意 Traing 拼寫是否正確 (可能是 Training)
+            break;
+        case(Enemytype::DefendSoloSoldier):
+            Emy = std::make_shared<DefendSoloSoldier>();
+            break;
+        case(Enemytype::SoldierStudent):
+            Emy = std::make_shared<SoldierStudent>();
+            break;
+        case(Enemytype::ComplieMagic):
+            Emy = std::make_shared<ComplieMagic>();
+            break;
+        case(Enemytype::KingStudent):
+            Emy = std::make_shared<KingStudent>();
+            break;
+        case(Enemytype::BOSS):
+            Emy = std::make_shared<BOSS>();
+            break;
+        default:
+            // 可以選擇拋出異常或返回空指針
+            throw std::invalid_argument("Unknown enemy type");
+            // 或者: return nullptr;
     }
-    Emy->SetZIndex(10);
-    Emy->SetImageSize(-0.3f,0.3f);
-    Emy->SetVisible(false);
-    Emy->SetLooping(false);
+    if (Emy) {  // 只有在成功創建敵人的情況下才設置屬性
+        Emy->SetZIndex(10);
+        Emy->SetImageSize(-0.22f, 0.22f);
+        Emy->SetVisible(false);
+        Emy->SetLooping(false);
+    }
+
     return Emy;
 }
 void Spawner::AddSpawnEnemy(Enemytype type) {
     enemies.push_back(SpawnEnemy(type));
 }
 void Spawner::AddSpawn(float time, Enemytype type, int pathIndex) {
-    spawnQueue.push_back({time, type, pathIndex});
-    AddSpawnEnemy(type);
+    SpawnInfo info = {time, type, pathIndex};
+
+    auto it = std::lower_bound(spawnQueue.begin(), spawnQueue.end(), info,
+        [](const SpawnInfo& a, const SpawnInfo& b) {
+            return a.spawnTime < b.spawnTime;
+        });
+
+    // 計算插入位置的索引
+    int insertIndex = std::distance(spawnQueue.begin(), it);
+
+    spawnQueue.insert(it, info);
+
+    // 插入敵人也要插在相同位置，保持與 spawnQueue 對齊
+    enemies.insert(enemies.begin() + insertIndex, SpawnEnemy(type));
 }
 void Spawner::Update() {
     if(index>=int(spawnQueue.size())) {return;}

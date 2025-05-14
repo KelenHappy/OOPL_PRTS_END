@@ -1,5 +1,5 @@
-#ifndef CRAZYHOSTLEADER_HPP
-#define CRAZYHOSTLEADER_HPP
+#ifndef KingStudent_HPP
+#define KingStudent_HPP
 #include "Enemy.hpp"
 #include "GamePlayMode/CharacterAttackImpact.hpp"
 class KingStudent : public Enemy{
@@ -20,12 +20,7 @@ public:
     std::string GetName() override{
         return "KingStudent";
     }
-    void UpdateEffect() override {
-        if(HealthRecover <= 0 and HPCounts > 0){
-            HPCounts -= 1;
-            HealthRecover = HealthNum;
-        }
-    }
+
     ~KingStudent(){}
 
 

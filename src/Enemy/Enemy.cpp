@@ -9,11 +9,27 @@
 void Enemy::Updatemove() {
 	switch (m_CurrentState) {
 		case EnemyState::Move:
-			moveGameObject(shared_from_this(),PathPoint->GetindexPoint(PathPointsindex)+glm::vec2{0,250*abs(m_Transform.scale.y)},MoveSpeedNum*4);
-			if (glm::length(m_Transform.translation-(PathPoint->GetindexPoint(PathPointsindex)+glm::vec2{0,250*abs(m_Transform.scale.y)}))<5) {
-				PathPointsindex++;
+			if (glm::length(m_Transform.translation-(PathPoint->GetindexPoint(PathPointsindex)+glm::vec2{0,250*abs(m_Transform.scale.y)}))<3) {
+				if (PathPoint->GetIndexWaitPoint(PathPointsindex)<=0){
+					PathPointsindex++;
+					RodeWaitTime=0;}
+				else {
+					SetState(EnemyState::Idle);
+				}
+			}
+		else {
+			moveGameObject(shared_from_this(),PathPoint->GetindexPoint(PathPointsindex)+glm::vec2{0,250*abs(m_Transform.scale.y)},MoveSpeedNum*2.5);
 			}
 			I_Hpbar->m_Transform.translation=GetPositionFix()-glm::vec2{ 0,16 };
+			break;
+		case  EnemyState::Idle:
+				RodeWaitTime++;
+				//std::cout << RodeWaitTime<<" "<<PathPoint->GetIndexWaitPoint(PathPointsindex)*20<<std::endl;
+				if (RodeWaitTime>PathPoint->GetIndexWaitPoint(PathPointsindex)*20) {
+					PathPointsindex++;
+					RodeWaitTime=0;
+					SetState(EnemyState::Move);
+				}
 			break;
 
 		default:

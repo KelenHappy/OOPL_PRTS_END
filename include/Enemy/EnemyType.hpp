@@ -8,6 +8,18 @@ enum class Enemytype {
     BugA,
     Soldier,
     Thrower,
-    Valorant
+    Valorant,
+    CrazyHostThrower,
+    SnowmanTeam,
+    ColdWolf,
+    CrazyHostLeader,
+    ColdBug,
+    NoNameSoldier,
+    TraingMonster,
+    DefendSoloSoldier,
+    SoldierStudent,
+    ComplieMagic,
+    KingStudent,
+    BOSS
 };
 #endif

@@ -59,11 +59,13 @@ add_executable(${PROJECT_NAME}
 		src/App/AppMapRog53Start.cpp
 		src/App/AppMapRog53.cpp
 		src/App/AppMapStart.cpp
+		src/MobSpawner/Spawner0107.cpp
+		src/MobSpawner/SpawnerCC5.cpp
+		src/MobSpawner/SpawnerRog53.cpp
     ${HEADER_FILES}
         include/App.hpp	
 		include/Block.hpp
         include/BlockState.hpp
-		
 		include/Enemy/AnimatedEnemy.hpp
 		include/Enemy/Enemy.hpp
 		include/Enemy/EnemyState.hpp
@@ -149,7 +151,7 @@ add_executable(${PROJECT_NAME}
 		include/MyTool.hpp
 		include/Hpbar.hpp
 		include/FlyUI.hpp
-
+		include/Mapchoice.hpp
 
 
 )
