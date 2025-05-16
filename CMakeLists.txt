@@ -136,6 +136,8 @@ add_executable(${PROJECT_NAME}
 		include/Character/Defender/Cuora.hpp
 		include/Character/Defender/Horn.hpp
 		include/Character/Defender/Saria.hpp
+
+		include/Character/Caster/Ceobe.hpp
 		
 		include/Film/Film.hpp
 		include/Film/TakeDamage.hpp
