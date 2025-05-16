@@ -18,6 +18,7 @@ public:
 		//角色技能建立
 		SetAttackBuff(2.8);
         SetAttackRangeNum(3);
+		SetAttackTimesBuff(2);
 		//建立初始攻擊範圍
 		SetAttackRangeNum(4);
 		this->m_DefaultRange.push_back({"1", "1", "1", "0", "0"});

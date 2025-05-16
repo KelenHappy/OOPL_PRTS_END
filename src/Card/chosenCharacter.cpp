@@ -19,6 +19,10 @@
 #include "Character/Defender/Saria.hpp"
 #include "Character/Defender/Horn.hpp"
 
+#include "Character/Caster/Ceobe.hpp"
+#include "Character/Caster/Eyja.hpp"
+#include "Character/Caster/Ifrit.hpp"
+
 #include "ChooseCharacter/ChosenCharacter.hpp"
 #include "Util/Logger.hpp"
 
@@ -51,7 +55,12 @@ void ChosenCharacter::CreateNewCharacter() {
 
         std::make_shared<Cuora>(),
         std::make_shared<Saria>(),
-        std::make_shared<Horn>()
+        std::make_shared<Horn>(),
+
+        std::make_shared<Ceobe>(),
+        std::make_shared<Eyja>(),
+        std::make_shared<Ifrit>()
+
 
     };
     CreateHalfCard();

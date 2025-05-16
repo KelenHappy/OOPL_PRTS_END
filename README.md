@@ -32,9 +32,9 @@
    - [ ] 灵知 (Gnosis) - https://prts.wiki/w/%E7%81%B5%E7%9F%A5
 
 ## 術士 (Caster)
-   - [ ] 刻俄柏 (Ceobe) - https://prts.wiki/w/%E5%88%BB%E4%BF%84%E6%9F%8F
-   - [ ] 艾雅法拉 (Eyja) - https://prts.wiki/w/%E8%89%BE%E9%9B%85%E6%B3%95%E6%8B%89
-   - [ ] 伊芙利特 (Ifrit) - https://prts.wiki/w/%E4%BC%8A%E8%8A%99%E5%88%A9%E7%89%B9
+   - [x] 刻俄柏 (Ceobe) - https://prts.wiki/w/%E5%88%BB%E4%BF%84%E6%9F%8F
+   - [x] 艾雅法拉 (Eyja) - https://prts.wiki/w/%E8%89%BE%E9%9B%85%E6%B3%95%E6%8B%89
+   - [x] 伊芙利特 (Ifrit) - https://prts.wiki/w/%E4%BC%8A%E8%8A%99%E5%88%A9%E7%89%B9
 
 ## 特種 (Specialist)
    - [ ] 水月 (Mizuki) - https://prts.wiki/w/%E6%B0%B4%E6%9C%88

@@ -14,7 +14,7 @@ public:
 		SetInfo(70, 19, 1.25, 2916, 672, 414, 15,
 		0, 5, 99, "立即恢復所有生命；攻擊力+330%，攻擊距離+2，攻擊目標數+3，上限+5000，逐漸失去生命（60秒後到達最大生命生命20%/秒）；持續時間無限", "黄昏"
 		, 1);
-    	AttackType = CharacterAttackType::Magic;
+    	SetAttackType(CharacterAttackType::Magic);
 		//角色技能建立
     	SetAttackTimesBuff(1);
     	SetAttackBuff(3.3);

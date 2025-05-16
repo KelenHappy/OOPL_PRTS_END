@@ -8,7 +8,7 @@ public:
 		int defaultNum = 25;
 
 		SetCharacterName(CharacterName);
-
+		SetAttackType(CharacterAttackType::Magic);
 		HalfCardImage.emplace_back(RESOURCE_DIR"/HalfCard/Supporter/"+ CharacterName + ".png");
 		DefaultImage.emplace_back(RESOURCE_DIR"/Character/Supporter/" + CharacterName + "/Default/1.png");
 		this->m_HalfCard = std::make_shared<Util::Animation>(HalfCardImage, false, 40, false, 40);
