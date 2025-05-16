@@ -152,6 +152,7 @@ public:
 	bool GetFrozenDefend(){
 		return FrozenDefend;
 	}
+	int GetRodeWaitTime(){return RodeWaitTime;}
 	int GetPathPointsindex(){return PathPointsindex;}
 	bool GetIsCreateAnimation(){return IsCreateAnimation;}
 	bool GetImpactBB(){return ImpactBB;}

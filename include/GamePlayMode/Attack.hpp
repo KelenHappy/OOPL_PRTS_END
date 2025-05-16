@@ -11,11 +11,11 @@ void attack(T1 thisC, T2 that){
     switch(thisC->GetAttackType()){
         case CharacterAttackType::Physics:
             damage -= that->GetDefend();
-    		damage=std::max(damage,thisC->GetAttack()*0.02f);
+    		damage=std::max(damage,thisC->GetAttack()*0.05f);
             break;
         case CharacterAttackType::Magic:
             damage = damage*( (100 - that->GetMagicDefend())/100);
-    		damage=std::max(damage,thisC->GetAttack()*0.02f);
+    		damage=std::max(damage,thisC->GetAttack()*0.05f);
 			break;
 		case CharacterAttackType::Health:
 			

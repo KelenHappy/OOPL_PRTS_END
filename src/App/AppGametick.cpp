@@ -141,7 +141,7 @@ void App::GameTick() {
 		int Count = Enemies[i]->GetAttackTimesBuff();
 		if(Enemies[i]->GetJob() != "None"){
 			for(size_t j = 0; j < m_LevelCharacter.size(); ++j){
-				float distance = calculateDistance(m_LevelCharacter[j]->m_Transform, Enemies[i]->m_Transform);
+				float distance = glm::length(m_LevelCharacter[j]->GetPositionFix()-Enemies[i]->GetPositionFix()) ;
 				if(state != EnemyState::Default and distance <= Enemies[i]->GetAttackRangeNum()* 70 and m_LevelCharacter[j]->GetVisibility()
 					and Enemies[i]->IfAnimationEnds()){
 					Enemies[i]->SetState(EnemyState::Attack);
@@ -151,7 +151,8 @@ void App::GameTick() {
 					else{continue;}
 				}
 				else if(Enemies[i]->IfAnimationEnds()){
-					Enemies[i]->SetState(EnemyState::Move);
+					if(Enemies[i]->GetRodeWaitTime()>1) Enemies[i]->SetState(EnemyState::Idle);
+					else Enemies[i]->SetState(EnemyState::Move);
 				}
 			}
 		}
@@ -163,10 +164,12 @@ void App::GameTick() {
 		and state != EnemyState::Default and state != EnemyState::Die and state != EnemyState::Attack){
 			Enemies[i]->SetLooping(true);
 			Enemies[i]->SetVisible(true);
-			Enemies[i]->SetState(EnemyState::Move);
+			if(Enemies[i]->GetRodeWaitTime()>1) Enemies[i]->SetState(EnemyState::Idle);
+			else Enemies[i]->SetState(EnemyState::Move);
 			Enemies[i]->FrameReset();
 		}
 	}
+
 	if(Enemies.size() == 0){
 		for(size_t i = 0; i < m_LevelCharacter.size() and m_LevelCharacter[i]->GetVisibility(); i++){
 			m_LevelCharacter[i]->SetVisible(true);
