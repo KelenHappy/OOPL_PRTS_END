@@ -5,6 +5,8 @@
 #include "Util/Keycode.hpp"
 #include "Util/Logger.hpp"
 #include <vector>
+
+#include "Video/VideoGameObject.hpp"
 void App::Start() {
     LOG_TRACE("Start");
     m_CurrentState = State::UPDATE;
@@ -30,4 +32,9 @@ void App::Start() {
 	m_ChosenCharacter->CreateNewCharacter();
 	m_ChosenCharacter->Settran();
 	m_HalfCardScreen.AddChildren(m_ChosenCharacter->GetChildrenCard());
+	//test
+	std::shared_ptr<Util::VideoGameObject> test = std::make_shared<Util::VideoGameObject>();
+	m_Root.AddChild(test);
+	test->LoadVideo(RESOURCE_DIR"/Character/Caster/Ceobe/Attack-x1.webm");
+	test->Play();
 }

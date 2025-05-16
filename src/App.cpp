@@ -27,6 +27,7 @@ void App::Update() {
 		else if(Util::Input::IsKeyDown(Util::Keycode::C)){
 			m_level=level::chooseCharacter;
 		}
+
         choicemap();
         m_Root.Update();
     }

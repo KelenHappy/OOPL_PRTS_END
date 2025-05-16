@@ -23,10 +23,13 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(ptsd)
 
 include(files.cmake)
+
 set(SRC_DIR ${CMAKE_SOURCE_DIR}/src)
 set(INCLUDE_DIR ${CMAKE_SOURCE_DIR}/include)
 list(TRANSFORM SRC_FILES PREPEND ${SRC_DIR}/)
 list(TRANSFORM INCLUDE_FILES PREPEND ${INCLUDE_DIR}/)
+#set(FFMPEG_LIBRARIES "${INCLUDE_DIR}/Extern/avcodec.lib;${INCLUDE_DIR}/Extern/avformat.lib;${INCLUDE_DIR}/Extern/swscale.lib")
+
 
 # file(GLOB_RECURSE SRC_FILES src/*)
 # file(GLOB_RECURSE HEADER_FILES include/*)
@@ -62,6 +65,9 @@ add_executable(${PROJECT_NAME}
 		src/MobSpawner/Spawner0107.cpp
 		src/MobSpawner/SpawnerCC5.cpp
 		src/MobSpawner/SpawnerRog53.cpp
+
+		src/Video/WebMPlayer.cpp
+		src/Video/VideoGameOBject.cpp
     ${HEADER_FILES}
         include/App.hpp	
 		include/Block.hpp
@@ -156,9 +162,28 @@ add_executable(${PROJECT_NAME}
 		include/FlyUI.hpp
 		include/Mapchoice.hpp
 
+		include/Video/WebMPlayer.hpp
+		include/Video/VideoGameObject.hpp
+
 
 )
-
+set(ENV{PATH} "$ENV{PATH};${CMAKE_SOURCE_DIR}/ffmpeg/bin")
+set(FFMPEG_DLLS
+		${CMAKE_SOURCE_DIR}/ffmpeg/bin/avcodec-62.dll
+		${CMAKE_SOURCE_DIR}/ffmpeg/bin/avformat-62.dll
+		${CMAKE_SOURCE_DIR}/ffmpeg/bin/avutil-60.dll
+		${CMAKE_SOURCE_DIR}/ffmpeg/bin/avdevice-62.dll
+		${CMAKE_SOURCE_DIR}/ffmpeg/bin/avfilter-11.dll
+		${CMAKE_SOURCE_DIR}/ffmpeg/bin/swscale-9.dll
+		${CMAKE_SOURCE_DIR}/ffmpeg/bin/swresample-6.dll
+)
+foreach(dll ${FFMPEG_DLLS})
+	add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+			COMMAND ${CMAKE_COMMAND} -E copy_if_different
+			${dll}
+			$<TARGET_FILE_DIR:${PROJECT_NAME}>
+	)
+endforeach()
 if(MSVC)
     target_compile_options(${PROJECT_NAME} PRIVATE /W4)
 else()
@@ -175,8 +200,16 @@ endif()
 target_include_directories(${PROJECT_NAME} SYSTEM PRIVATE ${DEPENDENCY_INCLUDE_DIRS})
 target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/PTSD/include)
 target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
+target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/ffmpeg/include)
 
 target_link_libraries(${PROJECT_NAME}
     SDL2::SDL2main
     PTSD
+		${CMAKE_CURRENT_SOURCE_DIR}/ffmpeg/lib/avcodec.lib
+		${CMAKE_CURRENT_SOURCE_DIR}/ffmpeg/lib/avdevice.lib
+		${CMAKE_CURRENT_SOURCE_DIR}/ffmpeg/lib/avfilter.lib
+		${CMAKE_CURRENT_SOURCE_DIR}/ffmpeg/lib/avformat.lib
+		${CMAKE_CURRENT_SOURCE_DIR}/ffmpeg/lib/avutil.lib
+		${CMAKE_CURRENT_SOURCE_DIR}/ffmpeg/lib/swresample.lib
+		${CMAKE_CURRENT_SOURCE_DIR}/ffmpeg/lib/swscale.lib
 )
