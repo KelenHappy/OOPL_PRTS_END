@@ -10,7 +10,7 @@ public:
         //, int AttackDistance, int AttackCastle, int MoveSpeed, int HeavyLevel, int HealthRecover
         //, bool Dizzy, bool Sleep, bool Frozen
         //, AttackType attack_t
-        SetInfo(15000, 750, 200, 30, 2.0,
+        SetInfo(15000*2.61*1.2, 750*1.2, 200, 30, 2.0,
         2.6,1, 0.7, 2,
         false, false, false,
         CharacterAttackType::Physics);
@@ -22,6 +22,7 @@ public:
     }
     void UpdateEffect() override {
         HealthRecoverNum -= 250;
+        I_Hpbar->Update(HealthRecoverNum,HealthNum);
     }
     ~CrazyHostThrower(){}
 

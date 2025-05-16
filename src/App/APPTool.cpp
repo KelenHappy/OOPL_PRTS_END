@@ -114,4 +114,34 @@ void App::ClickOfMap(){
             }
         }
     }
+    switch (m_UIMapLevel) {
+        case UIMapLevel::Main:
+
+
+            break;
+
+        case UIMapLevel::Clickcard:
+            m_flyUI->m_Transform.translation=Util::Input::GetCursorPosition()+glm::vec2(0,250*0.13);
+            m_flyUI->SetVisible(true);
+
+        break;
+
+        case UIMapLevel::ChoiceDirection:
+            // 選擇方向的畫面
+
+
+                break;
+
+
+        case UIMapLevel::ClickCharacter:
+            // 點選角色的畫面
+
+
+                break;
+
+        default:
+            // 預設處理（可選）
+
+                break;
+    }
 }

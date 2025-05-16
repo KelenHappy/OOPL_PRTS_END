@@ -147,6 +147,7 @@ public:
 	bool GetFrozenDefend(){
 		return FrozenDefend;
 	}
+	int GetRodeWaitTime(){return RodeWaitTime;}
 	int GetPathPointsindex(){return PathPointsindex;}
 	bool GetIsCreateAnimation(){return IsCreateAnimation;}
 	void SetPathPointsindex(int n){PathPointsindex=n;}
