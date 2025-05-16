@@ -8,10 +8,11 @@ extern "C" {
 #include <libavfilter/avfilter.h>
 #include <libavformat/avformat.h>
 #include <libavutil/avutil.h>
+#include <libavutil/imgutils.h>   // ← 加這一行
 #include <libswresample/swresample.h>
 #include <libswscale/swscale.h>
-
 }
+
 
 struct WebMPlayer::Impl {
     AVFormatContext* formatCtx = nullptr;
@@ -22,7 +23,10 @@ struct WebMPlayer::Impl {
     SDL_Texture* texture = nullptr;
     int videoStreamIndex = -1;
     bool isPlaying = false;
+
+    uint8_t* buffer = nullptr;  // <- 這行必須加
 };
+
 
 WebMPlayer::WebMPlayer() : m_impl(new Impl()) {}
 
@@ -30,8 +34,10 @@ WebMPlayer::~WebMPlayer() {
     if (m_impl->texture) SDL_DestroyTexture(m_impl->texture);
     if (m_impl->frame) av_frame_free(&m_impl->frame);
     if (m_impl->frameRGB) av_frame_free(&m_impl->frameRGB);
-    if (m_impl->codecCtx) avcodec_free_context(&m_impl->codecCtx);  //修正這裡
+    if (m_impl->buffer) av_free(m_impl->buffer);
+    if (m_impl->codecCtx) avcodec_free_context(&m_impl->codecCtx);
     if (m_impl->formatCtx) avformat_close_input(&m_impl->formatCtx);
+    if (m_impl->swsCtx) sws_freeContext(m_impl->swsCtx);
     delete m_impl;
 }
 
@@ -78,6 +84,28 @@ bool WebMPlayer::Load(const std::string& filePath) {
 
     m_impl->frame = av_frame_alloc();
     m_impl->frameRGB = av_frame_alloc();
+    // Allocate RGB frame & buffer once
+    m_impl->frameRGB = av_frame_alloc();
+    if (!m_impl->frameRGB) return false;
+
+    int numBytes = av_image_get_buffer_size(
+        AV_PIX_FMT_RGBA,
+        m_impl->codecCtx->width,
+        m_impl->codecCtx->height,
+        1);
+
+    m_impl->buffer = static_cast<uint8_t*>(av_malloc(numBytes));
+    if (!m_impl->buffer) return false;
+
+    av_image_fill_arrays(
+        m_impl->frameRGB->data,
+        m_impl->frameRGB->linesize,
+        m_impl->buffer,
+        AV_PIX_FMT_RGBA,
+        m_impl->codecCtx->width,
+        m_impl->codecCtx->height,
+        1);
+
     return true;
 }
 
@@ -119,4 +147,45 @@ void WebMPlayer::Stop() {
     m_impl->isPlaying = false;
     std::cout << "Stop called" << std::endl;
     // 停止邏輯，釋放資源等
+}
+void WebMPlayer::Update() {
+    if (!m_impl->isPlaying || !m_impl->formatCtx || !m_impl->codecCtx)
+        return;
+
+    AVPacket packet;
+    av_init_packet(&packet);
+
+    while (av_read_frame(m_impl->formatCtx, &packet) >= 0) {
+        if (packet.stream_index == m_impl->videoStreamIndex) {
+            if (avcodec_send_packet(m_impl->codecCtx, &packet) >= 0) {
+                while (avcodec_receive_frame(m_impl->codecCtx, m_impl->frame) >= 0) {
+                    if (!m_impl->swsCtx) {
+                        m_impl->swsCtx = sws_getContext(
+                            m_impl->codecCtx->width, m_impl->codecCtx->height, m_impl->codecCtx->pix_fmt,
+                            m_impl->codecCtx->width, m_impl->codecCtx->height, AV_PIX_FMT_RGBA,
+                            SWS_BILINEAR, nullptr, nullptr, nullptr);
+                        if (!m_impl->swsCtx) {
+                            std::cerr << "Failed to create SwsContext" << std::endl;
+                            av_packet_unref(&packet);
+                            return;
+                        }
+                    }
+
+                    sws_scale(
+                        m_impl->swsCtx,
+                        m_impl->frame->data,
+                        m_impl->frame->linesize,
+                        0,
+                        m_impl->codecCtx->height,
+                        m_impl->frameRGB->data,
+                        m_impl->frameRGB->linesize);
+
+                    break; // decode 1 frame only
+                }
+            }
+            av_packet_unref(&packet);
+            break; // read 1 frame only
+        }
+        av_packet_unref(&packet);
+    }
 }

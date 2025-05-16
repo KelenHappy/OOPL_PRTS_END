@@ -1,5 +1,6 @@
 #ifndef APP_HPP
 #define APP_HPP
+#include "Video/VideoGameObject.hpp"
 
 #include "Film/Film.hpp"
 #include "Film/TakeDamage.hpp"
@@ -155,6 +156,7 @@ private:
 	int m_CardCarry = -1;
 	int m_CharacterCarry = -1;
 	int Tickcount=0;
+	std::shared_ptr<Util::VideoGameObject> test;
 };
 
 #endif

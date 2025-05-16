@@ -28,6 +28,14 @@ namespace Util {
         void Stop() {
             m_player->Pause();
         }
+        void Update() {
+            if (m_player) {
+                m_player->Update();
+            }
+        }
+        void OnRender(SDL_Renderer* renderer) {
+            RenderVideo(renderer); // 呼叫 SDL 影片繪製
+        }
     private:
         std::unique_ptr<WebMPlayer> m_player;
     };

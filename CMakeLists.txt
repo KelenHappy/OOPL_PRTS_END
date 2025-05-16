@@ -164,6 +164,7 @@ add_executable(${PROJECT_NAME}
 
 		include/Video/WebMPlayer.hpp
 		include/Video/VideoGameObject.hpp
+		include/Video/RendererContext.hpp
 
 
 )
