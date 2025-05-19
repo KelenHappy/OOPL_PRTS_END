@@ -115,6 +115,7 @@ add_executable(${PROJECT_NAME}
 		include/Character/Defender.hpp
 		include/Character/Supporter.hpp
 		include/Character/Caster.hpp
+		include/Character/Specialist.hpp
 		
 		include/Character/Vanguard/Texas.hpp
 		include/Character/Vanguard/Ines.hpp
@@ -140,6 +141,8 @@ add_executable(${PROJECT_NAME}
 		include/Character/Caster/Ceobe.hpp
 		include/Character/Caster/Eyja.hpp
 		include/Character/Caster/Ifrit.hpp
+
+		include/Character/Specialist/Mizuki.hpp
 		
 		include/Film/Film.hpp
 		include/Film/TakeDamage.hpp

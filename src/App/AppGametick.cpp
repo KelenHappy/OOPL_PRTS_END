@@ -46,7 +46,7 @@ void App::GameTick() {
 				float distance = calculateDistance(m_LevelCharacter[i]->m_Transform, Enemies[j]->m_Transform);
 				if(state != CharacterState::Default and distance <= m_LevelCharacter[i]->GetAttackRangeNum()*75
 				and Enemies[j]->GetVisibility()
-				and m_LevelCharacter[i]->IfAnimationEnds()){
+				and m_LevelCharacter[i]->IfAnimationEnds() and m_LevelCharacter[i]->GetAttackTimeTicket() <= 0){
 					m_LevelCharacter[i]->SetState(CharacterState::Attack);
 					for(int k = 0; k < m_LevelCharacter[i]->GetAttackTimesBuff();k++){
 						attack(m_LevelCharacter[i], Enemies[j]);
@@ -62,10 +62,17 @@ void App::GameTick() {
 							m_0107.AddChild(tempB);
 						}
 					}
+					m_LevelCharacter[i]->SetAttackTimeTicket(m_LevelCharacter[i]->GetAttackTime()*30);
+					//std::cout << m_LevelCharacter[i]->GetAttackTimeTicket() << std::endl;
 					break;
 				}
 				else if(m_LevelCharacter[i]->IfAnimationEnds()){
 					m_LevelCharacter[i]->SetState(CharacterState::Idle);
+				}
+				else{
+					if(m_LevelCharacter[i]->GetVisibility() and m_LevelCharacter[i]->GetAttackTimeTicket() > 0){
+						m_LevelCharacter[i]->DeAttackTime();
+					}
 				}
 			}
 		}
@@ -75,15 +82,21 @@ void App::GameTick() {
 				float distance = calculateDistance(m_LevelCharacter[i]->m_Transform, m_LevelCharacter[j]->m_Transform);
 				if(m_LevelCharacter[j]->GetHP() > m_LevelCharacter[j]->GetHealthRecover()
 				and distance <= m_LevelCharacter[i]->GetAttackRangeNum()*75
-				and m_LevelCharacter[i]->IfAnimationEnds()){
+				and m_LevelCharacter[i]->IfAnimationEnds() and m_LevelCharacter[i]->GetAttackTimeTicket() <= 0){
 					m_LevelCharacter[i]->SetState(CharacterState::Attack);
 					for(int k; k < m_LevelCharacter[i]->GetAttackTimesBuff();k++){
 						attack(m_LevelCharacter[i], m_LevelCharacter[j]);
 					}
+					m_LevelCharacter[i]->SetAttackTimeTicket(m_LevelCharacter[i]->GetAttackTime()*30);
 					break;
 				}
 				else if(m_LevelCharacter[i]->IfAnimationEnds()){
 					m_LevelCharacter[i]->SetState(CharacterState::Idle);
+				}
+				else{
+					if(m_LevelCharacter[i]->GetVisibility() and m_LevelCharacter[i]->GetAttackTimeTicket() > 0){
+						m_LevelCharacter[i]->DeAttackTime();
+					}
 				}
 			}
 		}

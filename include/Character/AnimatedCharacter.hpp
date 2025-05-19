@@ -84,6 +84,10 @@ public:
             AttackTimeNum /= GAttackSpeedBuff;
         }
     }
+
+    void DeAttackTime(){
+        AttackTimeTicket -= 1;
+    }
 	// Set
 	//設定path
     void SetPath(std::vector<std::string>& IdleEnd,
@@ -96,9 +100,9 @@ public:
         (DefaultEnd, false, 40, false, 40);
         this->m_Drawable = m_Default;
         this->m_IdleAnimation = std::make_shared<Util::Animation>
-        (IdleEnd, false, 40, false, 40);
+        (IdleEnd, false, 50, false, 40);
         this->m_AttackAnimation = std::make_shared<Util::Animation>
-        (AttackEnd, false, 40, false, abs(((int)GetAttackTime()-1.2)*1000));
+        (AttackEnd, false, 40, false, 40);
         this->m_DieAnimation = std::make_shared<Util::Animation>
         (DieEnd, false, 40, false, 40);
         this->m_StartAnimation = std::make_shared<Util::Animation>
@@ -138,6 +142,7 @@ public:
         DieCost = SetTime;
         SetCostNum = SetCost;
         AttackTimeNum = AttackTime;
+        AttackTimeTicket = -1;
         HealthNum = Health;
 		HealthRecoverNum = Health;
         AttackNum = Attack;
@@ -152,6 +157,7 @@ public:
         HeavyLevelNum = DefendCout;
     }
     void SetHP(){HealthRecoverNum = HealthNum;}
+    void SetAttackTimeTicket(float in){AttackTimeTicket = in;}
 	void SetAttackType(CharacterAttackType tt){AttackType = tt;}
 	void SetAttackImpact(CharacterAttackImpact tt){AttackImpact = tt;}
 	void SetDead(bool t){ Dead = t;}
@@ -159,6 +165,7 @@ public:
 	void updatetransform();
 	void SetAttackRangeDefault(std::vector<std::shared_ptr <Block>>AD){AttackRangeDefault=AD;AttackRangeNow=AD;}
 	// Get
+	float GetAttackTimeTicket(){return AttackTimeTicket;}
 	float GetSetTime(){return SetTimeNum;}
 	int GetSetCost(){return SetCostNum;}
 	float GetAttackTime(){return AttackTimeNum;}
@@ -220,6 +227,7 @@ protected:
     float SetTimeNum = 0;
     int SetCostNum = 0;
     float AttackTimeNum = 0;
+    float AttackTimeTicket = -1;
     float HealthNum = 0;
     float AttackNum = 0;
     float DefendNum = 0;
