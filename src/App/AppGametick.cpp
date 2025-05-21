@@ -68,7 +68,7 @@ void App::GameTick() {
 						k++;
 						continue;
 					}
-					m_LevelCharacter[i]->SetAttackTimeTicket(m_LevelCharacter[i]->GetAttackTime()*30);
+					m_LevelCharacter[i]->SetAttackTimeTicket(m_LevelCharacter[i]->GetAttackTime()*20);
 					//std::cout << m_LevelCharacter[i]->GetAttackTimeTicket() << std::endl;
 					break;
 				}
@@ -91,7 +91,7 @@ void App::GameTick() {
 						k++;
 						continue;
 					}
-					m_LevelCharacter[i]->SetAttackTimeTicket(m_LevelCharacter[i]->GetAttackTime()*40);
+					m_LevelCharacter[i]->SetAttackTimeTicket(m_LevelCharacter[i]->GetAttackTime()*20);
 					break;
 				}
 				else if(m_LevelCharacter[i]->IfAnimationEnds()){
