@@ -18,7 +18,7 @@ void Enemy::Updatemove() {
 				}
 			}
 		else {
-			moveGameObject(shared_from_this(),PathPoint->GetindexPoint(PathPointsindex)+glm::vec2{0,250*abs(m_Transform.scale.y)},MoveSpeedNum*2.5);
+			moveGameObject(shared_from_this(),PathPoint->GetindexPoint(PathPointsindex)+glm::vec2{0,250*abs(m_Transform.scale.y)},MoveSpeedNum*2.0);
 			}
 			I_Hpbar->m_Transform.translation=GetPositionFix()-glm::vec2{ 0,16 };
 			break;
@@ -100,17 +100,30 @@ void Enemy::CloseSkill(){
 	if (TypeBuff != AttackType) AttackType = CharacterAttackType::Physics;
 }
 
+void Enemy::FullSpeedMove(){
+	Enemy::CloseSkill();
+	ImpactBB = false;
+	MoveSpeedNum = MoveSpeedNumDefault;
+}
+
 void Enemy::ImpactDizzy(){
 	SetAttackTimeBuff(1000);
+	MoveSpeedNum = MoveSpeedNum * 0.7;
 	Enemy::ApplySkillEffects();
 }
 
 void Enemy::ImpactSleep(){
 	SetAttackTimeBuff(1000);
+	MoveSpeedNum = 0;
 	Enemy::ApplySkillEffects();
 }
 
 void Enemy::ImpactFrozen(){
 	SetAttackTimeBuff(1000);
+	MoveSpeedNum = 0;
 	Enemy::ApplySkillEffects();
+}
+
+void Enemy::DeImpactTick(){
+	ImpactTick--;
 }

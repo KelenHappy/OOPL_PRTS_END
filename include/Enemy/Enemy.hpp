@@ -79,6 +79,8 @@ public:
 	void ApplySkillEffects();
 	void CloseSkill();
 	void Updatemove();
+	void FullSpeedMove();
+	void DeImpactTick();
 	// Set
 		void SetImageSize(float x, float y){
 		m_Transform.scale={x, y}; 
@@ -96,6 +98,7 @@ public:
 		AttackDistanceNum = AttackDistance;
 		AttackCastleNum = AttackCastle;
 		MoveSpeedNum = MoveSpeed;
+		MoveSpeedNumDefault =MoveSpeed;
 		HealthNum = Health;
 		HeavyLevelNum = HeavyLevel;
 		HealthRecoverNum = Health;
@@ -104,7 +107,9 @@ public:
 		FrozenDefend = Frozen;
 		AttackType = attack_t;
 	}
-	
+	void SetImpactTick(int input){
+		ImpactTick = input;
+	}
 	// Get
 	virtual std::string GetName() = 0;
 	std::shared_ptr<HpBar> GetHpBar(){return I_Hpbar;}
@@ -149,6 +154,8 @@ public:
 	}
 	int GetPathPointsindex(){return PathPointsindex;}
 	bool GetIsCreateAnimation(){return IsCreateAnimation;}
+	bool GetImpactBB(){return ImpactBB;}
+	int GetImpactTick(){return ImpactTick;}
 	void SetPathPointsindex(int n){PathPointsindex=n;}
 	void SetIsCreateAnimation(bool in){IsCreateAnimation = in;}
 	void AddPathPointsindex(){PathPointsindex++;}
@@ -188,6 +195,7 @@ protected:
 	float AttackDistanceNum = 0;
 	int AttackCastleNum = 0;
 	float MoveSpeedNum = 0;
+	float MoveSpeedNumDefault = 0;
 	int HeavyLevelNum = 0;
 	int HealthRecoverNum = 0;
 	int RodeWaitTime = 0;
@@ -198,6 +206,9 @@ protected:
 
 	CharacterAttackType AttackType = CharacterAttackType::Physics;
 	CharacterAttackImpact AttackImpact = CharacterAttackImpact::Null;
+
+	int ImpactTick = 5;
+	bool ImpactBB = false;
 
 };
 
