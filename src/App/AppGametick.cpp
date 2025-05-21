@@ -41,14 +41,18 @@ void App::GameTick() {
 			m_LevelCharacter[i]->SetLooping(true);
 		}
 		//判斷攻擊
+		if(m_LevelCharacter[i]->GetVisibility() and m_LevelCharacter[i]->GetAttackTimeTicket() > 0){
+			m_LevelCharacter[i]->DeAttackTime();
+		}
 		if(m_LevelCharacter[i]->GetAttackType() != CharacterAttackType::Health){
+			int k = 0;
 			for(size_t j = 0; j < Enemies.size() ; ++j){
 				float distance = calculateDistance(m_LevelCharacter[i]->m_Transform, Enemies[j]->m_Transform);
 				if(state != CharacterState::Default and distance <= m_LevelCharacter[i]->GetAttackRangeNum()*75
 				and Enemies[j]->GetVisibility()
 				and m_LevelCharacter[i]->IfAnimationEnds() and m_LevelCharacter[i]->GetAttackTimeTicket() <= 0){
 					m_LevelCharacter[i]->SetState(CharacterState::Attack);
-					for(int k = 0; k < m_LevelCharacter[i]->GetAttackTimesBuff();k++){
+					if(k < m_LevelCharacter[i]->GetAttackTimesBuff()){
 						attack(m_LevelCharacter[i], Enemies[j]);
 						std::shared_ptr<TakeDamage> tempFilm = std::make_shared<TakeDamage>(Enemies[j]->GetName(),"takeDamage");
 						tempFilm->SetPosition(Enemies[j]->GetPositionFix());
@@ -61,6 +65,8 @@ void App::GameTick() {
 							m_FilmVector.push_back(tempB);
 							m_0107.AddChild(tempB);
 						}
+						k++;
+						continue;
 					}
 					m_LevelCharacter[i]->SetAttackTimeTicket(m_LevelCharacter[i]->GetAttackTime()*30);
 					//std::cout << m_LevelCharacter[i]->GetAttackTimeTicket() << std::endl;
@@ -69,34 +75,27 @@ void App::GameTick() {
 				else if(m_LevelCharacter[i]->IfAnimationEnds()){
 					m_LevelCharacter[i]->SetState(CharacterState::Idle);
 				}
-				else{
-					if(m_LevelCharacter[i]->GetVisibility() and m_LevelCharacter[i]->GetAttackTimeTicket() > 0){
-						m_LevelCharacter[i]->DeAttackTime();
-					}
-				}
 			}
 		}
 		// 判斷回血
 		else if(m_LevelCharacter[i]->GetAttackType() == CharacterAttackType::Health){
+			int k = 0;
 			for(size_t j = 0; j < m_LevelCharacter.size(); ++j){
 				float distance = calculateDistance(m_LevelCharacter[i]->m_Transform, m_LevelCharacter[j]->m_Transform);
 				if(m_LevelCharacter[j]->GetHP() > m_LevelCharacter[j]->GetHealthRecover()
 				and distance <= m_LevelCharacter[i]->GetAttackRangeNum()*75
 				and m_LevelCharacter[i]->IfAnimationEnds() and m_LevelCharacter[i]->GetAttackTimeTicket() <= 0){
 					m_LevelCharacter[i]->SetState(CharacterState::Attack);
-					for(int k; k < m_LevelCharacter[i]->GetAttackTimesBuff();k++){
+					if( k < m_LevelCharacter[i]->GetAttackTimesBuff()){
 						attack(m_LevelCharacter[i], m_LevelCharacter[j]);
+						k++;
+						continue;
 					}
-					m_LevelCharacter[i]->SetAttackTimeTicket(m_LevelCharacter[i]->GetAttackTime()*30);
+					m_LevelCharacter[i]->SetAttackTimeTicket(m_LevelCharacter[i]->GetAttackTime()*40);
 					break;
 				}
 				else if(m_LevelCharacter[i]->IfAnimationEnds()){
 					m_LevelCharacter[i]->SetState(CharacterState::Idle);
-				}
-				else{
-					if(m_LevelCharacter[i]->GetVisibility() and m_LevelCharacter[i]->GetAttackTimeTicket() > 0){
-						m_LevelCharacter[i]->DeAttackTime();
-					}
 				}
 			}
 		}

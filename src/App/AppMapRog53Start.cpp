@@ -13,7 +13,10 @@ void App::MapRog53Loading() {
     for (size_t i = 0; i < Enemies.size(); i++){
         Enemies[i]->CreateAnimation();
     }
-    // 特效
+    // 特效加速
+    m_FilmVector.clear();
+    m_FilmVector.reserve(10);
+    //
     m_map0107->SetEnemyTotalMax(m_Spawner->GetAllEnemycount());
     //角色選則
 
