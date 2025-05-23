@@ -143,6 +143,8 @@ add_executable(${PROJECT_NAME}
 		include/Character/Caster/Ifrit.hpp
 
 		include/Character/Specialist/Mizuki.hpp
+
+		include/Character/Supporter/Suzuran.hpp
 		
 		include/Film/Film.hpp
 		include/Film/TakeDamage.hpp

@@ -5,17 +5,27 @@
 #include <vector>
 class Suzuran : public Supporter{
 public:
-    Suzuran() : Supporter("Suzuran", 60, 61, 60, 60){
-		SetInfo(70, 12, 1, 1673, 540, 161, 0,
-		20, 30, 15, "攻擊變為5連射，攻擊間隔一定程度縮短(-0.22)", "過載模式"
+	//std::string CharacterName, int IdleCont, int AttackCont,int DieCont, int StartCont
+    Suzuran() : Supporter("Suzuran", 42, 43, 28, 61){
+    	/*
+		 void SetInfo(int SetTime, int SetCost, float AttackTime, int Health, int Attack, int Defend, int DefendMagic,
+		 int SkillDefault, int SkillCost, float SkillTime, std::string skillinfo, std::string skillname,
+		 HeavyLevel
+		 */
+		SetInfo(70, 14, 1.9, 1480, 521, 128, 25,
+		50, 70, 35, "停止攻擊，攻擊範圍擴大，攻擊範圍內的敵人被停頓，且每秒回復範圍內所有友方單位相當於攻擊力20%的生命", "狐火渺然"
 		, 1);
-		//角色技能建立
-		SetAttackTimeBuff((GetAttackTime()-0.22)/GetAttackTime());
+		SetAttackImpact(CharacterAttackImpact::Dizzy);
+    	SetAttackType(CharacterAttackType::Magic);
+    	//角色技能建立
+		SetAttackBuff(0.1);
 		//建立初始攻擊範圍
 		SetAttackRangeNum(4);
-		this->m_DefaultRange.push_back({"2", "1", "1", "1", "0"});
+		this->m_DefaultRange.push_back({"1", "1", "1", "1", "0"});
+		this->m_DefaultRange.push_back({"1", "2", "1", "1", "0"});
+		this->m_DefaultRange.push_back({"1", "1", "1", "1", "0"});
     }
-	std::string GetChineseName() override {return "能天使";}
+	std::string GetChineseName() override {return "鈴蘭";}
 		void OpenSkill() override{
 		// Skill Func
 		SkillOpen = true;
@@ -23,6 +33,15 @@ public:
 		SkillTimeTemp = SkillTimeNum;
 		// Skill Make
 		AttackTimeNum *= AttackTimeBuff;
+    	AttackTimes = 5;
+
+    	this->m_DefaultRange.clear();
+    	this->m_DefaultRange.push_back({"1", "1", "1", "1", "0"});
+    	this->m_DefaultRange.push_back({"1", "1", "1", "1", "1"});
+    	this->m_DefaultRange.push_back({"1", "2", "1", "1", "1"});
+    	this->m_DefaultRange.push_back({"1", "1", "1", "1", "1"});
+    	this->m_DefaultRange.push_back({"1", "1", "1", "1", "0"});
+
 	}
 
 	void CloseSkill() override{
@@ -31,6 +50,12 @@ public:
 		SkillTimeNum = SkillTimeTemp;
 		// Skill Make
 		AttackTimeNum /= AttackTimeBuff;
+    	AttackTimes = 1;
+
+    	this->m_DefaultRange.clear();
+    	this->m_DefaultRange.push_back({"1", "1", "1", "1", "0"});
+    	this->m_DefaultRange.push_back({"1", "2", "1", "1", "0"});
+    	this->m_DefaultRange.push_back({"1", "1", "1", "1", "0"});
 	}
 
 protected:

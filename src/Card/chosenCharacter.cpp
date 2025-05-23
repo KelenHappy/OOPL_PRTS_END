@@ -23,6 +23,9 @@
 #include "Character/Caster/Eyja.hpp"
 #include "Character/Caster/Ifrit.hpp"
 
+#include "Character/Supporter/Suzuran.hpp"
+#include "Character/Supporter/Suzuran.hpp"
+
 #include "Character/Specialist/Mizuki.hpp"
 
 #include "ChooseCharacter/ChosenCharacter.hpp"
@@ -62,6 +65,8 @@ void ChosenCharacter::CreateNewCharacter() {
         std::make_shared<Ceobe>(),
         std::make_shared<Eyja>(),
         std::make_shared<Ifrit>(),
+
+        std::make_shared<Suzuran>(),
 
 
         std::make_shared<Mizuki>()
