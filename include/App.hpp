@@ -5,7 +5,7 @@
 #include "Film/TakeDamage.hpp"
 #include "Film/Bullet.hpp"
 
-#include "FlyUI.hpp"
+#include "UI/FlyUI.hpp"
 #include "MainScream.hpp"
 #include "Mapchoice.hpp"
 #include "ChooseCharacter/ChosenCharacter.hpp"
@@ -49,6 +49,7 @@
 #include "Enemy/DeSoldier.hpp"
 
 #include "GamePlayMode/Attack.hpp"
+#include "UI/PlaceUI.hpp"
 
 class App {
 public:
@@ -98,12 +99,16 @@ private:
 	void ClickOfMap();
 	void DeBug2();
 	void MapStart();
+	void ResetMapChoice();
+	std::vector<std::shared_ptr<Enemy>> GetCharaterEnemyinRange(std::shared_ptr<AnimatedCharacter> Charater);
+
 
 private:
 
     level m_level=level::lobby;
     State m_CurrentState = State::START;
 	UIMapLevel  m_UIMapLevel = UIMapLevel::Main;
+	Direction m_Direction=Direction::CENTER;
     // 場景
     std::shared_ptr<MainScream> m_MainScream;
 	std::shared_ptr<ChosenCharacter> m_ChosenCharacter;
@@ -112,6 +117,7 @@ private:
 	std::shared_ptr<Map> NowMap;
     std::shared_ptr<GameTimer> gametimer;
 	std::shared_ptr<FlyUI>m_flyUI;
+	std::shared_ptr<PlaceUI>m_placeUI;
 	std::shared_ptr<CreateIMG> m_LoadingPage;
     Util::Renderer m_Root;
     Util::Renderer m_0107;
@@ -147,7 +153,7 @@ private:
     // idle attack die move
     std::vector<std::shared_ptr<Enemy>> Enemies;
     // 大便
-	bool ckicking=false;
+	bool clicking=false;
 	bool CheckCard = false;
     bool carry=false;
 	bool CheckCharacter = false;

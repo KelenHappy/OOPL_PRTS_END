@@ -9,7 +9,7 @@
 #include "CreateIMG.hpp"
 #include "Mapchoice.hpp"
 #include "Util/GameObject.hpp"
-enum class Direction { EAST, SOUTH, WEST, NORTH };
+#include "Enumclass/Direction.hpp"
 class Map :public Util::GameObject{
     public:
     Map(Mapchoice Mc);
@@ -52,6 +52,7 @@ class Map :public Util::GameObject{
     void closeMapblock();
     std::vector<std::shared_ptr<Block>> ExtractBlocksFromPattern(const std::vector<std::vector<std::string>>& range,
     int base_x, int base_y, Direction dir);
+    glm::vec2 GetMapsize(){return mapsize;}
 	~Map(){}
 
 

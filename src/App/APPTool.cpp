@@ -76,25 +76,28 @@ void App::DeBug2() {
 }
 
 void App::ClickOfMap(){
+    auto mouse =Util::Input::GetCursorPosition();
     if (Util::Input::IsKeyDown(Util::Keycode::MOUSE_LB)) {
-        auto mouse =Util::Input::GetCursorPosition();
         Util::Transform mouseT;
         mouseT.translation = mouse;
+        clicking=true;
         // 點到 Card
-        for (size_t i = 0; i < NowMap->GetCard().size(); ++i) {
-            if (!NowMap->GetCard()[i]) continue;  // 避免 nullptr 存取
-            if (checkCollisionNearMouse(mouseT, NowMap->GetCard()[i]->m_Transform, 50)) {
-                m_CardCarry = i;
-                if(m_LevelCharacter[m_CardCarry]->GetState() == CharacterState::Default){
-                    CheckCard = true;
-                    NowMap->openMapblock(NowMap->GetCard()[m_CardCarry]->GetCharacter()->GetBlockState());
-                    m_flyUI->setnewcharacter(NowMap->GetCard()[i]->GetCharacter());}
-                std::cout << m_CardCarry << std::endl;
-                break;
+        if(m_UIMapLevel==UIMapLevel::Clickcard||m_UIMapLevel==UIMapLevel::Main){
+            for (size_t i = 0; i < NowMap->GetCard().size(); ++i) {
+                if (!NowMap->GetCard()[i]) continue;  // 避免 nullptr 存取
+                if (checkCollisionNearMouse(mouseT, NowMap->GetCard()[i]->m_Transform, 50)) {
+                    m_CardCarry = i;
+                    if(m_LevelCharacter[m_CardCarry]->GetState() == CharacterState::Default){
+                        CheckCard = true;
+                        NowMap->openMapblock(NowMap->GetCard()[m_CardCarry]->GetCharacter()->GetBlockState());
+                        m_flyUI->setnewcharacter(NowMap->GetCard()[i]->GetCharacter());}
+                    std::cout << m_CardCarry << std::endl;
+                    break;
+                }
             }
         }
         // 點到 Block
-        if(CheckCard==true){
+        if(m_UIMapLevel==UIMapLevel::Clickcard){
             for (size_t i = 0; i < NowMap->Getblock().size(); ++i) {
                 if (!NowMap->Getblock()[i]) continue;  // 避免 nullptr 存取
                 if (checkCollisionNearMouse(mouseT, NowMap->Getblock()[i]->m_Transform, 40)) {
@@ -114,8 +117,13 @@ void App::ClickOfMap(){
             }
         }
     }
+    Direction Dir;
     switch (m_UIMapLevel) {
         case UIMapLevel::Main:
+            if(CheckCard == true) {
+                m_UIMapLevel=UIMapLevel::Clickcard;
+                ResetMapChoice();
+            }
 
 
             break;
@@ -123,13 +131,55 @@ void App::ClickOfMap(){
         case UIMapLevel::Clickcard:
             m_flyUI->m_Transform.translation=Util::Input::GetCursorPosition()+glm::vec2(0,250*0.13);
             m_flyUI->SetVisible(true);
+            if(clicking) {
+                if(carry&&m_LevelCharacter[m_CardCarry]->GetBlockState() == m_map0107->Getblock()[m_Carry]->GetBlockState()&&m_LevelCharacter[m_CardCarry]->GetState() == CharacterState::Default and m_LevelCharacter[m_CardCarry]->GetHealthRecover() > 0 and
+                    m_map0107->Getblock()[m_Carry]->HaveCharacter==false) {
+                    if(m_map0107->Takemapcost(m_LevelCharacter[m_CardCarry]->GetSetCost())){
+                    m_placeUI->openUI(0);
+                    m_placeUI->SetPostion(m_map0107->Getblock()[m_Carry]->m_Transform.translation.x,m_map0107->Getblock()[m_Carry]->m_Transform.translation.y);
+                    m_UIMapLevel=UIMapLevel::ChoiceDirection;
+                        }
+                    }
+                ResetMapChoice();
+                if(m_UIMapLevel!=UIMapLevel::ChoiceDirection) {
+                    m_UIMapLevel=UIMapLevel::Main;
+                    m_flyUI->SetVisible(false);
+                }
+            }
 
         break;
 
         case UIMapLevel::ChoiceDirection:
             // 選擇方向的畫面
-
-
+                Dir= m_placeUI->NewDirection(mouse);
+                if(Dir!=m_Direction) {
+                    m_Direction=Dir;
+                    m_map0107->closeMapblock();
+                    if(Dir!=Direction::CENTER){
+                      std::vector<std::shared_ptr<Block>> AttackRange=m_map0107->ExtractBlocksFromPattern(m_LevelCharacter[m_CardCarry]->GetDefaultRange(),m_map0107->Getblock()[m_Carry]->GetX(),m_map0107->Getblock()[m_Carry]->GetY(),Dir) ;
+                        for(size_t i=0;i<AttackRange.size();i++) {
+                            AttackRange[i]->SetVisible(true);
+                            AttackRange[i]->ChangeImage("/Maps/Attackrange.png");
+                        }
+                    }
+                }
+                if(clicking) {
+                    if(checkCollision(Util::Input::GetCursorPosition(),m_placeUI->Getback()->m_Transform.translation,30,30)) {
+                        m_placeUI->closeUI();
+                        m_map0107->closeMapblock();
+                        m_flyUI->SetVisible(false);
+                        m_UIMapLevel=UIMapLevel::Main;
+                    }
+                    else if(Dir!=Direction::CENTER) {
+                        m_UIMapLevel=UIMapLevel::Main;//放置
+                        m_LevelCharacter[m_CardCarry]->PlaceCharacter(m_map0107->Getblock()[m_Carry],m_CardCarry);
+                        m_LevelCharacter[m_CardCarry]->SetAttackRangeDefault(m_map0107->ExtractBlocksFromPattern(m_LevelCharacter[m_CardCarry]->GetDefaultRange(),m_map0107->Getblock()[m_Carry]->GetX(),m_map0107->Getblock()[m_Carry]->GetY(),Dir));
+                        m_map0107->closeMapblock();
+                        m_flyUI->SetVisible(false);
+                        m_placeUI->closeUI();
+                    }
+                    ResetMapChoice();
+                }
                 break;
 
 
@@ -145,3 +195,10 @@ void App::ClickOfMap(){
                 break;
     }
 }
+void App::ResetMapChoice() {
+    clicking=false;
+    CheckCard = false;
+    carry=false;
+    CheckCharacter = false;
+}
+

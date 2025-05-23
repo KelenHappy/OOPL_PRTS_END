@@ -1,0 +1,41 @@
+#include "App.hpp"
+#include "Util/Transform.hpp"
+#include "Util/Image.hpp"
+#include "Util/Input.hpp"
+#include "Util/Keycode.hpp"
+#include "Util/Logger.hpp"
+#include <vector>
+
+std::vector<std::shared_ptr<Enemy> > App::GetCharaterEnemyinRange(std::shared_ptr<AnimatedCharacter> Charater) {
+    std::vector<std::shared_ptr<Block> > Bk = Charater->GetAttackRangeNow();
+    std::vector<std::shared_ptr<Enemy>> Emy;
+    for (size_t i = 0; i < Enemies.size(); i++) {
+        if (Enemies[i]->GetVisibility()) Emy.push_back(Enemies[i]);
+    }
+
+    std::vector<bool> BEmy(Emy.size(), false);
+
+    int Range = 52;
+    if (m_map0107->GetMapsize().x == 10) {
+        Range *= 0.8;
+    }
+
+    for (auto B : Bk) {
+        if (B->GetBlockState() == BlockState::GROUND || B->GetBlockState() == BlockState::NONE) {
+            for (size_t i = 0; i < Emy.size(); i++) {
+                if (checkCollision(B->m_Transform.translation, Emy[i]->GetPositionFix(), Range, Range)) {
+                    BEmy[i] = true;
+                }
+            }
+        }
+    }
+
+    std::vector<std::shared_ptr<Enemy>> Emy1;
+    for (size_t i = 0; i < Emy.size(); i++) {
+        if (BEmy[i]) {
+            Emy1.push_back(Emy[i]);
+        }
+    }
+
+    return Emy1;
+}

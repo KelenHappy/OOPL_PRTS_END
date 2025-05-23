@@ -16,15 +16,12 @@ void App::Start() {
 	m_ChosenCharacter = std::make_shared<ChosenCharacter>();
     m_Root.AddChildren(m_MainScream->GetChildren());
     gametimer=std::make_shared<GameTimer>();
+	m_placeUI=std::make_shared<PlaceUI>();
+	m_0107.AddChildren(m_placeUI->GetChildren());
+
 	//m_Root.AddChildren();
 
-    // Character
-	//std::string CharacterName, int IdleCont, int AttackCont,int DieCont, int StartCont
-	/*
-	void SetInfo(int SetTime, int SetCost, float AttackTime, int Health, int Attack, int Defend, int DefendMagic,
-    int SkillDefault, int SkillCost, float SkillTime, std::string skillinfo, std::string skillname,
-	defendlevel
-	*/
+
 	// 角色擁有
 	m_HalfCardScreen.AddChildren(m_ChosenCharacter->GetChildren());
 	m_ChosenCharacter->CreateNewCharacter();

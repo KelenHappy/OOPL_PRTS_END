@@ -30,6 +30,7 @@ public:
         m_DefaultRange = In;
     }
 	std::vector<std::vector<std::string>> GetDefaultRange() {return m_DefaultRange;}
+	std::vector<std::shared_ptr<Block>> GetAttackRangeNow(){return  AttackRangeNow;}
 protected:
 	int AttackRangeNum = 0 ;
     std::vector<std::vector<std::string>> m_DefaultRange;

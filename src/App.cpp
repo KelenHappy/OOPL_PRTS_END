@@ -8,7 +8,7 @@
 void App::Update() {
     auto mouse=Util::Input::GetCursorPosition();
     if(Util::Input::IsKeyDown(Util::Keycode::MOUSE_LB)) {
-        LOG_DEBUG(std::to_string(mouse.x)+" "+std::to_string(mouse.y));
+        std::cout <<std::to_string(mouse.x)<<" "<<std::to_string(mouse.y)<<std::endl;
     }
     if (Util::Input::IsKeyUp(Util::Keycode::ESCAPE) ||
        Util::Input::IfExit()) {

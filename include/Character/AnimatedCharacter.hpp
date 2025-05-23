@@ -12,7 +12,7 @@
 #include "ClassState.hpp"
 #include "BlockState.hpp"
 #include "Hpbar.hpp"
-
+#include "Enumclass/Direction.hpp"
 #include "GamePlayMode/CharacterAttackImpact.hpp"
 #include "GamePlayMode/CharacterSkill.hpp"
 #include "GamePlayMode/AttackRange.hpp"

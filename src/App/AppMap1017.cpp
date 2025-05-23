@@ -11,7 +11,7 @@ void App::LevelMain17() {
 			m_CurrentState = State::END;
     }
 	//判斷被放置
-	if(carry == true and CheckCard == true) {
+	/*if(carry == true and CheckCard == true) {
 		// SetPosition
 		if(m_LevelCharacter[m_CardCarry]->GetBlockState() == m_map0107->Getblock()[m_Carry]->GetBlockState() and 
 		m_LevelCharacter[m_CardCarry]->GetState() == CharacterState::Default and m_LevelCharacter[m_CardCarry]->GetHealthRecover() > 0 and
@@ -56,7 +56,8 @@ void App::LevelMain17() {
 		m_Carry = -1;
 		m_CardCarry = -1;	
 		m_CharacterCarry = -1;
-	}
+	}*/
+	ClickOfMap();
 	// 設定角色出現與否
 
 	

@@ -14,6 +14,12 @@ class ImgItem:public Util::GameObject{
     void setsize(float x,float y) {
         m_Transform.scale={x, y};
     }
+    void SetNewIMGstd(std::string newImagePath) {
+        auto imagePtr = std::static_pointer_cast<Util::Image>(m_Drawable);
+        if (imagePtr) {
+            imagePtr->SetImage(RESOURCE_DIR+newImagePath);
+        }
+    }
 
 
 };

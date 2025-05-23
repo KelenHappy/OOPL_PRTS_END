@@ -160,8 +160,12 @@ add_executable(${PROJECT_NAME}
 		include/Enemy/EnemyType.hpp
 		include/MyTool.hpp
 		include/Hpbar.hpp
-		include/FlyUI.hpp
+        include/UI/FlyUI.hpp
 		include/Mapchoice.hpp
+		include/UI/PlaceUI.hpp
+		src/UI/PlaceUI.cpp
+		include/Enumclass/Direction.hpp
+		src/App/AppTool2.cpp
 
 
 )
