@@ -4,6 +4,7 @@
 #include "Film/Film.hpp"
 #include "Film/TakeDamage.hpp"
 #include "Film/Bullet.hpp"
+#include "Film/Frozen.hpp"
 
 #include "UI/FlyUI.hpp"
 #include "MainScream.hpp"

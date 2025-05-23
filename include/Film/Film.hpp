@@ -31,6 +31,9 @@ public:
             case FilmState::Bullet:
                 m_Transform.scale = {0.05f, 0.05f};
                 break;
+            case FilmState::Frozen:
+                m_Transform.scale = {0.05f, 0.05f};
+                break;
             default:
                 std::cout << "None In Film." << std::endl;
                 break;

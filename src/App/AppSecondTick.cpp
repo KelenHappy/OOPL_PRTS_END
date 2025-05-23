@@ -53,7 +53,7 @@ void App::GameSecondTick() {
         if(Enemies[i]->GetVisibility()){
             Enemies[i]->UpdateEffect();
             if(Enemies[i]->GetImpactTick() > 0 and Enemies[i]->GetImpactBB())Enemies[i]->DeImpactTick();
-            if(Enemies[i]->GetImpactTick() <= 0 and Enemies[i]->GetImpactBB()){
+            else{
                 Enemies[i]->FullSpeedMove();
             }
         }

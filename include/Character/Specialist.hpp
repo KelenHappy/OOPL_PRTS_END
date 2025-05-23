@@ -5,7 +5,7 @@
 class Specialist : public AnimatedCharacter{
 public:
     Specialist(std::string CharacterName, int IdleCont, int AttackCont,int DieCont, int StartCont) : AnimatedCharacter(){
-        int defaultNum = 30;
+        int defaultNum = 25;
 
         SetCharacterName(CharacterName);
         SetAttackType(CharacterAttackType::Magic);
@@ -22,7 +22,7 @@ public:
         // --- 修正 seen 記憶範圍 ---
         std::set<int> seen;
 
-        for(float i = 0; i < IdleCont; i += (float)IdleCont / defaultNum){
+        for(float i = 0; i < IdleCont; i += (float)IdleCont /40){
             int int_i = static_cast<int>(i);
             if (seen.find(int_i) != seen.end()) continue;
             seen.insert(int_i);
@@ -66,7 +66,7 @@ public:
     }
 
     BlockState GetBlockState() override{
-        return BlockState::HIGH;
+        return BlockState::GROUND;
     }
     ~Specialist(){}
 protected:
