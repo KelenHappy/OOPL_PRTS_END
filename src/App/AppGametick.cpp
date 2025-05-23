@@ -6,6 +6,8 @@
 #include "Util/Logger.hpp"
 #include <vector>
 
+#include "Film/Frozen.hpp"
+
 void App::GameTick() {
     for(size_t i = 0; i< Enemies.size(); i++) {
         if(Enemies[i]->GetVisibility()) {
@@ -51,19 +53,29 @@ void App::GameTick() {
 				if(state != CharacterState::Default and distance <= m_LevelCharacter[i]->GetAttackRangeNum()*75
 				and Enemies[j]->GetVisibility()
 				and m_LevelCharacter[i]->IfAnimationEnds() and m_LevelCharacter[i]->GetAttackTimeTicket() <= 0){
-					m_LevelCharacter[i]->SetState(CharacterState::Attack);
+					if (k == 0) {
+						m_LevelCharacter[i]->SetState(CharacterState::Attack);
+					}
 					if(k < m_LevelCharacter[i]->GetAttackTimesBuff()){
 						attack(m_LevelCharacter[i], Enemies[j]);
-						std::shared_ptr<TakeDamage> tempFilm = std::make_shared<TakeDamage>(Enemies[j]->GetName(),"takeDamage");
-						tempFilm->SetPosition(Enemies[j]->GetPositionFix());
-						m_FilmVector.push_back(tempFilm);
-						m_0107.AddChild(tempFilm);
 						if(m_LevelCharacter[i]->GetJob() == "Sniper"){
 							std::shared_ptr<Bullet> tempB = std::make_shared<Bullet> (m_LevelCharacter[i]->GetCharacterName(), "Bullet");
 							tempB->SetPosition(m_LevelCharacter[i]->GetPosition());
 							tempB->SetEnemyPoint(Enemies[j]->GetPositionFix());
 							m_FilmVector.push_back(tempB);
 							m_0107.AddChild(tempB);
+						}
+						if (m_LevelCharacter[i]->GetAttackImpact() == CharacterAttackImpact::Frozen) {
+							std::shared_ptr<Frozen>tempF = std::make_shared<Frozen>(m_LevelCharacter[i]->GetCharacterName(), "Frozen");
+							tempF->SetPosition(Enemies[j]->GetPositionFix());
+							m_FilmVector.push_back(tempF);
+							m_0107.AddChild(tempF);
+						}
+						else {
+							std::shared_ptr<TakeDamage> tempFilm = std::make_shared<TakeDamage>(Enemies[j]->GetName(),"takeDamage");
+							tempFilm->SetPosition(Enemies[j]->GetPositionFix());
+							m_FilmVector.push_back(tempFilm);
+							m_0107.AddChild(tempFilm);
 						}
 						k++;
 						continue;
@@ -85,7 +97,7 @@ void App::GameTick() {
 				if(m_LevelCharacter[j]->GetHP() > m_LevelCharacter[j]->GetHealthRecover()
 				and distance <= m_LevelCharacter[i]->GetAttackRangeNum()*75
 				and m_LevelCharacter[i]->IfAnimationEnds() and m_LevelCharacter[i]->GetAttackTimeTicket() <= 0){
-					m_LevelCharacter[i]->SetState(CharacterState::Attack);
+					if (k == 0){m_LevelCharacter[i]->SetState(CharacterState::Attack);}
 					if( k < m_LevelCharacter[i]->GetAttackTimesBuff()){
 						attack(m_LevelCharacter[i], m_LevelCharacter[j]);
 						k++;

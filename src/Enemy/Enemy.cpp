@@ -102,24 +102,28 @@ void Enemy::CloseSkill(){
 
 void Enemy::FullSpeedMove(){
 	Enemy::CloseSkill();
+	//std::cout << "WTF" << std::endl;
 	ImpactBB = false;
 	MoveSpeedNum = MoveSpeedNumDefault;
 }
 
 void Enemy::ImpactDizzy(){
 	SetAttackTimeBuff(1000);
+	ImpactTick = 1;
 	MoveSpeedNum = MoveSpeedNum * 0.7;
 	Enemy::ApplySkillEffects();
 }
 
 void Enemy::ImpactSleep(){
 	SetAttackTimeBuff(1000);
+	ImpactTick = 1;
 	MoveSpeedNum = 0;
 	Enemy::ApplySkillEffects();
 }
 
 void Enemy::ImpactFrozen(){
 	SetAttackTimeBuff(1000);
+	ImpactTick = 1;
 	MoveSpeedNum = 0;
 	Enemy::ApplySkillEffects();
 }

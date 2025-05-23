@@ -22,7 +22,7 @@ public:
 		// --- 修正 seen 記憶範圍 ---
 		std::set<int> seen;
 
-		for(float i = 0; i < IdleCont; i += (float)IdleCont / defaultNum){
+		for(float i = 0; i < IdleCont; i += (float)IdleCont / 40){
 			int int_i = static_cast<int>(i);
 			if (seen.find(int_i) != seen.end()) continue;
 			seen.insert(int_i);

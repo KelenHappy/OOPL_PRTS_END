@@ -5,7 +5,8 @@
 enum class FilmState {
     Die,
     Bullet,
-    TakeDamage
+    TakeDamage,
+    Frozen
 };
 
 #endif // FILM_STATE_HPP
