@@ -30,7 +30,7 @@ Direction PlaceUI::NewDirection(const glm::vec2& position) {
     }
 }
 void PlaceUI::setnewcharacterskill(std::shared_ptr<AnimatedCharacter> Character) {
-    m_skill ->SetNewIMGstd(RESOURCE_DIR"/Character/"+Character->GetJob()+"/"+Character->GetCharacterName()+"/Default/s.png");
+    m_skill ->SetNewIMGstd("/Character/"+Character->GetJob()+"/"+Character->GetCharacterName()+"/Default/s.png");
 }
 void PlaceUI::openUI(int a) {
     m_Diamond->SetVisible(true);

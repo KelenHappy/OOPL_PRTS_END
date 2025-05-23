@@ -124,6 +124,14 @@ void App::ClickOfMap(){
                 m_UIMapLevel=UIMapLevel::Clickcard;
                 ResetMapChoice();
             }
+        else if (CheckCharacter) {
+            m_UIMapLevel=UIMapLevel::ClickCharacter;
+            m_LevelCharacter[m_CharacterCarry]->showrange();
+            m_placeUI->setnewcharacterskill(m_LevelCharacter[m_CharacterCarry]);
+            m_placeUI->SetPostion(m_LevelCharacter[m_CharacterCarry]->GetPositionFix().x,m_LevelCharacter[m_CharacterCarry]->GetPositionFix().y);
+            m_placeUI->openUI(1);
+            ResetMapChoice();
+        }
 
 
             break;
@@ -186,6 +194,19 @@ void App::ClickOfMap(){
 
         case UIMapLevel::ClickCharacter:
             // 點選角色的畫面
+                if(clicking) {
+                    if(checkCollision(Util::Input::GetCursorPosition(),m_placeUI->Getskill()->m_Transform.translation,30,30)) {
+                        m_LevelCharacter[m_CharacterCarry]->OpenSkill();
+                        std::cout << m_LevelCharacter[m_CharacterCarry]->GetCharacterName()<<" OpenSkill\n";
+                    }
+                    else if(checkCollision(Util::Input::GetCursorPosition(),m_placeUI->Getback()->m_Transform.translation,30,30)){
+                        m_LevelCharacter[m_CharacterCarry]->OutPlaceCharacter();
+                    }
+                    m_placeUI->closeUI();
+                    ResetMapChoice();
+                    m_map0107->closeMapblock();
+                    m_UIMapLevel=UIMapLevel::Main;
+                }
 
 
                 break;

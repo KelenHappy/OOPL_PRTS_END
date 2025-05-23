@@ -41,7 +41,7 @@ public:
     }
     glm::vec2 ClampToDiamond(glm::vec2 pos) {
         glm::vec2 center =m_Transform.translation;
-        int radius =80;
+        int radius =70;
         glm::vec2 delta = pos - center;
         float manhattanDist = std::abs(delta.x) + std::abs(delta.y);
 
@@ -58,6 +58,7 @@ public:
     void openUI(int a);
     void closeUI();
     std::shared_ptr<ImgItem> Getback(){return m_back;}
+    std::shared_ptr<ImgItem> Getskill(){return m_skill;}
     private:
     std::shared_ptr<ImgItem> m_Diamond;
     std::shared_ptr<ImgItem>m_Gan;
