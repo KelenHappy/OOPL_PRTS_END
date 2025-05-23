@@ -27,6 +27,9 @@
 #include "Character/Supporter/Gnosis.hpp"
 
 #include "Character/Specialist/Mizuki.hpp"
+#include "Character/Specialist/Texas_the_Omertosa.hpp"
+#include "Character/Specialist/Kirin_R_Yato.hpp"
+#include "Character/Specialist/Gravel.hpp"
 
 #include "ChooseCharacter/ChosenCharacter.hpp"
 #include "Util/Logger.hpp"
@@ -69,7 +72,10 @@ void ChosenCharacter::CreateNewCharacter() {
         std::make_shared<Suzuran>(),
         std::make_shared<Gnosis>(),
 
-        std::make_shared<Mizuki>()
+        std::make_shared<Mizuki>(),
+        std::make_shared<TexasTheOmertosa>(),
+        std::make_shared<KirinRYato>(),
+        std::make_shared<Gravel>()
 
 
     };

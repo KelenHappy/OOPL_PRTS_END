@@ -12,7 +12,6 @@ public:
 		//角色技能建立
 		SetAttackTimeBuff((GetAttackTime()-0.22)/GetAttackTime());
 		//建立初始攻擊範圍
-		SetAttackRangeNum(4);
 		this->m_DefaultRange.push_back(std::vector<std::string>(5, "0"));
 		this->m_DefaultRange.push_back({"1", "1", "1", "1", "0"});
 		this->m_DefaultRange.push_back({"2", "1", "1", "1", "0"});
@@ -26,7 +25,7 @@ public:
 		SkillNow -= SkillCostNum;
 		SkillTimeTemp = SkillTimeNum;
 		// Skill Make
-		SetAttackTimesBuff(5);
+		AttackTimess = 5;
 		AttackTimeNum *= AttackTimeBuff;
 	}
 	
@@ -35,7 +34,7 @@ public:
 		SkillOpen = false;
 		SkillTimeNum = SkillTimeTemp;
 		// Skill Make
-		SetAttackTimesBuff(1);
+		AttackTimess = 1;
 		AttackTimeNum /= AttackTimeBuff;
 	}
 

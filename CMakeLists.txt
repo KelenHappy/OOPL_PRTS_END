@@ -143,7 +143,9 @@ add_executable(${PROJECT_NAME}
 		include/Character/Caster/Ifrit.hpp
 
 		include/Character/Specialist/Mizuki.hpp
-
+		include/Character/Specialist/Texas_the_Omertosa.hpp
+		include/Character/Specialist/Kirin_R_Yato.hpp
+		include/Character/Specialist/Gravel.hpp
 		include/Character/Supporter/Suzuran.hpp
 		include/Character/Supporter/Gnosis.hpp
 		

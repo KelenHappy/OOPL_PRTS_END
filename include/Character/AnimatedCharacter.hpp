@@ -28,6 +28,7 @@ public:
     }
     
 	// Function
+	int AttackTimess = 1;
 	void Update();
     [[nodiscard]] bool IfCollides( std::shared_ptr<AnimatedCharacter>& other);
 	void takeDamage(CharacterAttackImpact impact, float damage);

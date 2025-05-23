@@ -32,11 +32,14 @@ void App::GameSecondTick() {
             }
         }
         else{
-            if(!m_LevelCharacter[i]->GetSkillOpen()){m_LevelCharacter[i]->AddSkillCost(1);}
+            if(!m_LevelCharacter[i]->GetSkillOpen() and m_LevelCharacter[i]->GetSkillDefault() != 0 and m_LevelCharacter[i]->GetVisibility()){m_LevelCharacter[i]->AddSkillCost(1);}
+            else if (m_LevelCharacter[i]->GetSkillDefault() == 0 and !m_LevelCharacter[i]->GetSkillOpen() and m_LevelCharacter[i]->GetVisibility()) {
+                m_LevelCharacter[i]->OpenSkill();
+                std::cout << m_LevelCharacter[i]->GetCharacterName() << " Open Skill" << std::endl;
+            }
             else{
                 m_LevelCharacter[i]->DeSkillTime(1);
-                std::cout << m_LevelCharacter[i]->GetCharacterName() << " Open Skill" << std::endl;
-                if(m_LevelCharacter[i]->GetSkillTime() <= 0){
+                if(m_LevelCharacter[i]->GetSkillTime() <= 0 and m_LevelCharacter[i]->GetVisibility()){
                     m_LevelCharacter[i]->CloseSkill();
                 }
             }

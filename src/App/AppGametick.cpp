@@ -48,32 +48,29 @@ void App::GameTick() {
 		}
 		if(m_LevelCharacter[i]->GetAttackType() != CharacterAttackType::Health){
 			int k = 0;
-			for(size_t j = 0; j < Enemies.size() ; ++j){
-				float distance = calculateDistance(m_LevelCharacter[i]->m_Transform, Enemies[j]->m_Transform);
-				if(state != CharacterState::Default and distance <= m_LevelCharacter[i]->GetAttackRangeNum()*75
-				and Enemies[j]->GetVisibility()
-				and m_LevelCharacter[i]->IfAnimationEnds() and m_LevelCharacter[i]->GetAttackTimeTicket() <= 0){
-					if (k == 0) {
-						m_LevelCharacter[i]->SetState(CharacterState::Attack);
-					}
+			std::vector<std::shared_ptr<Enemy>>  EnemyTools = GetCharaterEnemyinRange(m_LevelCharacter[i]);
+			if (EnemyTools.size()>0  and m_LevelCharacter[i]->IfAnimationEnds() and m_LevelCharacter[i]->GetAttackTimeTicket() <= 0 and state != CharacterState::Default) {
+				m_LevelCharacter[i]->SetState(CharacterState::Attack);
+				for(size_t j = 0; j < EnemyTools.size() ; ++j){
 					if(k < m_LevelCharacter[i]->GetAttackTimesBuff()){
-						attack(m_LevelCharacter[i], Enemies[j]);
+						std::cout <<"AttackTimes"<< m_LevelCharacter[i]->AttackTimess << std::endl;
+						for (int AttackTimes = 0 ; AttackTimes < m_LevelCharacter[i]->AttackTimess; AttackTimes++){attack(m_LevelCharacter[i], EnemyTools[j]);}
 						if(m_LevelCharacter[i]->GetJob() == "Sniper"){
 							std::shared_ptr<Bullet> tempB = std::make_shared<Bullet> (m_LevelCharacter[i]->GetCharacterName(), "Bullet");
 							tempB->SetPosition(m_LevelCharacter[i]->GetPosition());
-							tempB->SetEnemyPoint(Enemies[j]->GetPositionFix());
+							tempB->SetEnemyPoint(EnemyTools[j]->GetPositionFix());
 							m_FilmVector.push_back(tempB);
 							m_0107.AddChild(tempB);
 						}
 						if (m_LevelCharacter[i]->GetAttackImpact() == CharacterAttackImpact::Frozen) {
 							std::shared_ptr<Frozen>tempF = std::make_shared<Frozen>(m_LevelCharacter[i]->GetCharacterName(), "Frozen");
-							tempF->SetPosition(Enemies[j]->GetPositionFix());
+							tempF->SetPosition(EnemyTools[j]->GetPositionFix());
 							m_FilmVector.push_back(tempF);
 							m_0107.AddChild(tempF);
 						}
 						else {
-							std::shared_ptr<TakeDamage> tempFilm = std::make_shared<TakeDamage>(Enemies[j]->GetName(),"takeDamage");
-							tempFilm->SetPosition(Enemies[j]->GetPositionFix());
+							std::shared_ptr<TakeDamage> tempFilm = std::make_shared<TakeDamage>(EnemyTools[j]->GetName(),"takeDamage");
+							tempFilm->SetPosition(EnemyTools[j]->GetPositionFix());
 							m_FilmVector.push_back(tempFilm);
 							m_0107.AddChild(tempFilm);
 						}
@@ -84,7 +81,7 @@ void App::GameTick() {
 					//std::cout << m_LevelCharacter[i]->GetAttackTimeTicket() << std::endl;
 					break;
 				}
-				else if(m_LevelCharacter[i]->IfAnimationEnds()){
+				if(m_LevelCharacter[i]->IfAnimationEnds()) {
 					m_LevelCharacter[i]->SetState(CharacterState::Idle);
 				}
 			}
