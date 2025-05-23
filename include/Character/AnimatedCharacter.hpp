@@ -211,6 +211,7 @@ public:
 	virtual BlockState GetBlockState() = 0;
 	virtual std::string GetChineseName()=0;
 	void PlaceCharacter(std::shared_ptr<Block> block,int index);
+	std::shared_ptr<Block> GetPlaceBlock(){return m_PlaceBlock;}
 	void OutPlaceCharacter();
 	~AnimatedCharacter(){}
 protected:

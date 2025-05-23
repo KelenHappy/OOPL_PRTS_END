@@ -39,3 +39,15 @@ std::vector<std::shared_ptr<Enemy> > App::GetCharaterEnemyinRange(std::shared_pt
 
     return Emy1;
 }
+std::vector<std::shared_ptr<AnimatedCharacter>> App::GetCharaterinRange(std::shared_ptr<AnimatedCharacter> Charater) {
+    std::vector<std::shared_ptr<Block> > Bk = Charater->GetAttackRangeNow();
+    std::vector<std::shared_ptr<AnimatedCharacter>> CTR;
+    for (size_t i = 0; i < m_LevelCharacter.size(); i++) {
+        for (size_t j = 0; j < Bk.size(); j++) {
+            if (Bk[j] == m_LevelCharacter[i]->GetPlaceBlock()) {
+                CTR.push_back(m_LevelCharacter[i]);
+            }
+        }
+    }
+    return CTR;
+}
