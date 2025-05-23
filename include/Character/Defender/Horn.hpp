@@ -21,9 +21,9 @@ public:
         SetAttackTimeBuff(2.8);
 
         //建立初始攻擊範圍
-        this->m_DefaultRange.push_back({"0", "0", "0", "1", "1"});
-        this->m_DefaultRange.push_back({"2", "0", "0", "1", "1"});
-        this->m_DefaultRange.push_back({"0", "0", "0", "1", "1"});
+        this->m_DefaultRange.push_back({"0", "0", "0", "1", "1", "0"});
+        this->m_DefaultRange.push_back({"2", "0", "0", "1", "1", "1"});
+        this->m_DefaultRange.push_back({"0", "0", "0", "1", "1", "0"});
 
     }
     std::string GetChineseName() override {return "號角";}

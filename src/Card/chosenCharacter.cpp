@@ -91,7 +91,7 @@ void ChosenCharacter::CreateHalfCard() {
 }
 void ChosenCharacter::Settran() {
     for (size_t i = 0; i <  m_HalfCard.size(); i++) {
-        m_HalfCard[i]->SetTranform(-410+((int(i)%8)*130),225-((int(i)/8)*230));
+        m_HalfCard[i]->SetTranform(-540+((int(i+1)%9)*130),225-((int(i+1)/9)*230));
     }
 }
 void ChosenCharacter::UpDateChoiceCharacter() {

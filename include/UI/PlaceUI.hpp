@@ -41,7 +41,7 @@ public:
     }
     glm::vec2 ClampToDiamond(glm::vec2 pos) {
         glm::vec2 center =m_Transform.translation;
-        int radius =50;
+        int radius =80;
         glm::vec2 delta = pos - center;
         float manhattanDist = std::abs(delta.x) + std::abs(delta.y);
 

@@ -144,6 +144,7 @@ void App::ClickOfMap(){
                 if(m_UIMapLevel!=UIMapLevel::ChoiceDirection) {
                     m_UIMapLevel=UIMapLevel::Main;
                     m_flyUI->SetVisible(false);
+                    m_map0107->closeMapblock();
                 }
             }
 
