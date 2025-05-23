@@ -6,7 +6,7 @@
 class Mizuki : public Specialist{
 public:
     //std::string CharacterName, int IdleCont, int AttackCont,int DieCont, int StartCont
-    Mizuki() : Specialist("Mizuki", 32, 29, 58, 59){
+    Mizuki() : Specialist("Mizuki", 107, 29, 58, 59){
         /*
          void SetInfo(int SetTime, int SetCost, float AttackTime, int Health, int Attack, int Defend, int DefendMagic,
          int SkillDefault, int SkillCost, float SkillTime, std::string skillinfo, std::string skillname,

@@ -6,7 +6,7 @@
 class Suzuran : public Supporter{
 public:
 	//std::string CharacterName, int IdleCont, int AttackCont,int DieCont, int StartCont
-    Suzuran() : Supporter("Suzuran", 42, 43, 28, 61){
+    Suzuran() : Supporter("Suzuran", 54, 43, 28, 61){
     	/*
 		 void SetInfo(int SetTime, int SetCost, float AttackTime, int Health, int Attack, int Defend, int DefendMagic,
 		 int SkillDefault, int SkillCost, float SkillTime, std::string skillinfo, std::string skillname,
