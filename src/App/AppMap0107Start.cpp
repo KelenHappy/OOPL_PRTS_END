@@ -17,7 +17,7 @@ void App::Map0107Loading() {
 	}
 	// 特效加速
 	m_FilmVector.clear();
-	m_FilmVector.reserve(10);
+	m_FilmVector.resize(10);
 	//
 	m_map0107->SetEnemyTotalMax(m_Spawner->GetAllEnemycount());
 	//角色選則

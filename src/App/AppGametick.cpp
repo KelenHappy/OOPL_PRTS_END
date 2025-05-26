@@ -50,8 +50,9 @@ void App::GameTick() {
 			int k = 0;
 			std::vector<std::shared_ptr<Enemy>>  EnemyTools = GetCharaterEnemyinRange(m_LevelCharacter[i]);
 			if (EnemyTools.size()>0  and m_LevelCharacter[i]->IfAnimationEnds() and m_LevelCharacter[i]->GetAttackTimeTicket() <= 0 and state != CharacterState::Default) {
-				m_LevelCharacter[i]->SetState(CharacterState::Attack);
-				for(size_t j = 0; j < EnemyTools.size() ; ++j){
+				m_LevelCharacter[i]->FrameReset();
+				for(size_t j = 0; j < EnemyTools.size() and j < static_cast<size_t>(m_LevelCharacter[i]->GetAttackTimesBuff()); ++j){
+					m_LevelCharacter[i]->SetState(CharacterState::Attack);
 					if(k < m_LevelCharacter[i]->GetAttackTimesBuff()){
 						std::cout <<"AttackTimes"<< m_LevelCharacter[i]->AttackTimess << std::endl;
 						for (int AttackTimes = 0 ; AttackTimes < m_LevelCharacter[i]->AttackTimess; AttackTimes++){attack(m_LevelCharacter[i], EnemyTools[j]);}
@@ -110,7 +111,7 @@ void App::GameTick() {
 		}
 		//判斷Idle
 		if (m_LevelCharacter[i]->IfAnimationEnds()
-		and state != CharacterState::Default and state != CharacterState::Die and state != CharacterState::Attack) {
+		and state != CharacterState::Default and state != CharacterState::Die) {
 			m_LevelCharacter[i]->SetVisible(true);
 			m_LevelCharacter[i]->SetLooping(true);
 			m_LevelCharacter[i]->SetState(CharacterState::Idle);
