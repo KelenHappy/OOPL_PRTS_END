@@ -29,10 +29,10 @@ public:
                 m_Transform.scale = {0.02f, 0.02f};
                 break;
             case FilmState::Bullet:
-                m_Transform.scale = {0.05f, 0.05f};
+                m_Transform.scale = {0.08f, 0.08f};
                 break;
             case FilmState::Frozen:
-                m_Transform.scale = {0.05f, 0.05f};
+                m_Transform.scale = {0.3f, 0.3f};
                 break;
             default:
                 std::cout << "None In Film." << std::endl;
@@ -72,7 +72,7 @@ public:
         m_Transform.scale = {x, y};  // 假設 m_Transform.scale 是有效的
     }
 
-	void SetPosition(const glm::vec2& Position) {
+	virtual void SetPosition(const glm::vec2& Position) {
         m_Transform.translation = {Position.x, Position.y};
     }
 

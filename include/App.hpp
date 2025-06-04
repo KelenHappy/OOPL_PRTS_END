@@ -163,6 +163,9 @@ private:
 	int m_CardCarry = -1;
 	int m_CharacterCarry = -1;
 	int Tickcount=0;
+
+	// Music
+	std::shared_ptr<BGM> m_BGM;
 };
 
 #endif

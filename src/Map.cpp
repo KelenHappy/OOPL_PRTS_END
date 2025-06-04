@@ -19,8 +19,6 @@ void Map::Update() {
     m_EnemyText->SetText(std::to_string(EnemyTotal)+"/"+std::to_string(EnemyTotalMax));
     m_HPText->SetText(std::to_string(TowerHP));
     m_Cost->SetText(std::to_string(cost));
-
-
 }
 void Map::CreatotherItem() {
     m_Cost=std::make_shared<TextBox>(40);
