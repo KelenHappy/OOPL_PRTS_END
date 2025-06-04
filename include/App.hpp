@@ -49,7 +49,7 @@
 #include "Enemy/FailingSoldier.hpp"
 #include "Enemy/DeSoldier.hpp"
 
-#include "BGM/BGM.hpp"
+#include "Util/BGM.hpp"
 #include "GamePlayMode/Attack.hpp"
 #include "UI/PlaceUI.hpp"
 
@@ -165,7 +165,7 @@ private:
 	int Tickcount=0;
 
 	// Music
-	std::shared_ptr<BGM> m_BGM;
+	std::shared_ptr<Util::BGM> m_BackGround_BGM;
 };
 
 #endif

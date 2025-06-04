@@ -20,11 +20,13 @@ void App::Update() {
         gametimer->Reset();
     }
     if(m_level==level::lobby){
-        try {
-            m_BGM = std::make_shared<BGM>("Resource/music/1-7.mp3");
-            m_BGM->Play(-1);
-        } catch (const std::exception &e) {
-            std::cerr << "BGM error: " << e.what() << std::endl;
+        // BGM
+        if (!m_BackGround_BGM) {
+            m_BackGround_BGM = std::make_shared<Util::BGM>(RESOURCE_DIR"/music/1-7.mp3");
+            m_BackGround_BGM->Play(-1);
+            if (m_BackGround_BGM->GetVolume() == 0) {
+                m_BackGround_BGM->SetVolume(64); // 設置為中等音量
+            }
         }
 
         if(Util::Input::IsKeyDown(Util::Keycode::Q)) {
