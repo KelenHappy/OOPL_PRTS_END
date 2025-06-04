@@ -49,6 +49,7 @@
 #include "Enemy/FailingSoldier.hpp"
 #include "Enemy/DeSoldier.hpp"
 
+#include "BGM/BGM.hpp"
 #include "GamePlayMode/Attack.hpp"
 #include "UI/PlaceUI.hpp"
 

@@ -173,6 +173,8 @@ add_executable(${PROJECT_NAME}
 		include/Enumclass/Direction.hpp
 		src/App/AppTool2.cpp
 
+		include/BGM/BGM.hpp
+
 
 )
 
