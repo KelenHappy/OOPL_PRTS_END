@@ -23,6 +23,8 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(ptsd)
 
 include(files.cmake)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
 set(SRC_DIR ${CMAKE_SOURCE_DIR}/src)
 set(INCLUDE_DIR ${CMAKE_SOURCE_DIR}/include)
 list(TRANSFORM SRC_FILES PREPEND ${SRC_DIR}/)
