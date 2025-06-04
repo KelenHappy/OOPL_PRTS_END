@@ -142,7 +142,7 @@ void App::ClickOfMap(){
             if(clicking) {
                 if(carry&&m_LevelCharacter[m_CardCarry]->GetBlockState() == m_map0107->Getblock()[m_Carry]->GetBlockState()&&m_LevelCharacter[m_CardCarry]->GetState() == CharacterState::Default and m_LevelCharacter[m_CardCarry]->GetHealthRecover() > 0 and
                     m_map0107->Getblock()[m_Carry]->HaveCharacter==false) {
-                    if(m_map0107->Takemapcost(m_LevelCharacter[m_CardCarry]->GetSetCost())){
+                    if(m_map0107->Getmapcost()>=m_LevelCharacter[m_CardCarry]->GetSetCost()){
                     m_placeUI->openUI(0);
                     m_placeUI->SetPostion(m_map0107->Getblock()[m_Carry]->m_Transform.translation.x,m_map0107->Getblock()[m_Carry]->m_Transform.translation.y);
                     m_UIMapLevel=UIMapLevel::ChoiceDirection;
@@ -181,11 +181,13 @@ void App::ClickOfMap(){
                     }
                     else if(Dir!=Direction::CENTER) {
                         m_UIMapLevel=UIMapLevel::Main;//放置
+                       if( m_map0107->Takemapcost(m_LevelCharacter[m_CardCarry]->GetSetCost())){
                         m_LevelCharacter[m_CardCarry]->PlaceCharacter(m_map0107->Getblock()[m_Carry],m_CardCarry);
                         m_LevelCharacter[m_CardCarry]->SetAttackRangeDefault(m_map0107->ExtractBlocksFromPattern(m_LevelCharacter[m_CardCarry]->GetDefaultRange(),m_map0107->Getblock()[m_Carry]->GetX(),m_map0107->Getblock()[m_Carry]->GetY(),Dir));
                         m_map0107->closeMapblock();
                         m_flyUI->SetVisible(false);
                         m_placeUI->closeUI();
+                       }
                     }
                     ResetMapChoice();
                 }
