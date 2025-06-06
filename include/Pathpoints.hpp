@@ -30,9 +30,11 @@ public:
         return WaitTime[0];
     }
     int GetIndexWaitPoint(int index) {
+        if (index >=int( WaitTime.size())) {return WaitTime[WaitTime.size()- 1] ;}
         return WaitTime[index];
     }
     glm::vec2 GetindexPoint(int index) {
+        if (index >=int( points.size())) {return points[points.size()- 1] ;}
         return points[index];
     }
     glm::vec2 getEndPoint() {

@@ -11,8 +11,15 @@ void Enemy::Updatemove() {
 		case EnemyState::Move:
 			if (glm::length(m_Transform.translation-(PathPoint->GetindexPoint(PathPointsindex)+glm::vec2{0,250*abs(m_Transform.scale.y)}))<3) {
 				if (PathPoint->GetIndexWaitPoint(PathPointsindex)<=0){
+					if(PathPoint->GetindexPoint(PathPointsindex).x<PathPoint->GetindexPoint(PathPointsindex+1).x) {
+						m_Transform.scale.x=abs(m_Transform.scale.x);
+					}
+					else {
+						m_Transform.scale.x=-abs(m_Transform.scale.x);
+					}
 					PathPointsindex++;
-					RodeWaitTime=0;}
+					RodeWaitTime=0;
+				}
 				else {
 					SetState(EnemyState::Idle);
 				}

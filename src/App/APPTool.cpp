@@ -13,12 +13,13 @@ void App::choicemap() {
         for(size_t i=0;i<choiceitems.size();i++) {
             if(checkCollision(Util::Input::GetCursorPosition(),choiceitems[i]->m_Transform.translation,110,20)) {
                 if(i==0) {
-                    m_level=level::loading;
-                    m_Loading.Update();
+                    m_level=level::chooseCharacter;
                 }
                 else if (i >= 1 && i <= 3) {
                     static constexpr Mapchoice maps[] = {Mapchoice::main17, Mapchoice::cc5, Mapchoice::rog53};
                     m_MainScream->SetMap(maps[i-1]);
+                    std::string st[]={"主線1-7","八號競技場","緊急失控"};
+                    m_ChosenCharacter->ChangeMaps(st[i-1]);
                 }
             }
         }

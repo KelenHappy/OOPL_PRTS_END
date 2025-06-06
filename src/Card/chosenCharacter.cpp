@@ -37,7 +37,15 @@
 ChosenCharacter::ChosenCharacter() {
     this->m_background=std::make_shared<CreateIMG>("/HalfCard/CC.png",-10);
     this->m_Exit= std::make_shared<TextBox>(65);
+    this->m_NowMap= std::make_shared<TextBox>(30);
+    this->m_Start=std::make_shared<ImgItem>("/Maps/start.png");
+   m_Start->m_Transform.scale={m_Start->m_Transform.scale.x*0.408,m_Start->m_Transform.scale.y*0.4};
+    m_Start->m_Transform.translation={500,-235};
+    m_Start->SetZIndex(50);
     m_Exit->SetText("<");
+    m_NowMap->SetText("現在地圖:主線1-7");
+    m_NowMap->SetPosition({395,341});
+    m_NowMap->SetColor(Util::Colors::LIGHT_SEA_GREEN);
     m_Exit->m_Transform.translation={-595,313};
     Icreate=false;
 }

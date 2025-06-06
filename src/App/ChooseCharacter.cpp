@@ -25,8 +25,12 @@ void App::ChooseCharacter() {
 			}
 		}
 		if(checkCollision(Util::Input::GetCursorPosition(),m_ChosenCharacter->GetExit()->m_Transform.translation,20,30)) {
-			m_LevelCharacter=m_ChosenCharacter->GetChoiceCharacter();
 			m_level=level::lobby;
+		}
+		if(checkCollision(Util::Input::GetCursorPosition(),m_ChosenCharacter->GetNowMaps()->m_Transform.translation,50,100)) {
+			m_LevelCharacter=m_ChosenCharacter->GetChoiceCharacter();
+			m_level=level::loading;
+			m_Loading.Update();
 		}
 	}
 
