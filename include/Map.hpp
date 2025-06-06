@@ -76,6 +76,8 @@ class Map :public Util::GameObject{
     std::shared_ptr<TextBox> m_Cost;
     std::shared_ptr<TextBox> m_HPText;
     std::shared_ptr<TextBox> m_EnemyText;
+    std::shared_ptr<ImgItem> m_endB;
+    std::shared_ptr<ImgItem> m_endmove;
 
 
 };

@@ -102,6 +102,8 @@ private:
 	void DeBug2();
 	void MapStart();
 	void ResetMapChoice();
+	void backToLobby();
+	void freeMap();
 	std::vector<std::shared_ptr<Enemy>> GetCharaterEnemyinRange(std::shared_ptr<AnimatedCharacter> Charater);
 	std::vector<std::shared_ptr<AnimatedCharacter>>GetCharaterinRange(std::shared_ptr<AnimatedCharacter> Charater);
 

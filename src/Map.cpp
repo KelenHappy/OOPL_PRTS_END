@@ -50,6 +50,14 @@ void Map::CreatotherItem() {
     m_EnemyText->SetText(std::to_string(EnemyTotal)+"/"+std::to_string(EnemyTotalMax));
     m_EnemyText->m_Transform.translation={-72,337};
     m_EnemyText->SetZIndex(61);
+    m_endmove=std::make_shared<ImgItem>("/Maps/endmove.png");
+    m_endmove->SetZIndex(100);
+    m_endmove->SetVisible(false);
+    m_endmove->m_Transform.translation={-800,0};
+    m_endB=std::make_shared<ImgItem>("/Maps/endb.png");
+    m_endB->SetZIndex(99);
+    m_endB->SetVisible(false);
+    m_endB->m_Transform.translation={0,0};
 }
 std::vector<std::shared_ptr<Util::GameObject>> Map::GetChildren() const {
     std::vector<std::shared_ptr<Util::GameObject>> result;
@@ -64,6 +72,8 @@ std::vector<std::shared_ptr<Util::GameObject>> Map::GetChildren() const {
     result.push_back(m_HPText);
     result.push_back(m_EnemyText);
     result.push_back(m_map);
+    result.push_back(m_endB);
+    result.push_back(m_endmove);
     return result;
 }
 bool Map::Takemapcost(int n) {
