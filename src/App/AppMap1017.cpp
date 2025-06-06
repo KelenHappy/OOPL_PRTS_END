@@ -10,7 +10,10 @@ void App::LevelMain17() {
         Util::Input::IfExit()) {
 			m_CurrentState = State::END;
     }
-	//判斷被放置
+	if (Util::Input::IsKeyUp(Util::Keycode::M)){
+		m_map0107->Addmapcost(99);
+    }
+
 	/*if(carry == true and CheckCard == true) {
 		// SetPosition
 		if(m_LevelCharacter[m_CardCarry]->GetBlockState() == m_map0107->Getblock()[m_Carry]->GetBlockState() and 

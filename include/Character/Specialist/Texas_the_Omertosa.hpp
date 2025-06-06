@@ -52,7 +52,32 @@ public:
         this->m_DefaultRange.clear();
 		this->m_DefaultRange.push_back({"2", "1", "0", "0"});
 	}
-
+	void takeDamage(CharacterAttackImpact impact, float damage) override{
+    	switch(impact){
+    		case CharacterAttackImpact::Null:
+    			break;
+    		case CharacterAttackImpact::Dizzy:
+    			ImpactDizzy();
+    			break;
+    		case CharacterAttackImpact::Sleep:
+    			ImpactSleep();
+    			break;
+    		case CharacterAttackImpact::Frozen:
+    			ImpactFrozen();
+    			break;
+    		default:
+    			std::cout << "Take DamageError." << std::endl;
+    			break;
+    	}
+    	//std::cout << damage << std::endl;
+    	if (SkillOpen) {
+    		HealthRecoverNum -= static_cast<int>(damage * 0.75);
+    	}
+    	else {
+    		HealthRecoverNum -= damage;
+    	}
+    	m_HpBar->Update(HealthRecoverNum,HealthNum);
+    }
 protected:
 	int SkillTimeTemp = 0;
 };

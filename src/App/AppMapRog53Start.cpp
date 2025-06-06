@@ -15,7 +15,8 @@ void App::MapRog53Loading() {
     }
     // 特效加速
     m_FilmVector.clear();
-    m_FilmVector.resize(10);
+    std::shared_ptr<Bullet> tempB = std::make_shared<Bullet> ("None", "Bullet");
+    m_FilmVector.push_back(tempB);
     //
     m_map0107->SetEnemyTotalMax(m_Spawner->GetAllEnemycount());
     //角色選則

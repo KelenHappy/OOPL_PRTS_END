@@ -9,7 +9,6 @@
 
 void App::GameSecondTick() {
     m_map0107->Addmapcost(1);
-
     for(size_t i = 0; i < m_LevelCharacter.size(); i++){
         if(m_LevelCharacter[i]->GetDie()){
             bool checkFirst = true;
