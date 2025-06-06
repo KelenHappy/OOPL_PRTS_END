@@ -218,10 +218,17 @@ public:
 		return m_GotAttackEnemy;
 	}
 	void AppendDefendEnemy(std::shared_ptr<Enemy> in) {
-		if (m_GotAttackEnemy.size() < HeavyLevelNum and !(GetBlockState() == BlockState::HIGH)) {
-			m_GotAttackEnemy.push_back(in);
-		}
-	}
+        if (!in) return;
+
+        if (std::find(m_GotAttackEnemy.begin(), m_GotAttackEnemy.end(), in) != m_GotAttackEnemy.end()) {
+            return; // Already in
+        }
+
+        if (m_GotAttackEnemy.size() < HeavyLevelNum && GetBlockState() != BlockState::HIGH) {
+            m_GotAttackEnemy.push_back(in);
+        }
+    }
+
 	virtual std::string GetJob()=0;
 	virtual ClassState GetJobClass()=0;
 	virtual BlockState GetBlockState() = 0;

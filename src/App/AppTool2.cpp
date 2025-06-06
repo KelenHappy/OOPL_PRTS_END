@@ -32,8 +32,8 @@ std::vector<std::shared_ptr<Enemy> > App::GetCharaterEnemyinRange(std::shared_pt
 
     std::vector<std::shared_ptr<Enemy>> Emy1;
     if (Charater->GetGotEnemy().size() > 0) {
-        for (auto& enemy : Charater->GetGotEnemy()) {
-            Emy1.push_back(enemy);  // 将每个元素添加到 Emy1
+        for (auto enemy : Charater->GetGotEnemy()) {
+            if (enemy->GetVisibility())Emy1.push_back(enemy);  // 将每个元素添加到 Emy1
         }
     }
 

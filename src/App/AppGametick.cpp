@@ -59,7 +59,9 @@ void App::GameTick() {
 				for(size_t j = 0; j < EnemyTools.size() and j < static_cast<size_t>(m_LevelCharacter[i]->GetAttackTimesBuff()); ++j){
 					m_LevelCharacter[i]->SetState(CharacterState::Attack);
 					if(k < m_LevelCharacter[i]->GetAttackTimesBuff()){
-						std::cout <<"AttackTimes"<< m_LevelCharacter[i]->AttackTimess << std::endl;
+						//std::cout << EnemyTools[0]->GetVisibility() << std::endl;
+						//std::cout << "Attack" << EnemyTools[j]->GetName() << std::endl;
+						//std::cout <<"AttackTimes"<< m_LevelCharacter[i]->AttackTimess << std::endl;
 						for (int AttackTimes = 0 ; AttackTimes < m_LevelCharacter[i]->AttackTimess; AttackTimes++){attack(m_LevelCharacter[i], EnemyTools[j]);}
 						if(m_LevelCharacter[i]->GetJob() == "Sniper"){
 							std::shared_ptr<Bullet> tempB = std::make_shared<Bullet> (m_LevelCharacter[i]->GetCharacterName(), "Bullet");
@@ -101,7 +103,8 @@ void App::GameTick() {
 				for(size_t j = 0; j < CharacterTools.size() and j < static_cast<size_t>(m_LevelCharacter[i]->GetAttackTimesBuff()); ++j){
 					m_LevelCharacter[i]->SetState(CharacterState::Attack);
 					if(k < m_LevelCharacter[i]->GetAttackTimesBuff() and m_LevelCharacter[j]->GetHP() > m_LevelCharacter[j]->GetHealthRecover()){
-						std::cout <<"AttackTimes"<< m_LevelCharacter[i]->AttackTimess << std::endl;
+
+						//std::cout <<"AttackTimes"<< m_LevelCharacter[i]->AttackTimess << std::endl;
 						for (int AttackTimes = 0 ; AttackTimes < m_LevelCharacter[i]->AttackTimess; AttackTimes++){attack(m_LevelCharacter[i], CharacterTools[j]);}
 						k++;
 						continue;
@@ -142,23 +145,19 @@ void App::GameTick() {
 	}
 	//敵人
 	for(size_t i = 0; i < Enemies.size(); ++i){
+		if(!Enemies[i]->GetVisibility() and Enemies[i]->GetState() == EnemyState::Default) continue;
 		if (Enemies[i]->GetStuck()) {
 			Enemies[i]->DeAttakSpeedTime(1);
 		}
 		EnemyState state = Enemies[i]->GetState();
-		if(!Enemies[i]->GetVisibility()) continue;
 		// 判斷是否活著
-		if (Enemies[i]->GetHealthRecover() <= 0 or state == EnemyState::Die) {
+		if (Enemies[i]->GetHealthRecover() <= 0 or state == EnemyState::Die or Enemies[i]->GetIsDead()) {
 			Enemies[i]->SetState(EnemyState::Die);
+			Enemies[i]->SetIsDead(true);
 			if (Enemies[i]->GetStuck()) {
 				for (auto character : m_LevelCharacter) {
 					auto gotEnemies = character->GetGotEnemy();
-					for (size_t j = 0; j < gotEnemies.size(); ++j) {
-						if (gotEnemies[j] == Enemies[i]) {
-							gotEnemies.erase(gotEnemies.begin() + j);
-							break;
-						}
-					}
+					gotEnemies.clear();
 				}
 				Enemies[i]->SetStuck(false);
 			}
@@ -170,8 +169,7 @@ void App::GameTick() {
 				Enemies[i]->FrameReset();
 				// 從容器中移除死亡角色
 				m_map0107->EnemyDied();
-				//m_0107.RemoveChild(Enemies[i]);
-				--i;  // 刪除後需要調整索引
+				Enemies.erase(Enemies.begin() + i);
 				continue;
 			}
 			else{

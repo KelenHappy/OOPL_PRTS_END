@@ -5,7 +5,7 @@
 class Lappland : public Guard{
 public:
 //std::string CharacterName, int IdleCont, int AttackCont,int DieCont, int StartCont
-    Lappland() : Guard("Lappland", 29, 77, 58, 48){
+    Lappland() : Guard("Lappland", 29, 64, 58, 48){
 		/*
 		void SetInfo(int SetTime, int SetCost, float AttackTime, int Health, int Attack, int Defend, int DefendMagic,
 		int SkillDefault, int SkillCost, float SkillTime, std::string skillinfo, std::string skillname,

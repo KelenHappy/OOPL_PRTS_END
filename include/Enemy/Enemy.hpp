@@ -187,9 +187,11 @@ public:
 	std::string GetJob(){
 		return "Enemy";
 	}
-	
+	void SetIsDead(bool in){IsDead = in;}
+	bool GetIsDead(){return IsDead;}
 	~Enemy(){}
 protected:
+	bool IsDead = false;
 	bool IsCreateAnimation = false;
 	std::vector<std::string> DefaultImage;
 	std::vector<std::string> IdleImage;
