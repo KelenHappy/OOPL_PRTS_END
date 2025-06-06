@@ -9,7 +9,7 @@
 class Saria : public Defender{
 public:
     //std::string CharacterName, int IdleCont, int AttackCont,int DieCont, int StartCont
-    Saria() : Defender("Saria", 60, 70, 60, 50){
+    Saria() : Defender("Saria", 87, 70, 60, 50){
         /*
         void SetInfo(int SetTime, int SetCost, float AttackTime, int Health, int Attack, int Defend, int DefendMagic,
         int SkillDefault, int SkillCost, float SkillTime, std::string skillinfo, std::string skillname,
