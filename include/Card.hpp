@@ -26,6 +26,7 @@ class Card:public Util::GameObject {
     std::shared_ptr<ImgItem>m_class;
     std::shared_ptr<ImgItem>m_Cardback;
     std::shared_ptr<TextBox> m_cost;
+    std::shared_ptr<TextBox> m_DeadTime;
     int cost;
     float cardsize;
     std::shared_ptr<AnimatedCharacter> m_Character;
