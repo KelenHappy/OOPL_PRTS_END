@@ -11,14 +11,17 @@
 void App::GameTick() {
     for(size_t i = 0; i< Enemies.size(); i++) {
         if(Enemies[i]->GetVisibility()) {
-           Enemies[i]->Updatemove();
-            if(Enemies[i]->GetPathPointsindex() >= static_cast<int>(Enemies[i]->GetPathPoints()->GetPointsize())) {
-                m_map0107->EmenyEnterTower();
-            	m_map0107->EnemyDied();
-                Enemies[i]->SetVisible(false);
-            	Enemies[i]->GetHpBar()->SetVisible(false);
-                Enemies[i]->SetLooping(false);
-			}
+           if(!Enemies[i]->GetStuck())Enemies[i]->Updatemove();
+		   if(Enemies[i]->GetPathPointsindex() >= static_cast<int>(Enemies[i]->GetPathPoints()->GetPointsize())) {
+			   m_map0107->EmenyEnterTower();
+			   m_map0107->EnemyDied();
+			   Enemies[i]->SetVisible(false);
+			   Enemies[i]->GetHpBar()->SetVisible(false);
+			   Enemies[i]->SetLooping(false);
+			   Enemies.erase(Enemies.begin() + i);
+			   --i; // 調整索引，因為 erase 會導致 vector 向前移動
+			   continue; // 確保這一輪不要再用這個 i
+		   }
         }
     }
     for (size_t i = 0; i < m_LevelCharacter.size(); ++i) {
@@ -34,7 +37,6 @@ void App::GameTick() {
 				for (size_t j = 0; i < m_LevelCharacter[j]->GetGotEnemy().size(); j ++) {
 					m_LevelCharacter[i]->GetGotEnemy()[j]->SetStuck(false);
 				}
-				m_LevelCharacter[i]->GetGotEnemy().clear();
 				m_LevelCharacter[i]->CloseSkill();
 				m_LevelCharacter[i]->SetDead(true);
 				continue;
@@ -155,10 +157,6 @@ void App::GameTick() {
 			Enemies[i]->SetState(EnemyState::Die);
 			Enemies[i]->SetIsDead(true);
 			if (Enemies[i]->GetStuck()) {
-				for (auto character : m_LevelCharacter) {
-					auto gotEnemies = character->GetGotEnemy();
-					gotEnemies.clear();
-				}
 				Enemies[i]->SetStuck(false);
 			}
 			//std::cout << enemy->GetJob()<< "Die" << std::endl;
@@ -184,7 +182,6 @@ void App::GameTick() {
 		//判斷攻擊
 		if(Enemies[i]->GetJob() != "None"){
 			for(size_t j = 0; j < m_LevelCharacter.size() ; ++j) {
-				m_LevelCharacter[j]->GetGotEnemy().clear();
 				if (m_LevelCharacter[j]->GetHeavyLevel() <= m_LevelCharacter[j]->GetGotEnemy().size()) {
 					continue;
 				}

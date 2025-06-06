@@ -224,7 +224,7 @@ public:
             return; // Already in
         }
 
-        if (m_GotAttackEnemy.size() < HeavyLevelNum && GetBlockState() != BlockState::HIGH) {
+        if (m_GotAttackEnemy.size() < static_cast<size_t>(HeavyLevelNum) && GetBlockState() != BlockState::HIGH) {
             m_GotAttackEnemy.push_back(in);
         }
     }

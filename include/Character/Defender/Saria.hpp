@@ -38,13 +38,13 @@ public:
         AttackType = CharacterAttackType::Health;
         AttackNum *= AttackBuff;
         m_DefaultRange.clear();
-        this->m_DefaultRange.push_back({"0", "0", "0", "1", "0"});
-        this->m_DefaultRange.push_back({"0", "0", "1", "1", "1"});
-        this->m_DefaultRange.push_back({"0", "1", "1", "1", "1", "1"});
+        this->m_DefaultRange.push_back({"0", "0", "0", "1", "0", "0", "0"});
+        this->m_DefaultRange.push_back({"0", "0", "1", "1", "1", "0", "0"});
+        this->m_DefaultRange.push_back({"0", "1", "1", "1", "1", "1", "0"});
         this->m_DefaultRange.push_back({"1", "1", "1", "2", "1", "1", "1"});
-        this->m_DefaultRange.push_back({"0", "1", "1", "1", "1", "1"});
-        this->m_DefaultRange.push_back({"0", "0", "1", "1", "1"});
-        this->m_DefaultRange.push_back({"0", "0", "0", "1", "0"});
+        this->m_DefaultRange.push_back({"0", "1", "1", "1", "1", "1", "0"});
+        this->m_DefaultRange.push_back({"0", "0", "1", "1", "1", "0", "0"});
+        this->m_DefaultRange.push_back({"0", "0", "0", "1", "0", "0", "0"});
     }
 
     void CloseSkill() override{
