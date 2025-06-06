@@ -16,15 +16,15 @@ public:
         HeavyLevel
         */
         SetInfo(70, 18, 1.2, 3150, 485, 595, 10,
-        70, 80, 30, "附近所有友軍每秒回覆相當於塞雷婭攻擊力35%的生命附近所有敵軍受到的法術傷害+55%，移動速度-60%", "鈣質化"
+        70, 80, 30, "附近所有友軍每秒回覆相當於塞雷婭攻擊力50%的生命", "鈣質化"
         , 2);
 
         //角色技能建立
-        SetDefendBuff(1.3);
-
+        SetAttackBuff(0.5);
+        SetAttackTimesBuff(1);
         //建立初始攻擊範圍
 
-        this->m_DefaultRange.push_back({"2", "0", "0", "0", "0"});
+        this->m_DefaultRange.push_back({"2"});
 
     }
     std::string GetChineseName() override {return "塞雷婭";}
@@ -35,7 +35,16 @@ public:
         SkillNow -= SkillCostNum;
         SkillTimeTemp = SkillTimeNum;
         // Skill Make
-
+        AttackType = CharacterAttackType::Health;
+        AttackNum *= AttackBuff;
+        m_DefaultRange.clear();
+        this->m_DefaultRange.push_back({"0", "0", "0", "1", "0"});
+        this->m_DefaultRange.push_back({"0", "0", "1", "1", "1"});
+        this->m_DefaultRange.push_back({"0", "1", "1", "1", "1", "1"});
+        this->m_DefaultRange.push_back({"1", "1", "1", "2", "1", "1", "1"});
+        this->m_DefaultRange.push_back({"0", "1", "1", "1", "1", "1"});
+        this->m_DefaultRange.push_back({"0", "0", "1", "1", "1"});
+        this->m_DefaultRange.push_back({"0", "0", "0", "1", "0"});
     }
 
     void CloseSkill() override{
@@ -43,8 +52,10 @@ public:
         SkillOpen = false;
         SkillTimeNum = SkillTimeTemp;
         // Skill Make
-
-
+        AttackNum /= AttackBuff;
+        AttackType = CharacterAttackType::Physics;
+        this->m_DefaultRange.clear();
+        this->m_DefaultRange.push_back({"2", "0", "0", "0", "0"});
     }
 
 protected:
