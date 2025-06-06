@@ -51,6 +51,7 @@ public:
 		// Skill Func
 		SkillOpen = false;
 		SkillTimeNum = SkillTimeTemp;
+    	m_Drawable = m_IdleAnimation;
 		// Skill Make
 		SetAttackTimesBuff(0);
 		AttackTimeNum *= AttackTimeBuff;

@@ -31,6 +31,7 @@ void App::GameTick() {
 				m_LevelCharacter[i]->OutPlaceCharacter();
 				m_LevelCharacter[i]->FrameReset();
 				// 從容器中Reset角色
+				m_LevelCharacter[i]->CloseSkill();
 				m_LevelCharacter[i]->SetDead(true);
 				continue;
 			}

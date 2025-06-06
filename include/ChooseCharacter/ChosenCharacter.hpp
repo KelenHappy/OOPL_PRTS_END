@@ -17,6 +17,7 @@ class ChosenCharacter:public Util::GameObject {
     [[nodiscard]] std::vector<std::shared_ptr<Util::GameObject>> GetChildren() const {return { m_background,m_Exit,m_Start,m_NowMap};}
     [[nodiscard]]std::vector<std::shared_ptr<HalfCard>> GetHalfCard(){return m_HalfCard;}
     [[nodiscard]]std::shared_ptr<TextBox> GetExit(){return m_Exit;}
+    [[nodiscard]]std::shared_ptr<ImgItem> GetStart(){return m_Start;}
     [[nodiscard]]std::shared_ptr<TextBox> GetNowMaps(){return m_NowMap;}
 	[[nodiscard]] std::vector<std::shared_ptr<Util::GameObject>> GetChildrenCard() const {
         std::vector<std::shared_ptr<Util::GameObject>> result;

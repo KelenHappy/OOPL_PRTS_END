@@ -7,7 +7,8 @@ public:
     Defender(std::string CharacterName, int IdleCont, int AttackCont,int DieCont, int StartCont) : AnimatedCharacter(){
 		int defaultNum = 25;
 
-		SetCharacterName(CharacterName);
+    	SetCharacterName(CharacterName);
+    	SetAttackType(CharacterAttackType::Physics);
 
 		HalfCardImage.emplace_back(RESOURCE_DIR"/HalfCard/Defender/"+ CharacterName + ".png");
 		DefaultImage.emplace_back(RESOURCE_DIR"/Character/Defender/" + CharacterName + "/Default/1.png");

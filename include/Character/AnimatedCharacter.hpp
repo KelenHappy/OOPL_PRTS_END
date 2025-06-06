@@ -166,6 +166,7 @@ public:
 	void updatetransform();
 	void SetAttackRangeDefault(std::vector<std::shared_ptr <Block>>AD){AttackRangeDefault=AD;AttackRangeNow=AD;}
 	// Get
+	int GetSkillNow(){return SkillNow;}
 	float GetAttackTimeTicket(){return AttackTimeTicket;}
 	float GetSetTime(){return SetTimeNum;}
 	int GetSetCost(){return SetCostNum;}
