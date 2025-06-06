@@ -1,4 +1,5 @@
 #include "App.hpp"
+#include  <string>
 #include "Util/Transform.hpp"
 #include "Util/Image.hpp"
 #include "Util/Input.hpp"
@@ -16,7 +17,8 @@ void App::GameSecondTick() {
 			
 			
             for (size_t j = 0; j < m_FilmVector.size(); j++) {
-                if (m_LevelCharacter[i]->GetCharacterName() + "die" == m_FilmVector[j]->GetName()) {
+                std::string characterName = m_LevelCharacter[i]->GetCharacterName();
+                if (characterName + "die" == m_FilmVector[j]->GetName()) {
                     checkFirst = false;
                     break;
                 }
