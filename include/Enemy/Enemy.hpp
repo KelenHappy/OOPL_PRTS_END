@@ -95,6 +95,7 @@ public:
 		DefendNum = Defend;
 		MagicDefendNum = MagicDefend;
 		AttackSpeedNum = AttackSpeed;
+		AttackSpeedNow = AttackSpeed*20;
 		AttackDistanceNum = AttackDistance;
 		AttackCastleNum = AttackCastle;
 		MoveSpeedNum = MoveSpeed;
@@ -107,6 +108,17 @@ public:
 		FrozenDefend = Frozen;
 		AttackType = attack_t;
 	}
+
+	void DeAttakSpeedTime(float in) {
+		AttackSpeedNow -= in;
+	}
+
+	void SetAttackTicket(float in ) {
+		AttackSpeedNow = in;
+	}
+	float GetAttackTicket() {
+			return AttackSpeedNow;
+		}
 	void SetImpactTick(int input){
 		ImpactTick = input;
 	}
@@ -160,6 +172,8 @@ public:
 	void SetPathPointsindex(int n){PathPointsindex=n;}
 	void SetIsCreateAnimation(bool in){IsCreateAnimation = in;}
 	void AddPathPointsindex(){PathPointsindex++;}
+	void SetStuck(bool in){IfStuck = in;}
+	bool GetStuck(){return IfStuck;}
 	std::shared_ptr<PathPoints> GetPathPoints(){return PathPoint;}
 
 	CharacterAttackImpact GetAttackImpact(){
@@ -193,6 +207,7 @@ protected:
 	float DefendNum = 0;
 	float MagicDefendNum = 0;
 	float AttackSpeedNum = 0;
+	float AttackSpeedNow = 0;
 	float AttackDistanceNum = 0;
 	int AttackCastleNum = 0;
 	float MoveSpeedNum = 0;
@@ -207,7 +222,7 @@ protected:
 
 	CharacterAttackType AttackType = CharacterAttackType::Physics;
 	CharacterAttackImpact AttackImpact = CharacterAttackImpact::Null;
-
+	bool IfStuck = false;
 	int ImpactTick = 5;
 	bool ImpactBB = false;
 

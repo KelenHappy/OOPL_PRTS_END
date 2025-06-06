@@ -31,6 +31,10 @@ void App::GameTick() {
 				m_LevelCharacter[i]->OutPlaceCharacter();
 				m_LevelCharacter[i]->FrameReset();
 				// 從容器中Reset角色
+				for (size_t j = 0; i < m_LevelCharacter[j]->GetGotEnemy().size(); j ++) {
+					m_LevelCharacter[i]->GetGotEnemy()[j]->SetStuck(false);
+				}
+				m_LevelCharacter[i]->GetGotEnemy().clear();
 				m_LevelCharacter[i]->CloseSkill();
 				m_LevelCharacter[i]->SetDead(true);
 				continue;
@@ -91,25 +95,41 @@ void App::GameTick() {
 		// 判斷回血
 		else if(m_LevelCharacter[i]->GetAttackType() == CharacterAttackType::Health){
 			int k = 0;
-			for(size_t j = 0; j < m_LevelCharacter.size(); ++j){
-				float distance = calculateDistance(m_LevelCharacter[i]->m_Transform, m_LevelCharacter[j]->m_Transform);
-				if(m_LevelCharacter[j]->GetHP() > m_LevelCharacter[j]->GetHealthRecover()
-				and distance <= m_LevelCharacter[i]->GetAttackRangeNum()*75
-				and m_LevelCharacter[i]->IfAnimationEnds() and m_LevelCharacter[i]->GetAttackTimeTicket() <= 0){
-					if (k == 0){m_LevelCharacter[i]->SetState(CharacterState::Attack);}
-					if( k < m_LevelCharacter[i]->GetAttackTimesBuff()){
-						attack(m_LevelCharacter[i], m_LevelCharacter[j]);
+			std::vector<std::shared_ptr<AnimatedCharacter>>   CharacterTools = GetCharaterinRange(m_LevelCharacter[i]);
+			if (CharacterTools.size()>0  and m_LevelCharacter[i]->IfAnimationEnds() and m_LevelCharacter[i]->GetAttackTimeTicket() <= 0 and state != CharacterState::Default) {
+				m_LevelCharacter[i]->FrameReset();
+				for(size_t j = 0; j < CharacterTools.size() and j < static_cast<size_t>(m_LevelCharacter[i]->GetAttackTimesBuff()); ++j){
+					m_LevelCharacter[i]->SetState(CharacterState::Attack);
+					if(k < m_LevelCharacter[i]->GetAttackTimesBuff() and m_LevelCharacter[j]->GetHP() > m_LevelCharacter[j]->GetHealthRecover()){
+						std::cout <<"AttackTimes"<< m_LevelCharacter[i]->AttackTimess << std::endl;
+						for (int AttackTimes = 0 ; AttackTimes < m_LevelCharacter[i]->AttackTimess; AttackTimes++){attack(m_LevelCharacter[i], CharacterTools[j]);}
 						k++;
 						continue;
 					}
 					m_LevelCharacter[i]->SetAttackTimeTicket(m_LevelCharacter[i]->GetAttackTime()*20);
+					//std::cout << m_LevelCharacter[i]->GetAttackTimeTicket() << std::endl;
 					break;
 				}
-				else if(m_LevelCharacter[i]->IfAnimationEnds()){
+				if(m_LevelCharacter[i]->IfAnimationEnds()) {
 					m_LevelCharacter[i]->SetState(CharacterState::Idle);
 				}
 			}
 		}
+    	//被敵人攻擊
+    	auto temp = m_LevelCharacter[i]->GetGotEnemy();
+    	for (size_t k = 0; k < temp.size(); k ++) {
+    		if (temp[k]->GetAttackTicket() < 0 and temp[k]->IfAnimationEnds()) {
+    			temp[k]->SetState(EnemyState::Attack);
+    			attack(temp[k], m_LevelCharacter[i]);
+    			temp[k]->SetAttackTicket(temp[k]->GetAttackSpeed()*20);
+    		}
+    		else {
+    			temp[k]->DeAttakSpeedTime(1);
+    		}
+    		if (temp[k]->IfAnimationEnds()) {
+    			temp[k]->SetState(EnemyState::Idle);
+    		}
+    	}
 		//判斷Idle
 		if (m_LevelCharacter[i]->IfAnimationEnds()
 		and state != CharacterState::Default and state != CharacterState::Die) {
@@ -122,11 +142,26 @@ void App::GameTick() {
 	}
 	//敵人
 	for(size_t i = 0; i < Enemies.size(); ++i){
+		if (Enemies[i]->GetStuck()) {
+			Enemies[i]->DeAttakSpeedTime(1);
+		}
 		EnemyState state = Enemies[i]->GetState();
 		if(!Enemies[i]->GetVisibility()) continue;
 		// 判斷是否活著
 		if (Enemies[i]->GetHealthRecover() <= 0 or state == EnemyState::Die) {
 			Enemies[i]->SetState(EnemyState::Die);
+			if (Enemies[i]->GetStuck()) {
+				for (auto character : m_LevelCharacter) {
+					auto gotEnemies = character->GetGotEnemy();
+					for (size_t j = 0; j < gotEnemies.size(); ++j) {
+						if (gotEnemies[j] == Enemies[i]) {
+							gotEnemies.erase(gotEnemies.begin() + j);
+							break;
+						}
+					}
+				}
+				Enemies[i]->SetStuck(false);
+			}
 			//std::cout << enemy->GetJob()<< "Die" << std::endl;
 			if (Enemies[i]->IfAnimationEnds()) {
 				Enemies[i]->SetLooping(false);
@@ -135,7 +170,7 @@ void App::GameTick() {
 				Enemies[i]->FrameReset();
 				// 從容器中移除死亡角色
 				m_map0107->EnemyDied();
-				m_0107.RemoveChild(Enemies[i]);
+				//m_0107.RemoveChild(Enemies[i]);
 				--i;  // 刪除後需要調整索引
 				continue;
 			}
@@ -149,17 +184,17 @@ void App::GameTick() {
 		}
 		//判斷移動碰撞
 		//判斷攻擊
-		int Count = Enemies[i]->GetAttackTimesBuff();
 		if(Enemies[i]->GetJob() != "None"){
-			for(size_t j = 0; j < m_LevelCharacter.size(); ++j){
+			for(size_t j = 0; j < m_LevelCharacter.size() ; ++j) {
+				m_LevelCharacter[j]->GetGotEnemy().clear();
+				if (m_LevelCharacter[j]->GetHeavyLevel() <= m_LevelCharacter[j]->GetGotEnemy().size()) {
+					continue;
+				}
 				float distance = glm::length(m_LevelCharacter[j]->GetPositionFix()-Enemies[i]->GetPositionFix()) ;
-				if(state != EnemyState::Default and distance <= Enemies[i]->GetAttackRangeNum()* 70 and m_LevelCharacter[j]->GetVisibility()
+				if(state != EnemyState::Default and state != EnemyState::Die and distance <= Enemies[i]->GetAttackRangeNum()* 70 and m_LevelCharacter[j]->GetVisibility()
 					and Enemies[i]->IfAnimationEnds()){
-					Enemies[i]->SetState(EnemyState::Attack);
-					attack(Enemies[i], m_LevelCharacter[j]);
-					Count--;
-					if(Count <= 0){break;}
-					else{continue;}
+					m_LevelCharacter[j]->AppendDefendEnemy(Enemies[i]);
+					Enemies[i]->SetStuck(true);
 				}
 				else if(Enemies[i]->IfAnimationEnds()){
 					if(Enemies[i]->GetRodeWaitTime()>1) Enemies[i]->SetState(EnemyState::Idle);
@@ -171,8 +206,7 @@ void App::GameTick() {
 		else{
 
 		}
-		if(Enemies[i]->IfAnimationEnds()
-		and state != EnemyState::Default and state != EnemyState::Die and state != EnemyState::Attack){
+		if(Enemies[i]->IfAnimationEnds()and state != EnemyState::Default and state != EnemyState::Die){
 			Enemies[i]->SetLooping(true);
 			Enemies[i]->SetVisible(true);
 			if(Enemies[i]->GetRodeWaitTime()>1) Enemies[i]->SetState(EnemyState::Idle);
@@ -180,6 +214,8 @@ void App::GameTick() {
 			Enemies[i]->FrameReset();
 		}
 	}
+
+	//結束與特效
 
 	if(Enemies.size() == 0){
 		for(size_t i = 0; i < m_LevelCharacter.size() and m_LevelCharacter[i]->GetVisibility(); i++){

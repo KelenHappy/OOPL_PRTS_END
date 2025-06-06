@@ -12,6 +12,7 @@
 #include "ClassState.hpp"
 #include "BlockState.hpp"
 #include "Hpbar.hpp"
+#include "Enemy/Enemy.hpp"
 #include "Enumclass/Direction.hpp"
 #include "GamePlayMode/CharacterAttackImpact.hpp"
 #include "GamePlayMode/CharacterSkill.hpp"
@@ -161,7 +162,10 @@ public:
     void SetAttackTimeTicket(float in){AttackTimeTicket = in;}
 	void SetAttackType(CharacterAttackType tt){AttackType = tt;}
 	void SetAttackImpact(CharacterAttackImpact tt){AttackImpact = tt;}
-	void SetDead(bool t){ Dead = t;}
+	void SetDead(bool t) {
+		DefendCoutNow = 0;
+    	Dead = t;
+    }
 	void SetDieCost(){ DieCost = SetTimeNum;}
 	void updatetransform();
 	void SetAttackRangeDefault(std::vector<std::shared_ptr <Block>>AD){AttackRangeDefault=AD;AttackRangeNow=AD;}
@@ -207,7 +211,17 @@ public:
 	std::string GetCharacterName(){
 		return CharacterName;
 	}
+	void AddDefendCoutNum(int i){DefendCoutNow += i;}
+	int GetDefendCoutNow(){return DefendCoutNow;}
 	void SetCharacterName(std::string name){CharacterName=name;}
+	std::vector<std::shared_ptr<Enemy>>  GetGotEnemy() {
+		return m_GotAttackEnemy;
+	}
+	void AppendDefendEnemy(std::shared_ptr<Enemy> in) {
+		if (m_GotAttackEnemy.size() < HeavyLevelNum and !(GetBlockState() == BlockState::HIGH)) {
+			m_GotAttackEnemy.push_back(in);
+		}
+	}
 	virtual std::string GetJob()=0;
 	virtual ClassState GetJobClass()=0;
 	virtual BlockState GetBlockState() = 0;
@@ -256,8 +270,8 @@ protected:
     // Slill Control
     int SkillNow = 0;
     // Buff Control
-
-
+	int DefendCoutNow = 0;
+	std::vector<std::shared_ptr<Enemy>> m_GotAttackEnemy;
 private:
     float m_Width = 15.0f;  // 角色寬度
     float m_Height = 15.0f; // 角色高度

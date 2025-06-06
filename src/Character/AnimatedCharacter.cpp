@@ -115,6 +115,11 @@ void AnimatedCharacter::updatetransform() {
 }
 void AnimatedCharacter::PlaceCharacter(std::shared_ptr<Block> block,int index) {
 	if (block == nullptr) return;
+	DefendCoutNow = 0;
+	for (size_t i = 0; i < m_GotAttackEnemy.size(); i ++) {
+		m_GotAttackEnemy[i]->SetStuck(false);
+	}
+	GetGotEnemy().clear();
 	HealthRecoverNum = HealthNum;
 	m_HpBar->Update(HealthRecoverNum,HealthNum);
 	m_PlaceBlock=block;
@@ -127,6 +132,10 @@ void AnimatedCharacter::PlaceCharacter(std::shared_ptr<Block> block,int index) {
 	updatetransform();
 }
 void AnimatedCharacter::OutPlaceCharacter() {
+	for (size_t i = 0; i < m_GotAttackEnemy.size(); i ++) {
+		m_GotAttackEnemy[i]->SetStuck(false);
+	}
+	GetGotEnemy().clear();
 	m_HpBar->Update(HealthRecoverNum,HealthNum);
 	SetVisible(false);
 	Gethpbar()->SetVisible(false);
