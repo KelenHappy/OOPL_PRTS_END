@@ -174,6 +174,7 @@ add_executable(${PROJECT_NAME}
 		src/App/AppTool2.cpp
 
 		include/BGM/L_BGM.hpp
+		src/App/AppRestart.cpp
 
 
 )
