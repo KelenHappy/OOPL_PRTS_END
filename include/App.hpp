@@ -106,7 +106,7 @@ private:
 	std::vector<std::shared_ptr<AnimatedCharacter>>GetCharaterinRange(std::shared_ptr<AnimatedCharacter> Charater);
 
 private:
-
+	void PlayBGM(const std::string& path);
     level m_level=level::lobby;
     State m_CurrentState = State::START;
 	UIMapLevel  m_UIMapLevel = UIMapLevel::Main;
@@ -165,6 +165,7 @@ private:
 	int Tickcount=0;
 
 	// Music
+	std::string m_CurrentBGMPath;
 	std::shared_ptr<Util::BGM> m_BackGround_BGM;
 };
 

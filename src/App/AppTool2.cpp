@@ -57,3 +57,21 @@ std::vector<std::shared_ptr<AnimatedCharacter>> App::GetCharaterinRange(std::sha
     }
     return CTR;
 }
+
+void App::PlayBGM(const std::string& path) {
+    if (m_CurrentBGMPath != path) {
+        m_CurrentBGMPath = path;
+
+        if (m_BackGround_BGM) {
+            m_BackGround_BGM->FadeOut(1000); // 淡出 1 秒
+        }
+
+        m_BackGround_BGM = std::make_shared<Util::BGM>(path);
+        m_BackGround_BGM->FadeIn(1000, -1); // 淡入，無限循環
+
+        if (m_BackGround_BGM->GetVolume() == 0) {
+            m_BackGround_BGM->SetVolume(32);
+        }
+    }
+}
+

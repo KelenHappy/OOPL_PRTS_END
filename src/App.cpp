@@ -21,13 +21,7 @@ void App::Update() {
     }
     if(m_level==level::lobby){
         // BGM
-        if (!m_BackGround_BGM) {
-            m_BackGround_BGM = std::make_shared<Util::BGM>(RESOURCE_DIR"/music/1-7.mp3");
-            m_BackGround_BGM->Play(-1);
-            if (m_BackGround_BGM->GetVolume() == 0) {
-                m_BackGround_BGM->SetVolume(64); // 設置為中等音量
-            }
-        }
+        PlayBGM(RESOURCE_DIR"/music/LOBBY.mp3");
 
         if(Util::Input::IsKeyDown(Util::Keycode::Q)) {
             m_level=level::main17;
@@ -37,18 +31,28 @@ void App::Update() {
         m_Root.Update();
     }
     else if(m_level==level::main17) {
+        // BGM
+        PlayBGM(RESOURCE_DIR"/music/1-7.mp3");
+
         LevelMain17();
 		Debug();
 	}
     else if(m_level==level::cc5) {
+        // BGM
+        PlayBGM(RESOURCE_DIR"/music/競技場1.mp3");
         LevelMain17();
         Debug();
     }
     else if(m_level==level::rog53) {
+        // BGM
+        PlayBGM(RESOURCE_DIR"/music/競技場2.mp3");
+
         LevelMain17();
         Debug();
     }
     else if(m_level==level::chooseCharacter) {
+        PlayBGM(RESOURCE_DIR"/music/失控.mp3");
+
         ChooseCharacter();
     }
     else if(m_level==level::loading) {
