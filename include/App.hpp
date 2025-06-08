@@ -66,7 +66,8 @@ public:
         cc5,
         rog53,
 		chooseCharacter,
-    	loading
+    	loading,
+    	BackToLobby
     };
 	enum class UIMapLevel {
 		Main,

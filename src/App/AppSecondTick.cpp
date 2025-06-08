@@ -69,5 +69,11 @@ void App::GameSecondTick() {
     }
     m_map0107->Update();
     m_Spawner->Update();
+    if(m_map0107->GetEnemytotal() ==m_map0107->GetEnemytotalMax() ){
+        gametimer->Reset();
+        gametimer->Pause();
+        m_map0107->End();
+        std::cout<<"isend";
+    }
 
 }

@@ -40,6 +40,8 @@ void App::MapStart() {
         m_0107.AddChild(m_LevelCharacter[i]->Gethpbar());
     }
     m_0107.AddChildren(m_map0107->GetChildrenCard());
+    m_0107.AddChild(m_flyUI);
+    m_0107.AddChildren(m_placeUI->GetChildren());
     gametimer->Start();
     NowMap=m_map0107;
 }

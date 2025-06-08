@@ -61,6 +61,13 @@ void App::LevelMain17() {
 		m_CharacterCarry = -1;
 	}*/
 	ClickOfMap();
+	if (m_map0107->EndAnimeUpdate()) {
+		m_LoadingPage->SetNewIMGstd("/Maps/BackToLobby.png");
+		m_level=level::BackToLobby;
+		m_Loading.Update();
+
+
+	}
 	// 設定角色出現與否
 
 	

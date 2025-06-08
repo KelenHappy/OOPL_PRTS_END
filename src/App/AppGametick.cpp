@@ -224,15 +224,6 @@ void App::GameTick() {
 		}
 	}
 
-	//結束與特效
-
-	if(Enemies.size() == 0){
-		for(size_t i = 0; i < m_LevelCharacter.size() and m_LevelCharacter[i]->GetVisibility(); i++){
-			m_LevelCharacter[i]->SetVisible(true);
-			m_LevelCharacter[i]->SetLooping(true);
-			m_LevelCharacter[i]->SetState(CharacterState::Idle);
-		}
-	}
 	for (size_t i = 0; i < m_FilmVector.size(); i++) {
 		if (!m_FilmVector[i]) {
 			continue;

@@ -14,10 +14,10 @@ void App::Update() {
        Util::Input::IfExit()) {
         m_CurrentState = State::END;}
     if (gametimer->HasElapsed(40)) { // 每 50 毫秒執行一次
+        gametimer->Reset();
         GameTick();
         Tickcount++;
         if (Tickcount >=20) {Tickcount=0;GameSecondTick();}
-        gametimer->Reset();
     }
     if(m_level==level::lobby){
         // BGM
@@ -59,7 +59,7 @@ void App::Update() {
         m_Loading.Update();
         switch (m_MainScream->GetMapchoice()) {
             case Mapchoice::main17:
-                Map0107Loading();
+                MapStart();
                 m_level=level::main17;
             break;
             case Mapchoice::cc5:
@@ -73,6 +73,13 @@ void App::Update() {
             default:
                 break;
         }
+    }
+    else if(m_level==level::chooseCharacter) {
+        ChooseCharacter();
+    }
+    else if(m_level==level::BackToLobby) {
+        m_Loading.Update();
+        backToLobby();
     }
 }
 

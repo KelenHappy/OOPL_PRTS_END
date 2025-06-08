@@ -50,10 +50,14 @@ class Map :public Util::GameObject{
     void CreatotherItem();
     void openMapblock(BlockState B);
     void closeMapblock();
+    void End();
+    bool
+    EndAnimeUpdate();
     std::vector<std::shared_ptr<Block>> ExtractBlocksFromPattern(const std::vector<std::vector<std::string>>& range,
     int base_x, int base_y, Direction dir);
     glm::vec2 GetMapsize(){return mapsize;}
 	~Map(){}
+
 
 
     private:
@@ -65,6 +69,7 @@ class Map :public Util::GameObject{
     int EnemyTotal;
     int cost;
     int PutLimit;
+    bool isEnd;
     glm::vec2 mapsize;
     std::vector<std::shared_ptr<Block>>m_block;
     std::shared_ptr<CreateIMG> m_map;
@@ -78,6 +83,9 @@ class Map :public Util::GameObject{
     std::shared_ptr<TextBox> m_EnemyText;
     std::shared_ptr<ImgItem> m_endB;
     std::shared_ptr<ImgItem> m_endmove;
+    int m_stage = 0; // 0: 進場, 1: 停留, 2: 離場, 3: 結束
+    int delay=0;
+
 
 
 };

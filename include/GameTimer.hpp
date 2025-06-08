@@ -42,7 +42,8 @@ public:
     }
 
     bool HasElapsed(double milliseconds) {
-        return GetElapsedTime() >= milliseconds;
+        if (mRunning) {return GetElapsedTime() >= milliseconds;}
+        return false;
     }
 
 private:
