@@ -11,7 +11,7 @@
 
 class Enemy : public AnimatedEnemy, public CharacterSkill,public std::enable_shared_from_this<Enemy>, public AttackRange{
 public:
-    Enemy(std::string EnemyNameI, int IdleCont, int AttackCont,int DieCont, int MoveCont) : AnimatedEnemy(){
+	Enemy(std::string EnemyNameI, int IdleCont, int AttackCont,int DieCont, int MoveCont) : AnimatedEnemy(){
 		int defaultNum = 6;
 		EnemyName = EnemyNameI;
 		DefaultImage.emplace_back(RESOURCE_DIR"/Enemy/" + EnemyName + "/Default/1.png");
@@ -25,8 +25,8 @@ public:
 
 		// Idle
 		seen.clear();
-		for (float i = 0; i < IdleCont; i += (float)IdleCont / defaultNum) {
-			int int_i = static_cast<int>(i);
+		for (int step = 0; step < defaultNum; ++step) {
+			int int_i = step * IdleCont / defaultNum;
 			if (seen.find(int_i) != seen.end()) continue;
 			seen.insert(int_i);
 			IdleImage.emplace_back(RESOURCE_DIR"/Enemy/" + EnemyName + "/Idle/" + std::to_string(int_i + 1) + ".png");
@@ -34,8 +34,8 @@ public:
 
 		// Move
 		seen.clear();
-		for (float i = 0; i < MoveCont; i += (float)MoveCont / defaultNum) {
-			int int_i = static_cast<int>(i);
+		for (int step = 0; step < defaultNum; ++step) {
+			int int_i = step * MoveCont / defaultNum;
 			if (seen.find(int_i) != seen.end()) continue;
 			seen.insert(int_i);
 			MoveImage.emplace_back(RESOURCE_DIR"/Enemy/" + EnemyName + "/Move/" + std::to_string(int_i + 1) + ".png");
@@ -43,8 +43,8 @@ public:
 
 		// Die
 		seen.clear();
-		for (float i = 0; i < DieCont; i += (float)DieCont / defaultNum) {
-			int int_i = static_cast<int>(i);
+		for (int step = 0; step < defaultNum; ++step) {
+			int int_i = step * DieCont / defaultNum;
 			if (seen.find(int_i) != seen.end()) continue;
 			seen.insert(int_i);
 			DieImage.emplace_back(RESOURCE_DIR"/Enemy/" + EnemyName + "/Die/" + std::to_string(int_i + 1) + ".png");
@@ -52,19 +52,21 @@ public:
 
 		// Attack
 		seen.clear();
-		for (float i = 0; i < AttackCont; i += (float)AttackCont / defaultNum) {
-			int int_i = static_cast<int>(i);
+		for (int step = 0; step < defaultNum; ++step) {
+			int int_i = step * AttackCont / defaultNum;
 			if (seen.find(int_i) != seen.end()) continue;
 			seen.insert(int_i);
 			AttackImage.emplace_back(RESOURCE_DIR"/Enemy/" + EnemyName + "/Attack/" + std::to_string(int_i + 1) + ".png");
 		}
+
 		//Set Default Attack Range
 		SetAttackRangeNum(1);
-    	I_Hpbar=std::make_shared<HpBar>();
-    	I_Hpbar->Update(HealthRecoverNum,HealthNum);
-    	I_Hpbar->m_Transform.translation=GetPositionFix()-glm::vec2{ 0,13 };
-    	I_Hpbar->SetVisible(false);
-    }
+		I_Hpbar = std::make_shared<HpBar>();
+		I_Hpbar->Update(HealthRecoverNum, HealthNum);
+		I_Hpbar->m_Transform.translation = GetPositionFix() - glm::vec2{0, 13};
+		I_Hpbar->SetVisible(false);
+	}
+
 	void CreateAnimation(){
 		SetPath(this->IdleImage, this->AttackImage, this->DieImage, MoveImage, this->DefaultImage);
 	}
@@ -86,7 +88,7 @@ public:
 		m_Transform.scale={x, y}; 
 	}
 	void SetPathPoint(std::shared_ptr<PathPoints> P){PathPoint=P;}
-	void SetInfo(int Health, int Attack, int Defend, int MagicDefend, int AttackSpeed
+	void SetInfo(int Health, int Attack, int Defend, int MagicDefend, float AttackSpeed
 	, float AttackDistance, int AttackCastle, float MoveSpeed, int HeavyLevel
 	, bool Dizzy, bool Sleep, bool Frozen
 	, CharacterAttackType attack_t){

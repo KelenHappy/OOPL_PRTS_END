@@ -147,6 +147,11 @@ std::vector<std::shared_ptr<Block>> Map::ExtractBlocksFromPattern(
                     case Direction::SOUTH: dx = -di; dy = dj;  break;
                     case Direction::WEST:  dx = -dj; dy = -di; break;
                     case Direction::NORTH: dx = di;  dy = -dj; break;
+                    default:
+                        std::cout << "Error Direction Map.cpp 151" << std::endl;
+                        dx = dj;
+                        dy = di;
+                        break;
                 }
                 int x = base_x + dx;
                 int y = base_y + dy;

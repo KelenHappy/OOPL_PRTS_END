@@ -8,10 +8,10 @@
 
 class AttackRange {
 public:
-	void SetAttackRangeNum(int Range){
+	void SetAttackRangeNum(float Range){
 		AttackRangeNum = Range;
 	}
-	int GetAttackRangeNum(){
+	float GetAttackRangeNum(){
 		return AttackRangeNum;
 	}
     void SetAttackRangeNow(std::vector<std::shared_ptr<Block>> Range) {
@@ -32,7 +32,7 @@ public:
 	std::vector<std::vector<std::string>> GetDefaultRange() {return m_DefaultRange;}
 	std::vector<std::shared_ptr<Block>> GetAttackRangeNow(){return  AttackRangeNow;}
 protected:
-	int AttackRangeNum = 0 ;
+	float AttackRangeNum = 0 ;
     std::vector<std::vector<std::string>> m_DefaultRange;
     std::vector<std::shared_ptr<Block>> AttackRangeNow;
     std::vector<std::shared_ptr<Block>> AttackRangeDefault ;
