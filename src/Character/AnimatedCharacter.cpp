@@ -115,14 +115,28 @@ void AnimatedCharacter::updatetransform() {
 }
 void AnimatedCharacter::PlaceCharacter(std::shared_ptr<Block> block,int index) {
 	if (block == nullptr) return;
+
+	// 重置所有狀態
 	DefendCoutNow = 0;
-	for (size_t i = 0; i < m_GotAttackEnemy.size(); i ++) {
-		m_GotAttackEnemy[i]->SetStuck(false);
+	Dead = false;  // 重要：重置死亡狀態
+
+	// 清理並釋放所有被阻擋的敵人
+	for (size_t i = 0; i < m_GotAttackEnemy.size(); i++) {
+		if (m_GotAttackEnemy[i]) {
+			m_GotAttackEnemy[i]->SetStuck(false);
+		}
 	}
+	m_GotAttackEnemy.resize(0);  // 清空容器
+
+	// 重置生命值
 	HealthRecoverNum = HealthNum;
-	m_HpBar->Update(HealthRecoverNum,HealthNum);
-	m_PlaceBlock=block;
-	//AttackRangeDefault=map->ExtractBlocksFromPattern(m_DefaultRange,block->GetX(),block->GetY(),Direction::EAST);
+	m_HpBar->Update(HealthRecoverNum, HealthNum);
+
+	// 重置攻擊計時器
+	AttackTimeTicket = -1;
+
+	// 設置位置和狀態
+	m_PlaceBlock = block;
 	SetPosition(block->GetPosition());
 	SetState(CharacterState::Start);
 	SetVisible(true);
@@ -149,5 +163,15 @@ void AnimatedCharacter::showrange() {
 	}
 }
 
+void AnimatedCharacter::ClearAllGotEnemies() {
+	// 將所有被阻擋的敵人設為未被阻擋
+	for (auto& enemy : m_GotAttackEnemy) {
+		if (enemy) {
+			enemy->SetStuck(false);
+		}
+	}
+	m_GotAttackEnemy.clear();
+	DefendCoutNow = 0;  // 重置防禦計數
+}
 
 

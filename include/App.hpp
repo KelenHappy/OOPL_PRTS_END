@@ -154,6 +154,8 @@ private:
 	// Enemy
     // idle attack die move
     std::vector<std::shared_ptr<Enemy>> Enemies;
+	void RemoveEnemyFromAllCharacters();
+
     // 大便
 	bool clicking=false;
 	bool CheckCard = false;

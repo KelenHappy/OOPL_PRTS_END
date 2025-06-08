@@ -75,3 +75,13 @@ void App::PlayBGM(const std::string& path) {
     }
 }
 
+void App::RemoveEnemyFromAllCharacters() {
+    // 遍历所有角色
+    for (auto character : this->m_LevelCharacter) {
+        // 获取角色的敌人列表
+        auto enemyList = character->GetGotEnemy();
+        enemyList.resize(0);
+    }
+}
+
+

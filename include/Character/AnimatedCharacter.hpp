@@ -39,6 +39,7 @@ public:
 	void ImpactFrozen();
 	void FrameReset();
 	void showrange();
+    void ClearAllGotEnemies();
     virtual void CreateAnimation() = 0;
 	virtual void OpenSkill() = 0;
 	virtual void CloseSkill() = 0;
@@ -218,15 +219,20 @@ public:
 		return m_GotAttackEnemy;
 	}
 	void AppendDefendEnemy(std::shared_ptr<Enemy> in) {
-        if (!in) return;
+        if (!in || GetDie()) return;  // 如果角色已死亡，不接受新敵人
 
+        // 檢查是否已經在容器中
         if (std::find(m_GotAttackEnemy.begin(), m_GotAttackEnemy.end(), in) != m_GotAttackEnemy.end()) {
-            return; // Already in
+            return; // 已經存在，不重複添加
         }
 
-        if (m_GotAttackEnemy.size() < static_cast<size_t>(HeavyLevelNum) && GetBlockState() != BlockState::HIGH) {
-            m_GotAttackEnemy.push_back(in);
-        }
+        // 檢查是否還有容量
+        if (GetDefendCoutNow() < HeavyLevelNum &&
+            GetBlockState() != BlockState::HIGH &&
+            GetVisibility()) {  // 確保角色可見
+                AddDefendCoutNum(1);
+                m_GotAttackEnemy.push_back(in);
+            }
     }
 
 	virtual std::string GetJob()=0;
