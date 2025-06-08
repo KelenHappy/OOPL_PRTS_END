@@ -41,7 +41,7 @@ void App::GameSecondTick() {
             }
             else{
                 m_LevelCharacter[i]->DeSkillTime(1);
-                if(m_LevelCharacter[i]->GetSkillTime() <= 0 and m_LevelCharacter[i]->GetVisibility()){
+                if(m_LevelCharacter[i]->GetSkillTime() <= 0 and m_LevelCharacter[i]->GetVisibility() and m_LevelCharacter[i]->GetSkillOpen()){
                     m_LevelCharacter[i]->CloseSkill();
                 }
             }

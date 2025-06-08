@@ -122,7 +122,7 @@ void App::GameTick() {
 		}
     	//被敵人攻擊
     	auto temp = m_LevelCharacter[i]->GetGotEnemy();
-		std::cout << m_LevelCharacter[i]->GetGotEnemy().size() << std::endl;
+		// std::cout << m_LevelCharacter[i]->GetGotEnemy().size() << std::endl;
     	for (size_t k = 0; k < temp.size(); k ++) {
     		if (temp[k]->GetAttackTicket() < 0 and temp[k]->IfAnimationEnds()) {
     			temp[k]->SetState(EnemyState::Attack);
