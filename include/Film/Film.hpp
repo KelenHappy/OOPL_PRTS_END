@@ -35,6 +35,7 @@ public:
                 m_Transform.scale = {0.3f, 0.3f};
                 break;
             default:
+                lifeTimes = 1;
                 std::cout << "None In Film." << std::endl;
                 break;
         }

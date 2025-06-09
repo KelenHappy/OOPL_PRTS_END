@@ -18,7 +18,8 @@ void App::MapStart() {
     }
     // 特效加速
     m_FilmVector.clear();
-    m_FilmVector.resize(10);
+    std::shared_ptr<Bullet> tempB = std::make_shared<Bullet> ("None", "Bullet");
+    m_FilmVector.push_back(tempB);
     //
     m_map0107->SetEnemyTotalMax(m_Spawner->GetAllEnemycount());
     //角色選則
@@ -39,6 +40,8 @@ void App::MapStart() {
         m_0107.AddChild(m_LevelCharacter[i]->Gethpbar());
     }
     m_0107.AddChildren(m_map0107->GetChildrenCard());
+    m_0107.AddChild(m_flyUI);
+    m_0107.AddChildren(m_placeUI->GetChildren());
     gametimer->Start();
     NowMap=m_map0107;
 }

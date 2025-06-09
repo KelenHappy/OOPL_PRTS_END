@@ -5,7 +5,7 @@
 class Cuora : public Defender{
 public:
     //std::string CharacterName, int IdleCont, int AttackCont,int DieCont, int StartCont
-    Cuora() : Defender("Cuora", 118, 53, 59, 59){
+    Cuora() : Defender("Cuora", 100, 60, 59, 59){
         /*
         void SetInfo(int SetTime, int SetCost, float AttackTime, int Health, int Attack, int Defend, int DefendMagic,
         int SkillDefault, int SkillCost, float SkillTime, std::string skillinfo, std::string skillname,

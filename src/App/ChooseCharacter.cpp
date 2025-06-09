@@ -29,6 +29,7 @@ void App::ChooseCharacter() {
 		}
 		if(checkCollision(Util::Input::GetCursorPosition(),m_ChosenCharacter->GetStart()->m_Transform.translation,50,100)) {
 			m_LevelCharacter=m_ChosenCharacter->GetChoiceCharacter();
+			m_LoadingPage->SetNewIMGstd("/MainScream/Loading.png");
 			m_level=level::loading;
 			m_Loading.Update();
 		}

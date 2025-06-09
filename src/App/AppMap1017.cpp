@@ -10,7 +10,10 @@ void App::LevelMain17() {
         Util::Input::IfExit()) {
 			m_CurrentState = State::END;
     }
-	//判斷被放置
+	if (Util::Input::IsKeyUp(Util::Keycode::M)){
+		m_map0107->Addmapcost(99);
+    }
+
 	/*if(carry == true and CheckCard == true) {
 		// SetPosition
 		if(m_LevelCharacter[m_CardCarry]->GetBlockState() == m_map0107->Getblock()[m_Carry]->GetBlockState() and 
@@ -58,6 +61,13 @@ void App::LevelMain17() {
 		m_CharacterCarry = -1;
 	}*/
 	ClickOfMap();
+	if (m_map0107->EndAnimeUpdate()) {
+		m_LoadingPage->SetNewIMGstd("/Maps/BackToLobby.png");
+		m_level=level::BackToLobby;
+		m_Loading.Update();
+
+
+	}
 	// 設定角色出現與否
 
 	

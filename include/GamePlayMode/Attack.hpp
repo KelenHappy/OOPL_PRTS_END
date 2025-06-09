@@ -27,5 +27,7 @@ void attack(T1 thisC, T2 that){
     that->takeDamage(
         thisC->GetAttackImpact(),
         damage);
+    std::cout << "Attack: " << thisC->GetAttack() << ", Target Defend: " << that->GetDefend() << std::endl;
+
 }
 #endif

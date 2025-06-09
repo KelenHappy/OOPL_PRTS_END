@@ -12,6 +12,7 @@
 #include "ClassState.hpp"
 #include "BlockState.hpp"
 #include "Hpbar.hpp"
+#include "Enemy/Enemy.hpp"
 #include "Enumclass/Direction.hpp"
 #include "GamePlayMode/CharacterAttackImpact.hpp"
 #include "GamePlayMode/CharacterSkill.hpp"
@@ -31,13 +32,14 @@ public:
 	int AttackTimess = 1;
 	void Update();
     [[nodiscard]] bool IfCollides( std::shared_ptr<AnimatedCharacter>& other);
-	void takeDamage(CharacterAttackImpact impact, float damage);
+	virtual void takeDamage(CharacterAttackImpact impact, float damage);
     void CharacterGetBuff();
 	void ImpactDizzy();
 	void ImpactSleep();
 	void ImpactFrozen();
 	void FrameReset();
 	void showrange();
+    void ClearAllGotEnemies();
     virtual void CreateAnimation() = 0;
 	virtual void OpenSkill() = 0;
 	virtual void CloseSkill() = 0;
@@ -161,7 +163,10 @@ public:
     void SetAttackTimeTicket(float in){AttackTimeTicket = in;}
 	void SetAttackType(CharacterAttackType tt){AttackType = tt;}
 	void SetAttackImpact(CharacterAttackImpact tt){AttackImpact = tt;}
-	void SetDead(bool t){ Dead = t;}
+	void SetDead(bool t) {
+		DefendCoutNow = 0;
+    	Dead = t;
+    }
 	void SetDieCost(){ DieCost = SetTimeNum;}
 	void updatetransform();
 	void SetAttackRangeDefault(std::vector<std::shared_ptr <Block>>AD){AttackRangeDefault=AD;AttackRangeNow=AD;}
@@ -207,7 +212,29 @@ public:
 	std::string GetCharacterName(){
 		return CharacterName;
 	}
+	void AddDefendCoutNum(int i){DefendCoutNow += i;}
+	int GetDefendCoutNow(){return DefendCoutNow;}
 	void SetCharacterName(std::string name){CharacterName=name;}
+	std::vector<std::shared_ptr<Enemy>>  GetGotEnemy() {
+		return m_GotAttackEnemy;
+	}
+	void AppendDefendEnemy(std::shared_ptr<Enemy> in) {
+        if (!in || GetDie()) return;  // 如果角色已死亡，不接受新敵人
+
+        // 檢查是否已經在容器中
+        if (std::find(m_GotAttackEnemy.begin(), m_GotAttackEnemy.end(), in) != m_GotAttackEnemy.end()) {
+            return; // 已經存在，不重複添加
+        }
+
+        // 檢查是否還有容量
+        if (GetDefendCoutNow() < HeavyLevelNum &&
+            GetBlockState() != BlockState::HIGH &&
+            GetVisibility()) {  // 確保角色可見
+                AddDefendCoutNum(1);
+                m_GotAttackEnemy.push_back(in);
+            }
+    }
+
 	virtual std::string GetJob()=0;
 	virtual ClassState GetJobClass()=0;
 	virtual BlockState GetBlockState() = 0;
@@ -256,8 +283,8 @@ protected:
     // Slill Control
     int SkillNow = 0;
     // Buff Control
-
-
+	int DefendCoutNow = 0;
+	std::vector<std::shared_ptr<Enemy>> m_GotAttackEnemy;
 private:
     float m_Width = 15.0f;  // 角色寬度
     float m_Height = 15.0f; // 角色高度

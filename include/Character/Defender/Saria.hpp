@@ -9,7 +9,7 @@
 class Saria : public Defender{
 public:
     //std::string CharacterName, int IdleCont, int AttackCont,int DieCont, int StartCont
-    Saria() : Defender("Saria", 60, 70, 60, 50){
+    Saria() : Defender("Saria", 87, 70, 60, 50){
         /*
         void SetInfo(int SetTime, int SetCost, float AttackTime, int Health, int Attack, int Defend, int DefendMagic,
         int SkillDefault, int SkillCost, float SkillTime, std::string skillinfo, std::string skillname,
@@ -38,13 +38,13 @@ public:
         AttackType = CharacterAttackType::Health;
         AttackNum *= AttackBuff;
         m_DefaultRange.clear();
-        this->m_DefaultRange.push_back({"0", "0", "0", "1", "0"});
-        this->m_DefaultRange.push_back({"0", "0", "1", "1", "1"});
-        this->m_DefaultRange.push_back({"0", "1", "1", "1", "1", "1"});
+        this->m_DefaultRange.push_back({"0", "0", "0", "1", "0", "0", "0"});
+        this->m_DefaultRange.push_back({"0", "0", "1", "1", "1", "0", "0"});
+        this->m_DefaultRange.push_back({"0", "1", "1", "1", "1", "1", "0"});
         this->m_DefaultRange.push_back({"1", "1", "1", "2", "1", "1", "1"});
-        this->m_DefaultRange.push_back({"0", "1", "1", "1", "1", "1"});
-        this->m_DefaultRange.push_back({"0", "0", "1", "1", "1"});
-        this->m_DefaultRange.push_back({"0", "0", "0", "1", "0"});
+        this->m_DefaultRange.push_back({"0", "1", "1", "1", "1", "1", "0"});
+        this->m_DefaultRange.push_back({"0", "0", "1", "1", "1", "0", "0"});
+        this->m_DefaultRange.push_back({"0", "0", "0", "1", "0", "0", "0"});
     }
 
     void CloseSkill() override{

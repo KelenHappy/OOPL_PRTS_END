@@ -12,6 +12,7 @@ Map::Map(Mapchoice Mc) {
     cost=10;
     CreateMapchoice(Mc);
     CreatotherItem();
+    isEnd=false;
 
 }
 void Map::Update() {
@@ -157,6 +158,11 @@ std::vector<std::shared_ptr<Block>> Map::ExtractBlocksFromPattern(
                     case Direction::SOUTH: dx = -di; dy = dj;  break;
                     case Direction::WEST:  dx = -dj; dy = -di; break;
                     case Direction::NORTH: dx = di;  dy = -dj; break;
+                    default:
+                        std::cout << "Error Direction Map.cpp 151" << std::endl;
+                        dx = dj;
+                        dy = di;
+                        break;
                 }
                 int x = base_x + dx;
                 int y = base_y + dy;
@@ -185,6 +191,58 @@ void Map::CreateMapchoice(Mapchoice Mc) {
 }
 
 
+
+void Map::End() {
+    if (!isEnd){
+        m_stage = 0;
+        delay=0;
+        isEnd=true;
+
+        m_endB->m_Transform.translation={0, 0}; // 背景置中（若需）
+        m_endmove->m_Transform.translation={-1280, 0}; // 從畫面左邊外面開始
+        m_endmove->SetVisible(true);
+        m_endB->SetVisible(true);
+    }
+}
+bool Map::EndAnimeUpdate() {
+    if (isEnd){
+        float m_speed = 30.0f; // 移動速度（像素/秒）
+        float m_stopTime = 1000.0f; // 停留時間（毫秒）
+        if (m_stage == 0) {
+            // 移動進場
+            float x = m_endmove->m_Transform.translation.x;
+            if (x < 0) {
+                x += m_speed ;
+                if (x >= 0) {
+                    x = 0;
+                    m_stage = 1;
+                }
+                m_endmove->m_Transform.translation.x=x;
+            }
+        }
+        else if (m_stage == 1) {
+            // 停留
+            delay+=m_speed;
+            if (delay>=m_stopTime) {
+                m_stage = 2;
+            }
+        }
+        else if (m_stage == 2) {
+            // 離場
+            float x = m_endmove->m_Transform.translation.x;
+            if (x < 1280) {
+                x += m_speed;
+                m_endmove->m_Transform.translation.x=x;
+            } else {
+                m_stage = 3;
+            }
+        }
+        else if (m_stage == 3) {
+            return true;
+        }
+    }
+    return false;
+}
 
 
 

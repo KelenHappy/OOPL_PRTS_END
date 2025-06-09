@@ -4,13 +4,13 @@
 
 class Guard : public AnimatedCharacter{
 public:
-    Guard(std::string CharacterName, int IdleCont, int AttackCont,int DieCont, int StartCont) : AnimatedCharacter(){
+	Guard(std::string CharacterName, int IdleCont, int AttackCont, int DieCont, int StartCont) : AnimatedCharacter() {
 		int defaultNum = 25;
 
 		SetCharacterName(CharacterName);
 
-		HalfCardImage.emplace_back(RESOURCE_DIR"/HalfCard/Guard/"+ CharacterName + ".png");
-		DefaultImage.emplace_back(RESOURCE_DIR"/Character/Guard/" + CharacterName + "/Default/1.png");
+		HalfCardImage.emplace_back(RESOURCE_DIR "/HalfCard/Guard/" + CharacterName + ".png");
+		DefaultImage.emplace_back(RESOURCE_DIR "/Character/Guard/" + CharacterName + "/Default/1.png");
 		this->m_HalfCard = std::make_shared<Util::Animation>(HalfCardImage, false, 40, false, 40);
 		this->m_Drawable = std::make_shared<Util::Animation>(HalfCardImage, false, 40, false, 40);
 
@@ -19,41 +19,24 @@ public:
 		DieImage.reserve(defaultNum);
 		AttackImage.reserve(defaultNum);
 
-		// --- 修正 seen 記憶範圍 ---
 		std::set<int> seen;
 
-		for(float i = 0; i < IdleCont; i += (float)IdleCont / defaultNum){
-			int int_i = static_cast<int>(i);
-			if (seen.find(int_i) != seen.end()) continue;
-			seen.insert(int_i);
-			IdleImage.emplace_back(RESOURCE_DIR"/Character/Guard/" + CharacterName + "/Idle/" + std::to_string(int_i + 1) + ".png");
-		}
+		auto fillImages = [&](int count, std::vector<std::string>& images, const std::string& actionFolder) {
+			seen.clear();
+			for (int step = 0; step < defaultNum; ++step) {
+				int idx = static_cast<int>(step * (float)count / defaultNum);
+				if (seen.find(idx) != seen.end()) continue;
+				seen.insert(idx);
+				images.emplace_back(RESOURCE_DIR "/Character/Guard/" + CharacterName + "/" + actionFolder + "/" + std::to_string(idx + 1) + ".png");
+			}
+		};
 
-		seen.clear();
-		for(float i = 0; i < StartCont; i += (float)StartCont / defaultNum){
-			int int_i = static_cast<int>(i);
-			if (seen.find(int_i) != seen.end()) continue;
-			seen.insert(int_i);
-			StartImage.emplace_back(RESOURCE_DIR"/Character/Guard/" + CharacterName + "/Start/" + std::to_string(int_i + 1) + ".png");
-		}
+		fillImages(IdleCont, IdleImage, "Idle");
+		fillImages(StartCont, StartImage, "Start");
+		fillImages(DieCont, DieImage, "Die");
+		fillImages(AttackCont, AttackImage, "Attack");
+	}
 
-		seen.clear();
-		for(float i = 0; i < DieCont; i += (float)DieCont / defaultNum){
-			int int_i = static_cast<int>(i);
-			if (seen.find(int_i) != seen.end()) continue;
-			seen.insert(int_i);
-			DieImage.emplace_back(RESOURCE_DIR"/Character/Guard/" + CharacterName + "/Die/" + std::to_string(int_i + 1) + ".png");
-		}
-
-		seen.clear();
-		for(float i = 0; i < AttackCont; i += (float)AttackCont / defaultNum){
-			int int_i = static_cast<int>(i);
-			if (seen.find(int_i) != seen.end()) continue;
-			seen.insert(int_i);
-			AttackImage.emplace_back(RESOURCE_DIR"/Character/Guard/" + CharacterName + "/Attack/" + std::to_string(int_i + 1) + ".png");
-		}
-
-    }
 
 	void CreateAnimation() override{
 		SetPath(IdleImage, AttackImage, DieImage, StartImage, DefaultImage);

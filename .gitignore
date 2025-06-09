@@ -495,9 +495,11 @@ lib/
 # Doxygen generated files
 docs/html/
 
+PTSD
 Dropbox-Uploader
 Resources
 Resources.zip
 Resources.rar
 Resources.7z
 FFmpeg
+Resources.tar.xz

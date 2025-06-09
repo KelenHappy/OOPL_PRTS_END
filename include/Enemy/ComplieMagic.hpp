@@ -11,7 +11,7 @@ public:
 		//, bool Dizzy, bool Sleep, bool Frozen
 		//, AttackType attack_t
 		SetInfo(3000, 320, 100, 50, 4.0,
-		1.8, 0.8, 1, 0,
+		1.8, 1, 0.8, 0,
 		false, false, false,
 		CharacterAttackType::Magic);
 		// Attack Range

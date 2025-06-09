@@ -31,6 +31,12 @@ std::vector<std::shared_ptr<Enemy> > App::GetCharaterEnemyinRange(std::shared_pt
     }
 
     std::vector<std::shared_ptr<Enemy>> Emy1;
+    if (Charater->GetGotEnemy().size() > 0) {
+        for (auto enemy : Charater->GetGotEnemy()) {
+            if (enemy->GetVisibility() and enemy->GetStuck())Emy1.push_back(enemy);
+        }
+    }
+
     for (size_t i = 0; i < Emy.size(); i++) {
         if (BEmy[i]) {
             Emy1.push_back(Emy[i]);
@@ -51,3 +57,31 @@ std::vector<std::shared_ptr<AnimatedCharacter>> App::GetCharaterinRange(std::sha
     }
     return CTR;
 }
+
+void App::PlayBGM(const std::string& path) {
+    if (m_CurrentBGMPath != path) {
+        m_CurrentBGMPath = path;
+
+        if (m_BackGround_BGM) {
+            m_BackGround_BGM->FadeOut(1000); // 淡出 1 秒
+        }
+
+        m_BackGround_BGM = std::make_shared<Util::BGM>(path);
+        m_BackGround_BGM->FadeIn(1000, -1); // 淡入，無限循環
+
+        if (m_BackGround_BGM->GetVolume() == 0) {
+            m_BackGround_BGM->SetVolume(32);
+        }
+    }
+}
+
+void App::RemoveEnemyFromAllCharacters() {
+    // 遍历所有角色
+    for (auto character : this->m_LevelCharacter) {
+        // 获取角色的敌人列表
+        auto enemyList = character->GetGotEnemy();
+        enemyList.resize(0);
+    }
+}
+
+

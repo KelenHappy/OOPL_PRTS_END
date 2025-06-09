@@ -14,20 +14,14 @@ void App::Update() {
        Util::Input::IfExit()) {
         m_CurrentState = State::END;}
     if (gametimer->HasElapsed(40)) { // 每 50 毫秒執行一次
+        gametimer->Reset();
         GameTick();
         Tickcount++;
         if (Tickcount >=20) {Tickcount=0;GameSecondTick();}
-        gametimer->Reset();
     }
     if(m_level==level::lobby){
         // BGM
-        if (!m_BackGround_BGM) {
-            m_BackGround_BGM = std::make_shared<Util::BGM>(RESOURCE_DIR"/music/1-7.mp3");
-            m_BackGround_BGM->Play(-1);
-            if (m_BackGround_BGM->GetVolume() == 0) {
-                m_BackGround_BGM->SetVolume(64); // 設置為中等音量
-            }
-        }
+        PlayBGM(RESOURCE_DIR"/music/LOBBY.mp3");
 
         if(Util::Input::IsKeyDown(Util::Keycode::Q)) {
             m_level=level::main17;
@@ -37,25 +31,35 @@ void App::Update() {
         m_Root.Update();
     }
     else if(m_level==level::main17) {
+        // BGM
+        PlayBGM(RESOURCE_DIR"/music/1-7.mp3");
+
         LevelMain17();
 		Debug();
 	}
     else if(m_level==level::cc5) {
+        // BGM
+        PlayBGM(RESOURCE_DIR"/music/競技場1.mp3");
         LevelMain17();
         Debug();
     }
     else if(m_level==level::rog53) {
+        // BGM
+        PlayBGM(RESOURCE_DIR"/music/競技場2.mp3");
+
         LevelMain17();
         Debug();
     }
     else if(m_level==level::chooseCharacter) {
+        PlayBGM(RESOURCE_DIR"/music/失控.mp3");
+
         ChooseCharacter();
     }
     else if(m_level==level::loading) {
         m_Loading.Update();
         switch (m_MainScream->GetMapchoice()) {
             case Mapchoice::main17:
-                Map0107Loading();
+                MapStart();
                 m_level=level::main17;
             break;
             case Mapchoice::cc5:
@@ -69,6 +73,13 @@ void App::Update() {
             default:
                 break;
         }
+    }
+    else if(m_level==level::chooseCharacter) {
+        ChooseCharacter();
+    }
+    else if(m_level==level::BackToLobby) {
+        m_Loading.Update();
+        backToLobby();
     }
 }
 
