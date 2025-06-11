@@ -13,7 +13,7 @@ public:
          */
 		SetInfo(18, 8, 0.93, 1598, 569, 320, 0,
 		0, -1, 8, "部署後立即對周圍敵人造成兩次相當於攻擊力165%的法術傷害並使目標暈眩2秒，造成攻擊力130%的法術傷害和暈眩", "劍雨滂沱"
-		, 0);
+		, 1);
 		//角色技能建立
 		SetAttackBuff(2.65);
     	SetAttackImpact(CharacterAttackImpact::Dizzy);

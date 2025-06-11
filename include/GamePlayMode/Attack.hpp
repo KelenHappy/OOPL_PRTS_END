@@ -18,7 +18,7 @@ void attack(T1 thisC, T2 that){
     		damage=std::max(damage,thisC->GetAttack()*0.05f);
 			break;
 		case CharacterAttackType::Health:
-			
+
 			break;
         default:
             std::cout << "Take Damage Error." << std::endl;
@@ -27,7 +27,7 @@ void attack(T1 thisC, T2 that){
     that->takeDamage(
         thisC->GetAttackImpact(),
         damage);
-    std::cout << "Attack: " << thisC->GetAttack() << ", Target Defend: " << that->GetDefend() << std::endl;
+    //std::cout << "Attack: " << thisC->GetAttack() << ", Target Defend: " << that->GetDefend() << std::endl;
 
 }
 #endif

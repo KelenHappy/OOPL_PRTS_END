@@ -85,7 +85,7 @@ public:
 	void DeImpactTick();
 	// Set
 		void SetImageSize(float x, float y){
-		m_Transform.scale={x, y}; 
+		m_Transform.scale={x, y};
 	}
 	void SetPathPoint(std::shared_ptr<PathPoints> P){PathPoint=P;}
 	void SetInfo(int Health, int Attack, int Defend, int MagicDefend, float AttackSpeed
@@ -97,7 +97,7 @@ public:
 		DefendNum = Defend;
 		MagicDefendNum = MagicDefend;
 		AttackSpeedNum = AttackSpeed;
-		AttackSpeedNow = AttackSpeed*20;
+		AttackSpeedNow = 0;
 		AttackDistanceNum = AttackDistance;
 		AttackCastleNum = AttackCastle;
 		MoveSpeedNum = MoveSpeed;
@@ -130,22 +130,22 @@ public:
 	int GetHP(){
 		return HealthNum;
 	}
-	float GetAttack() { 
+	float GetAttack() {
 		return AttackNum;
 	}
-	float GetDefend() { 
+	float GetDefend() {
 		return DefendNum;
 	}
-	float GetMagicDefend() { 
+	float GetMagicDefend() {
 		return MagicDefendNum;
 	}
 	float GetAttackSpeed() override{
 		return AttackSpeedNum;
 	}
-	float GetAttackDistance(){	
+	float GetAttackDistance(){
 		return AttackDistanceNum;
 	}
-	int GetAttackCastle(){	
+	int GetAttackCastle(){
 		return AttackCastleNum;
 	}
 	float GetMoveSpeed(){
@@ -185,7 +185,7 @@ public:
 		return AttackType;
 	}
 	glm::vec2 GetPositionFix(){return  m_Transform.translation-glm::vec2{0,250*abs(m_Transform.scale.y)};}
-	
+
 	std::string GetJob(){
 		return "Enemy";
 	}

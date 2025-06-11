@@ -1,4 +1,5 @@
 #include "App.hpp"
+#include "GamePlayMode/Attack.hpp"
 #include "Util/Transform.hpp"
 #include "Util/Image.hpp"
 #include "Util/Input.hpp"
@@ -34,9 +35,7 @@ void App::GameTick() {
 				m_LevelCharacter[i]->OutPlaceCharacter();
 				m_LevelCharacter[i]->FrameReset();
 				// 從容器中Reset角色
-				for (size_t j = 0; i < m_LevelCharacter[i]->GetGotEnemy().size(); j ++) {
-					m_LevelCharacter[i]->GetGotEnemy()[j]->SetStuck(false);
-				}
+				m_LevelCharacter[i]->ClearAllGotEnemies();
 				m_LevelCharacter[i]->CloseSkill();
 				m_LevelCharacter[i]->SetDead(true);
 				continue;
@@ -148,6 +147,7 @@ void App::GameTick() {
 	}
 	//敵人
 	for(size_t i = 0; i < Enemies.size(); ++i){
+	    bool foundTarget = false;
 		if(!Enemies[i]->GetVisibility() and Enemies[i]->GetState() == EnemyState::Default) continue;
 		if (Enemies[i]->GetStuck()) {
 			Enemies[i]->DeAttakSpeedTime(1);
@@ -191,6 +191,7 @@ void App::GameTick() {
 			for(size_t j = 0; j < m_LevelCharacter.size(); ++j) {
 				// 修復：這裡的邏輯有問題，應該檢查是否超過容量限制
 				if (!m_LevelCharacter[j]->GetVisibility() || m_LevelCharacter[j]->GetDie()) {
+				    m_LevelCharacter[j]->ClearAllGotEnemies();
 					continue;
 				}
 
@@ -200,26 +201,77 @@ void App::GameTick() {
 				}
 
 				float distance = glm::length(m_LevelCharacter[j]->GetPositionFix() - Enemies[i]->GetPositionFix());
-
+				// 近戰角色
 				if(state != EnemyState::Default && state != EnemyState::Die &&
-					distance <= Enemies[i]->GetAttackRangeNum() * 70 &&
+					distance <= Enemies[i]->GetAttackRangeNum() * 70 && Enemies[i]->GetAttackRangeNum() <= 1 &&
 					m_LevelCharacter[j]->GetVisibility() &&
 					Enemies[i]->IfAnimationEnds() &&
-					!Enemies[i]->GetStuck()) {  // 確保敵人還沒被阻擋
+					!Enemies[i]->GetStuck()
+	                && m_LevelCharacter[j]->GetBlockState() != BlockState::HIGH) {  // 確保敵人還沒被阻擋
 
 						m_LevelCharacter[j]->AppendDefendEnemy(Enemies[i]);
 						Enemies[i]->SetStuck(true);
 						Enemies[i]->SetState(EnemyState::Idle);
 						break;  // 找到一個角色阻擋後就跳出
 					}
+				//遠程角色
+				else if(state != EnemyState::Default && state != EnemyState::Die &&
+					distance <= Enemies[i]->GetAttackRangeNum() * 70 && Enemies[i]->GetAttackRangeNum() > 1 &&
+					m_LevelCharacter[j]->GetVisibility()){
+					    //std::cout << distance << std::endl;
+						if(distance <= 70 && !Enemies[i]->GetStuck() &&
+							static_cast<size_t>(m_LevelCharacter[j]->GetHeavyLevel()) > m_LevelCharacter[j]->GetGotEnemy().size()){
+							m_LevelCharacter[j]->AppendDefendEnemy(Enemies[i]);
+							Enemies[i]->SetStuck(true);
+							foundTarget = true;
+							break;
+						}
+						else if (distance > 70){
+						    std::cout << "GetAttackTicket "<<Enemies[i]->GetAttackTicket() << std::endl;
+							if (Enemies[i]->GetAttackTicket() <= 0) {
+								Enemies[i]->FrameReset();
+								Enemies[i]->SetState(EnemyState::Attack);
+								attack(Enemies[i], m_LevelCharacter[j]);
+								Enemies[i]->SetAttackTicket(Enemies[i]->GetAttackSpeed()*20);
+							}
+							else {
+    			                Enemies[i]->DeAttakSpeedTime(1);
+							}
+                      		if (Enemies[i]->IfAnimationEnds()) {
+                     			Enemies[i]->SetState(EnemyState::Move);
+                      		}
+							foundTarget = true;
+							break;
+						}
+				}
 			}
 
 			// 如果沒有被阻擋，繼續移動
-			if (!Enemies[i]->GetStuck() && Enemies[i]->IfAnimationEnds()) {
+			if (!foundTarget && !Enemies[i]->GetStuck() && Enemies[i]->IfAnimationEnds()) {
 				if(Enemies[i]->GetRodeWaitTime() > 1)
 					Enemies[i]->SetState(EnemyState::Idle);
 				else
 					Enemies[i]->SetState(EnemyState::Move);
+			}
+		}
+		if (Enemies[i]->IfAnimationEnds() &&
+			state != EnemyState::Default &&
+			state != EnemyState::Die &&
+			state != EnemyState::Move) {
+
+			// 如果敌人被卡住，保持Idle状态
+			if (Enemies[i]->GetStuck()) {
+				Enemies[i]->SetVisible(true);
+				Enemies[i]->SetLooping(true);
+				Enemies[i]->SetState(EnemyState::Idle);
+				Enemies[i]->FrameReset();
+			}
+			// 如果没有被卡住，可以继续移动
+			else if (Enemies[i]->GetRodeWaitTime() <= 1) {
+				Enemies[i]->SetVisible(true);
+				Enemies[i]->SetLooping(true);
+				Enemies[i]->SetState(EnemyState::Move);
+				Enemies[i]->FrameReset();
 			}
 		}
 	}

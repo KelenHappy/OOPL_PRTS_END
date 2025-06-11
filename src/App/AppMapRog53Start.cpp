@@ -28,7 +28,7 @@ void App::MapRog53Loading() {
         m_LevelCharacter[i]->SetState(CharacterState::Default);
         m_LevelCharacter[i]->SetLooping(false);
         m_LevelCharacter[i]->SetVisible(false);
-        m_LevelCharacter[i]->SetImageSize(0.32f, 0.32f);
+        m_LevelCharacter[i]->SetImageSize(0.25f, 0.25f);
         m_LevelCharacter[i]->SetPosition({575 - i*150, -289});
         std::shared_ptr<Card> cd=std::make_shared<Card>(m_LevelCharacter[i]);
         cd->SetTranform(588-int(i*(144)/0.8*0.6),-318);
