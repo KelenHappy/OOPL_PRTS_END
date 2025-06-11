@@ -46,7 +46,6 @@ void Spawner::CreateEnemies0107() {
     // 0
     AddSpawn(currentTime += 6.0f, Enemytype::BugA, 0); // x1
     // 1
-
     AddSpawn(currentTime += 1.0f, Enemytype::BugA, 3); // x2
     AddSpawn(currentTime += 1.0f, Enemytype::BugA, 3);
 
@@ -86,6 +85,6 @@ void Spawner::CreateEnemies0107() {
 
     // 12
     AddSpawn(currentTime += 6.0f, Enemytype::Soldier, 0); // x1
-    
+
 }
 

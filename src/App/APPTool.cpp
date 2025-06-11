@@ -146,6 +146,7 @@ void App::ClickOfMap(){
                     if(m_map0107->Getmapcost()>=m_LevelCharacter[m_CardCarry]->GetSetCost()){
                     m_placeUI->openUI(0);
                     m_placeUI->SetPostion(m_map0107->Getblock()[m_Carry]->m_Transform.translation.x,m_map0107->Getblock()[m_Carry]->m_Transform.translation.y);
+                    m_flyUI->m_Transform.translation=m_map0107->Getblock()[m_Carry]->m_Transform.translation+glm::vec2(0,250*0.13);
                     m_UIMapLevel=UIMapLevel::ChoiceDirection;
                         }
                     }
@@ -197,6 +198,7 @@ void App::ClickOfMap(){
 
         case UIMapLevel::ClickCharacter:
             // 點選角色的畫面
+                m_placeUI->UpdateUI(m_LevelCharacter[m_CharacterCarry]);
                 if(clicking) {
                     if(checkCollision(Util::Input::GetCursorPosition(),m_placeUI->Getskill()->m_Transform.translation,30,30)) {
                         m_LevelCharacter[m_CharacterCarry]->OpenSkill();

@@ -10,7 +10,7 @@ void Enemy::Updatemove() {
 	switch (m_CurrentState) {
 		case EnemyState::Move:
 			if (glm::length(m_Transform.translation-(PathPoint->GetindexPoint(PathPointsindex)+glm::vec2{0,250*abs(m_Transform.scale.y)}))<3) {
-				if (PathPoint->GetIndexWaitPoint(PathPointsindex)<=0){
+				if (PathPoint->GetIndexWaitPoint(PathPointsindex)<=0 and !GetStuck()){
 					if(PathPoint->GetindexPoint(PathPointsindex).x<PathPoint->GetindexPoint(PathPointsindex+1).x) {
 						m_Transform.scale.x=abs(m_Transform.scale.x);
 					}
@@ -30,11 +30,16 @@ void Enemy::Updatemove() {
 			I_Hpbar->m_Transform.translation=GetPositionFix()-glm::vec2{ 0,16 };
 			break;
 		case  EnemyState::Idle:
-				RodeWaitTime++;
-				//std::cout << RodeWaitTime<<" "<<PathPoint->GetIndexWaitPoint(PathPointsindex)*20<<std::endl;
-				if (RodeWaitTime>PathPoint->GetIndexWaitPoint(PathPointsindex)*20) {
+				if(!GetStuck()){RodeWaitTime++;}
+				//td::cout << RodeWaitTime<<" "<<PathPoint->GetIndexWaitPoint(PathPointsindex)*20<<std::endl;
+				if (!GetStuck()and glm::length(m_Transform.translation-(PathPoint->GetindexPoint(PathPointsindex)+glm::vec2{0,250*abs(m_Transform.scale.y)}))<3) {
+					if(RodeWaitTime>PathPoint->GetIndexWaitPoint(PathPointsindex)*20){
 					PathPointsindex++;
 					RodeWaitTime=0;
+					SetState(EnemyState::Move);
+					}
+				}
+				else if (!GetStuck() ){
 					SetState(EnemyState::Move);
 				}
 			break;

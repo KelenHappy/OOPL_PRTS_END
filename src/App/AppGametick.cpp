@@ -10,8 +10,8 @@
 
 void App::GameTick() {
     for(size_t i = 0; i< Enemies.size(); i++) {
-        if(Enemies[i]->GetVisibility() and Enemies[i]->GetState() != EnemyState::Idle and Enemies[i]->GetState() != EnemyState::Attack) {
-           if(!Enemies[i]->GetStuck())Enemies[i]->Updatemove();
+        if(Enemies[i]->GetVisibility()) {
+           Enemies[i]->Updatemove();
 		   if(Enemies[i]->GetPathPointsindex() >= static_cast<int>(Enemies[i]->GetPathPoints()->GetPointsize())) {
 			   m_map0107->EmenyEnterTower();
 			   m_map0107->EnemyDied();

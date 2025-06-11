@@ -42,6 +42,8 @@ void PlaceUI::openUI(int a) {
         case 1:
             m_skill->SetVisible(true);
             m_back->SetVisible(true);
+            m_skillBack->SetVisible(true);
+            m_skillText->SetVisible(true);
             break;
         default:
             break;
@@ -49,9 +51,23 @@ void PlaceUI::openUI(int a) {
 
 }
 void PlaceUI::closeUI() {
-    for (auto& obj : {m_Diamond, m_back, m_Gan, m_skill}) {
+    for (auto& obj : {m_Diamond, m_back, m_Gan, m_skill,m_skillBack}) {
         obj->SetVisible(false);
     }
+    m_skillText->SetVisible(false);
 }
+void PlaceUI::UpdateUI(std::shared_ptr<AnimatedCharacter> Character) {
+    int n=Character->GetSkillNow();
+    int c=Character->GetSkillCost();
+   m_skillText->SetText(std::to_string(n)+"/"+std::to_string(c));
+    if(n>=c) {
+        m_skillBack->SetNewIMGstd("/UI/ready.png");
+        m_skillText->SetVisible(false);
+    }
+    else {
+        m_skillBack->SetNewIMGstd("/UI/skill.png");
+    }
+}
+
 
 

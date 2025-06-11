@@ -12,7 +12,7 @@ public:
             10,
             std::string(20, 'I'),  // 初始化為20個'I'
             Util::Color::FromName(Util::Colors::GREEN_YELLOW)),
-        100) {
+        60) {
         SetVisible(false);
     }
 
