@@ -224,7 +224,7 @@ void App::GameTick() {
 							break;
 						}
 						else if (distance > 70){
-						    std::cout << "GetAttackTicket "<<Enemies[i]->GetAttackTicket() << std::endl;
+						    //std::cout << "GetAttackTicket "<<Enemies[i]->GetAttackTicket() << std::endl;
 							if (Enemies[i]->GetAttackTicket() <= 0) {
 								Enemies[i]->FrameReset();
 								Enemies[i]->SetState(EnemyState::Attack);
