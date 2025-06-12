@@ -19,9 +19,8 @@ public:
 		//角色技能建立
 		SetImpact(CharacterAttackImpact::Dizzy);
 		SetType(CharacterAttackType::Magic);
-		SetAttackBuff(1.7);
+		SetAttackBuff(2.7);
 		//建立初始攻擊範圍
-		SetAttackRangeNum(2);
 		this->m_DefaultRange.push_back(std::vector<std::string>(5, "0"));
 		this->m_DefaultRange.push_back(std::vector<std::string>(5, "0"));
 		this->m_DefaultRange.push_back({"2", "1", "0", "0", "0"});
@@ -30,13 +29,15 @@ public:
     }
 	std::string GetChineseName() override {return "德克薩斯";}
 
-	
+
 	void OpenSkill() override{
 		// Skill Func
 		SkillOpen = true;
 		SkillNow -= SkillCostNum;
 		SkillTimeTemp = SkillTimeNum;
 		// Skill Make
+		SetAttackTimesBuff(20);
+		AttackTimess = 2;
 		AttackImpact =  ImpactBuff;
 		AttackType = TypeBuff;
 		AttackNum *= AttackBuff;
@@ -47,12 +48,14 @@ public:
 		this->m_DefaultRange.push_back({"0", "1", "1", "1", "0"});
 		this->m_DefaultRange.push_back({"0", "0", "1", "0", "0"});
 	}
-	
+
 	void CloseSkill() override{
 		// Skill Func
 		SkillOpen = false;
 		SkillTimeNum = SkillTimeTemp;
 		// Skill Make
+		SetAttackTimesBuff(1);
+		AttackTimess = 1;
 		AttackImpact =  CharacterAttackImpact::Null;
 		AttackType = CharacterAttackType::Physics;
 		AttackNum /= AttackBuff;
