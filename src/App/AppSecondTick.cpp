@@ -9,8 +9,10 @@
 
 void App::GameSecondTick() {
     m_map0107->Addmapcost(1);
+    m_map0107->UpdateCard();
     for(size_t i = 0; i < m_LevelCharacter.size(); i++){
         if(m_LevelCharacter[i]->GetDie()){
+            /*
             bool checkFirst = true;
             m_LevelCharacter[i]->DeDieCost(1);
 			
@@ -30,7 +32,7 @@ void App::GameSecondTick() {
                 m_FilmVector.push_back(tempFilm);
                 std::cout << "Add Film" << std::endl;
                 m_0107.AddChild(tempFilm);
-            }
+            }*/
         }
         else{
             if(!m_LevelCharacter[i]->GetSkillOpen() and m_LevelCharacter[i]->GetSkillDefault() != 0 and m_LevelCharacter[i]->GetVisibility()){m_LevelCharacter[i]->AddSkillCost(1);}

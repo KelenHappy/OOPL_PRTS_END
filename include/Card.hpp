@@ -18,8 +18,12 @@ class Card:public Util::GameObject {
     std::shared_ptr<TextBox> GetCosttext(){return m_cost;}
     std::shared_ptr<ImgItem> GetCardback(){return m_Cardback;}
     std::shared_ptr<AnimatedCharacter> GetCharacter(){return m_Character;}
+    std::shared_ptr<TextBox> GetMDeadTime(){return m_DeadTime;}
     void SetCardSize(float size);
     void SetTranform(float x, float y);//設所有Card物件的座標
+    void UpdateCard();
+    void UpdateCardS();
+    void setAllVisible(bool visible);
     private:
     void createinfo();
     void createclass(ClassState cs);

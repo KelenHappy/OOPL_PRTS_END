@@ -149,10 +149,15 @@ void AnimatedCharacter::OutPlaceCharacter() {
 		m_GotAttackEnemy[i]->SetStuck(false);
 	}
 	m_HpBar->Update(HealthRecoverNum,HealthNum);
+	FrameReset();
+	SetDead(true);
 	SetVisible(false);
 	Gethpbar()->SetVisible(false);
 	SetLooping(false);
 	SetState(CharacterState::Default);
+	ClearAllGotEnemies();
+	CloseSkill();
+	PlaceCostNum=std::min(int(PlaceCostNum*1.5),int(SetCostNum*2));
 	m_PlaceBlock->outplaceCharacter();
 	m_PlaceBlock=nullptr;
 }
@@ -172,6 +177,14 @@ void AnimatedCharacter::ClearAllGotEnemies() {
 	}
 	m_GotAttackEnemy.clear();
 	DefendCoutNow = 0;  // 重置防禦計數
+}
+void AnimatedCharacter::RestartOfStart() {
+	PlaceCostNum=SetCostNum;
+	SetHP();
+	SetDieCost();
+	SetDead(false);
+	SetLooping(true);
+	SetState(CharacterState::Default);
 }
 
 

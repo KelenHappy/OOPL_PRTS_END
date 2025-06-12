@@ -21,6 +21,7 @@ class Map :public Util::GameObject{
             result.push_back(m_Card[i]->GetCardback());
             result.push_back(m_Card[i]->GetCosttext());
             result.push_back(m_Card[i]->Getclass());
+            result.push_back(m_Card[i]->GetMDeadTime());
         }
         return result;
     }
@@ -30,7 +31,10 @@ class Map :public Util::GameObject{
     [[nodiscard]] int GetTowerHP(){return TowerHP;}
     void SetTowerHP(int hp) {TowerHP = hp;}
     void EmenyEnterTower() {TowerHP--;}
-    void Addmapcost(int n) {cost=std::min(cost+n,99);}
+    void Addmapcost(int n) {
+        cost=std::min(cost+n,99);
+        Update();
+    }
     [[nodiscard]] bool Takemapcost(int n);
      int GetEnemytotal(){return EnemyTotal;}
      int GetEnemytotalMax(){return EnemyTotalMax;}
@@ -51,6 +55,8 @@ class Map :public Util::GameObject{
     void openMapblock(BlockState B);
     void closeMapblock();
     void End();
+    void UpdateCard();
+    void UpdateCardLine();
     bool
     EndAnimeUpdate();
     std::vector<std::shared_ptr<Block>> ExtractBlocksFromPattern(const std::vector<std::vector<std::string>>& range,

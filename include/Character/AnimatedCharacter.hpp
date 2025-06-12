@@ -212,6 +212,9 @@ public:
 	std::string GetCharacterName(){
 		return CharacterName;
 	}
+	int GetPlaceCostNum() {
+		return PlaceCostNum;
+	}
 	void AddDefendCoutNum(int i){DefendCoutNow += i;}
 	int GetDefendCoutNow(){return DefendCoutNow;}
 	void SetCharacterName(std::string name){CharacterName=name;}
@@ -242,6 +245,7 @@ public:
 	void PlaceCharacter(std::shared_ptr<Block> block,int index);
 	std::shared_ptr<Block> GetPlaceBlock(){return m_PlaceBlock;}
 	void OutPlaceCharacter();
+	void RestartOfStart();
 	~AnimatedCharacter(){}
 protected:
     CharacterState m_CurrentState;
@@ -256,6 +260,7 @@ protected:
     // 角色info
     float SetTimeNum = 0;
     int SetCostNum = 0;
+	int PlaceCostNum=0;
     float AttackTimeNum = 0;
     float AttackTimeTicket = -1;
     float HealthNum = 0;

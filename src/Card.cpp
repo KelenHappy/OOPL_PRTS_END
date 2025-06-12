@@ -9,6 +9,7 @@ Card::Card(std::shared_ptr<AnimatedCharacter> Character) {
     SetZIndex(27);
     cardsize=0.6f;
     m_cost= std::make_shared<TextBox>(20);
+    m_DeadTime= std::make_shared<TextBox>(30);
     m_Cardback=std::make_shared<ImgItem>("/Maps/CardBack.png");
     m_Cardback->setsize(0.7,0.7);
     m_Cardback->SetZIndex(26);
@@ -66,7 +67,7 @@ void Card::SetTranform(float x, float y) {
     m_cost->m_Transform.translation.y = y+(67*cardsize);
     m_class->m_Transform.translation.x = x;
     m_class->m_Transform.translation.y = y+(71*cardsize);
-
+    m_DeadTime->m_Transform.translation={x,y};
 }
 void Card::SetCardSize(float size) {
     m_class->setsize(static_cast<float>(0.15*size),static_cast<float>(0.15 * size));
@@ -74,7 +75,47 @@ void Card::SetCardSize(float size) {
     m_Transform.scale={size,size };
 
 }
+void Card::UpdateCard() {
+    m_cost->SetText(std::to_string(m_Character->GetPlaceCostNum()));
+    if(m_Character->GetVisibility()) {
+        setAllVisible(false);
+    }
+    else if(m_Character->GetDie()) {
+        setAllVisible(true);
+        m_Cardback->SetNewIMGstd("/Film/die.png");
+        m_Cardback->setsize(static_cast<float>(1.05*m_Transform.scale.x),static_cast<float>(1.05 *m_Transform.scale.x));
+        m_Cardback->SetZIndex(30);
+    }
+    else {
+        setAllVisible(true);
+        m_DeadTime->SetVisible(false);
+        m_Cardback->SetNewIMGstd("/Maps/CardBack.png");
+        m_Cardback->setsize(static_cast<float>(0.7*m_Transform.scale.x),static_cast<float>(0.7 * m_Transform.scale.x));
+        m_Cardback->SetZIndex(26);
+    }
 
+}
+void Card::UpdateCardS() {
+    m_cost->SetText(std::to_string(m_Character->GetPlaceCostNum()));
+    if(m_Character->GetDie()) {
+        m_Character->DeDieCost(1);
+        if(m_Character->GetDieCost()<=0) {
+            m_Character->SetDead(false);
+            m_DeadTime->SetVisible(false);
+            UpdateCard();
+        }
+        m_DeadTime->SetText(std::to_string(m_Character->GetDieCost()));
+    }
+}
+
+
+void Card::setAllVisible(bool visible) {
+    m_class->SetVisible(visible);
+    m_Cardback->SetVisible(visible);
+    m_cost->SetVisible(visible);
+    m_DeadTime->SetVisible(visible);
+    SetVisible(visible);
+}
 
 
 

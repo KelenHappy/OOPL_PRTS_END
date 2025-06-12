@@ -183,10 +183,11 @@ void App::ClickOfMap(){
                     }
                     else if(Dir!=Direction::CENTER) {
                         m_UIMapLevel=UIMapLevel::Main;//放置
-                       if( m_map0107->Takemapcost(m_LevelCharacter[m_CardCarry]->GetSetCost())){
+                       if( m_map0107->Takemapcost(m_LevelCharacter[m_CardCarry]->GetPlaceCostNum())){
                         m_LevelCharacter[m_CardCarry]->PlaceCharacter(m_map0107->Getblock()[m_Carry],m_CardCarry);
                         m_LevelCharacter[m_CardCarry]->SetAttackRangeDefault(m_map0107->ExtractBlocksFromPattern(m_LevelCharacter[m_CardCarry]->GetDefaultRange(),m_map0107->Getblock()[m_Carry]->GetX(),m_map0107->Getblock()[m_Carry]->GetY(),Dir));
                         m_map0107->closeMapblock();
+                        m_map0107->UpdateCardLine();
                         m_flyUI->SetVisible(false);
                         m_placeUI->closeUI();
                        }
@@ -201,11 +202,15 @@ void App::ClickOfMap(){
                 m_placeUI->UpdateUI(m_LevelCharacter[m_CharacterCarry]);
                 if(clicking) {
                     if(checkCollision(Util::Input::GetCursorPosition(),m_placeUI->Getskill()->m_Transform.translation,30,30)) {
-                        m_LevelCharacter[m_CharacterCarry]->OpenSkill();
-                        std::cout << m_LevelCharacter[m_CharacterCarry]->GetCharacterName()<<" OpenSkill\n";
+                        if (m_LevelCharacter[m_CharacterCarry]->GetSkillDefault() == 0 and !m_LevelCharacter[m_CharacterCarry]->GetSkillOpen() and m_LevelCharacter[m_CharacterCarry]->GetVisibility() and m_LevelCharacter[m_CharacterCarry]->GetSkillCost() < m_LevelCharacter[m_CharacterCarry]->GetSkillNow()) {
+                            m_LevelCharacter[m_CharacterCarry]->OpenSkill();
+                            std::cout << m_LevelCharacter[m_CharacterCarry]->GetCharacterName() << " Open Skill" << std::endl;
+                        }
                     }
                     else if(checkCollision(Util::Input::GetCursorPosition(),m_placeUI->Getback()->m_Transform.translation,30,30)){
+                        m_map0107->Addmapcost(m_LevelCharacter[m_CharacterCarry]->GetPlaceCostNum()*0.5);
                         m_LevelCharacter[m_CharacterCarry]->OutPlaceCharacter();
+                        m_map0107->UpdateCardLine();
                     }
                     m_placeUI->closeUI();
                     ResetMapChoice();

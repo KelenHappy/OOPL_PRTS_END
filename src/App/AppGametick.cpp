@@ -33,11 +33,8 @@ void App::GameTick() {
 			m_LevelCharacter[i]->SetState(CharacterState::Die);
 			if (m_LevelCharacter[i]->IfAnimationEnds()) {
 				m_LevelCharacter[i]->OutPlaceCharacter();
-				m_LevelCharacter[i]->FrameReset();
+				m_map0107->UpdateCardLine();
 				// 從容器中Reset角色
-				m_LevelCharacter[i]->ClearAllGotEnemies();
-				m_LevelCharacter[i]->CloseSkill();
-				m_LevelCharacter[i]->SetDead(true);
 				continue;
 			}
 			else{

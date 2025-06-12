@@ -244,5 +244,22 @@ bool Map::EndAnimeUpdate() {
     return false;
 }
 
+void Map::UpdateCard() {
+    for(size_t i=0;i<m_Card.size();i++) {
+        m_Card[i]->UpdateCardS();
+    }
+}
+void Map::UpdateCardLine() {
+    UpdateCard();
+    int n=0;
+    for(size_t i=0;i<m_Card.size();i++) {
+        m_Card[i]->UpdateCard();
+        if(m_Card[i]->GetCharacter()->GetVisibility()==false) {
+            m_Card[i]->SetTranform(588-int(n*(144)/0.8*0.6),-318);
+            n++;
+        }
+    }
+}
+
 
 
