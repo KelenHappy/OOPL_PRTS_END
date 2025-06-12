@@ -43,7 +43,7 @@ void App::GameSecondTick() {
                 std::cout << m_LevelCharacter[i]->GetCharacterName() << " Open Skill" << std::endl;
             }
             else if(m_LevelCharacter[i]->GetSkillOpen()){
-                std::cout << m_LevelCharacter[i]->GetSkillTime() << std::endl;
+                //std::cout << m_LevelCharacter[i]->GetSkillTime() << std::endl;
                 m_LevelCharacter[i]->DeSkillTime(1);
                 if(m_LevelCharacter[i]->GetSkillTime() <= 0 and m_LevelCharacter[i]->GetVisibility() and m_LevelCharacter[i]->GetSkillOpen()){
                     m_LevelCharacter[i]->CloseSkill();
