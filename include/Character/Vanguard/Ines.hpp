@@ -27,7 +27,7 @@ public:
 		this->m_DefaultRange.push_back(std::vector<std::string>(5, "0"));
     }
 	std::string GetChineseName() override {return "伊內絲";}
-	
+
 	void OpenSkill() override{
 		// Skill Func
 		SkillOpen = true;
@@ -42,7 +42,7 @@ public:
 		this->m_DefaultRange.push_back({"0", "1", "1", "0", "0"});
 		this->m_DefaultRange.push_back(std::vector<std::string>(5, "0"));
 	}
-	
+
 	void CloseSkill() override{
 		// Skill Func
 		SkillOpen = false;
