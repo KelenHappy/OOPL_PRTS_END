@@ -18,8 +18,8 @@ public:
 		//角色技能建立
 		SetAttackBuff(2.1);
 		SetAttackRangeNumBuff(1);
+		SetAttackTimeBuff(0.9);
 		//建立初始攻擊範圍
-		SetAttackRangeNum(3);
 		this->m_DefaultRange.push_back(std::vector<std::string>(5, "0"));
 		this->m_DefaultRange.push_back(std::vector<std::string>(5, "0"));
 		this->m_DefaultRange.push_back({"2", "1", "1", "0", "0"});
@@ -35,6 +35,7 @@ public:
 		SkillTimeTemp = SkillTimeNum;
 		// Skill Make
 		AttackNum *= AttackBuff;
+		AttackTimeNum *= AttackTimeBuff;
 		this->m_DefaultRange.clear();
 		this->m_DefaultRange.push_back(std::vector<std::string>(5, "0"));
 		this->m_DefaultRange.push_back({"0", "1", "1", "0", "0"});
@@ -49,6 +50,7 @@ public:
 		SkillTimeNum = SkillTimeTemp;
 		// Skill Make
 		AttackNum /= AttackBuff;
+		AttackTimeNum /= AttackTimeBuff;
 		this->m_DefaultRange.clear();
 		this->m_DefaultRange.push_back(std::vector<std::string>(5, "0"));
 		this->m_DefaultRange.push_back(std::vector<std::string>(5, "0"));
