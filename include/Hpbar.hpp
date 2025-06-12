@@ -6,6 +6,7 @@
 #include "Util/Color.hpp"
 class HpBar : public Util::GameObject {
 public:
+    /*
     HpBar() : GameObject(
         std::make_unique<Util::Text>(
             RESOURCE_DIR"/Font/NSTCB.ttf",
@@ -14,8 +15,12 @@ public:
             Util::Color::FromName(Util::Colors::GREEN_YELLOW)),
         60) {
         SetVisible(false);
+    }*/
+    HpBar() {
+        m_Drawable = std::make_shared<Util::Image>(RESOURCE_DIR"/UI/Hp.png");
+        SetVisible(false);
     }
-
+/*
     void Update(float currentHP, float maxHP) {
         if (maxHP <= 0) return;  // 避免除以零
         std::shared_ptr<Util::Text> text = std::dynamic_pointer_cast<Util::Text>(m_Drawable);
@@ -37,6 +42,14 @@ public:
                 text->SetColor(Util::Color::FromName(Util::Colors::GREEN_YELLOW));
             }
         }
+    }*/
+    void Update(float currentHP, float maxHP) {
+        glm::vec2 nowp=m_Transform.scale;
+        m_Transform.scale.x=std::max(std::min( currentHP/maxHP,1.0f),0.0f)*0.8f;
+        m_Transform.translation.x-=(nowp.x-m_Transform.scale.x)*40;
+    }
+    void SetTransform(glm::vec2 transform) {
+        m_Transform.translation=transform+glm::vec2{m_Transform.scale.x*40-40,0};
     }
 };
 

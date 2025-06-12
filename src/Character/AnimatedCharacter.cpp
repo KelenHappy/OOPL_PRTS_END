@@ -150,6 +150,8 @@ void AnimatedCharacter::OutPlaceCharacter() {
 	}
 	m_HpBar->Update(HealthRecoverNum,HealthNum);
 	FrameReset();
+	SetHP();
+	SetDieCost();
 	SetDead(true);
 	SetVisible(false);
 	Gethpbar()->SetVisible(false);
@@ -183,7 +185,7 @@ void AnimatedCharacter::RestartOfStart() {
 	SetHP();
 	SetDieCost();
 	SetDead(false);
-	SetLooping(true);
+	SetLooping(false);
 	SetState(CharacterState::Default);
 }
 

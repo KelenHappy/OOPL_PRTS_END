@@ -22,11 +22,6 @@ void App::Update() {
     if(m_level==level::lobby){
         // BGM
         PlayBGM(RESOURCE_DIR"/music/LOBBY.mp3");
-
-        if(Util::Input::IsKeyDown(Util::Keycode::Q)) {
-            m_level=level::main17;
-            Map0107Loading();
-        }
         choicemap();
         m_Root.Update();
     }
@@ -35,20 +30,17 @@ void App::Update() {
         PlayBGM(RESOURCE_DIR"/music/1-7.mp3");
 
         LevelMain17();
-		Debug();
 	}
     else if(m_level==level::cc5) {
         // BGM
         PlayBGM(RESOURCE_DIR"/music/競技場1.mp3");
         LevelMain17();
-        Debug();
     }
     else if(m_level==level::rog53) {
         // BGM
         PlayBGM(RESOURCE_DIR"/music/競技場2.mp3");
 
         LevelMain17();
-        Debug();
     }
     else if(m_level==level::chooseCharacter) {
         PlayBGM(RESOURCE_DIR"/music/失控.mp3");

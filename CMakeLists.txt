@@ -58,7 +58,6 @@ add_executable(${PROJECT_NAME}
 		src/MapCreate/MapCreateCC5.cpp
 		src/MapCreate/MapCreateRog53.cpp
 		src/App/AppMapCC5.cpp
-		src/App/AppMapRog53Start.cpp
 		src/App/AppMapRog53.cpp
 		src/App/AppMapStart.cpp
 		src/MobSpawner/Spawner0107.cpp

@@ -12,10 +12,10 @@ public:
          HeavyLevel
          */
 		SetInfo(18, 8, 0.93, 1598, 739, 320, 0,
-		0, -1, 8, "部署後立即對周圍敵人造成兩次相當於攻擊力165%的法術傷害並使目標暈眩2秒，造成攻擊力130%的法術傷害和暈眩", "劍雨滂沱"
+		0, -1, 10, "部署後立即對周圍敵人造成兩次相當於攻擊力165%的法術傷害並使目標暈眩2秒，造成攻擊力130%的法術傷害和暈眩", "劍雨滂沱"
 		, 1);
 		//角色技能建立
-		SetAttackBuff(3.95);
+		SetAttackBuff(2.65);
     	SetAttackImpact(CharacterAttackImpact::Dizzy);
     	SetAttackType(CharacterAttackType::Magic);
 
@@ -26,7 +26,6 @@ public:
 		void OpenSkill() override{
 		// Skill Func
 		SkillOpen = true;
-		SkillNow -= SkillCostNum;
 		SkillTimeTemp = SkillTimeNum;
 		// Skill Make
 		SetAttackTimesBuff(4);
@@ -43,13 +42,12 @@ public:
 	void CloseSkill() override{
     	if(GetSkillOpen()) {
     		// Skill Func
-    		SkillOpen = true;
+    		SkillOpen = false;
     		SkillTimeNum = SkillTimeTemp;
     		// Skill Make
     		SetAttackTimesBuff(1);
     		AttackNum /= AttackBuff;
     		AttackImpact = CharacterAttackImpact::Null;
-
     		this->m_DefaultRange.clear();
     		this->m_DefaultRange.push_back({"2", "1", "0", "0"});
     	}

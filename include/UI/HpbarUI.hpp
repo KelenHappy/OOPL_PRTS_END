@@ -10,7 +10,7 @@
 #include "../../PTSD/include/Util/Color.hpp"
 #include "../../PTSD/include/Util/Image.hpp"
 
-class HpBarUI : public Util::GameObject {
+class HpBarUI  {
 public:
     HpBarUI() {
         HpBar=  std::make_shared<ImgItem>("/Maps/Hp.png");
@@ -23,10 +23,10 @@ public:
         HpBack->SetZIndex(59);
     }
     void Update(float nowHP, float maxHP,float nowMana,float maxMana) {
-        HpBar->m_Transform.scale={nowHp/maxHP,1.0f};
-        ManaBar->m_Transform.scale={nowMana/maxMana,1.0f};
-        HpBar->m_Transform.translation={m_Transform.translation.x-(HpBar->m_Transform.scale)*50,y};
-        ManaBar->m_Transform.translation={m_Transform.translation.x-(HpBar->m_Transform.scale)*50,y};
+        HpBar->m_Transform.scale={nowHp/maxHP,1.2f};
+        ManaBar->m_Transform.scale={nowMana/maxMana,1.2f};
+        HpBar->m_Transform.translation={m_Transform.translation.x-(HpBar->m_Transform.scale)*40,y};
+        ManaBar->m_Transform.translation={m_Transform.translation.x-(HpBar->m_Transform.scale)*40,y};
     }
     void SetPostion(float x,float y) {
         m_Transform.translation={x,y};

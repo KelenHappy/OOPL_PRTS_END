@@ -12,6 +12,15 @@ void App::OpenSkillOther(std::shared_ptr<AnimatedCharacter> Charater) {
     else if(Charater->GetCharacterName()=="Texas") {
         m_map0107->Addmapcost(12);
     }
-    else if(Charater->GetCharacterName()=="In") {
+    else if(Charater->GetCharacterName()=="Ines") {
+        m_map0107->Addmapcost(14);
+    }
+    else if(Charater->GetCharacterName()=="Texas_the_Omertosa") {
+        std::vector<std::shared_ptr<Enemy>>  EnemyTools = GetCharaterEnemyinRange(Charater);
+        for(size_t i=0;i<EnemyTools.size();i++){
+        for (int AttackTimes = 0 ; AttackTimes < 2; AttackTimes++) {
+            attack(Charater, EnemyTools[i]);
+        }
+        }
     }
 }

@@ -60,7 +60,11 @@ void PlaceUI::UpdateUI(std::shared_ptr<AnimatedCharacter> Character) {
     int n=Character->GetSkillNow();
     int c=Character->GetSkillCost();
    m_skillText->SetText(std::to_string(n)+"/"+std::to_string(c));
-    if(n>=c) {
+    if(c==-1) {
+        m_skillText->SetText("-/-");
+        m_skillBack->SetNewIMGstd("/UI/skill.png");
+    }
+    else if(n>=c) {
         m_skillBack->SetNewIMGstd("/UI/ready.png");
         m_skillText->SetVisible(false);
     }

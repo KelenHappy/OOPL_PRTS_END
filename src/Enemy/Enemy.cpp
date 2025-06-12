@@ -27,7 +27,7 @@ void Enemy::Updatemove() {
 		else {
 			moveGameObject(shared_from_this(),PathPoint->GetindexPoint(PathPointsindex)+glm::vec2{0,250*abs(m_Transform.scale.y)},MoveSpeedNum*2.0);
 			}
-			I_Hpbar->m_Transform.translation=GetPositionFix()-glm::vec2{ 0,16 };
+			I_Hpbar->SetTransform(GetPositionFix()-glm::vec2{ 0,16 });
 			break;
 		case  EnemyState::Idle:
 				if(!GetStuck()){RodeWaitTime++;}

@@ -85,14 +85,14 @@ void App::ClickOfMap(){
         // 點到 Card
         if(m_UIMapLevel==UIMapLevel::Clickcard||m_UIMapLevel==UIMapLevel::Main){
             for (size_t i = 0; i < NowMap->GetCard().size(); ++i) {
-                if (checkCollisionNearMouse(mouseT, NowMap->GetCard()[i]->m_Transform, 50) and NowMap->GetCard()[i]->GetVisibility()and !NowMap->GetCard()[i]->GetCharacter()->GetDie()) {
+                if (checkCollisionNearMouse(mouseT, NowMap->GetCard()[i]->m_Transform, 50) and NowMap->GetCard()[i]->GetVisibility()and NowMap->GetCard()[i]->GetCharacter()->GetDie()==false) {
                     m_CardCarry = i;
                     if(m_LevelCharacter[m_CardCarry]->GetState() == CharacterState::Default){
                         CheckCard = true;
                         NowMap->openMapblock(NowMap->GetCard()[m_CardCarry]->GetCharacter()->GetBlockState());
-                        m_flyUI->setnewcharacter(NowMap->GetCard()[i]->GetCharacter());}
-                    std::cout << m_CardCarry << std::endl;
-                    break;
+                        m_flyUI->setnewcharacter(NowMap->GetCard()[i]->GetCharacter());
+                        break;
+                    }
                 }
             }
         }
@@ -217,7 +217,7 @@ void App::ClickOfMap(){
                 }
                 if(clicking and !m_LevelCharacter[m_CharacterCarry]->GetDie()) {
                     if(checkCollision(Util::Input::GetCursorPosition(),m_placeUI->Getskill()->m_Transform.translation,30,30)) {
-                        if ( !m_LevelCharacter[m_CharacterCarry]->GetSkillOpen() and m_LevelCharacter[m_CharacterCarry]->GetVisibility() and m_LevelCharacter[m_CharacterCarry]->GetSkillCost() <= m_LevelCharacter[m_CharacterCarry]->GetSkillNow()) {
+                        if ( !m_LevelCharacter[m_CharacterCarry]->GetSkillOpen() and m_LevelCharacter[m_CharacterCarry]->GetVisibility() and m_LevelCharacter[m_CharacterCarry]->GetSkillCost() <= m_LevelCharacter[m_CharacterCarry]->GetSkillNow()and m_LevelCharacter[m_CharacterCarry]->GetSkillCost()>0 ) {
                             m_LevelCharacter[m_CharacterCarry]->OpenSkill();
                             m_LevelCharacter[m_CharacterCarry]->SetAttackRangeDefault(
                                 m_map0107->ExtractBlocksFromPattern(m_LevelCharacter[m_CharacterCarry]->GetDefaultRange(),

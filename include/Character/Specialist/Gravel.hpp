@@ -38,7 +38,7 @@ public:
 	void CloseSkill() override{
     	if(GetSkillOpen()) {
     		// Skill Func
-    		SkillOpen = true;
+    		SkillOpen = false;
     		SkillTimeNum = SkillTimeTemp;
     		// Skill Make
     	}
