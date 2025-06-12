@@ -30,7 +30,8 @@ public:
 	std::string GetChineseName() override {return "史爾特爾";}
 	void UpdateEffect() override {
     	if (GetState() != CharacterState::Default
-    		and SkillOpen)HealthRecoverNum -= HealthNum*0.2;
+    		and SkillOpen)HealthRecoverNum -= HealthNum*0.02;
+        m_HpBar->Update(HealthRecoverNum, HealthNum);
     }
 	void OpenSkill() override{
 		// Skill Func
@@ -43,13 +44,8 @@ public:
 		HealthRecoverNum += HealthRecoverBuff;
 
 		this->m_DefaultRange.clear();
-    	this->m_DefaultRange.push_back({"1", "0", "0", "0", "0"});
-    	this->m_DefaultRange.push_back({"1", "1", "0", "0", "0"});
-    	this->m_DefaultRange.push_back({"1", "1", "1", "0", "0"});
     	this->m_DefaultRange.push_back({"2", "1", "1", "1", "0"});
-    	this->m_DefaultRange.push_back({"1", "1", "1", "0", "0"});
-    	this->m_DefaultRange.push_back({"1", "1", "0", "0", "0"});
-    	this->m_DefaultRange.push_back({"1", "0", "0", "0", "0"});
+
 	}
 
 	void CloseSkill() override{
