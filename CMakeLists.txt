@@ -177,6 +177,7 @@ add_executable(${PROJECT_NAME}
 		src/App/AppRestart.cpp
         include/UI/HpbarUI.hpp
 		src/App/Openskilldo.cpp
+		src/App/Openskilldo.cpp
 
 
 )
