@@ -21,6 +21,7 @@ public:
 		SetAttackBuff(6);
 		//建立初始攻擊範圍
 		SetAttackRangeNum(4);
+    	this->m_DefaultRange.clear();
 		this->m_DefaultRange.push_back({"0", "1", "1", "0", "0"});
 		this->m_DefaultRange.push_back({"1", "1", "1", "1", "0"});
 		this->m_DefaultRange.push_back({"1", "2", "1", "1", "0"});
@@ -49,6 +50,7 @@ public:
 	}
 
 	void CloseSkill() override{
+    	if(GetSkillOpen()){
 		// Skill Func
 		SkillOpen = false;
 		SkillTimeNum = SkillTimeTemp;
@@ -58,9 +60,11 @@ public:
     	AttackTimes = 1;
 
     	this->m_DefaultRange.clear();
+    	this->m_DefaultRange.push_back({"0", "1", "1", "0", "0"});
     	this->m_DefaultRange.push_back({"1", "1", "1", "1", "0"});
     	this->m_DefaultRange.push_back({"1", "2", "1", "1", "0"});
     	this->m_DefaultRange.push_back({"1", "1", "1", "1", "0"});
+    	this->m_DefaultRange.push_back({"0", "1", "1", "0", "0"});}
 	}
 
 protected:

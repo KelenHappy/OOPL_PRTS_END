@@ -7,9 +7,11 @@
 #include <vector>
 void App::OpenSkillOther(std::shared_ptr<AnimatedCharacter> Charater) {
     if(Charater->GetCharacterName()=="Myrtle") {
-
+        m_map0107->Addmapcost(16);
     }
     else if(Charater->GetCharacterName()=="Texas") {
         m_map0107->Addmapcost(12);
+    }
+    else if(Charater->GetCharacterName()=="In") {
     }
 }

@@ -46,17 +46,19 @@ public:
 	}
 
 	void CloseSkill() override{
-		// Skill Func
-		SkillOpen = false;
-		SkillTimeNum = SkillTimeTemp;
-		// Skill Make
-		this->m_DefaultRange.clear();
-		this->m_DefaultRange.push_back(std::vector<std::string>(5, "0"));
-		this->m_DefaultRange.push_back({"1", "1", "1", "1", "0"});
-		this->m_DefaultRange.push_back({"1", "2", "1", "1", "0"});
-		this->m_DefaultRange.push_back({"1", "1", "1", "1", "0"});
-		this->m_DefaultRange.push_back(std::vector<std::string>(5, "0"));
-		AttackTimeNum /= AttackTimeBuff;
+    	if(GetSkillOpen()) {
+    		// Skill Func
+    		SkillOpen = false;
+    		SkillTimeNum = SkillTimeTemp;
+    		// Skill Make
+    		this->m_DefaultRange.clear();
+    		this->m_DefaultRange.push_back(std::vector<std::string>(5, "0"));
+    		this->m_DefaultRange.push_back({"1", "1", "1", "1", "0"});
+    		this->m_DefaultRange.push_back({"1", "2", "1", "1", "0"});
+    		this->m_DefaultRange.push_back({"1", "1", "1", "1", "0"});
+    		this->m_DefaultRange.push_back(std::vector<std::string>(5, "0"));
+    		AttackTimeNum /= AttackTimeBuff;
+    	}
 	}
 
 protected:

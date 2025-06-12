@@ -39,12 +39,14 @@ public:
 	}
 	
 	void OpenSkill() override{
-		// Skill Func
-		SkillOpen = true;
-		SkillNow -= SkillCostNum;
-		SkillTimeTemp = SkillTimeNum;
-		// Skill Make
-		AttackNum *=  AttackBuff;
+    	if(GetSkillOpen()) {
+    		// Skill Func
+    		SkillOpen = true;
+    		SkillNow -= SkillCostNum;
+    		SkillTimeTemp = SkillTimeNum;
+    		// Skill Make
+    		AttackNum *=  AttackBuff;
+    	}
 
 	}
 

@@ -45,17 +45,19 @@ public:
 	}
 
 	void CloseSkill() override{
-		// Skill Func
-		SkillOpen = false;
-		SkillTimeNum = SkillTimeTemp;
-		// Skill Make
-		AttackTimeNum /= AttackTimeBuff;
-    	AttackTimes = 1;
+    	if(GetSkillOpen()) {
+    		// Skill Func
+    		SkillOpen = false;
+    		SkillTimeNum = SkillTimeTemp;
+    		// Skill Make
+    		AttackTimeNum /= AttackTimeBuff;
+    		AttackTimes = 1;
 
-    	this->m_DefaultRange.clear();
-    	this->m_DefaultRange.push_back({"1", "1", "1", "1", "0"});
-    	this->m_DefaultRange.push_back({"1", "2", "1", "1", "0"});
-    	this->m_DefaultRange.push_back({"1", "1", "1", "1", "0"});
+    		this->m_DefaultRange.clear();
+    		this->m_DefaultRange.push_back({"1", "1", "1", "1", "0"});
+    		this->m_DefaultRange.push_back({"1", "2", "1", "1", "0"});
+    		this->m_DefaultRange.push_back({"1", "1", "1", "1", "0"});
+    	}
 	}
 
 protected:

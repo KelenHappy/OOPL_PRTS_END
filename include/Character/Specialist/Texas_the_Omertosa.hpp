@@ -35,22 +35,24 @@ public:
 
         this->m_DefaultRange.clear();
         this->m_DefaultRange.push_back({"1", "1", "1", "0", "0"});
-        this->m_DefaultRange.push_back({"1", "2", "1", "0", "1"});
+        this->m_DefaultRange.push_back({"1", "2", "1", "0", "0"});
         this->m_DefaultRange.push_back({"1", "1", "1", "0", "0"});
 
 	}
 
 	void CloseSkill() override{
-		// Skill Func
-		SkillOpen = true;
-		SkillTimeNum = SkillTimeTemp;
-		// Skill Make
-		SetAttackTimesBuff(1);
-		AttackNum /= AttackBuff;
-        AttackImpact = CharacterAttackImpact::Null;
+    	if(GetSkillOpen()) {
+    		// Skill Func
+    		SkillOpen = true;
+    		SkillTimeNum = SkillTimeTemp;
+    		// Skill Make
+    		SetAttackTimesBuff(1);
+    		AttackNum /= AttackBuff;
+    		AttackImpact = CharacterAttackImpact::Null;
 
-        this->m_DefaultRange.clear();
-		this->m_DefaultRange.push_back({"2", "1", "0", "0"});
+    		this->m_DefaultRange.clear();
+    		this->m_DefaultRange.push_back({"2", "1", "0", "0"});
+    	}
 	}
 	void takeDamage(CharacterAttackImpact impact, float damage) override{
     	switch(impact){

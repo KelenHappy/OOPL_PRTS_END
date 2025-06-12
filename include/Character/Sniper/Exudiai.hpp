@@ -30,12 +30,14 @@ public:
 	}
 	
 	void CloseSkill() override{
-		// Skill Func
-		SkillOpen = false;
-		SkillTimeNum = SkillTimeTemp;
-		// Skill Make
-		AttackTimess = 1;
-		AttackTimeNum /= AttackTimeBuff;
+    	if(GetSkillOpen()) {
+    		// Skill Func
+    		SkillOpen = false;
+    		SkillTimeNum = SkillTimeTemp;
+    		// Skill Make
+    		AttackTimess = 1;
+    		AttackTimeNum /= AttackTimeBuff;
+    	}
 	}
 
 protected:

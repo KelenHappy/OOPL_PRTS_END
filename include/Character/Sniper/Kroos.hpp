@@ -12,7 +12,7 @@ public:
          int SkillDefault, int SkillCost, float SkillTime, std::string skillinfo, std::string skillname,
          HeavyLevel
          */
-		SetInfo(70, 9, 1, 1060, 375, 126, 0,
+		SetInfo(70, 9, 1, 1060, 575, 126, 0,
 		0, 4, 0, "下次攻擊时連續攻擊2次，每次及造成相當於攻擊力140%的物理傷害", "二連射·自動"
 		, 1);
 		//角色技能建立
@@ -29,6 +29,7 @@ public:
 	std::string GetChineseName() override {return "克洛里斯";}
 	
 	void OpenSkill() override{
+
 		// Skill Func
 		SkillOpen = true;
 		SkillNow -= SkillCostNum;
@@ -39,12 +40,14 @@ public:
 	}
 
 	void CloseSkill() override{
-		// Skill Func
-		SkillOpen = false;
-		SkillTimeNum = SkillTimeTemp;
-		// Skill Make
-		AttackNum /= AttackBuff;
-        SetAttackTimesBuff(1);
+    	if(GetSkillOpen()) {
+    		// Skill Func
+    		SkillOpen = false;
+    		SkillTimeNum = SkillTimeTemp;
+    		// Skill Make
+    		AttackNum /= AttackBuff;
+    		SetAttackTimesBuff(1);
+    	}
 	}
 
 protected:

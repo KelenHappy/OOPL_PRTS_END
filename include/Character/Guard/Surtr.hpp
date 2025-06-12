@@ -41,7 +41,8 @@ public:
 		// Skill Make
 		SetAttackTimesBuff(3);
     	AttackNum *= AttackBuff;
-		HealthRecoverNum += HealthRecoverBuff;
+		HealthRecoverNum = HealthRecoverBuff+HealthNum;
+
 
 		this->m_DefaultRange.clear();
     	this->m_DefaultRange.push_back({"2", "1", "1", "1", "0"});
@@ -49,20 +50,22 @@ public:
 	}
 
 	void CloseSkill() override{
-		// Skill Func
-		SkillOpen = false;
-		SkillTimeNum = SkillTimeTemp;
-		// Skill Make
-		SetAttackTimesBuff(1);
-    	AttackNum /= AttackBuff;
+    	if(GetSkillOpen()) {
+    		// Skill Func
+    		SkillOpen = false;
+    		SkillTimeNum = SkillTimeTemp;
+    		// Skill Make
+    		SetAttackTimesBuff(1);
+    		AttackNum /= AttackBuff;
 
 
-		this->m_DefaultRange.clear();
-		this->m_DefaultRange.push_back(std::vector<std::string>(5, "0"));
-		this->m_DefaultRange.push_back({"1", "0", "0", "0", "0"});
-		this->m_DefaultRange.push_back({"2", "1", "0", "0", "0"});
-		this->m_DefaultRange.push_back({"1", "0", "0", "0", "0"});
-		this->m_DefaultRange.push_back(std::vector<std::string>(5, "0"));
+    		this->m_DefaultRange.clear();
+    		this->m_DefaultRange.push_back(std::vector<std::string>(5, "0"));
+    		this->m_DefaultRange.push_back({"1", "0", "0", "0", "0"});
+    		this->m_DefaultRange.push_back({"2", "1", "0", "0", "0"});
+    		this->m_DefaultRange.push_back({"1", "0", "0", "0", "0"});
+    		this->m_DefaultRange.push_back(std::vector<std::string>(5, "0"));
+    	}
 
 	}
 

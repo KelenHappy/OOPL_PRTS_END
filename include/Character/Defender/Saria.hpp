@@ -48,14 +48,16 @@ public:
     }
 
     void CloseSkill() override{
-        // Skill Func
-        SkillOpen = false;
-        SkillTimeNum = SkillTimeTemp;
-        // Skill Make
-        AttackNum /= AttackBuff;
-        AttackType = CharacterAttackType::Physics;
-        this->m_DefaultRange.clear();
-        this->m_DefaultRange.push_back({"2", "0", "0", "0", "0"});
+        if(GetSkillOpen()) {
+            // Skill Func
+            SkillOpen = false;
+            SkillTimeNum = SkillTimeTemp;
+            // Skill Make
+            AttackNum /= AttackBuff;
+            AttackType = CharacterAttackType::Physics;
+            this->m_DefaultRange.clear();
+            this->m_DefaultRange.push_back({"2", "0", "0", "0", "0"});
+        }
     }
 
 protected:

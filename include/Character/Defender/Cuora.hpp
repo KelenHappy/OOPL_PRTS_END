@@ -37,14 +37,15 @@ public:
     }
 
     void CloseSkill() override{
-        // Skill Func
-        SkillOpen = false;
-        SkillTimeNum = SkillTimeTemp;
-        // Skill Make
-        DefendNum /= DefendBuff;
-        SetAttackTimesBuff(1);
-        HeavyLevelNum -= 1;
-
+        if(GetSkillOpen()) {
+            // Skill Func
+            SkillOpen = false;
+            SkillTimeNum = SkillTimeTemp;
+            // Skill Make
+            DefendNum /= DefendBuff;
+            SetAttackTimesBuff(1);
+            HeavyLevelNum -= 1;
+        }
     }
 
 protected:

@@ -51,21 +51,23 @@ public:
 	}
 
 	void CloseSkill() override{
-		// Skill Func
-		SkillOpen = false;
-		SkillTimeNum = SkillTimeTemp;
-    	m_Drawable = m_IdleAnimation;
-		// Skill Make
-		HeavyLevelNum = 0;
-		AttackNum /= AttackBuff;
-		SetAttackTimesBuff(0);
-		DefendNum /= DefendBuff;
-		this->m_DefaultRange.clear();
-		this->m_DefaultRange.push_back(std::vector<std::string>(5, "0"));
-		this->m_DefaultRange.push_back({"1", "0", "0", "0", "0"});
-		this->m_DefaultRange.push_back({"2", "1", "0", "0", "0"});
-		this->m_DefaultRange.push_back({"1", "0", "0", "0", "0"});
-		this->m_DefaultRange.push_back(std::vector<std::string>(5, "0"));
+    	if(GetSkillOpen()) {
+    		// Skill Func
+    		SkillOpen = false;
+    		SkillTimeNum = SkillTimeTemp;
+    		m_Drawable = m_IdleAnimation;
+    		// Skill Make
+    		HeavyLevelNum = 0;
+    		AttackNum /= AttackBuff;
+    		SetAttackTimesBuff(0);
+    		DefendNum /= DefendBuff;
+    		this->m_DefaultRange.clear();
+    		this->m_DefaultRange.push_back(std::vector<std::string>(5, "0"));
+    		this->m_DefaultRange.push_back({"1", "0", "0", "0", "0"});
+    		this->m_DefaultRange.push_back({"2", "1", "0", "0", "0"});
+    		this->m_DefaultRange.push_back({"1", "0", "0", "0", "0"});
+    		this->m_DefaultRange.push_back(std::vector<std::string>(5, "0"));
+    	}
 
 	}
 

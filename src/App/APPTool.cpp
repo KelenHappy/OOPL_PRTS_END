@@ -186,6 +186,15 @@ void App::ClickOfMap(){
                         m_LevelCharacter[m_CardCarry]->PlaceCharacter(m_map0107->Getblock()[m_Carry],m_CardCarry);
                         m_LevelCharacter[m_CardCarry]->SetAttackRangeDefault(m_map0107->ExtractBlocksFromPattern(m_LevelCharacter[m_CardCarry]->GetDefaultRange(),m_map0107->Getblock()[m_Carry]->GetX(),m_map0107->Getblock()[m_Carry]->GetY(),Dir));
                         m_LevelCharacter[m_CardCarry]->SetDirection(Dir);
+                           if(m_LevelCharacter[m_CardCarry]->GetSkillCost()==-1) {
+                               m_LevelCharacter[m_CardCarry]->OpenSkill();
+                               m_LevelCharacter[m_CardCarry]->SetAttackRangeDefault(
+                                   m_map0107->ExtractBlocksFromPattern(m_LevelCharacter[m_CardCarry]->GetDefaultRange(),
+                                   m_LevelCharacter[m_CardCarry]->GetPlaceBlock()->GetX(),
+                                   m_LevelCharacter[m_CardCarry]->GetPlaceBlock()->GetY(),
+                                   m_LevelCharacter[m_CardCarry]->GetDirection()));
+                               OpenSkillOther(m_LevelCharacter[m_CardCarry]);
+                           }
                         m_map0107->closeMapblock();
                         m_map0107->UpdateCardLine();
                         m_flyUI->SetVisible(false);
