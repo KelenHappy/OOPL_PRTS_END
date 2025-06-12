@@ -63,6 +63,10 @@ add_executable(${PROJECT_NAME}
 		src/MobSpawner/Spawner0107.cpp
 		src/MobSpawner/SpawnerCC5.cpp
 		src/MobSpawner/SpawnerRog53.cpp
+		src/App/AppTool2.cpp
+		src/App/AppRestart.cpp
+		src/App/Openskilldo.cpp
+		src/UI/PlaceUI.cpp
     ${HEADER_FILES}
         include/App.hpp	
 		include/Block.hpp
@@ -168,14 +172,8 @@ add_executable(${PROJECT_NAME}
         include/UI/FlyUI.hpp
 		include/Mapchoice.hpp
 		include/UI/PlaceUI.hpp
-		src/UI/PlaceUI.cpp
 		include/Enumclass/Direction.hpp
-		src/App/AppTool2.cpp
-
 		include/BGM/L_BGM.hpp
-		src/App/AppRestart.cpp
-        src/App/Openskilldo.cpp
-		src/App/Openskilldo.cpp
 		include/MagicBar.hpp
 
 
