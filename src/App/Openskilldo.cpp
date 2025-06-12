@@ -6,5 +6,10 @@
 #include "Util/Logger.hpp"
 #include <vector>
 void App::OpenSkillOther(std::shared_ptr<AnimatedCharacter> Charater) {
+    if(Charater->GetCharacterName()=="Myrtle") {
 
+    }
+    else if(Charater->GetCharacterName()=="Texas") {
+        m_map0107->Addmapcost(12);
+    }
 }

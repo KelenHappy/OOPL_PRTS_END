@@ -258,6 +258,9 @@ void Map::UpdateCardLine() {
             m_Card[i]->SetTranform(588-int(n*(144)/0.8*0.6),-318);
             n++;
         }
+        else {
+            m_Card[i]->SetTranform(588-int(15*(144)/0.8*0.6),-318);
+        }
     }
 }
 

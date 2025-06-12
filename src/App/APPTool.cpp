@@ -85,8 +85,7 @@ void App::ClickOfMap(){
         // 點到 Card
         if(m_UIMapLevel==UIMapLevel::Clickcard||m_UIMapLevel==UIMapLevel::Main){
             for (size_t i = 0; i < NowMap->GetCard().size(); ++i) {
-                if (!NowMap->GetCard()[i]) continue;  // 避免 nullptr 存取
-                if (checkCollisionNearMouse(mouseT, NowMap->GetCard()[i]->m_Transform, 50) and !NowMap->GetCard()[i]->GetCharacter()->GetVisibility()) {
+                if (checkCollisionNearMouse(mouseT, NowMap->GetCard()[i]->m_Transform, 50) and NowMap->GetCard()[i]->GetVisibility()and !NowMap->GetCard()[i]->GetCharacter()->GetDie()) {
                     m_CardCarry = i;
                     if(m_LevelCharacter[m_CardCarry]->GetState() == CharacterState::Default){
                         CheckCard = true;
@@ -143,7 +142,7 @@ void App::ClickOfMap(){
             if(clicking) {
                 if(carry&&m_LevelCharacter[m_CardCarry]->GetBlockState() == m_map0107->Getblock()[m_Carry]->GetBlockState()&&m_LevelCharacter[m_CardCarry]->GetState() == CharacterState::Default and m_LevelCharacter[m_CardCarry]->GetHealthRecover() > 0 and
                     m_map0107->Getblock()[m_Carry]->HaveCharacter==false) {
-                    if(m_map0107->Getmapcost()>=m_LevelCharacter[m_CardCarry]->GetSetCost()){
+                    if(m_map0107->Getmapcost()>=m_LevelCharacter[m_CardCarry]->GetPlaceCostNum()){
                     m_placeUI->openUI(0);
                     m_placeUI->SetPostion(m_map0107->Getblock()[m_Carry]->m_Transform.translation.x,m_map0107->Getblock()[m_Carry]->m_Transform.translation.y);
                     m_flyUI->m_Transform.translation=m_map0107->Getblock()[m_Carry]->m_Transform.translation+glm::vec2(0,250*0.13);
@@ -186,6 +185,7 @@ void App::ClickOfMap(){
                        if( m_map0107->Takemapcost(m_LevelCharacter[m_CardCarry]->GetPlaceCostNum())){
                         m_LevelCharacter[m_CardCarry]->PlaceCharacter(m_map0107->Getblock()[m_Carry],m_CardCarry);
                         m_LevelCharacter[m_CardCarry]->SetAttackRangeDefault(m_map0107->ExtractBlocksFromPattern(m_LevelCharacter[m_CardCarry]->GetDefaultRange(),m_map0107->Getblock()[m_Carry]->GetX(),m_map0107->Getblock()[m_Carry]->GetY(),Dir));
+                        m_LevelCharacter[m_CardCarry]->SetDirection(Dir);
                         m_map0107->closeMapblock();
                         m_map0107->UpdateCardLine();
                         m_flyUI->SetVisible(false);
@@ -200,6 +200,12 @@ void App::ClickOfMap(){
         case UIMapLevel::ClickCharacter:
             // 點選角色的畫面
                 m_placeUI->UpdateUI(m_LevelCharacter[m_CharacterCarry]);
+                if(m_LevelCharacter[m_CharacterCarry]->GetState()==CharacterState::Die) {
+                    m_placeUI->closeUI();
+                    ResetMapChoice();
+                    m_map0107->closeMapblock();
+                    m_UIMapLevel=UIMapLevel::Main;
+                }
                 if(clicking and !m_LevelCharacter[m_CharacterCarry]->GetDie()) {
                     if(checkCollision(Util::Input::GetCursorPosition(),m_placeUI->Getskill()->m_Transform.translation,30,30)) {
                         if ( !m_LevelCharacter[m_CharacterCarry]->GetSkillOpen() and m_LevelCharacter[m_CharacterCarry]->GetVisibility() and m_LevelCharacter[m_CharacterCarry]->GetSkillCost() <= m_LevelCharacter[m_CharacterCarry]->GetSkillNow()) {
@@ -209,6 +215,7 @@ void App::ClickOfMap(){
                                 m_LevelCharacter[m_CharacterCarry]->GetPlaceBlock()->GetX(),
                                 m_LevelCharacter[m_CharacterCarry]->GetPlaceBlock()->GetY(),
                                 m_LevelCharacter[m_CharacterCarry]->GetDirection()));
+                            OpenSkillOther(m_LevelCharacter[m_CharacterCarry]);
                             std::cout << m_LevelCharacter[m_CharacterCarry]->GetCharacterName() << " Open Skill" << std::endl;
                         }
                     }

@@ -24,6 +24,7 @@ class Card:public Util::GameObject {
     void UpdateCard();
     void UpdateCardS();
     void setAllVisible(bool visible);
+    bool GetVisibility(){ return m_Visible; }
     private:
     void createinfo();
     void createclass(ClassState cs);
