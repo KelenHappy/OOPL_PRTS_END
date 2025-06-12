@@ -15,8 +15,9 @@ void App::GameSecondTick() {
             /*
             bool checkFirst = true;
             m_LevelCharacter[i]->DeDieCost(1);
-			
-			
+
+
+
             for (size_t j = 0; j < m_FilmVector.size(); j++) {
                 std::string characterName = m_LevelCharacter[i]->GetCharacterName();
                 if (characterName + "die" == m_FilmVector[j]->GetName()) {
@@ -24,7 +25,7 @@ void App::GameSecondTick() {
                     break;
                 }
             }
-			
+
             if(checkFirst){
 				std::shared_ptr<Film> tempFilm = std::make_shared<Film>(m_LevelCharacter[i]->GetCharacterName(),"die", FilmState::Die);
 				tempFilm->SetLifeTimes(m_LevelCharacter[i]->GetSetTime()*20);

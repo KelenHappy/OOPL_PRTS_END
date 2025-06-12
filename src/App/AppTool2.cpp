@@ -70,7 +70,7 @@ void App::PlayBGM(const std::string& path) {
         m_BackGround_BGM->FadeIn(1000, -1); // 淡入，無限循環
 
         if (m_BackGround_BGM->GetVolume() == 0) {
-            m_BackGround_BGM->SetVolume(32);
+            m_BackGround_BGM->SetVolume(16);
         }
     }
 }
@@ -83,5 +83,3 @@ void App::RemoveEnemyFromAllCharacters() {
         enemyList.resize(0);
     }
 }
-
-

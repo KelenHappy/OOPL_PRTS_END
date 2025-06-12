@@ -200,7 +200,7 @@ void App::ClickOfMap(){
         case UIMapLevel::ClickCharacter:
             // 點選角色的畫面
                 m_placeUI->UpdateUI(m_LevelCharacter[m_CharacterCarry]);
-                if(clicking) {
+                if(clicking and !m_LevelCharacter[m_CharacterCarry]->GetDie()) {
                     if(checkCollision(Util::Input::GetCursorPosition(),m_placeUI->Getskill()->m_Transform.translation,30,30)) {
                         if (m_LevelCharacter[m_CharacterCarry]->GetSkillDefault() == 0 and !m_LevelCharacter[m_CharacterCarry]->GetSkillOpen() and m_LevelCharacter[m_CharacterCarry]->GetVisibility() and m_LevelCharacter[m_CharacterCarry]->GetSkillCost() < m_LevelCharacter[m_CharacterCarry]->GetSkillNow()) {
                             m_LevelCharacter[m_CharacterCarry]->OpenSkill();
@@ -233,4 +233,3 @@ void App::ResetMapChoice() {
     carry=false;
     CheckCharacter = false;
 }
-
