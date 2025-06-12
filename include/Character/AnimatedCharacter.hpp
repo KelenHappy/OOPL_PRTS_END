@@ -12,6 +12,7 @@
 #include "ClassState.hpp"
 #include "BlockState.hpp"
 #include "Hpbar.hpp"
+#include "MagicBar.hpp"
 #include "Enemy/Enemy.hpp"
 #include "Enumclass/Direction.hpp"
 #include "GamePlayMode/CharacterAttackImpact.hpp"
@@ -111,12 +112,14 @@ public:
         this->m_StartAnimation = std::make_shared<Util::Animation>
         (StartEnd, false, 40, false, 40);
     	m_HpBar = std::make_shared<HpBar>();
+    	m_MagicBar=std::make_shared<MagicBar>();
     }
 	
 	//Set 圖片大小
 	void SetImageSize(float x, float y){
 		m_Transform.scale={x, y}; 
 	}
+
 	
 	void SetPosition(const glm::vec2& Position) { 
 		m_Transform.translation = {Position.x, Position.y + 250*m_Transform.scale.y};
@@ -167,6 +170,7 @@ public:
 		DefendCoutNow = 0;
     	Dead = t;
     }
+	void updatemagic(){m_MagicBar->Update(SkillNow,SkillCostNum,GetSkillOpen());}
 	void SetDieCost(){ DieCost = SetTimeNum;}
 	void updatetransform();
 	void SetAttackRangeDefault(std::vector<std::shared_ptr <Block>>AD){AttackRangeDefault=AD;AttackRangeNow=AD;}
@@ -215,6 +219,7 @@ public:
 	int GetPlaceCostNum() {
 		return PlaceCostNum;
 	}
+	std::shared_ptr<MagicBar> GetMagicBar(){return m_MagicBar;}
 	void AddDefendCoutNum(int i){DefendCoutNow += i;}
 	int GetDefendCoutNow(){return DefendCoutNow;}
 	void SetCharacterName(std::string name){CharacterName=name;}
@@ -258,6 +263,7 @@ protected:
     std::shared_ptr<Util::Animation> m_Default = nullptr;
 	std::shared_ptr<Util::Animation> m_HalfCard = nullptr;
 	std::shared_ptr<HpBar> m_HpBar = nullptr;
+	std::shared_ptr<MagicBar> m_MagicBar = nullptr;
 
     // 角色info
     float SetTimeNum = 0;

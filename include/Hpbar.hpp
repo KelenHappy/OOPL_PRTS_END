@@ -19,6 +19,7 @@ public:
     HpBar() {
         m_Drawable = std::make_shared<Util::Image>(RESOURCE_DIR"/UI/Hp.png");
         SetVisible(false);
+        SetZIndex(60);
     }
 /*
     void Update(float currentHP, float maxHP) {

@@ -39,6 +39,7 @@ void App::MapStart() {
         m_map0107->AddCard(cd);
         m_0107.AddChild(m_LevelCharacter[i]);
         m_0107.AddChild(m_LevelCharacter[i]->Gethpbar());
+        m_0107.AddChild(m_LevelCharacter[i]->GetMagicBar());
     }
     m_0107.AddChildren(m_map0107->GetChildrenCard());
     m_0107.AddChild(m_flyUI);

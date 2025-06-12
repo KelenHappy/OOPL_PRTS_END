@@ -111,7 +111,8 @@ void AnimatedCharacter::FrameReset(){
 	
 }
 void AnimatedCharacter::updatetransform() {
-	m_HpBar->m_Transform.translation=GetPositionFix()-glm::vec2{0,20};
+	m_HpBar->SetTransform(GetPositionFix()-glm::vec2{0,20});
+	m_MagicBar->SetTransform(GetPositionFix()-glm::vec2{0,26});
 }
 void AnimatedCharacter::PlaceCharacter(std::shared_ptr<Block> block,int index) {
 	if (block == nullptr) return;
@@ -131,6 +132,7 @@ void AnimatedCharacter::PlaceCharacter(std::shared_ptr<Block> block,int index) {
 	// 重置生命值
 	HealthRecoverNum = HealthNum;
 	m_HpBar->Update(HealthRecoverNum, HealthNum);
+	m_MagicBar->Update(SkillNow,SkillCostNum,GetSkillOpen());
 
 	// 重置攻擊計時器
 	AttackTimeTicket = -1;
@@ -141,6 +143,7 @@ void AnimatedCharacter::PlaceCharacter(std::shared_ptr<Block> block,int index) {
 	SetState(CharacterState::Start);
 	SetVisible(true);
 	Gethpbar()->SetVisible(true);
+	m_MagicBar->SetVisible(true);
 	block->placeCharacter(index);
 	updatetransform();
 }
@@ -149,12 +152,14 @@ void AnimatedCharacter::OutPlaceCharacter() {
 		m_GotAttackEnemy[i]->SetStuck(false);
 	}
 	m_HpBar->Update(HealthRecoverNum,HealthNum);
+	m_MagicBar->Update(SkillNow,SkillCostNum,GetSkillOpen());
 	FrameReset();
 	SetHP();
 	SetDieCost();
 	SetDead(true);
 	SetVisible(false);
 	Gethpbar()->SetVisible(false);
+	m_MagicBar->SetVisible(false);
 	SetLooping(false);
 	SetState(CharacterState::Default);
 	ClearAllGotEnemies();

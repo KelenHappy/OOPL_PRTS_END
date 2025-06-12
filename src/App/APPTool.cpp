@@ -194,6 +194,7 @@ void App::ClickOfMap(){
                                    m_LevelCharacter[m_CardCarry]->GetPlaceBlock()->GetY(),
                                    m_LevelCharacter[m_CardCarry]->GetDirection()));
                                OpenSkillOther(m_LevelCharacter[m_CardCarry]);
+                               m_LevelCharacter[m_CardCarry]->updatemagic();
                            }
                         m_map0107->closeMapblock();
                         m_map0107->UpdateCardLine();
@@ -225,6 +226,7 @@ void App::ClickOfMap(){
                                 m_LevelCharacter[m_CharacterCarry]->GetPlaceBlock()->GetY(),
                                 m_LevelCharacter[m_CharacterCarry]->GetDirection()));
                             OpenSkillOther(m_LevelCharacter[m_CharacterCarry]);
+                            m_LevelCharacter[m_CharacterCarry]->updatemagic();
                             std::cout << m_LevelCharacter[m_CharacterCarry]->GetCharacterName() << " Open Skill" << std::endl;
                         }
                     }

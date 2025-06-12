@@ -174,9 +174,9 @@ add_executable(${PROJECT_NAME}
 
 		include/BGM/L_BGM.hpp
 		src/App/AppRestart.cpp
-        include/UI/HpbarUI.hpp
+        src/App/Openskilldo.cpp
 		src/App/Openskilldo.cpp
-		src/App/Openskilldo.cpp
+		include/MagicBar.hpp
 
 
 )
