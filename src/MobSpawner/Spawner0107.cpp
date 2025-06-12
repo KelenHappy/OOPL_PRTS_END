@@ -86,6 +86,6 @@ void Spawner::CreateEnemies0107() {
 
     // 12
     AddSpawn(currentTime += 6.0f, Enemytype::Soldier, 0); // x1
-    
+
 }
 

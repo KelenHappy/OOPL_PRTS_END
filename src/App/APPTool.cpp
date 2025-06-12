@@ -86,7 +86,7 @@ void App::ClickOfMap(){
         if(m_UIMapLevel==UIMapLevel::Clickcard||m_UIMapLevel==UIMapLevel::Main){
             for (size_t i = 0; i < NowMap->GetCard().size(); ++i) {
                 if (!NowMap->GetCard()[i]) continue;  // 避免 nullptr 存取
-                if (checkCollisionNearMouse(mouseT, NowMap->GetCard()[i]->m_Transform, 50)) {
+                if (checkCollisionNearMouse(mouseT, NowMap->GetCard()[i]->m_Transform, 50) and !NowMap->GetCard()[i]->GetCharacter()->GetVisibility()) {
                     m_CardCarry = i;
                     if(m_LevelCharacter[m_CardCarry]->GetState() == CharacterState::Default){
                         CheckCard = true;
@@ -202,7 +202,7 @@ void App::ClickOfMap(){
                 m_placeUI->UpdateUI(m_LevelCharacter[m_CharacterCarry]);
                 if(clicking) {
                     if(checkCollision(Util::Input::GetCursorPosition(),m_placeUI->Getskill()->m_Transform.translation,30,30)) {
-                        if (m_LevelCharacter[m_CharacterCarry]->GetSkillDefault() == 0 and !m_LevelCharacter[m_CharacterCarry]->GetSkillOpen() and m_LevelCharacter[m_CharacterCarry]->GetVisibility() and m_LevelCharacter[m_CharacterCarry]->GetSkillCost() < m_LevelCharacter[m_CharacterCarry]->GetSkillNow()) {
+                        if ( !m_LevelCharacter[m_CharacterCarry]->GetSkillOpen() and m_LevelCharacter[m_CharacterCarry]->GetVisibility() and m_LevelCharacter[m_CharacterCarry]->GetSkillCost() <= m_LevelCharacter[m_CharacterCarry]->GetSkillNow()) {
                             m_LevelCharacter[m_CharacterCarry]->OpenSkill();
                             std::cout << m_LevelCharacter[m_CharacterCarry]->GetCharacterName() << " Open Skill" << std::endl;
                         }
