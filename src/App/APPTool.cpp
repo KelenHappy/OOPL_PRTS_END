@@ -204,6 +204,11 @@ void App::ClickOfMap(){
                     if(checkCollision(Util::Input::GetCursorPosition(),m_placeUI->Getskill()->m_Transform.translation,30,30)) {
                         if ( !m_LevelCharacter[m_CharacterCarry]->GetSkillOpen() and m_LevelCharacter[m_CharacterCarry]->GetVisibility() and m_LevelCharacter[m_CharacterCarry]->GetSkillCost() <= m_LevelCharacter[m_CharacterCarry]->GetSkillNow()) {
                             m_LevelCharacter[m_CharacterCarry]->OpenSkill();
+                            m_LevelCharacter[m_CharacterCarry]->SetAttackRangeDefault(
+                                m_map0107->ExtractBlocksFromPattern(m_LevelCharacter[m_CharacterCarry]->GetDefaultRange(),
+                                m_LevelCharacter[m_CharacterCarry]->GetPlaceBlock()->GetX(),
+                                m_LevelCharacter[m_CharacterCarry]->GetPlaceBlock()->GetY(),
+                                m_LevelCharacter[m_CharacterCarry]->GetDirection()));
                             std::cout << m_LevelCharacter[m_CharacterCarry]->GetCharacterName() << " Open Skill" << std::endl;
                         }
                     }

@@ -246,6 +246,8 @@ public:
 	std::shared_ptr<Block> GetPlaceBlock(){return m_PlaceBlock;}
 	void OutPlaceCharacter();
 	void RestartOfStart();
+	void SetDirection(Direction D){PlaceDirection=D;}
+	Direction GetDirection(){return PlaceDirection;}
 	~AnimatedCharacter(){}
 protected:
     CharacterState m_CurrentState;
@@ -267,6 +269,7 @@ protected:
     float AttackNum = 0;
     float DefendNum = 0;
     float MagicDefendNum = 0;
+	Direction PlaceDirection= Direction::EAST;
 	std::string CharacterName;
 	std::shared_ptr<Block> m_PlaceBlock = nullptr;
 	//std::shared_ptr<std::vector <Block>> AttackRangeNow = nullptr;

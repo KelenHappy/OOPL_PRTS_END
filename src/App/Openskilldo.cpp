@@ -5,3 +5,6 @@
 #include "Util/Keycode.hpp"
 #include "Util/Logger.hpp"
 #include <vector>
+void App::OpenSkillOther(std::shared_ptr<AnimatedCharacter> Charater) {
+
+}

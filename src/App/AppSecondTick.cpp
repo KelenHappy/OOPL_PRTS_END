@@ -46,6 +46,11 @@ void App::GameSecondTick() {
                 m_LevelCharacter[i]->DeSkillTime(1);
                 if(m_LevelCharacter[i]->GetSkillTime() <= 0 and m_LevelCharacter[i]->GetVisibility() and m_LevelCharacter[i]->GetSkillOpen()){
                     m_LevelCharacter[i]->CloseSkill();
+                    m_LevelCharacter[m_CharacterCarry]->SetAttackRangeDefault(
+                    m_map0107->ExtractBlocksFromPattern(m_LevelCharacter[i]->GetDefaultRange(),
+                                m_LevelCharacter[i]->GetPlaceBlock()->GetX(),
+                                m_LevelCharacter[i]->GetPlaceBlock()->GetY(),
+                                m_LevelCharacter[i]->GetDirection()));
                 }
             }
         }

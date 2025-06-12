@@ -107,6 +107,7 @@ private:
 	void freeMap();
 	std::vector<std::shared_ptr<Enemy>> GetCharaterEnemyinRange(std::shared_ptr<AnimatedCharacter> Charater);
 	std::vector<std::shared_ptr<AnimatedCharacter>>GetCharaterinRange(std::shared_ptr<AnimatedCharacter> Charater);
+	void OpenSkillOther(std::shared_ptr<AnimatedCharacter> Charater);
 
 private:
 	void PlayBGM(const std::string& path);
