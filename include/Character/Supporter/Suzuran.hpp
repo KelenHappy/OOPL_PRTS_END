@@ -34,6 +34,8 @@ public:
 		// Skill Make
 		AttackTimeNum *= AttackTimeBuff;
     	AttackTimes = 5;
+    	SetAttackType(CharacterAttackType::Magic);
+
 
     	this->m_DefaultRange.clear();
     	this->m_DefaultRange.push_back({"1", "1", "1", "1", "0"});

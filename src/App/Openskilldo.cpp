@@ -23,4 +23,20 @@ void App::OpenSkillOther(std::shared_ptr<AnimatedCharacter> Charater) {
         }
         }
     }
+    else if (Charater->GetCharacterName()=="Kirin_R_Yato") {
+        std::vector<std::shared_ptr<Enemy>>  EnemyTools = GetCharaterEnemyinRange(Charater);
+        Charater->SetState(CharacterState::Attack);
+        Charater->Update();
+        for(size_t i=0;i<EnemyTools.size();i++){
+            for (int AttackTimes = 0 ; AttackTimes < 16; AttackTimes++) {
+                attack(Charater, EnemyTools[i]);
+            }
+        }
+        Charater->CloseSkill();
+        for(size_t i=0;i<EnemyTools.size();i++){
+            for (int AttackTimes = 0 ; AttackTimes < 16; AttackTimes++) {
+                attack(Charater, EnemyTools[i]);
+            }
+        }
+    }
 }

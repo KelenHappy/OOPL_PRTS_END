@@ -123,7 +123,7 @@ void Enemy::ImpactDizzy(){
 	ImpactBB = true;
 	SetAttackTimeBuff(1000);
 	ImpactTick = 40/20;
-	MoveSpeedNum = MoveSpeedNum * 0.7;
+	MoveSpeedNum = MoveSpeedNum * 0.6;
 	Enemy::ApplySkillEffects();
 }
 

@@ -16,7 +16,7 @@ public:
 		, 1);
 		//角色技能建立
 		SetAttackBuff(2.65);
-    	SetAttackImpact(CharacterAttackImpact::Dizzy);
+    	SetAttackImpact(CharacterAttackImpact::Sleep);
     	SetAttackType(CharacterAttackType::Magic);
 
 		//建立初始攻擊
