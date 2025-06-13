@@ -12,6 +12,11 @@ void App::LevelMain17() {
     }
 	if (Util::Input::IsKeyUp(Util::Keycode::M)){
 		m_map0107->Addmapcost(99);
+		for(size_t i = 0 ;i<m_LevelCharacter.size();i++) {
+			m_LevelCharacter[i]->AddSkillCost(100);
+			if(m_LevelCharacter[i]->GetDie())m_LevelCharacter[i]->DeDieCost(100);
+		}
+		m_map0107->UpdateCardLine();
     }
 
 	/*if(carry == true and CheckCard == true) {

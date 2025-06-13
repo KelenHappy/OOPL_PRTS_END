@@ -20,8 +20,18 @@ void App::GameTick() {
 			   Enemies[i]->GetHpBar()->SetVisible(false);
 			   Enemies[i]->SetLooping(false);
 			   Enemies.erase(Enemies.begin() + i);
+		   		if(m_map0107->GetTowerHP()<0) {
+		   			m_UIMapLevel=UIMapLevel::Die;
+		   			ResetMapChoice();
+		   			m_placeUI->closeUI();
+		   			m_flyUI->SetVisible(true);
+		   			m_flyUI->m_Transform.translation={0,0};
+		   			m_flyUI->m_Transform.scale={1.2,1.25};
+		   			m_flyUI->SetNewIMGstd("/Maps/Fail.png");
+		   		}
 			   --i; // 調整索引，因為 erase 會導致 vector 向前移動
 			   continue; // 確保這一輪不要再用這個 i
+
 		   }
         }
     }

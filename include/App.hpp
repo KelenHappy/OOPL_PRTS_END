@@ -73,7 +73,8 @@ public:
 		Main,
 		Clickcard,
 		ChoiceDirection,
-		ClickCharacter
+		ClickCharacter,
+		Die
 	};
 
     State GetCurrentState() const { return m_CurrentState; }

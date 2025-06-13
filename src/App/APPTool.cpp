@@ -243,6 +243,13 @@ void App::ClickOfMap(){
 
 
                 break;
+        case UIMapLevel::Die:
+            m_flyUI->SetVisible(true);
+            if(clicking) {
+                m_LoadingPage->SetNewIMGstd("/Maps/BackToLobby.png");
+                m_level=level::BackToLobby;
+                m_Loading.Update();
+            }
 
         default:
             // 預設處理（可選）

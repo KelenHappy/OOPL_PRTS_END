@@ -121,21 +121,21 @@ void Enemy::FullSpeedMove(){
 
 void Enemy::ImpactDizzy(){
 	SetAttackTimeBuff(1000);
-	ImpactTick = 1;
+	ImpactTick = 40;
 	MoveSpeedNum = MoveSpeedNum * 0.7;
 	Enemy::ApplySkillEffects();
 }
 
 void Enemy::ImpactSleep(){
 	SetAttackTimeBuff(1000);
-	ImpactTick = 1;
+	ImpactTick = 50;
 	MoveSpeedNum = 0;
 	Enemy::ApplySkillEffects();
 }
 
 void Enemy::ImpactFrozen(){
 	SetAttackTimeBuff(1000);
-	ImpactTick = 1;
+	ImpactTick =60;
 	MoveSpeedNum = 0;
 	Enemy::ApplySkillEffects();
 }
