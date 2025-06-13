@@ -9,7 +9,9 @@ Card::Card(std::shared_ptr<AnimatedCharacter> Character) {
     SetZIndex(27);
     cardsize=0.6f;
     m_cost= std::make_shared<TextBox>(20);
+    m_cost->SetZIndex(34);
     m_DeadTime= std::make_shared<TextBox>(30);
+    m_DeadTime->SetZIndex(34);
     m_Cardback=std::make_shared<ImgItem>("/Maps/CardBack.png");
     m_Cardback->setsize(0.7,0.7);
     m_Cardback->SetZIndex(26);

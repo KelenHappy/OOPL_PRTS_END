@@ -28,6 +28,7 @@ void App::GameTick() {
 		   			m_flyUI->m_Transform.translation={0,0};
 		   			m_flyUI->m_Transform.scale={1.2,1.25};
 		   			m_flyUI->SetNewIMGstd("/Maps/Fail.png");
+		   			gametimer->Pause();
 		   		}
 			   --i; // 調整索引，因為 erase 會導致 vector 向前移動
 			   continue; // 確保這一輪不要再用這個 i
