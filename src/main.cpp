@@ -32,6 +32,7 @@ int main(int, char**) {
     }
 
     auto context = Core::Context::GetInstance();
+    context->SetWindowIcon(RESOURCE_DIR"/icon.jpg");
     App app;
 
     while (!context->GetExit()) {
