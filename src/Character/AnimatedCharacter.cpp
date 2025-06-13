@@ -151,6 +151,7 @@ void AnimatedCharacter::OutPlaceCharacter() {
 	for (size_t i = 0; i < m_GotAttackEnemy.size(); i ++) {
 		m_GotAttackEnemy[i]->SetStuck(false);
 	}
+	m_GotAttackEnemy.resize(0);
 	m_HpBar->Update(HealthRecoverNum,HealthNum);
 	m_MagicBar->Update(SkillNow,SkillCostNum,GetSkillOpen());
 	FrameReset();
