@@ -12,12 +12,12 @@ public:
 		int SkillDefault, int SkillCost, float SkillTime, std::string skillinfo, std::string skillname,
 		HeavyLevel
 		*/
-		SetInfo(70, 10, 1.2, 3906, 355, 502, 15,
+		SetInfo(70, 10, 1.2, 3906, 355*1.2, 502, 15,
 		20, 42, 28, "攻擊範圍擴大，特性提升至2倍（每擊倒一名敵人時特性倍率-10%），攻擊對5個目標造成相當於180%攻擊力的物理傷害。 範圍內所有敵人受到卡西米爾幹員攻擊時額外附帶瑪恩納12%攻擊力的真實傷害", "未照耀的荣光"
 		, 0);
 		//角色技能建立
         SetAttackTimesBuff(0);
-        SetAttackBuff(6.8);
+        SetAttackBuff(2.8);
         SetDefendBuff(1.25);
 		//建立初始攻擊範圍
 
@@ -29,7 +29,7 @@ public:
     }
 	std::string GetChineseName() override {return "瑪恩納";}
 	void UpdateEffect() override{
-		AttackNum += (AttackNum*0.05);
+    	if(AttackNum<355*1.25)AttackNum += (355*0.05);
 	}
 	void OpenSkill() override{
 		// Skill Func
@@ -57,16 +57,15 @@ public:
     		SkillTimeNum = SkillTimeTemp;
     		m_Drawable = m_IdleAnimation;
     		// Skill Make
+    		AttackNum=355;
     		HeavyLevelNum = 0;
     		AttackNum /= AttackBuff;
     		SetAttackTimesBuff(0);
     		DefendNum /= DefendBuff;
     		this->m_DefaultRange.clear();
-    		this->m_DefaultRange.push_back(std::vector<std::string>(5, "0"));
     		this->m_DefaultRange.push_back({"1", "0", "0", "0", "0"});
     		this->m_DefaultRange.push_back({"2", "1", "0", "0", "0"});
     		this->m_DefaultRange.push_back({"1", "0", "0", "0", "0"});
-    		this->m_DefaultRange.push_back(std::vector<std::string>(5, "0"));
     	}
 
 	}
