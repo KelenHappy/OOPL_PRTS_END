@@ -1,10 +1,16 @@
-# Resources要去Google Dirve下載  
+# 安裝流程
+## 編譯原碼  
+``` sh
+git clone https://github.com/KelenHappy/OOPL_PRTS_END.git  
+```
+## Resources要去Google Dirve下載  
 [點我前往](https://drive.google.com/drive/folders/1dGWjiqmMdWLbofvaHPUsZz9-yQ0pzoZv?usp=sharing)  
-# 編譯
+## 編譯
 ```sh
 cmake -DCMAKE_BUILD_TYPE=Debug -B build # -G Ninja
  ```
 better read [PTSD README](https://github.com/ntut-open-source-club/practical-tools-for-simple-design)  
+
 # 轉換png
 ``` sh
 ffmpeg -i test.webm -vf "colorkey=0x00FF00:0.3:0.1" -pix_fmt rgba %d.png
