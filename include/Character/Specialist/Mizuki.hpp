@@ -16,8 +16,8 @@ public:
 		30, 60, 30, "攻擊範圍擴大，攻擊力+150%，第一天賦額外攻擊2個目標並附加1秒暈眩", "鏡花水月"
 		, 0);
 		//角色技能建立
-		SetAttackBuff(2.5);
-
+		SetAttackBuff(3.5);
+    	SetAttackTimesBuff(20);
 		//建立初始攻擊範圍
 		SetAttackRangeNum(4);
 		this->m_DefaultRange.push_back({"1", "1", "1", "0", "0"});
