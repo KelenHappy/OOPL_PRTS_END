@@ -71,6 +71,7 @@ void Enemy::takeDamage(CharacterAttackImpact impact, float damage){
 			break;
 	}
 	I_Hpbar->Update(HealthRecoverNum,HealthNum);
+	I_Hpbar->SetTransform(GetPositionFix()-glm::vec2{ 0,16 });
 }
 
 void Enemy::ApplySkillEffects() {
