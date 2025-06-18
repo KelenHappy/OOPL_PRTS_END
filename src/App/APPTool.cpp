@@ -108,12 +108,14 @@ void App::ClickOfMap(){
             }
         }
         //點到角色
-        for (size_t i = 0; i < m_LevelCharacter.size(); ++i) {
-            if (checkCollision(mouse, m_LevelCharacter[i]->GetPositionFix(), 30,30)
-            and m_LevelCharacter[i]->GetState() != CharacterState::Default) {
-                m_CharacterCarry = i;
-                CheckCharacter = true;
-                break;
+        if(m_UIMapLevel!=UIMapLevel::ClickCharacter){
+            for (size_t i = 0; i < m_LevelCharacter.size(); ++i) {
+                if (checkCollision(mouse, m_LevelCharacter[i]->GetPositionFix(), 30,30)
+                and m_LevelCharacter[i]->GetState() != CharacterState::Default) {
+                    m_CharacterCarry = i;
+                    CheckCharacter = true;
+                    break;
+                }
             }
         }
     }
