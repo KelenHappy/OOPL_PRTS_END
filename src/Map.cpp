@@ -16,7 +16,9 @@ Map::Map(Mapchoice Mc) {
 
 }
 void Map::Update() {
-    m_PutLimit->SetText("可放置角色:"+std::to_string(PutLimit));
+    //m_PutLimit->SetText("可放置角色:"+std::to_string(PutLimit));
+    m_PutLimit->SetText(" ");
+    m_PutlimitBar->SetVisible(false);
     m_EnemyText->SetText(std::to_string(EnemyTotal)+"/"+std::to_string(EnemyTotalMax));
     m_HPText->SetText(std::to_string(TowerHP));
     m_Cost->SetText(std::to_string(cost));
