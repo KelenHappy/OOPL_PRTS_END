@@ -3,8 +3,8 @@
 ``` sh
 git clone https://github.com/KelenHappy/OOPL_PRTS_END.git  
 ```
-## Resources要去Google Dirve下載  
-[點我前往](https://drive.google.com/drive/folders/1dGWjiqmMdWLbofvaHPUsZz9-yQ0pzoZv)  
+## Resources要去下載  
+[點我前往](https://e.pcloud.link/publink/show?code=kZkTnEZoUJJqg36FFQO7zGUMMbfGQ2J31vy)  
 ## 編譯
 ```sh
 cmake -DCMAKE_BUILD_TYPE=Debug -B build # -G Ninja
