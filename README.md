@@ -4,7 +4,7 @@
 git clone https://github.com/KelenHappy/OOPL_PRTS_END.git  
 ```
 ## Resources要去下載  
-[點我前往](https://e.pcloud.link/publink/show?code=kZkTnEZoUJJqg36FFQO7zGUMMbfGQ2J31vy)  
+[點我前往](https://www.dropbox.com/scl/fi/pf5mbbxsxvca1ernyfpjo/Resources.7z?rlkey=0lcpg9musummet6ibf5rbxd0d&st=zwfyhs8j&dl=0)  
 ## 編譯
 ```sh
 cmake -DCMAKE_BUILD_TYPE=Debug -B build # -G Ninja
