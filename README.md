@@ -8,7 +8,8 @@ git clone https://github.com/KelenHappy/OOPL_PRTS_END.git
 ## 編譯
 ```sh
 cmake -DCMAKE_BUILD_TYPE=Debug -B build # -G Ninja
- ```
+cmake --build build
+```
 better read [PTSD README](https://github.com/ntut-open-source-club/practical-tools-for-simple-design)  
 
 # 工作腳本
