@@ -4,7 +4,7 @@
 git clone https://github.com/KelenHappy/OOPL_PRTS_END.git  
 ```
 ## Resources要去下載  
-[點我前往](https://www.dropbox.com/scl/fi/18glnhkx9bqw5x8kjrpwl/Resources.7z?rlkey=iofszenq85rzf1lqp94juu8sx&st=75oyy0hz&dl=0)  
+[點我前往](https://www.asuswebstorage.com/navigate/a/#/s/6FB61FB27079448B9BE5FED97AA64224Y)  
 ## 編譯
 ```sh
 cmake -DCMAKE_BUILD_TYPE=Debug -B build # -G Ninja
